@@ -2157,6 +2157,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       employee_parking: {
+        employee_names: '',
         id_number: '',
         contact_number: '',
         school_dept_office: '',
@@ -2183,7 +2184,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post(this.url, {
-        id_numbers: this.employee_parking.id_number,
+        id_number: this.employee_parking.id_number,
         contact_number: this.employee_parking.contact_number,
         school_dept_office: this.employee_parking.school_dept_office,
         license_number: this.employee_parking.license_number,
@@ -51868,8 +51869,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\comm_center\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\comm_center\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Git\comm_center\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Git\comm_center\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

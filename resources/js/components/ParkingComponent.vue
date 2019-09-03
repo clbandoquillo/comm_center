@@ -257,6 +257,7 @@
 
             return{
                 employee_parking:{
+                    employee_names: '',
                     id_number: '',
                     contact_number: '',
                     school_dept_office: '',
@@ -287,7 +288,7 @@
 
                 axios.post(this.url, 
                 {
-                    id_numbers: this.employee_parking.id_number,
+                    id_number: this.employee_parking.id_number,
                     contact_number: this.employee_parking.contact_number,
                     school_dept_office: this.employee_parking.school_dept_office,
                     license_number: this.employee_parking.license_number,

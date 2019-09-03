@@ -36,14 +36,37 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <div class="form-group">
-                        <label for="name">ADDUNET Username</label>
-                        <input v-model="ldap.ldap_username" type="text" id="name" class="form-control">
+                        <label for="name">Service Name</label>
+                        <input v-model="ldap.service_name" type="text" id="name" class="form-control">
                     </div>
+
                     <div class="form-group">
-                        <label for="description">Barcode</label>
+                        <label for="description">Category</label>
                         <input v-model="ldap.id_number" type="text" id="description" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                        <label for="description">Price</label>
+                        <input v-model="ldap.id_number" type="text" id="description" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">School Year</label>
+                        <input v-model="employee_parking.schoolyear" type="text" id="schoolyear" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Semester</label>
+                        <select v-model="employee_parking.semester" name="semester" id="semester" class="form-control" tabindex="-1">
+                            <option value="" selected="" ></option>
+                            <option value="1" selected="" >First Semester</option>
+                            <option value="2" selected="" >Second Semester</option>
+                            <option value="3" selected="" >Summer</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -90,15 +113,18 @@
 
         data(){
             return{
-                ldap:{
-                    ldap_username: '',
-                    id_number: ''
+                pricing:{
+                    service_name: '',
+                    category_id: '',
+                    price: '',
+                    schoolyear: '',
+                    semester: ''
                 },
 
                 ldaps: [],
-                url: 'http://127.0.0.1:8000/ldap_barcode/',
+                url: 'http://127.0.0.1:8000/ccfc_pricings/',
                 errors: [],
-                new_update_ldap: []
+                new_update_pricing: []
             }
         },
 
@@ -113,7 +139,7 @@
                 this.new_update_ldap = this.ldaps[index];
             },
 
-            create_ldap(){
+            create_pricing(){
 
                 axios.post(this.url, {ldap_username: this.ldap.ldap_username, id_number: this.ldap.id_number})
 

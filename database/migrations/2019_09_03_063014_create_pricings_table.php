@@ -15,7 +15,11 @@ class CreatePricingsTable extends Migration
     {
         Schema::create('pricings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('services_name');
+            $table->string('service_name');
+            $table->string('category_id');
+            $table->decimal('price', 9, 2);
+            $table->integer('schoolyear');
+            $table->tinyInteger('semester');
             $table->timestamps();
         });
     }

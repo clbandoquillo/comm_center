@@ -43,7 +43,6 @@ class EmployeeParkingController extends Controller
     {
         //
         $request->validate([
-            
             'id_number' => 'required',
             'school_dept_office' => 'required',
             'contact_number' => 'required',
@@ -123,4 +122,6 @@ class EmployeeParkingController extends Controller
     {
         //
     }
+
+    
 }

@@ -21,7 +21,7 @@ class EmployeeParking extends Migration
             $table->string('school_dept_office')->nullable();
             $table->string('license_number');
             $table->date('license_expiry_date');
-            $table->string('schoolyear');
+            $table->integer('schoolyear');
             $table->tinyInteger('semester');
             $table->string('parking_type');
             $table->string('sticker_number')->nullable();
