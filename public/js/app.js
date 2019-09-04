@@ -2216,10 +2216,272 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.url_emp_list).then(function (response) {
         _this3.employee_names = response.data.employee_names;
       });
+    },
+    resetData: function resetData() {
+      this.employee_parking.employee_names = '';
+      this.employee_parking.id_number = '';
+      this.employee_parking.contact_number = '';
+      this.employee_parking.school_dept_office = '';
+      this.employee_parking.license_number = '';
+      this.employee_parking.license_expiry_date = '';
+      this.employee_parking.schoolyear = '';
+      this.employee_parking.semester = '';
+      this.employee_parking.parking_type = '';
+      this.employee_parking.or_number = '';
+      this.employee_parking.sticker_number = '';
+      this.employee_parking.date_issued = '';
     }
   },
   mounted: function mounted() {
     this.load_employee_parking();
+    this.load_employee_names();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PricesComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PricesComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      pricing: {
+        service_name: '',
+        price: '',
+        schoolyear: '',
+        semester: '',
+        category_Name: '',
+        status: ''
+      },
+      pricings: [],
+      employee_names: [],
+      url: 'http://127.0.0.1:8000/ccfc_pricing',
+      url_emp_list: 'http://127.0.0.1:8000/employee_names'
+    };
+  },
+  methods: {
+    employeeParkingModal: function employeeParkingModal() {
+      $("#employee-parking-modal").modal("show");
+    },
+    create_pricing: function create_pricing() {
+      var _this = this;
+
+      axios.post(this.url, {
+        service_name: this.pricing.id_number,
+        price: this.pricing.contact_number,
+        schoolyear: this.pricing.school_dept_office,
+        semester: this.pricing.license_number,
+        category_Name: this.pricing.license_expiry_date,
+        status: this.pricing.schoolyear
+      }).then(function (response) {
+        _this.resetData();
+
+        _this.pricings.push(response.data.pricing);
+
+        $("#employee-parking-modal").modal("hide");
+      });
+    },
+    load_pricing: function load_pricing() {
+      var _this2 = this;
+
+      axios.get(this.url).then(function (response) {
+        _this2.pricings = response.data.pricings;
+      });
+    },
+    load_employee_names: function load_employee_names() {
+      var _this3 = this;
+
+      axios.get(this.url_emp_list).then(function (response) {
+        _this3.employee_names = response.data.employee_names;
+      });
+    },
+    resetData: function resetData() {
+      this.pricing.employee_names = '';
+      this.pricing.id_number = '';
+      this.pricing.contact_number = '';
+      this.pricing.school_dept_office = '';
+      this.pricing.license_number = '';
+      this.pricing.license_expiry_date = '';
+      this.pricing.schoolyear = '';
+      this.pricing.semester = '';
+      this.pricing.parking_type = '';
+      this.pricing.or_number = '';
+      this.pricing.sticker_number = '';
+      this.pricing.date_issued = '';
+    }
+  },
+  mounted: function mounted() {
+    this.load_pricing();
     this.load_employee_names();
   }
 });
@@ -39395,6 +39657,575 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PricesComponent.vue?vue&type=template&id=039262b8&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PricesComponent.vue?vue&type=template&id=039262b8& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "tab-content", attrs: { id: "nav-tabContent" } }, [
+      _c(
+        "div",
+        {
+          staticClass: "tab-pane fade show active",
+          attrs: {
+            id: "nav-employee-parking",
+            role: "tabpanel",
+            "aria-labelledby": "employee-parking-tab"
+          }
+        },
+        [
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row justify-content-center" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-header" }, [
+                    _vm._v("CCFC Current List of Prices")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary btn-block",
+                        on: { click: _vm.employeeParkingModal }
+                      },
+                      [_vm._v("Add Price to CCFC Service")]
+                    ),
+                    _vm._v(" "),
+                    _c("table", { staticClass: "table" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.pricings, function(pricing, index) {
+                          return _c("tr", [
+                            _c("td", [_vm._v(_vm._s(pricing.service_name))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(pricing.price))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(pricing.schoolyear))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(pricing.semester))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(pricing.category_Name))]),
+                            _vm._v(" "),
+                            pricing.status == 1
+                              ? _c("td", [_vm._v("Active")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            pricing.status == 0
+                              ? _c("td", [_vm._v("Inactive")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-info",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.updateModal(index)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Edit")]
+                              ),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteTask(index)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Delete")]
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "tab-pane fade",
+          attrs: {
+            id: "nav-student-parking",
+            role: "tabpanel",
+            "aria-labelledby": "student-parking-tab"
+          }
+        },
+        [
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row justify-content-center" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-header" }, [
+                    _vm._v("Students Parking")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("button", { staticClass: "btn btn-primary btn-block" }, [
+                      _vm._v("Register Student")
+                    ]),
+                    _vm._v(" "),
+                    _c("table", { staticClass: "table" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("td", [_vm._v("BANDOQUILLO, CHRISTIAN LACSINTO")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v("2019")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v("1st Semester")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v("09491106932")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v("MIS Office")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v("MD1234567890")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v("01-03-2023")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-info",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.updateModal(_vm.index)
+                                  }
+                                }
+                              },
+                              [_vm._v("Edit")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteTask(_vm.index)
+                                  }
+                                }
+                              },
+                              [_vm._v("Delete")]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "employee-parking-modal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Service Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.pricing.school_dept_office,
+                        expression: "pricing.school_dept_office"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "school_dept_office" },
+                    domProps: { value: _vm.pricing.school_dept_office },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.pricing,
+                          "school_dept_office",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "name" } }, [
+                    _vm._v("Service Category")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.pricing.id_number,
+                          expression: "pricing.id_number"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        "data-placeholder": "Choose an Employee...",
+                        name: "employee_names",
+                        id: "employee_names",
+                        tabindex: "-1"
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.pricing,
+                            "id_number",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", {
+                        attrs: { disabled: "", value: "", selected: "" }
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.employee_names, function(
+                        employee_name,
+                        index
+                      ) {
+                        return _c(
+                          "option",
+                          { domProps: { value: employee_name.id_no } },
+                          [
+                            _vm._v(
+                              _vm._s(employee_name.cLast) +
+                                ", " +
+                                _vm._s(employee_name.cFirst) +
+                                " " +
+                                _vm._s(employee_name.middle)
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(" Selected: " + _vm._s(_vm.pricing.id_number))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Price")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.pricing.school_dept_office,
+                        expression: "pricing.school_dept_office"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "school_dept_office" },
+                    domProps: { value: _vm.pricing.school_dept_office },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.pricing,
+                          "school_dept_office",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("School Year")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.pricing.school_dept_office,
+                        expression: "pricing.school_dept_office"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "school_dept_office" },
+                    domProps: { value: _vm.pricing.school_dept_office },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.pricing,
+                          "school_dept_office",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Semester")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.pricing.school_dept_office,
+                        expression: "pricing.school_dept_office"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "school_dept_office" },
+                    domProps: { value: _vm.pricing.school_dept_office },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.pricing,
+                          "school_dept_office",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.create_pricing }
+                  },
+                  [_vm._v("Register Parking")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", [
+      _c(
+        "div",
+        {
+          staticClass: "nav nav-tabs nav-fill",
+          attrs: { id: "nav-tab", role: "tablist" }
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "nav-item nav-link active",
+              attrs: {
+                id: "employee-parking-tab",
+                "data-toggle": "tab",
+                href: "#nav-employee-parking",
+                role: "tab",
+                "aria-controls": "nav-employee-parking",
+                "aria-selected": "true"
+              }
+            },
+            [_vm._v("CCFC Pricing")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "nav-item nav-link",
+              attrs: {
+                id: "student-parking-tab",
+                "data-toggle": "tab",
+                href: "#nav-student-parking",
+                role: "tab",
+                "aria-controls": "nav-employee-parking",
+                "aria-selected": "false"
+              }
+            },
+            [_vm._v("CCFC Services")]
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Service Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Service Category")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Semester")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("School Year")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("School Year")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Semester")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Contact Number")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("School/Dept/Office")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("License Number")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("License Expiry Date")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Employees Parking Registration")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -51573,6 +52404,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('parking-component', __webpack_require__(/*! ./components/ParkingComponent.vue */ "./resources/js/components/ParkingComponent.vue")["default"]);
 Vue.component('ldap-component', __webpack_require__(/*! ./components/LDAPComponent.vue */ "./resources/js/components/LDAPComponent.vue")["default"]);
+Vue.component('prices-component', __webpack_require__(/*! ./components/PricesComponent.vue */ "./resources/js/components/PricesComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -51846,6 +52678,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParkingComponent_vue_vue_type_template_id_5c153010___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ParkingComponent_vue_vue_type_template_id_5c153010___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PricesComponent.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/PricesComponent.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PricesComponent_vue_vue_type_template_id_039262b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PricesComponent.vue?vue&type=template&id=039262b8& */ "./resources/js/components/PricesComponent.vue?vue&type=template&id=039262b8&");
+/* harmony import */ var _PricesComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PricesComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/PricesComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PricesComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PricesComponent_vue_vue_type_template_id_039262b8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PricesComponent_vue_vue_type_template_id_039262b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PricesComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PricesComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/PricesComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PricesComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PricesComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PricesComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PricesComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PricesComponent.vue?vue&type=template&id=039262b8&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/PricesComponent.vue?vue&type=template&id=039262b8& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PricesComponent_vue_vue_type_template_id_039262b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PricesComponent.vue?vue&type=template&id=039262b8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PricesComponent.vue?vue&type=template&id=039262b8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PricesComponent_vue_vue_type_template_id_039262b8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PricesComponent_vue_vue_type_template_id_039262b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

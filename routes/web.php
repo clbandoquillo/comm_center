@@ -32,6 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/parking','ParkingController@index');
 Route::resource('/employee_parking', 'EmployeeParkingController');
 
+//Pricing
+Route::get('/pricing','PricingController@index');
+Route::resource('/ccfc_pricing', 'CcfcPricingController');
+
 //EmployeeName
 Route::get('/employee_names','EmployeeController@index');
 

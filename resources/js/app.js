@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('parking-component', require('./components/ParkingComponent.vue').default);
 Vue.component('ldap-component', require('./components/LDAPComponent.vue').default);
+Vue.component('prices-component', require('./components/PricesComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -1,204 +1,251 @@
 <template>
     <div>
 
-    <div>
-        <button @click="createModal" class="btn btn-primary btn-block">Add New Pricing for Services</button>
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Semester</th>
-                    <th scope="col">School Year</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(ldap, index) in ldaps">
-                    <td>{{ index + 1}}</td>
-                    <td>{{ ldap.ldap_username }}</td>
-                    <td>{{ ldap.id_number }}</td>
-                    <td><button @click="updateModal(index)" class="btn btn-info">Edit</button></td>
-                    <td><button @click="delete_ldap(index)" class="btn btn-danger">Delete</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <nav>
 
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+
+                <a class="nav-item nav-link active" id="employee-parking-tab" data-toggle="tab" href="#nav-employee-parking" role="tab" aria-controls="nav-employee-parking" aria-selected="true">CCFC Pricing</a>
+                <a class="nav-item nav-link" id="student-parking-tab" data-toggle="tab" href="#nav-student-parking" role="tab" aria-controls="nav-employee-parking" aria-selected="false">CCFC Services</a>
+
+            </div>
+            
+        </nav><br>
+
+        <div class="tab-content" id='nav-tabContent'>
+            
+            <div class="tab-pane fade show active" id="nav-employee-parking" role="tabpanel" aria-labelledby="employee-parking-tab">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">CCFC Current List of Prices</div>
+                                <div class="card-body">
+                                    <button @click="employeeParkingModal" class="btn btn-primary btn-block">Add Price to CCFC Service</button>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Service Name</th>
+                                                <th scope="col">Service Category</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Semester</th>
+                                                <th scope="col">School Year</th>
+                                            </tr>
+                                        </thead>
+                                            <tbody>
+                                                <tr v-for="(pricing, index) in pricings">
+                                                    <td>{{ pricing.service_name }}</td>
+                                                    <td>{{ pricing.price }}</td>
+                                                    <td>{{ pricing.schoolyear }}</td>
+                                                    <td>{{ pricing.semester }}</td>
+                                                    <td>{{ pricing.category_Name }}</td>
+                                                    <td v-if="pricing.status == 1">Active</td>
+                                                    <td v-if="pricing.status == 0">Inactive</td>
+                                                    <td><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button></td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="nav-student-parking" role="tabpanel" aria-labelledby="student-parking-tab">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">Students Parking</div>
+                                <div class="card-body">
+                                    <button class="btn btn-primary btn-block">Register Student</button>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">School Year</th>
+                                                <th scope="col">Semester</th>
+                                                <th scope="col">Contact Number</th>
+                                                <th scope="col">School/Dept/Office</th>
+                                                <th scope="col">License Number</th>
+                                                <th scope="col">License Expiry Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>BANDOQUILLO, CHRISTIAN LACSINTO</td>
+                                                <td>2019</td>
+                                                <td>1st Semester</td>
+                                                <td>09491106932</td>
+                                                <td>MIS Office</td>
+                                                <td>MD1234567890</td>
+                                                <td>01-03-2023</td>
+                                                <td><button @click="updateModal(index)" class="btn btn-info">Edit</button></td>
+                                                <td><button @click="deleteTask(index)" class="btn btn-danger">Delete</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+
+        </div>
+        
+
+        
         <!-- Modal -->
-        <div class="modal fade" id="create-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="employee-parking-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create Modal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Employees Parking Registration</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="description">Service Name</label>
+                            <input v-model="pricing.school_dept_office" type="text" id="school_dept_office" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Service Category</label>
+                            <select v-model="pricing.id_number" data-placeholder="Choose an Employee..." name="employee_names" id="employee_names" class="form-control" tabindex="-1">
+                                <option disabled value="" selected="" ></option>
+                                <option v-for="(employee_name, index) in employee_names" v-bind:value="employee_name.id_no">{{employee_name.cLast}}, {{employee_name.cFirst}} {{employee_name.middle}}</option>
+                            </select>
+                            <span> Selected: {{ pricing.id_number}}</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Price</label>
+                            <input v-model="pricing.school_dept_office" type="text" id="school_dept_office" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">School Year</label>
+                            <input v-model="pricing.school_dept_office" type="text" id="school_dept_office" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Semester</label>
+                            <input v-model="pricing.school_dept_office" type="text" id="school_dept_office" class="form-control">
+                        </div>
+                        
+
+                    <!--  <div class="form-group">
+                            <label for="name">Name</label>
+                            <input v-model="task.name" type="text" id="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input v-model="task.body" type="text" id="description" class="form-control">
+                        </div>-->
                 </div>
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <label for="name">Service Name</label>
-                        <input v-model="ldap.service_name" type="text" id="name" class="form-control">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button @click="create_pricing" type="button" class="btn btn-primary">Register Parking</button>
                     </div>
-
-                    <div class="form-group">
-                        <label for="description">Category</label>
-                        <input v-model="ldap.id_number" type="text" id="description" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Price</label>
-                        <input v-model="ldap.id_number" type="text" id="description" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">School Year</label>
-                        <input v-model="employee_parking.schoolyear" type="text" id="schoolyear" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Semester</label>
-                        <select v-model="employee_parking.semester" name="semester" id="semester" class="form-control" tabindex="-1">
-                            <option value="" selected="" ></option>
-                            <option value="1" selected="" >First Semester</option>
-                            <option value="2" selected="" >Second Semester</option>
-                            <option value="3" selected="" >Summer</option>
-                        </select>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button @click="create_ldap" type="button" class="btn btn-primary">Save changes</button>
-                </div>
                 </div>
             </div>
         </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Modal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name">ADDUNET Username</label>
-                        <input v-model="new_update_ldap.ldap_username" type="text" id="name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Barcode</label>
-                        <input v-model="new_update_ldap.id_number" type="text" id="description" class="form-control">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button @click="update_ldap" type="button" class="btn btn-primary">Save changes</button>
-                </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
-    </div>
+    
 </template>
 
 <script>
+    
     export default {
 
         data(){
+
             return{
                 pricing:{
                     service_name: '',
-                    category_id: '',
                     price: '',
                     schoolyear: '',
-                    semester: ''
+                    semester: '',
+                    category_Name: '',
+                    status: '',
                 },
 
-                ldaps: [],
-                url: 'http://127.0.0.1:8000/ccfc_pricings/',
-                errors: [],
-                new_update_pricing: []
+                pricings: [],
+                employee_names: [],
+                url: 'http://127.0.0.1:8000/ccfc_pricing',
+                url_emp_list: 'http://127.0.0.1:8000/employee_names'
             }
         },
 
-        methods:{
+        methods: {
 
-            createModal(){
-                $("#create-modal").modal("show");
-            },
-
-            updateModal(index){
-                $("#update-modal").modal("show");
-                this.new_update_ldap = this.ldaps[index];
+            employeeParkingModal(){
+                $("#employee-parking-modal").modal("show");
             },
 
             create_pricing(){
 
-                axios.post(this.url, {ldap_username: this.ldap.ldap_username, id_number: this.ldap.id_number})
+                axios.post(this.url, 
+                {
+                    service_name: this.pricing.id_number,
+                    price: this.pricing.contact_number,
+                    schoolyear: this.pricing.school_dept_office,
+                    semester: this.pricing.license_number,
+                    category_Name: this.pricing.license_expiry_date,
+                    status: this.pricing.schoolyear
+                })
 
                 .then(response=>{
 
                     this.resetData();
-                    this.ldaps.push(response.data.ldap);
-                    $("#create-modal").modal("hide");
-                    toastr.success(response.data.message);
+                    this.pricings.push(response.data.pricing);
+                    $("#employee-parking-modal").modal("hide");
                 })
             },
 
-            update_ldap(){
+            load_pricing(){
+                
+                axios.get(this.url).then(response=>{
 
-                axios.patch(this.url + this.new_update_ldap.id,{
-
-                    ldap_username: this.new_update_ldap.ldap_username,
-                    id_number: this.new_update_ldap.id_number,
-
-                }).then(response=>{
-
-                    $("#update-modal").modal("hide");
-                    toastr.success(response.data.message);
-                })
-
-            },
-
-            delete_ldap(index){
-
-                let confirmBox = confirm("Do you really want to delete this?");
-                if(confirmBox == true){
-                    axios.delete(this.url + this.ldaps[index].id)
-                        .then(response=>{
-                            this.$delete(this.ldaps, index);
-                            toastr.success(response.data.message);
-                        }).catch(error =>{
-                            console.log("Could not delete for some reason")
-                        });
-                }
-
-            },
-
-            loadLDAP(){
-
-                axios.get(this.url).then(response => {
-
-                    this.ldaps = response.data.ldaps;
+                    this.pricings = response.data.pricings;
                 });
             },
 
+            load_employee_names(){
+                
+                axios.get(this.url_emp_list).then(response=>{
+
+                    this.employee_names = response.data.employee_names;
+                });
+
+            },
+
             resetData(){
-                this.ldap.ldap_username = '';
-                this.ldap.id_number = '';
+                this.pricing.employee_names = '';
+                this.pricing.id_number = '';
+                this.pricing.contact_number = '';
+                this.pricing.school_dept_office = '';
+                this.pricing.license_number = '';
+                this.pricing.license_expiry_date = '';
+                this.pricing.schoolyear = '';
+                this.pricing.semester = '';
+                this.pricing.parking_type = '';
+                this.pricing.or_number = '';
+                this.pricing.sticker_number = '';
+                this.pricing.date_issued = '';
+                
             }
         },
-
         mounted() {
-            this.loadLDAP();
+            this.load_pricing();
+            this.load_employee_names();
         }
     }
 </script>
-

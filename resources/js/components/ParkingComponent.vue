@@ -325,6 +325,22 @@
                 });
 
             },
+
+            resetData(){
+                this.employee_parking.employee_names = '';
+                this.employee_parking.id_number = '';
+                this.employee_parking.contact_number = '';
+                this.employee_parking.school_dept_office = '';
+                this.employee_parking.license_number = '';
+                this.employee_parking.license_expiry_date = '';
+                this.employee_parking.schoolyear = '';
+                this.employee_parking.semester = '';
+                this.employee_parking.parking_type = '';
+                this.employee_parking.or_number = '';
+                this.employee_parking.sticker_number = '';
+                this.employee_parking.date_issued = '';
+                
+            }
         },
         mounted() {
             this.load_employee_parking();
