@@ -51,4 +51,12 @@ class User extends Authenticatable
     public function ldap(){
         return $this->hasMany(Ccfcldap::class);
     }
+
+    public function pricing(){
+        return $this->hasMany(Pricing::class);
+    }
+
+    public function vehicle(){
+        return $this->hasMany(Vehicle::class);
+    }
 }

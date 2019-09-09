@@ -12,8 +12,6 @@
 */
 use Adldap\Laravel\Facades\Adldap;
 
-
-
 Auth::routes([
     'reset' => false,
     'verify' => false,
@@ -35,9 +33,20 @@ Route::resource('/employee_parking', 'EmployeeParkingController');
 //Pricing
 Route::get('/pricing','PricingController@index');
 Route::resource('/ccfc_pricing', 'CcfcPricingController');
+Route::get('/ccfc_pricing_1', 'CcfcPricingController@list_pricing');
+
+//Services
+Route::resource('/ccfc_services','CcfcServicesController');
 
 //EmployeeName
 Route::get('/employee_names','EmployeeController@index');
+
+//Vehicles
+Route::get('/ccfc_vehicles','VehicleController@ccfc_vehicles');
+Route::resource('/ccfc_vehicles_process', 'VehicleController');
+
+//Vehicle Make
+Route::get('/ccfc_vehicle_make','VehicleMakeController@ccfc_vehicle_make');
 
 //LDAP
 Route::get('/update_barcode','UpdateLDAPController@index');

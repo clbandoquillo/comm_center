@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Pricing extends Model
 {
     //
+    protected $table = 'pricings';
     protected $fillable = [
-        'services_name', 'category_id', 'price', 'schoolyear', 'semester'
+        'service_name', 'category_id', 'price', 'schoolyear', 'semester', 'status'
     ];
 
     public function ccfc_categories(){

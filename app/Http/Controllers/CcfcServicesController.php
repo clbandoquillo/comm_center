@@ -6,21 +6,21 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PricingController extends Controller
+class CcfcServicesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        return view('pricing.index');
+        //dd("it works");
+        $services = DB::select(DB::raw("select id, category_Name, status from ccfc_category"));
+
+        return response()->json([
+            'services'=>$services
+        ], 200);
     }
 
     /**
@@ -41,7 +41,7 @@ class PricingController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**

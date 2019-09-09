@@ -4,24 +4,29 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class PricingController extends Controller
+class VehicleMakeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        return view('pricing.index');
+        //
     }
+
+    public function ccfc_vehicle_make()
+    {
+        /* dd("it works!");*/
+         $vehicle_make = DB::select(DB::raw("select * from vehicle_make;"));
+         return response()->json([
+             'vehicle_make'=>$vehicle_make
+         ], 200);
+        //
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -41,7 +46,7 @@ class PricingController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**

@@ -23,7 +23,24 @@ class CcfcPricingController extends Controller
         cat.category_Name as category_Name, 
         cat.status as status
  
-   FROM [ccfc].[dbo].[pricings] p inner join ccfc_category cat on p.category_id = cat.id;"));
+        FROM [ccfc].[dbo].[pricings] p inner join ccfc_category cat on p.category_id = cat.id;"));
+        return response()->json([
+            'pricings'=>$pricings
+        ], 200);
+    }
+
+    
+    public function list_pricing()
+    {
+        /* dd("it works!");*/
+        $pricings = DB::select(DB::raw("SELECT p.id as id, p.service_name as service_name, 
+        p.price as price, 
+        p.schoolyear as schoolyear, 
+        p.semester as semester, 
+        cat.category_Name as category_Name, 
+        cat.status as status
+ 
+        FROM [ccfc].[dbo].[pricings] p inner join ccfc_category cat on p.category_id = cat.id where category_Name = 'parking'"));
         return response()->json([
             'pricings'=>$pricings
         ], 200);
@@ -48,6 +65,32 @@ class CcfcPricingController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+
+            'service_name' => 'required',
+            'category_id' => 'required',
+            'price' => 'required',
+            'schoolyear' => 'required',
+            'semester' => 'required'
+        ]);
+
+        $pricing = $request->user()->pricing()->create([
+            'service_name' => $request->service_name,
+            'category_id' => $request->category_id,
+            'price' => $request->price,
+            'schoolyear' => $request->schoolyear,
+            'semester' => $request->semester,
+            'status' => $request->status
+
+        ]);
+
+        $json = json_decode($pricing, true);
+
+        return response()->json([
+
+            'pricing' => $pricing,
+            'message' => "A pricing was added successfully."
+        ]);
     }
 
     /**
