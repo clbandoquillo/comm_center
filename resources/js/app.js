@@ -23,6 +23,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('parking-component', require('./components/ParkingComponent.vue').default);
 Vue.component('ldap-component', require('./components/LDAPComponent.vue').default);
 Vue.component('prices-component', require('./components/PricesComponent.vue').default);
+/*
+import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
+
+Vue.use(BootstrapVue)
+//
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'*/
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

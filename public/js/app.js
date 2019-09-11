@@ -2268,6 +2268,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -2275,6 +2288,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return _ref = {
       employee_parking: {
         id_number: '',
+        plate_number: '',
         contact_number: '',
         school_dept_office: '',
         license_number: '',
@@ -38907,91 +38921,98 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _c("table", { staticClass: "table" }, [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.employee_parkings, function(
-                          employee_parking,
-                          index
-                        ) {
-                          return _c("tr", [
-                            _c("td", [
-                              _vm._v(_vm._s(employee_parking.id_number))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(employee_parking.contact_number))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(employee_parking.school_dept_office)
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(employee_parking.license_number))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(employee_parking.license_expiry_date)
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(employee_parking.schoolyear))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(employee_parking.semester))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(employee_parking.parking_type))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(employee_parking.sticker_number))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(employee_parking.date_issued))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-info",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.updateModal(index)
+                    _c(
+                      "table",
+                      {
+                        staticClass: "table",
+                        attrs: { striped: "", hover: "" }
+                      },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.employee_parkings, function(
+                            employee_parking,
+                            index
+                          ) {
+                            return _c("tr", [
+                              _c("td", [
+                                _vm._v(_vm._s(employee_parking.id_number))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(employee_parking.contact_number))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  _vm._s(employee_parking.school_dept_office)
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(employee_parking.license_number))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  _vm._s(employee_parking.license_expiry_date)
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(employee_parking.schoolyear))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(employee_parking.semester))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(employee_parking.parking_type))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(employee_parking.sticker_number))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(employee_parking.date_issued))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-info",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.updateModal(index)
+                                      }
                                     }
-                                  }
-                                },
-                                [_vm._v("Edit")]
-                              ),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.deleteTask(index)
+                                  },
+                                  [_vm._v("Edit")]
+                                ),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.deleteTask(index)
+                                      }
                                     }
-                                  }
-                                },
-                                [_vm._v("Delete")]
-                              )
+                                  },
+                                  [_vm._v("Delete")]
+                                )
+                              ])
                             ])
-                          ])
-                        }),
-                        0
-                      )
-                    ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
                   ])
                 ])
               ])
@@ -39137,9 +39158,21 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(vehicle.reg_expiry_date))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(vehicle.lto_cr))]),
+                            vehicle.lto_cr == 1
+                              ? _c("td", [_vm._v("Submitted LTO CR")])
+                              : _vm._e(),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(vehicle.lto_or))]),
+                            vehicle.lto_cr != 1
+                              ? _c("td", [_vm._v("LTO CR not Submitted")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            vehicle.lto_or == 1
+                              ? _c("td", [_vm._v("Submitted LTO OR")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            vehicle.lto_or != 1
+                              ? _c("td", [_vm._v("LTO OR not Submitted")])
+                              : _vm._e(),
                             _vm._v(" "),
                             _c("td", [
                               _c(
@@ -39278,6 +39311,80 @@ var render = function() {
                   _c("span", [
                     _vm._v(
                       " Selected: " + _vm._s(_vm.employee_parking.id_number)
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "name" } }, [_vm._v("Vehicle")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.employee_parking.plate_number,
+                          expression: "employee_parking.plate_number"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        "data-placeholder": "Choose an Employee...",
+                        name: "employee_names",
+                        id: "employee_names",
+                        tabindex: "-1"
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.employee_parking,
+                            "plate_number",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", {
+                        attrs: { disabled: "", value: "", selected: "" }
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.vehicles, function(vehicle, index) {
+                        return _c(
+                          "option",
+                          { domProps: { value: vehicle.plate_number } },
+                          [
+                            _c("b", [
+                              _vm._v(
+                                _vm._s(vehicle.plate_number) +
+                                  ": " +
+                                  _vm._s(vehicle.make) +
+                                  " " +
+                                  _vm._s(vehicle.model)
+                              )
+                            ])
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(
+                      " Selected: " + _vm._s(_vm.employee_parking.plate_number)
                     )
                   ])
                 ]),
@@ -40276,7 +40383,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Sticker Number")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Issued")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Issued")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } })
       ])
     ])
   },
@@ -53205,6 +53314,15 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('parking-component', __webpack_require__(/*! ./components/ParkingComponent.vue */ "./resources/js/components/ParkingComponent.vue")["default"]);
 Vue.component('ldap-component', __webpack_require__(/*! ./components/LDAPComponent.vue */ "./resources/js/components/LDAPComponent.vue")["default"]);
 Vue.component('prices-component', __webpack_require__(/*! ./components/PricesComponent.vue */ "./resources/js/components/PricesComponent.vue")["default"]);
+/*
+import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
+
+Vue.use(BootstrapVue)
+//
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'*/
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

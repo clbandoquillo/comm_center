@@ -1,6 +1,7 @@
 <template>
+    
     <div>
-
+        
         <nav>
 
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -23,7 +24,7 @@
                                 <div class="card-header">Register Parking for Employees and University Vehicles</div>
                                 <div class="card-body">
                                     <button @click="employeeParkingModal" class="btn btn-primary btn-block">Register Parking for Employees and University Vehicles</button>
-                                    <table class="table">
+                                    <table striped hover class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Name</th>
@@ -36,6 +37,7 @@
                                                 <th scope="col">Parking Type</th>
                                                 <th scope="col">Sticker Number</th>
                                                 <th scope="col">Date Issued</th>
+                                                <th scope="col"></th>
                                             </tr>
                                         </thead>
                                             <tbody>
@@ -137,8 +139,10 @@
                                                 <td>{{ vehicle.plate_number }}</td>
                                                 <td>{{ vehicle.color }}</td>
                                                 <td>{{ vehicle.reg_expiry_date }}</td>
-                                                <td>{{ vehicle.lto_cr }}</td>
-                                                <td>{{ vehicle.lto_or }}</td>
+                                                <td v-if="vehicle.lto_cr == 1">Submitted LTO CR</td>
+                                                <td v-if="vehicle.lto_cr != 1">LTO CR not Submitted</td>
+                                                <td v-if="vehicle.lto_or == 1">Submitted LTO OR</td>
+                                                <td v-if="vehicle.lto_or != 1">LTO OR not Submitted</td>
                                                 <td><button @click="updateModal(index)" class="btn btn-info">Edit</button></td>
                                                 <td><button @click="deleteTask(index)" class="btn btn-danger">Delete</button></td>
                                             </tr>
@@ -174,6 +178,15 @@
                                 <option v-for="(employee_name, index) in employee_names" v-bind:value="employee_name.id_no">{{employee_name.cLast}}, {{employee_name.cFirst}} {{employee_name.middle}}</option>
                             </select>
                             <span> Selected: {{ employee_parking.id_number}}</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Vehicle</label>
+                            <select v-model="employee_parking.plate_number" data-placeholder="Choose an Employee..." name="employee_names" id="employee_names" class="form-control" tabindex="-1">
+                                <option disabled value="" selected="" ></option>
+                                <option v-for="(vehicle, index) in vehicles" v-bind:value="vehicle.plate_number"><b>{{vehicle.plate_number}}: {{vehicle.make}} {{vehicle.model}}</b></option>
+                            </select>
+                            <span> Selected: {{ employee_parking.plate_number }}</span>
                         </div>
 
                         <div class="form-group">
@@ -369,8 +382,10 @@
         data(){
 
             return{
+
                 employee_parking:{
                     id_number: '',
+                    plate_number: '',
                     contact_number: '',
                     school_dept_office: '',
                     license_number: '',
