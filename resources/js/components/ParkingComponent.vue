@@ -24,7 +24,7 @@
                                 <div class="card-header">Register Parking for Employees and University Vehicles</div>
                                 <div class="card-body">
                                     <button @click="employeeParkingModal" class="btn btn-primary btn-block">Register Parking for Employees and University Vehicles</button>
-                                    <table striped hover class="table">
+                                    <table striped hover class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Name</th>
@@ -48,7 +48,9 @@
                                                     <td>{{ employee_parking.license_number }}</td>
                                                     <td>{{ employee_parking.license_expiry_date }}</td>
                                                     <td>{{ employee_parking.schoolyear }}</td>
-                                                    <td>{{ employee_parking.semester }}</td>
+                                                    <td v-if="employee_parking.semester == 1">First Semester</td>
+                                                    <td v-if="employee_parking.semester == 2">Second Semester</td>
+                                                    <td v-if="employee_parking.semester == 3">Summer</td>
                                                     <td>{{ employee_parking.parking_type }}</td>
                                                     <td>{{ employee_parking.sticker_number }}</td>
                                                     <td>{{ employee_parking.date_issued }}</td>
@@ -70,7 +72,7 @@
                             <div class="card">
                                 <div class="card-header">Students Parking</div>
                                 <div class="card-body">
-                                    <button class="btn btn-primary btn-block">Register Student</button>
+                                    <button @click="studentParkingModal" class="btn btn-primary btn-block">Register Student</button>
                                     <table class="table">
                                         <thead>
                                             <tr>
@@ -115,7 +117,8 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th scope="col">AdDU Employee</th>
+                                                <th scope="col">AdDU Employee Name</th>
+                                                <th scope="col">AdDU Student Name</th>
                                                 <th scope="col">Owner's Name Registered to LTO</th>
                                                 <th scope="col">Relation to Owner</th>
                                                 <th scope="col">Make</th>
@@ -131,7 +134,8 @@
                                         </thead>
                                         <tbody>
                                             <tr v-for="(vehicle, index) in vehicles">
-                                                <td>{{ vehicle.id_number }}</td>
+                                                <td >{{ vehicle.employee_name }}</td>
+                                                <td>{{ vehicle.student_name }}</td>
                                                 <td>{{ vehicle.owner_name_lto }}</td>
                                                 <td>{{ vehicle.relation_to_owner }}</td>
                                                 <td>{{ vehicle.make }}</td>
@@ -171,20 +175,27 @@
                     </div>
                     <div class="modal-body">
 
+                        
                         <div class="form-group">
+                            <label for="name">Employee Name</label>
+                            <v-select v-model="employee_parking.id_number" label="emp_name" :options="employee_names" :reduce="employee_names => employee_names.id_no"></v-select>
+                            
+                            <span> Selected: {{ employee_parking.id_number}}</span>
+                        </div>
+
+                        <div class="form-group"><!--
                             <label for="name">Employee Name</label>
                             <select v-model="employee_parking.id_number" data-placeholder="Choose an Employee..." name="employee_names" id="employee_names" class="form-control" tabindex="-1">
                                 <option disabled value="" selected="" ></option>
                                 <option v-for="(employee_name, index) in employee_names" v-bind:value="employee_name.id_no">{{employee_name.cLast}}, {{employee_name.cFirst}} {{employee_name.middle}}</option>
                             </select>
-                            <span> Selected: {{ employee_parking.id_number}}</span>
+                            <span> Selected: {{ employee_parking.id_number}}</span>-->
                         </div>
 
                         <div class="form-group">
                             <label for="name">Vehicle</label>
                             <select v-model="employee_parking.plate_number" data-placeholder="Choose an Employee..." name="employee_names" id="employee_names" class="form-control" tabindex="-1">
-                                <option disabled value="" selected="" ></option>
-                                <option v-for="(vehicle, index) in vehicles" v-bind:value="vehicle.plate_number"><b>{{vehicle.plate_number}}: {{vehicle.make}} {{vehicle.model}}</b></option>
+                                <option selected v-for="(vehicle, index) in vehicles"  v-bind:value="vehicle.plate_number" v-if="vehicle.id_number == employee_parking.id_number"><b>{{vehicle.plate_number}}: {{vehicle.make}} {{vehicle.model}}</b></option>
                             </select>
                             <span> Selected: {{ employee_parking.plate_number }}</span>
                         </div>
@@ -244,25 +255,105 @@
 
                         <div class="form-group">
                             <label for="description">Date Issued</label>
-                            <input v-model="employee_parking.date_issued" type="date" id="date_issued" class="form-control">
+                            <input v-model="myDate" type="date" id="date_issued" class="form-control">
+                            <br>
+                            {{myDate}}
+                        </div>
+
+                    <!--  <div class="form-group">
+                            <label for="name">Name</label>
+                            <input v-model="task.name" type="text" id="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input v-model="task.body" type="text" id="description" class="form-control">
+                        </div>-->
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button @click="create_employee_parking" type="button" class="btn btn-primary">Register Parking</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Student Modal -->
+        <div class="modal fade" id="student-parking-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Student Parking Registration</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="name">Student Name</label>
+                            <v-select v-model="student_parking.id_number" label="label" :options="student_names" :reduce="student_names => student_names.studentcode"></v-select>
+                            
+                            <span> Selected: {{ student_parking.id_number }}</span>
                         </div>
 
                         <div class="form-group">
-                            <label><b>Supporting Documents</b></label>
+                            <label for="name">Vehicle</label>
+                            <select v-model="student_parking.plate_number" data-placeholder="Choose an Employee..." name="employee_names" id="employee_names" class="form-control" tabindex="-1">
+                                <option selected v-for="(vehicle, index) in vehicles"  v-bind:value="vehicle.plate_number" v-if="vehicle.id_number == student_parking.id_number"><b>{{vehicle.plate_number}}: {{vehicle.make}} {{vehicle.model}}</b></option>
+                            </select>
+                            <span> Selected: {{ student_parking.plate_number }}</span>
                         </div>
 
-                        <div class="form-group form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="lto_">
-                            <label class="form-check-label" for="defaultCheck1">
-                                LTO-issued Driver's License
-                            </label>
+                        <div class="form-group">
+                            <label for="description">Contact Number</label>
+                            <input v-model="student_parking.contact_number" type="text" id="contact_number" class="form-control">
                         </div>
 
-                        <div class="form-group form-check-inline">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Certificate of Employment from HR
-                            </label>
+                        <div class="form-group">
+                            <label for="description">License Number</label>
+                            <input v-model="employee_parking.license_number" type="text" id="license_number" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">License Expiry Date</label>
+                            <input v-model="employee_parking.license_expiry_date" type="date" id="licence_expiry_date" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">School Year</label>
+                            <input v-model="employee_parking.schoolyear" type="text" id="schoolyear" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Semester</label>
+                            <select v-model="employee_parking.semester" name="semester" id="semester" class="form-control" tabindex="-1">
+                                <option value="" selected="" ></option>
+                                <option value="1" selected="" >First Semester</option>
+                                <option value="2" selected="" >Second Semester</option>
+                                <option value="3" selected="" >Summer</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Parking Type</label>
+                            <select v-model="employee_parking.parking_type" name="parking_type" id="parking_type" class="form-control" tabindex="-1">
+                                <option disabled value="" selected="" ></option>
+                                <option v-for="(pricing, index) in pricings" v-bind:value="pricing.id">{{pricing.service_name}} - {{pricing.price}} - {{pricing.schoolyear}} - {{ pricing.semester}}</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">OR Number</label>
+                            <input v-model="employee_parking.or_number" type="text" id="or_number" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Sticker Number</label>
+                            <input v-model="employee_parking.sticker_number" type="text" id="sticker_number" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Date Issued</label>
+                            <input v-model="employee_parking.date_issued" type="date" id="date_issued" class="form-control">
                         </div>
 
                     <!--  <div class="form-group">
@@ -295,12 +386,30 @@
                     <div class="modal-body">
 
                         <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input v-model="type" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="student">
+                                <label class="form-check-label" for="inlineRadio1">Student</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input v-model="type" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="employee">
+                                <label class="form-check-label" for="inlineRadio2">Employee</label>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group" v-if="type == 'employee'">
                             <label for="name">Employee Name</label>
-                            <select v-model="vehicle.id_number" data-placeholder="Choose an Employee..." name="employee_names" id="employee_names" class="form-control" tabindex="-1">
-                                <option disabled value="" selected="" ></option>
-                                <option v-for="(employee_name, index) in employee_names" v-bind:value="employee_name.id_no">{{employee_name.cLast}}, {{employee_name.cFirst}} {{employee_name.middle}}</option>
-                            </select>
-                            <span> Selected: {{ vehicle.id_number}}</span>
+                            <v-select v-model="vehicle.id_number_employee" label="emp_name" :options="employee_names" :reduce="employee_names => employee_names.id_no"></v-select>
+                            
+                            <span> Selected: {{ vehicle.id_number_employee}}</span>
+                        </div>
+
+                        <div class="form-group" v-if="type == 'student'">
+                            <label for="name">Student Name</label>
+                            <v-select v-model="vehicle.id_number_student" label="label" :options="student_names" :reduce="student_names => student_names.studentcode"></v-select>
+                            
+                            <span> Selected: {{ vehicle.id_number_student }}</span>
                         </div>
 
                         <div class="form-group">
@@ -377,7 +486,8 @@
 
 <script>
     
-    export default {
+
+    export default{
 
         data(){
 
@@ -398,8 +508,26 @@
                     date_issued: ''
                 },
 
-                vehicle:{
+                student_parking:{
                     id_number: '',
+                    plate_number: '',
+                    contact_number: '',
+                    latest_course: '',
+                    department: '',
+                    year_level: '',
+                    license_number: '',
+                    license_expiry_date: '',
+                    schoolyear: '',
+                    semester: '',
+                    parking_type: '',
+                    or_number: '',
+                    sticker_number: '',
+                    date_issued: ''
+                },
+
+                vehicle:{
+                    id_number_employee: '',
+                    id_number_student: '',
                     owner_name_lto: '',
                     relation_to_owner: '',
                     make: '',
@@ -417,6 +545,7 @@
 
                 employee_parkings: [],
                 employee_names: [],
+                student_names: [],
                 pricings: [],
                 vehicles: [],
                 vehicle_make: [],
@@ -425,14 +554,120 @@
                 url_pricing: 'http://127.0.0.1:8000/ccfc_pricing_1/',
                 url_vehicle: 'http://127.0.0.1:8000/ccfc_vehicles/',
                 url_vehicle_process: 'http://127.0.0.1:8000/ccfc_vehicles_process/',
-                url_vehicle_make: 'http://127.0.0.1:8000/ccfc_vehicle_make/'
+                url_vehicle_make: 'http://127.0.0.1:8000/ccfc_vehicle_make/',
+                url_student_name: 'http://127.0.0.1:8000/student_names',
+                myDate: new Date().toISOString().slice(0,10),
+                type: '',
+                headers: [
+          {
+            text: 'Dessert (100g serving)',
+            align: 'left',
+            sortable: false,
+            value: 'name',
+          },
+          { text: 'Calories', value: 'calories' },
+          { text: 'Fat (g)', value: 'fat' },
+          { text: 'Carbs (g)', value: 'carbs' },
+          { text: 'Protein (g)', value: 'protein' },
+          { text: 'Iron (%)', value: 'iron' },
+        ],
+        desserts: [
+          {
+            name: 'Frozen Yogurt',
+            calories: 159,
+            fat: 6.0,
+            carbs: 24,
+            protein: 4.0,
+            iron: '1%',
+          },
+          {
+            name: 'Ice cream sandwich',
+            calories: 237,
+            fat: 9.0,
+            carbs: 37,
+            protein: 4.3,
+            iron: '1%',
+          },
+          {
+            name: 'Eclair',
+            calories: 262,
+            fat: 16.0,
+            carbs: 23,
+            protein: 6.0,
+            iron: '7%',
+          },
+          {
+            name: 'Cupcake',
+            calories: 305,
+            fat: 3.7,
+            carbs: 67,
+            protein: 4.3,
+            iron: '8%',
+          },
+          {
+            name: 'Gingerbread',
+            calories: 356,
+            fat: 16.0,
+            carbs: 49,
+            protein: 3.9,
+            iron: '16%',
+          },
+          {
+            name: 'Jelly bean',
+            calories: 375,
+            fat: 0.0,
+            carbs: 94,
+            protein: 0.0,
+            iron: '0%',
+          },
+          {
+            name: 'Lollipop',
+            calories: 392,
+            fat: 0.2,
+            carbs: 98,
+            protein: 0,
+            iron: '2%',
+          },
+          {
+            name: 'Honeycomb',
+            calories: 408,
+            fat: 3.2,
+            carbs: 87,
+            protein: 6.5,
+            iron: '45%',
+          },
+          {
+            name: 'Donut',
+            calories: 452,
+            fat: 25.0,
+            carbs: 51,
+            protein: 4.9,
+            iron: '22%',
+          },
+          {
+            name: 'KitKat',
+            calories: 518,
+            fat: 26.0,
+            carbs: 65,
+            protein: 7,
+            iron: '6%',
+          },
+        ]
             }
         },
 
         methods: {
+          getOptions(search, loading) {
+            loading(true)
+            axios.get('http://127.0.0.1:8000/employee_names/')
+            },
 
             employeeParkingModal(){
                 $("#employee-parking-modal").modal("show");
+            },
+
+            studentParkingModal(){
+                $("#student-parking-modal").modal("show");
             },
 
             vehicleModal(){
@@ -468,7 +703,8 @@
 
                 axios.post(this.url_vehicle_process, 
                 {
-                    id_number: this.vehicle.id_number,
+                    id_number_employee: this.vehicle.id_number_employee,
+                    id_number_student: this.vehicle.id_number_student,
                     owner_name_lto: this.vehicle.owner_name_lto,
                     relation_to_owner: this.vehicle.relation_to_owner,
                     make: this.vehicle.make,
@@ -515,6 +751,15 @@
 
             },
 
+            load_student_names(){
+                
+                axios.get(this.url_student_name).then(response=>{
+
+                    this.student_names = response.data.student_names;
+                });
+
+            },
+
             load_pricing(){
                 
                 axios.get(this.url_pricing).then(response=>{
@@ -552,6 +797,7 @@
         mounted() {
             this.load_employee_parking();
             this.load_employee_names();
+            this.load_student_names();
             this.load_pricing();
             this.load_vehicle();
             this.load_vehicle_make();
