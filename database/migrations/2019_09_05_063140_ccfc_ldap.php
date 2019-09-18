@@ -18,6 +18,7 @@ class CcfcLdap extends Migration
             $table->tinyIncrements('id');
             $table->string('ldap_username');
             $table->string('id_number');
+            $table->string('system_role');
             $table->string('user_id');
             $table->timestamps();
         });

@@ -16,6 +16,7 @@ class EmployeeParking extends Migration
         Schema::create('employee_parking', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('id_number');
+            $table->string('plate_number');
             $table->string('or_number');
             $table->string('contact_number');
             $table->string('school_dept_office')->nullable();

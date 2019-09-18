@@ -15,6 +15,8 @@
                     @endif
 
                     <parking-component></parking-component>
+                    
+                  <!--  <example-component></example-component>-->
                 </div>
             </div>
         </div>

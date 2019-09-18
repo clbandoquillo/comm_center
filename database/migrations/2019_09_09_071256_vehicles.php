@@ -16,7 +16,8 @@ class Vehicles extends Migration
         //
         Schema::create('vehicles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('id_number');
+            $table->string('id_number_employee')->nullable();
+            $table->string('id_number_student')->nullable();
             $table->string('owner_name_lto');
             $table->string('relation_to_owner');
             $table->string('make');

@@ -41,6 +41,9 @@ Route::resource('/ccfc_services','CcfcServicesController');
 //EmployeeName
 Route::get('/employee_names','EmployeeController@index');
 
+//StudentName
+Route::get('/student_names','StudentController@index');
+
 //Vehicles
 Route::get('/ccfc_vehicles','VehicleController@ccfc_vehicles');
 Route::resource('/ccfc_vehicles_process', 'VehicleController');

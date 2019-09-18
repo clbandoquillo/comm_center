@@ -17,15 +17,17 @@ class StudentParking extends Migration
         Schema::create('student_parking', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('id_number');
+            $table->string('plate_number');
+            $table->string('or_number');
             $table->string('contact_number');
-            $table->string('school_dept_office');
             $table->string('license_number');
             $table->date('license_expiry_date');
-            $table->string('schoolyear');
+            $table->integer('schoolyear');
             $table->tinyInteger('semester');
             $table->string('parking_type');
             $table->string('sticker_number')->nullable();
             $table->date('date_issued')->nullable();
+            $table->tinyInteger('user_id');
             $table->timestamps();
         });
     }

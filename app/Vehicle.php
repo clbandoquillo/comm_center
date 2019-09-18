@@ -9,7 +9,8 @@ class Vehicle extends Model
     //
     protected $table = 'vehicles';
     protected $fillable = [
-        'id_number',
+        'id_number_employee',
+        'id_number_student',
         'owner_name_lto',
         'relation_to_owner',
         'make',
