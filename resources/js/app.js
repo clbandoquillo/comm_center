@@ -36,12 +36,22 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'*/
 import Vue from 'vue'
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
-import Vuetify from "vuetify";
-import "vuetify/dist/vuetify.min.css";
+/*
+import Vuetify from "vuetify";*/
+//import "vuetify/dist/vuetify.min.css";
 
-Vue.use(Vuetify);
+//Vue.use(Vuetify);
 
 Vue.component('v-select', vSelect)
+
+
+
+import VueGoodTablePlugin from 'vue-good-table';
+
+// import the styles 
+import 'vue-good-table/dist/vue-good-table.css'
+
+Vue.use(VueGoodTablePlugin);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

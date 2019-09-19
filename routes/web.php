@@ -52,7 +52,8 @@ Route::resource('/ccfc_vehicles_process', 'VehicleController');
 Route::get('/ccfc_vehicle_make','VehicleMakeController@ccfc_vehicle_make');
 
 //LDAP
-Route::get('/update_barcode','UpdateLDAPController@index');
+Route::get('/update_barcode','LDAPController@show_ldap');
+Route::get('/ldap_roles','LDAPController@system_role');
 Route::resource('/ldap_barcode','LDAPController');
 Route::delete('/ldap_barcode/{id}','LDAPController@destroy');
 });

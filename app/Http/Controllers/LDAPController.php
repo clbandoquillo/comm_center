@@ -24,6 +24,22 @@ class LDAPController extends Controller
         ], 200);
     }
 
+    public function system_role()
+    {
+        //
+        //dd(DB::connection());
+        $system_roles = DB::select(DB::raw("select * from system_roles;"));
+        return response()->json([
+            'system_roles'=>$system_roles
+        ], 200);
+    }
+
+    public function show_ldap()
+    {
+        //
+        return view('update_barcode');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -47,12 +63,14 @@ class LDAPController extends Controller
         $request->validate([
 
             'ldap_username' => 'required',
-            'id_number' => 'required'
+            'id_number' => 'required',
+            'system_role' => 'required'
         ]);
 
         $ldap = $request->user()->ldap()->create([
             'ldap_username' => $request->ldap_username,
-            'id_number' => $request->id_number
+            'id_number' => $request->id_number,
+            'system_role' => $request->system_role
 
         ]);
 

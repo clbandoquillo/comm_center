@@ -2,25 +2,30 @@
     <div>
 
     <div>
-        <button @click="createModal" class="btn btn-primary btn-block">Add New LDAP</button>
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">ADDUNET Username</th>
-                    <th scope="col">Barcode</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(ldap, index) in ldaps">
-                    <td>{{ index + 1}}</td>
-                    <td>{{ ldap.ldap_username }}</td>
-                    <td>{{ ldap.id_number }}</td>
-                    <td><button @click="updateModal(index)" class="btn btn-info">Edit</button></td>
-                    <td><button @click="delete_ldap(index)" class="btn btn-danger">Delete</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="col-md-3">
+            <button @click="createModal" class="btn btn-primary btn-block">Add New LDAP</button>
+        </div><br>
+
+        <vue-good-table
+            :columns="ldap_columns"
+            :rows="ldaps"
+            :search-options="{
+                enabled: true,
+                trigger: 'enter',
+                skipDiacritics: true,
+                searchFn: mySearchFn,
+                placeholder: 'Search LDAP',
+                externalQuery: searchQuery
+                }">
+                                        
+            <template slot="table-row" slot-scope="props">
+                <span v-if="props.column.field == 'actions'">
+                    <button @click="updateModal(props.index)" class="btn btn-info">Edit</button>
+                    <button @click="delete_ldap(props.index)" class="btn btn-danger">Delete</button>
+                </span>
+            </template> 
+            
+        </vue-good-table>
 
         <!-- Modal -->
         <div class="modal fade" id="create-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -41,6 +46,15 @@
                         <label for="description">Barcode</label>
                         <input v-model="ldap.id_number" type="text" id="description" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                        <label for="description">System Role</label>
+                        <select v-model="ldap.system_role" name="system_role" id="system_role" class="form-control" tabindex="-1">
+                            <option disabled value="" selected="" ></option>
+                            <option v-for="(system_role, index) in system_roles" v-bind:value="system_role.id">{{system_role.role_name}}</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -89,13 +103,30 @@
             return{
                 ldap:{
                     ldap_username: '',
-                    id_number: ''
+                    id_number: '',
+                    system_role: ''
                 },
 
                 ldaps: [],
+                system_roles: [],
                 url: 'http://127.0.0.1:8000/ldap_barcode/',
+                url_system_roles: 'http://127.0.0.1:8000/ldap_roles/',
                 errors: [],
-                new_update_ldap: []
+                new_update_ldap: [],
+                ldap_columns: [
+                    {
+                        label: 'LDAP Username',
+                        field: 'ldap_username'
+                    },
+                    {
+                        label: 'ID Number',
+                        field: 'id_number'
+                    },
+                    {
+                        label: 'Actions',
+                        field: 'actions'
+                    },
+                ]
             }
         },
 
@@ -112,7 +143,12 @@
 
             create_ldap(){
 
-                axios.post(this.url, {ldap_username: this.ldap.ldap_username, id_number: this.ldap.id_number})
+                axios.post(this.url, 
+                {
+                    ldap_username: this.ldap.ldap_username, 
+                    id_number: this.ldap.id_number,
+                    system_role: this.ldap.system_role
+                })
 
                 .then(response=>{
 
@@ -161,6 +197,14 @@
                 });
             },
 
+            loadSystemRoles(){
+
+                axios.get(this.url_system_roles).then(response => {
+
+                    this.system_roles = response.data.system_roles;
+                });
+            },
+
             resetData(){
                 this.ldap.ldap_username = '';
                 this.ldap.id_number = '';
@@ -169,6 +213,7 @@
 
         mounted() {
             this.loadLDAP();
+            this.loadSystemRoles();
         }
     }
 </script>

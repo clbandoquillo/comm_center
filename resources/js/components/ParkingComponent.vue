@@ -24,40 +24,27 @@
                                 <div class="card-header">Register Parking for Employees and University Vehicles</div>
                                 <div class="card-body">
                                     <button @click="employeeParkingModal" class="btn btn-primary btn-block">Register Parking for Employees and University Vehicles</button>
-                                    <table striped hover class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Contact Number</th>
-                                                <th scope="col">School/Dept/Office</th>
-                                                <th scope="col">License Number</th>
-                                                <th scope="col">License Expiry Date</th>
-                                                <th scope="col">School Year</th>
-                                                <th scope="col">Semester</th>
-                                                <th scope="col">Parking Type</th>
-                                                <th scope="col">Sticker Number</th>
-                                                <th scope="col">Date Issued</th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                            <tbody>
-                                                <tr v-for="(employee_parking, index) in employee_parkings">
-                                                    <td>{{ employee_parking.id_number }}</td>
-                                                    <td>{{ employee_parking.contact_number }}</td>
-                                                    <td>{{ employee_parking.school_dept_office }}</td>
-                                                    <td>{{ employee_parking.license_number }}</td>
-                                                    <td>{{ employee_parking.license_expiry_date }}</td>
-                                                    <td>{{ employee_parking.schoolyear }}</td>
-                                                    <td v-if="employee_parking.semester == 1">First Semester</td>
-                                                    <td v-if="employee_parking.semester == 2">Second Semester</td>
-                                                    <td v-if="employee_parking.semester == 3">Summer</td>
-                                                    <td>{{ employee_parking.parking_type }}</td>
-                                                    <td>{{ employee_parking.sticker_number }}</td>
-                                                    <td>{{ employee_parking.date_issued }}</td>
-                                                    <td><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button></td>
-                                                </tr>
-                                        </tbody>
-                                    </table>
+                                    
+                                    <vue-good-table
+                                        :columns="columns"
+                                        :rows="employee_parkings"
+                                        :search-options="{
+                                        enabled: true,
+                                        trigger: 'enter',
+                                        skipDiacritics: true,
+                                        searchFn: mySearchFn,
+                                        placeholder: 'Search this table',
+                                        externalQuery: searchQuery
+                                    }"> 
+                                        <template slot="table-row" slot-scope="props">
+                                            <span v-if="props.column.field == 'actions'"><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button>
+                                            </span>
+                                            <span v-else>
+                                            {{props.formattedRow[props.column.field]}}
+                                            </span>
+                                        </template> 
+                                    </vue-good-table>
+
                                 </div>
                             </div>
                         </div>
@@ -558,101 +545,59 @@
                 url_student_name: 'http://127.0.0.1:8000/student_names',
                 myDate: new Date().toISOString().slice(0,10),
                 type: '',
-                headers: [
-          {
-            text: 'Dessert (100g serving)',
-            align: 'left',
-            sortable: false,
-            value: 'name',
-          },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' },
-        ],
-        desserts: [
-          {
-            name: 'Frozen Yogurt',
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-            iron: '1%',
-          },
-          {
-            name: 'Ice cream sandwich',
-            calories: 237,
-            fat: 9.0,
-            carbs: 37,
-            protein: 4.3,
-            iron: '1%',
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-            fat: 16.0,
-            carbs: 23,
-            protein: 6.0,
-            iron: '7%',
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-            fat: 3.7,
-            carbs: 67,
-            protein: 4.3,
-            iron: '8%',
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-            fat: 16.0,
-            carbs: 49,
-            protein: 3.9,
-            iron: '16%',
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-            iron: '0%',
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: '2%',
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-            iron: '45%',
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-            fat: 25.0,
-            carbs: 51,
-            protein: 4.9,
-            iron: '22%',
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-            fat: 26.0,
-            carbs: 65,
-            protein: 7,
-            iron: '6%',
-          },
-        ]
+                columns: [
+                    {
+                    label: 'ID Number',
+                    field: 'id_number',
+                    },
+                    {
+                    label: 'Contact Number',
+                    field: 'contact_number',
+                    },
+                    {
+                    label: 'School/Dept/Office',
+                    field: 'school_dept_office',
+                    },
+                    {
+                    label: 'License Number',
+                    field: 'license_number',
+                    },
+                    {
+                    label: 'License Expiry Date',
+                    field: 'license_expiry_date',
+                    type: 'date',
+                    dateInputFormat: 'yyyy-MM-dd',
+                    dateOutputFormat: 'MMM dd,yyyy',
+                    },
+                    {
+                    label: 'School Year',
+                    field: 'schoolyear',
+                    },
+                    {
+                    label: 'Semester',
+                    field: 'semester',
+                    },
+                    {
+                    label: 'Parking Type',
+                    field: 'parking_type',
+                    },
+                    {
+                    label: 'Sticker Number',
+                    field: 'sticker_number',
+                    },
+                    {
+                    label: 'Date Issued',
+                    field: 'date_issued',
+                    type: 'date',
+                    dateInputFormat: 'yyyy-MM-dd',
+                    dateOutputFormat: 'MMM dd,yyyy',
+                    },
+                    {
+                    label: 'Actions',
+                    field: 'actions',
+                    sortable: false,
+                    },
+                ]
             }
         },
 
@@ -663,6 +608,10 @@
             },
 
             employeeParkingModal(){
+                $("#employee-parking-modal").modal("show");
+            },
+
+            updateModal(index){
                 $("#employee-parking-modal").modal("show");
             },
 
