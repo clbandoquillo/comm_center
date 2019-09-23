@@ -44,6 +44,7 @@ class EmployeeParkingController extends Controller
         //
         $request->validate([
             'id_number' => 'required',
+            'plate_number' => 'required',
             'school_dept_office' => 'required',
             'contact_number' => 'required',
             'license_number' => 'required',
@@ -56,6 +57,7 @@ class EmployeeParkingController extends Controller
 
         $employee_parking = $request->user()->employeeParking()->create([
             'id_number' => $request->id_number,
+            'plate_number' => $request->plate_number,
             'school_dept_office' => $request->contact_number,
             'contact_number' => $request->school_dept_office,
             'license_number' => $request->license_number,

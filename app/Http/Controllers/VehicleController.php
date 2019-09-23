@@ -31,8 +31,8 @@ class VehicleController extends Controller
          ,v.[plate_number] as plate_number
          ,v.[color] as color
          ,v.[reg_expiry_date] as reg_expiry_date
-         ,v.[lto_cr] as lto_cr
-         ,v.[lto_or] as lto_or
+         ,CASE WHEN v.[lto_cr] != 1 then 'N/A' else 'Submitted' end as lto_cr
+         ,CASE WHEN v.[lto_or] != 1 then 'N/A' else 'Submitted' end as lto_or
          ,v.[user_id]
          ,v.[created_at]
          ,v.[updated_at]

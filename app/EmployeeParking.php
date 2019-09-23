@@ -10,6 +10,7 @@ class EmployeeParking extends Model
     protected $table = 'employee_parking';
     protected $fillable = [
         'id_number',
+        'plate_number',
         'school_dept_office',
         'contact_number',
         'license_number',

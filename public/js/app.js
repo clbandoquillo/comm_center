@@ -2406,13 +2406,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -2430,7 +2423,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         parking_type: '',
         or_number: '',
         sticker_number: '',
-        date_issued: ''
+        date_issued: new Date().toISOString().slice(0, 10)
       },
       student_parking: {
         id_number: '',
@@ -2465,11 +2458,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         make: ''
       },
       employee_parkings: [],
+      student_parkings: [],
       employee_names: [],
       student_names: [],
       pricings: [],
       vehicles: []
-    }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'http://127.0.0.1:8000/employee_parking/'), _defineProperty(_ref, "url_emp_list", 'http://127.0.0.1:8000/employee_names/'), _defineProperty(_ref, "url_pricing", 'http://127.0.0.1:8000/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'http://127.0.0.1:8000/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'http://127.0.0.1:8000/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'http://127.0.0.1:8000/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'http://127.0.0.1:8000/student_names'), _defineProperty(_ref, "myDate", new Date().toISOString().slice(0, 10)), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "columns", [{
+    }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'http://127.0.0.1:8000/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'http://127.0.0.1:8000/student_parking/'), _defineProperty(_ref, "url_emp_list", 'http://127.0.0.1:8000/employee_names/'), _defineProperty(_ref, "url_pricing", 'http://127.0.0.1:8000/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'http://127.0.0.1:8000/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'http://127.0.0.1:8000/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'http://127.0.0.1:8000/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'http://127.0.0.1:8000/student_names'), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "columns", [{
       label: 'ID Number',
       field: 'id_number'
     }, {
@@ -2478,6 +2472,112 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }, {
       label: 'School/Dept/Office',
       field: 'school_dept_office'
+    }, {
+      label: 'License Number',
+      field: 'license_number'
+    }, {
+      label: 'License Expiry Date',
+      field: 'license_expiry_date',
+      type: 'date',
+      dateInputFormat: 'yyyy-MM-dd',
+      dateOutputFormat: 'MMM dd,yyyy'
+    }, {
+      label: 'School Year',
+      field: 'schoolyear'
+    }, {
+      label: 'Semester',
+      field: 'semester'
+    }, {
+      label: 'Parking Type',
+      field: 'parking_type'
+    }, {
+      label: 'Sticker Number',
+      field: 'sticker_number'
+    }, {
+      label: 'Date Issued',
+      field: 'date_issued',
+      type: 'date',
+      dateInputFormat: 'yyyy-MM-dd',
+      dateOutputFormat: 'MMM dd,yyyy'
+    }, {
+      label: 'Actions',
+      field: 'actions',
+      sortable: false
+    }]), _defineProperty(_ref, "columns_emp_vehicle", [{
+      label: 'Employee Name',
+      field: 'employee_name'
+    }, {
+      label: 'Owner Name Registered to LTO',
+      field: 'owner_name_lto'
+    }, {
+      label: 'Relation to Owner',
+      field: 'relation_to_owner'
+    }, {
+      label: 'Make',
+      field: 'make'
+    }, {
+      label: 'Model',
+      field: 'model'
+    }, {
+      label: 'Plate Number',
+      field: 'plate_number'
+    }, {
+      label: 'Color',
+      field: 'color'
+    }, {
+      label: 'Vehicle Registration Expiry Date',
+      field: 'reg_expiry_date'
+    }, {
+      label: 'LTO Official Receipt',
+      field: 'lto_or'
+    }, {
+      label: 'LTO Certificate of Registration',
+      field: 'lto_cr'
+    }, {
+      label: 'Actions',
+      field: 'actions'
+    }]), _defineProperty(_ref, "columns_stud_vehicle", [{
+      label: 'Student Name',
+      field: 'student_name'
+    }, {
+      label: 'Owner Name Registered to LTO',
+      field: 'owner_name_lto'
+    }, {
+      label: 'Relation to Owner',
+      field: 'relation_to_owner'
+    }, {
+      label: 'Make',
+      field: 'make'
+    }, {
+      label: 'Model',
+      field: 'model'
+    }, {
+      label: 'Plate Number',
+      field: 'plate_number'
+    }, {
+      label: 'Color',
+      field: 'color'
+    }, {
+      label: 'Vehicle Registration Expiry Date',
+      field: 'reg_expiry_date'
+    }, {
+      label: 'LTO Official Receipt',
+      field: 'lto_or'
+    }, {
+      label: 'LTO Certificate of Registration',
+      field: 'lto_cr'
+    }, {
+      label: 'Actions',
+      field: 'actions'
+    }]), _defineProperty(_ref, "columns_stud_parking", [{
+      label: 'ID Number',
+      field: 'id_number'
+    }, {
+      label: 'Plate Number',
+      field: 'plate_number'
+    }, {
+      label: 'Contact Number',
+      field: 'contact_number'
     }, {
       label: 'License Number',
       field: 'license_number'
@@ -2533,6 +2633,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       axios.post(this.url, {
         id_number: this.employee_parking.id_number,
+        plate_number: this.employee_parking.plate_number,
         contact_number: this.employee_parking.contact_number,
         school_dept_office: this.employee_parking.school_dept_office,
         license_number: this.employee_parking.license_number,
@@ -2551,8 +2652,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         $("#employee-parking-modal").modal("hide");
       });
     },
-    create_vehicle: function create_vehicle() {
+    create_student_parking: function create_student_parking() {
       var _this2 = this;
+
+      axios.post(this.url_student_parking, {
+        id_number: this.student_parking.id_number,
+        plate_number: this.student_parking.plate_number,
+        or_number: this.student_parking.or_number,
+        contact_number: this.student_parking.contact_number,
+        license_number: this.student_parking.license_number,
+        license_expiry_date: this.student_parking.license_expiry_date,
+        schoolyear: this.student_parking.schoolyear,
+        semester: this.student_parking.semester,
+        parking_type: this.student_parking.parking_type,
+        sticker_number: this.student_parking.sticker_number,
+        date_issued: this.student_parking.date_issued
+      }).then(function (response) {
+        _this2.resetData();
+
+        _this2.employee_parkings.push(response.data.employee_parking);
+
+        $("#employee-parking-modal").modal("hide");
+      });
+    },
+    create_vehicle: function create_vehicle() {
+      var _this3 = this;
 
       axios.post(this.url_vehicle_process, {
         id_number_employee: this.vehicle.id_number_employee,
@@ -2567,53 +2691,60 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         lto_cr: this.vehicle.lto_cr,
         lto_or: this.vehicle.lto_or
       }).then(function (response) {
-        _this2.resetData();
+        _this3.resetData();
 
-        _this2.vehicles.push(response.data.vehicle);
+        _this3.vehicles.push(response.data.vehicle);
 
         $("#vehicle-modal").modal("hide");
       });
     },
     load_vehicle: function load_vehicle() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get(this.url_vehicle).then(function (response) {
-        _this3.vehicles = response.data.vehicles;
+        _this4.vehicles = response.data.vehicles;
       });
     },
     load_employee_parking: function load_employee_parking() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get(this.url).then(function (response) {
-        _this4.employee_parkings = response.data.employee_parkings;
+        _this5.employee_parkings = response.data.employee_parkings;
+      });
+    },
+    load_student_parking: function load_student_parking() {
+      var _this6 = this;
+
+      axios.get(this.url_student_parking).then(function (response) {
+        _this6.student_parkings = response.data.student_parkings;
       });
     },
     load_employee_names: function load_employee_names() {
-      var _this5 = this;
+      var _this7 = this;
 
       axios.get(this.url_emp_list).then(function (response) {
-        _this5.employee_names = response.data.employee_names;
+        _this7.employee_names = response.data.employee_names;
       });
     },
     load_student_names: function load_student_names() {
-      var _this6 = this;
+      var _this8 = this;
 
       axios.get(this.url_student_name).then(function (response) {
-        _this6.student_names = response.data.student_names;
+        _this8.student_names = response.data.student_names;
       });
     },
     load_pricing: function load_pricing() {
-      var _this7 = this;
+      var _this9 = this;
 
       axios.get(this.url_pricing).then(function (response) {
-        _this7.pricings = response.data.pricings;
+        _this9.pricings = response.data.pricings;
       });
     },
     load_vehicle_make: function load_vehicle_make() {
-      var _this8 = this;
+      var _this10 = this;
 
       axios.get(this.url_vehicle_make).then(function (response) {
-        _this8.vehicle_make = response.data.vehicle_make;
+        _this10.vehicle_make = response.data.vehicle_make;
       });
     },
     resetData: function resetData() {
@@ -2633,6 +2764,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mounted: function mounted() {
     this.load_employee_parking();
+    this.load_student_parking();
     this.load_employee_names();
     this.load_student_names();
     this.load_pricing();
@@ -54704,9 +54836,7 @@ var render = function() {
                             enabled: true,
                             trigger: "enter",
                             skipDiacritics: true,
-                            searchFn: _vm.mySearchFn,
-                            placeholder: "Search this table",
-                            externalQuery: _vm.searchQuery
+                            placeholder: "Search this table"
                           }
                         },
                         scopedSlots: _vm._u([
@@ -54786,68 +54916,81 @@ var render = function() {
                     _vm._v("Students Parking")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary btn-block",
-                        on: { click: _vm.studentParkingModal }
-                      },
-                      [_vm._v("Register Student")]
-                    ),
-                    _vm._v(" "),
-                    _c("table", { staticClass: "table" }, [
-                      _vm._m(1),
+                  _c(
+                    "div",
+                    { staticClass: "card-body" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          on: { click: _vm.studentParkingModal }
+                        },
+                        [_vm._v("Register Student")]
+                      ),
                       _vm._v(" "),
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("td", [_vm._v("BANDOQUILLO, CHRISTIAN LACSINTO")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("2019")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("1st Semester")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("09491106932")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("MIS Office")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("MD1234567890")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("01-03-2023")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-info",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.updateModal(_vm.index)
-                                  }
-                                }
-                              },
-                              [_vm._v("Edit")]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-danger",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.deleteTask(_vm.index)
-                                  }
-                                }
-                              },
-                              [_vm._v("Delete")]
-                            )
-                          ])
+                      _c("vue-good-table", {
+                        attrs: {
+                          columns: _vm.columns_stud_parking,
+                          rows: _vm.student_parkings,
+                          "search-options": {
+                            enabled: true,
+                            trigger: "enter",
+                            skipDiacritics: true,
+                            placeholder: "Search this table"
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "table-row",
+                            fn: function(props) {
+                              return [
+                                props.column.field == "actions"
+                                  ? _c("span", [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-info",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.updateModal(_vm.index)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Edit")]
+                                      ),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-danger",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.deleteTask(_vm.index)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Delete")]
+                                      )
+                                    ])
+                                  : _c("span", [
+                                      _vm._v(
+                                        "\n                                        " +
+                                          _vm._s(
+                                            props.formattedRow[
+                                              props.column.field
+                                            ]
+                                          ) +
+                                          "\n                                        "
+                                      )
+                                    ])
+                              ]
+                            }
+                          }
                         ])
-                      ])
-                    ])
-                  ])
+                      })
+                    ],
+                    1
+                  )
                 ])
               ])
             ])
@@ -54884,83 +55027,105 @@ var render = function() {
                       [_vm._v("Add Vehicle")]
                     ),
                     _vm._v(" "),
-                    _c("table", { staticClass: "table" }, [
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.vehicles, function(vehicle, index) {
-                          return _c("tr", [
-                            _c("td", [_vm._v(_vm._s(vehicle.employee_name))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(vehicle.student_name))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(vehicle.owner_name_lto))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(vehicle.relation_to_owner))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(vehicle.make))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(vehicle.model))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(vehicle.plate_number))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(vehicle.color))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(vehicle.reg_expiry_date))]),
-                            _vm._v(" "),
-                            vehicle.lto_cr == 1
-                              ? _c("td", [_vm._v("Submitted LTO CR")])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            vehicle.lto_cr != 1
-                              ? _c("td", [_vm._v("LTO CR not Submitted")])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            vehicle.lto_or == 1
-                              ? _c("td", [_vm._v("Submitted LTO OR")])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            vehicle.lto_or != 1
-                              ? _c("td", [_vm._v("LTO OR not Submitted")])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "button",
+                    _c("br"),
+                    _vm._v(" "),
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-content",
+                        attrs: { id: "myTabContent" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "tab-pane fade show active",
+                            attrs: {
+                              id: "employees",
+                              role: "tabpanel",
+                              "aria-labelledby": "employees-tab"
+                            }
+                          },
+                          [
+                            _c("vue-good-table", {
+                              attrs: {
+                                columns: _vm.columns_emp_vehicle,
+                                rows: _vm.vehicles,
+                                "search-options": {
+                                  enabled: true,
+                                  trigger: "enter",
+                                  skipDiacritics: true,
+                                  placeholder: "Search this table"
+                                }
+                              },
+                              scopedSlots: _vm._u([
                                 {
-                                  staticClass: "btn btn-info",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.updateModal(index)
-                                    }
+                                  key: "table-row",
+                                  fn: function(props) {
+                                    return [
+                                      props.column.field == "actions"
+                                        ? _c("span", [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-info",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.updateModal(
+                                                      _vm.index
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("Edit")]
+                                            ),
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-danger",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.deleteTask(
+                                                      _vm.index
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("Delete")]
+                                            )
+                                          ])
+                                        : _c("span", [
+                                            _vm._v(
+                                              "\n                                                " +
+                                                _vm._s(
+                                                  props.formattedRow[
+                                                    props.column.field
+                                                  ]
+                                                ) +
+                                                "\n                                                "
+                                            )
+                                          ])
+                                    ]
                                   }
-                                },
-                                [_vm._v("Edit")]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.deleteTask(index)
-                                    }
-                                  }
-                                },
-                                [_vm._v("Delete")]
-                              )
-                            ])
-                          ])
-                        }),
-                        0
-                      )
-                    ])
+                                }
+                              ])
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "tab-pane fade",
+                          attrs: {
+                            id: "students",
+                            role: "tabpanel",
+                            "aria-labelledby": "students-tab"
+                          }
+                        })
+                      ]
+                    )
                   ])
                 ])
               ])
@@ -54988,7 +55153,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -55024,8 +55189,6 @@ var render = function() {
                   ],
                   1
                 ),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "name" } }, [_vm._v("Vehicle")]),
@@ -55069,13 +55232,10 @@ var render = function() {
                       }
                     },
                     _vm._l(_vm.vehicles, function(vehicle, index) {
-                      return vehicle.id_number == _vm.employee_parking.id_number
+                      return vehicle.emp_id == _vm.employee_parking.id_number
                         ? _c(
                             "option",
-                            {
-                              attrs: { selected: "" },
-                              domProps: { value: vehicle.plate_number }
-                            },
+                            { domProps: { value: vehicle.plate_number } },
                             [
                               _c("b", [
                                 _vm._v(
@@ -55467,29 +55627,28 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.myDate,
-                        expression: "myDate"
+                        value: _vm.employee_parking.date_issued,
+                        expression: "employee_parking.date_issued"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "date", id: "date_issued" },
-                    domProps: { value: _vm.myDate },
+                    domProps: { value: _vm.employee_parking.date_issued },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.myDate = $event.target.value
+                        _vm.$set(
+                          _vm.employee_parking,
+                          "date_issued",
+                          $event.target.value
+                        )
                       }
                     }
                   }),
                   _vm._v(" "),
-                  _c("br"),
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.myDate) +
-                      "\n                    "
-                  )
+                  _c("br")
                 ])
               ]),
               _vm._v(" "),
@@ -55537,7 +55696,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(4),
+              _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -55616,7 +55775,7 @@ var render = function() {
                       }
                     },
                     _vm._l(_vm.vehicles, function(vehicle, index) {
-                      return vehicle.id_number == _vm.student_parking.id_number
+                      return vehicle.stud_id == _vm.student_parking.id_number
                         ? _c(
                             "option",
                             {
@@ -55689,20 +55848,20 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.employee_parking.license_number,
-                        expression: "employee_parking.license_number"
+                        value: _vm.student_parking.license_number,
+                        expression: "student_parking.license_number"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "text", id: "license_number" },
-                    domProps: { value: _vm.employee_parking.license_number },
+                    domProps: { value: _vm.student_parking.license_number },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.employee_parking,
+                          _vm.student_parking,
                           "license_number",
                           $event.target.value
                         )
@@ -55721,14 +55880,14 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.employee_parking.license_expiry_date,
-                        expression: "employee_parking.license_expiry_date"
+                        value: _vm.student_parking.license_expiry_date,
+                        expression: "student_parking.license_expiry_date"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "date", id: "licence_expiry_date" },
                     domProps: {
-                      value: _vm.employee_parking.license_expiry_date
+                      value: _vm.student_parking.license_expiry_date
                     },
                     on: {
                       input: function($event) {
@@ -55736,7 +55895,7 @@ var render = function() {
                           return
                         }
                         _vm.$set(
-                          _vm.employee_parking,
+                          _vm.student_parking,
                           "license_expiry_date",
                           $event.target.value
                         )
@@ -55755,20 +55914,20 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.employee_parking.schoolyear,
-                        expression: "employee_parking.schoolyear"
+                        value: _vm.student_parking.schoolyear,
+                        expression: "student_parking.schoolyear"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "text", id: "schoolyear" },
-                    domProps: { value: _vm.employee_parking.schoolyear },
+                    domProps: { value: _vm.student_parking.schoolyear },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.employee_parking,
+                          _vm.student_parking,
                           "schoolyear",
                           $event.target.value
                         )
@@ -55789,8 +55948,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.employee_parking.semester,
-                          expression: "employee_parking.semester"
+                          value: _vm.student_parking.semester,
+                          expression: "student_parking.semester"
                         }
                       ],
                       staticClass: "form-control",
@@ -55810,7 +55969,7 @@ var render = function() {
                               return val
                             })
                           _vm.$set(
-                            _vm.employee_parking,
+                            _vm.student_parking,
                             "semester",
                             $event.target.multiple
                               ? $$selectedVal
@@ -55849,8 +56008,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.employee_parking.parking_type,
-                          expression: "employee_parking.parking_type"
+                          value: _vm.student_parking.parking_type,
+                          expression: "student_parking.parking_type"
                         }
                       ],
                       staticClass: "form-control",
@@ -55870,7 +56029,7 @@ var render = function() {
                               return val
                             })
                           _vm.$set(
-                            _vm.employee_parking,
+                            _vm.student_parking,
                             "parking_type",
                             $event.target.multiple
                               ? $$selectedVal
@@ -55916,20 +56075,20 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.employee_parking.or_number,
-                        expression: "employee_parking.or_number"
+                        value: _vm.student_parking.or_number,
+                        expression: "student_parking.or_number"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "text", id: "or_number" },
-                    domProps: { value: _vm.employee_parking.or_number },
+                    domProps: { value: _vm.student_parking.or_number },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.employee_parking,
+                          _vm.student_parking,
                           "or_number",
                           $event.target.value
                         )
@@ -55948,20 +56107,20 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.employee_parking.sticker_number,
-                        expression: "employee_parking.sticker_number"
+                        value: _vm.student_parking.sticker_number,
+                        expression: "student_parking.sticker_number"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "text", id: "sticker_number" },
-                    domProps: { value: _vm.employee_parking.sticker_number },
+                    domProps: { value: _vm.student_parking.sticker_number },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.employee_parking,
+                          _vm.student_parking,
                           "sticker_number",
                           $event.target.value
                         )
@@ -55980,20 +56139,20 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.employee_parking.date_issued,
-                        expression: "employee_parking.date_issued"
+                        value: _vm.student_parking.date_issued,
+                        expression: "student_parking.date_issued"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "date", id: "date_issued" },
-                    domProps: { value: _vm.employee_parking.date_issued },
+                    domProps: { value: _vm.student_parking.date_issued },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.employee_parking,
+                          _vm.student_parking,
                           "date_issued",
                           $event.target.value
                         )
@@ -56018,7 +56177,7 @@ var render = function() {
                   {
                     staticClass: "btn btn-primary",
                     attrs: { type: "button" },
-                    on: { click: _vm.create_employee_parking }
+                    on: { click: _vm.create_student_parking }
                   },
                   [_vm._v("Register Parking")]
                 )
@@ -56047,7 +56206,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(5),
+              _vm._m(4),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "form-group" }, [
@@ -56440,7 +56599,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(6),
+                _vm._m(5),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group form-check-inline" }, [
                   _c("input", {
@@ -56652,63 +56811,47 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("School Year")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Semester")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Contact Number")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("School/Dept/Office")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("License Number")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("License Expiry Date")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("AdDU Employee Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("AdDU Student Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _vm._v("Owner's Name Registered to LTO")
+    return _c(
+      "ul",
+      { staticClass: "nav nav-tabs", attrs: { id: "myTab", role: "tablist" } },
+      [
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link active",
+              attrs: {
+                id: "employees-tab",
+                "data-toggle": "tab",
+                href: "#employees",
+                role: "tab",
+                "aria-controls": "employees",
+                "aria-selected": "true"
+              }
+            },
+            [_vm._v("Employees")]
+          )
         ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Relation to Owner")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Make")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Model")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Plate Number")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Color")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _vm._v("Vehicle Registration Expiry Date")
-        ]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("LTO Official Receipt")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _vm._v("LTO Certificate of Registration")
-        ]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } })
-      ])
-    ])
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              attrs: {
+                id: "students-tab",
+                "data-toggle": "tab",
+                href: "#students",
+                role: "tab",
+                "aria-controls": "students",
+                "aria-selected": "false"
+              }
+            },
+            [_vm._v("Students")]
+          )
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this

@@ -32,9 +32,7 @@
                                         enabled: true,
                                         trigger: 'enter',
                                         skipDiacritics: true,
-                                        searchFn: mySearchFn,
-                                        placeholder: 'Search this table',
-                                        externalQuery: searchQuery
+                                        placeholder: 'Search this table'
                                     }"> 
                                         <template slot="table-row" slot-scope="props">
                                             <span v-if="props.column.field == 'actions'"><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button>
@@ -60,32 +58,25 @@
                                 <div class="card-header">Students Parking</div>
                                 <div class="card-body">
                                     <button @click="studentParkingModal" class="btn btn-primary btn-block">Register Student</button>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">School Year</th>
-                                                <th scope="col">Semester</th>
-                                                <th scope="col">Contact Number</th>
-                                                <th scope="col">School/Dept/Office</th>
-                                                <th scope="col">License Number</th>
-                                                <th scope="col">License Expiry Date</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>BANDOQUILLO, CHRISTIAN LACSINTO</td>
-                                                <td>2019</td>
-                                                <td>1st Semester</td>
-                                                <td>09491106932</td>
-                                                <td>MIS Office</td>
-                                                <td>MD1234567890</td>
-                                                <td>01-03-2023</td>
-                                                <td><button @click="updateModal(index)" class="btn btn-info">Edit</button></td>
-                                                <td><button @click="deleteTask(index)" class="btn btn-danger">Delete</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    
+                                    <vue-good-table
+                                        :columns="columns_stud_parking"
+                                        :rows="student_parkings"
+                                        :search-options="{
+                                        enabled: true,
+                                        trigger: 'enter',
+                                        skipDiacritics: true,
+                                        placeholder: 'Search this table'
+                                    }"> 
+                                        <template slot="table-row" slot-scope="props">
+                                            <span v-if="props.column.field == 'actions'"><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button>
+                                            </span>
+                                            <span v-else>
+                                            {{props.formattedRow[props.column.field]}}
+                                            </span>
+                                        </template> 
+                                    </vue-good-table>
+
                                 </div>
                             </div>
                         </div>
@@ -100,45 +91,48 @@
                             <div class="card">
                                 <div class="card-header">Vehicles</div>
                                 <div class="card-body">
+
                                     <button @click="vehicleModal" class="btn btn-primary btn-block">Add Vehicle</button>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">AdDU Employee Name</th>
-                                                <th scope="col">AdDU Student Name</th>
-                                                <th scope="col">Owner's Name Registered to LTO</th>
-                                                <th scope="col">Relation to Owner</th>
-                                                <th scope="col">Make</th>
-                                                <th scope="col">Model</th>
-                                                <th scope="col">Plate Number</th>
-                                                <th scope="col">Color</th>
-                                                <th scope="col">Vehicle Registration Expiry Date</th>
-                                                <th scope="col">LTO Official Receipt</th>
-                                                <th scope="col">LTO Certificate of Registration</th>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="(vehicle, index) in vehicles">
-                                                <td >{{ vehicle.employee_name }}</td>
-                                                <td>{{ vehicle.student_name }}</td>
-                                                <td>{{ vehicle.owner_name_lto }}</td>
-                                                <td>{{ vehicle.relation_to_owner }}</td>
-                                                <td>{{ vehicle.make }}</td>
-                                                <td>{{ vehicle.model }}</td>
-                                                <td>{{ vehicle.plate_number }}</td>
-                                                <td>{{ vehicle.color }}</td>
-                                                <td>{{ vehicle.reg_expiry_date }}</td>
-                                                <td v-if="vehicle.lto_cr == 1">Submitted LTO CR</td>
-                                                <td v-if="vehicle.lto_cr != 1">LTO CR not Submitted</td>
-                                                <td v-if="vehicle.lto_or == 1">Submitted LTO OR</td>
-                                                <td v-if="vehicle.lto_or != 1">LTO OR not Submitted</td>
-                                                <td><button @click="updateModal(index)" class="btn btn-info">Edit</button></td>
-                                                <td><button @click="deleteTask(index)" class="btn btn-danger">Delete</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <br>
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="employees-tab" data-toggle="tab" href="#employees" role="tab" aria-controls="employees" aria-selected="true">Employees</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="students-tab" data-toggle="tab" href="#students" role="tab" aria-controls="students" aria-selected="false">Students</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content" id="myTabContent">
+                                        
+                                        <div class="tab-pane fade show active" id="employees" role="tabpanel" aria-labelledby="employees-tab">
+                                    
+                                            <vue-good-table 
+                                                :columns="columns_emp_vehicle"
+                                                :rows="vehicles"
+                                                :search-options="{
+                                                enabled: true,
+                                                trigger: 'enter',
+                                                skipDiacritics: true,
+                                                placeholder: 'Search this table'
+                                            }"> 
+                                                <template slot="table-row" slot-scope="props">
+                                                    <span v-if="props.column.field == 'actions'"><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button>
+                                                    </span>
+                                                    <span v-else>
+                                                    {{props.formattedRow[props.column.field]}}
+                                                    </span>
+                                                </template> 
+
+                                            </vue-good-table>
+
+                                        </div>
+
+                                        <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
+
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -170,19 +164,19 @@
                             <span> Selected: {{ employee_parking.id_number}}</span>
                         </div>
 
-                        <div class="form-group"><!--
+                        <!--<div class="form-group">
                             <label for="name">Employee Name</label>
                             <select v-model="employee_parking.id_number" data-placeholder="Choose an Employee..." name="employee_names" id="employee_names" class="form-control" tabindex="-1">
                                 <option disabled value="" selected="" ></option>
                                 <option v-for="(employee_name, index) in employee_names" v-bind:value="employee_name.id_no">{{employee_name.cLast}}, {{employee_name.cFirst}} {{employee_name.middle}}</option>
                             </select>
-                            <span> Selected: {{ employee_parking.id_number}}</span>-->
-                        </div>
+                            <span> Selected: {{ employee_parking.id_number}}</span>
+                        </div>-->
 
                         <div class="form-group">
                             <label for="name">Vehicle</label>
                             <select v-model="employee_parking.plate_number" data-placeholder="Choose an Employee..." name="employee_names" id="employee_names" class="form-control" tabindex="-1">
-                                <option selected v-for="(vehicle, index) in vehicles"  v-bind:value="vehicle.plate_number" v-if="vehicle.id_number == employee_parking.id_number"><b>{{vehicle.plate_number}}: {{vehicle.make}} {{vehicle.model}}</b></option>
+                                <option v-for="(vehicle, index) in vehicles"  v-bind:value="vehicle.plate_number" v-if="vehicle.emp_id == employee_parking.id_number"><b>{{vehicle.plate_number}}: {{vehicle.make}} {{vehicle.model}}</b></option>
                             </select>
                             <span> Selected: {{ employee_parking.plate_number }}</span>
                         </div>
@@ -242,9 +236,8 @@
 
                         <div class="form-group">
                             <label for="description">Date Issued</label>
-                            <input v-model="myDate" type="date" id="date_issued" class="form-control">
+                            <input v-model="employee_parking.date_issued" type="date" id="date_issued" class="form-control">
                             <br>
-                            {{myDate}}
                         </div>
 
                     <!--  <div class="form-group">
@@ -285,7 +278,7 @@
                         <div class="form-group">
                             <label for="name">Vehicle</label>
                             <select v-model="student_parking.plate_number" data-placeholder="Choose an Employee..." name="employee_names" id="employee_names" class="form-control" tabindex="-1">
-                                <option selected v-for="(vehicle, index) in vehicles"  v-bind:value="vehicle.plate_number" v-if="vehicle.id_number == student_parking.id_number"><b>{{vehicle.plate_number}}: {{vehicle.make}} {{vehicle.model}}</b></option>
+                                <option selected v-for="(vehicle, index) in vehicles"  v-bind:value="vehicle.plate_number" v-if="vehicle.stud_id == student_parking.id_number"><b>{{vehicle.plate_number}}: {{vehicle.make}} {{vehicle.model}}</b></option>
                             </select>
                             <span> Selected: {{ student_parking.plate_number }}</span>
                         </div>
@@ -297,22 +290,22 @@
 
                         <div class="form-group">
                             <label for="description">License Number</label>
-                            <input v-model="employee_parking.license_number" type="text" id="license_number" class="form-control">
+                            <input v-model="student_parking.license_number" type="text" id="license_number" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="description">License Expiry Date</label>
-                            <input v-model="employee_parking.license_expiry_date" type="date" id="licence_expiry_date" class="form-control">
+                            <input v-model="student_parking.license_expiry_date" type="date" id="licence_expiry_date" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="description">School Year</label>
-                            <input v-model="employee_parking.schoolyear" type="text" id="schoolyear" class="form-control">
+                            <input v-model="student_parking.schoolyear" type="text" id="schoolyear" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="description">Semester</label>
-                            <select v-model="employee_parking.semester" name="semester" id="semester" class="form-control" tabindex="-1">
+                            <select v-model="student_parking.semester" name="semester" id="semester" class="form-control" tabindex="-1">
                                 <option value="" selected="" ></option>
                                 <option value="1" selected="" >First Semester</option>
                                 <option value="2" selected="" >Second Semester</option>
@@ -322,7 +315,7 @@
 
                         <div class="form-group">
                             <label for="description">Parking Type</label>
-                            <select v-model="employee_parking.parking_type" name="parking_type" id="parking_type" class="form-control" tabindex="-1">
+                            <select v-model="student_parking.parking_type" name="parking_type" id="parking_type" class="form-control" tabindex="-1">
                                 <option disabled value="" selected="" ></option>
                                 <option v-for="(pricing, index) in pricings" v-bind:value="pricing.id">{{pricing.service_name}} - {{pricing.price}} - {{pricing.schoolyear}} - {{ pricing.semester}}</option>
                             </select>
@@ -330,17 +323,17 @@
                         
                         <div class="form-group">
                             <label for="description">OR Number</label>
-                            <input v-model="employee_parking.or_number" type="text" id="or_number" class="form-control">
+                            <input v-model="student_parking.or_number" type="text" id="or_number" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="description">Sticker Number</label>
-                            <input v-model="employee_parking.sticker_number" type="text" id="sticker_number" class="form-control">
+                            <input v-model="student_parking.sticker_number" type="text" id="sticker_number" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="description">Date Issued</label>
-                            <input v-model="employee_parking.date_issued" type="date" id="date_issued" class="form-control">
+                            <input v-model="student_parking.date_issued" type="date" id="date_issued" class="form-control">
                         </div>
 
                     <!--  <div class="form-group">
@@ -354,7 +347,7 @@
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button @click="create_employee_parking" type="button" class="btn btn-primary">Register Parking</button>
+                        <button @click="create_student_parking" type="button" class="btn btn-primary">Register Parking</button>
                     </div>
                 </div>
             </div>
@@ -492,7 +485,7 @@
                     parking_type: '',
                     or_number: '',
                     sticker_number: '',
-                    date_issued: ''
+                    date_issued: new Date().toISOString().slice(0,10)
                 },
 
                 student_parking:{
@@ -531,19 +524,20 @@
                 },
 
                 employee_parkings: [],
+                student_parkings: [],
                 employee_names: [],
                 student_names: [],
                 pricings: [],
                 vehicles: [],
                 vehicle_make: [],
                 url: 'http://127.0.0.1:8000/employee_parking/',
+                url_student_parking: 'http://127.0.0.1:8000/student_parking/',
                 url_emp_list: 'http://127.0.0.1:8000/employee_names/',
                 url_pricing: 'http://127.0.0.1:8000/ccfc_pricing_1/',
                 url_vehicle: 'http://127.0.0.1:8000/ccfc_vehicles/',
                 url_vehicle_process: 'http://127.0.0.1:8000/ccfc_vehicles_process/',
                 url_vehicle_make: 'http://127.0.0.1:8000/ccfc_vehicle_make/',
                 url_student_name: 'http://127.0.0.1:8000/student_names',
-                myDate: new Date().toISOString().slice(0,10),
                 type: '',
                 columns: [
                     {
@@ -557,6 +551,153 @@
                     {
                     label: 'School/Dept/Office',
                     field: 'school_dept_office',
+                    },
+                    {
+                    label: 'License Number',
+                    field: 'license_number',
+                    },
+                    {
+                    label: 'License Expiry Date',
+                    field: 'license_expiry_date',
+                    type: 'date',
+                    dateInputFormat: 'yyyy-MM-dd',
+                    dateOutputFormat: 'MMM dd,yyyy',
+                    },
+                    {
+                    label: 'School Year',
+                    field: 'schoolyear',
+                    },
+                    {
+                    label: 'Semester',
+                    field: 'semester',
+                    },
+                    {
+                    label: 'Parking Type',
+                    field: 'parking_type',
+                    },
+                    {
+                    label: 'Sticker Number',
+                    field: 'sticker_number',
+                    },
+                    {
+                    label: 'Date Issued',
+                    field: 'date_issued',
+                    type: 'date',
+                    dateInputFormat: 'yyyy-MM-dd',
+                    dateOutputFormat: 'MMM dd,yyyy',
+                    },
+                    {
+                    label: 'Actions',
+                    field: 'actions',
+                    sortable: false,
+                    },
+                ],
+                columns_emp_vehicle:[
+                    {
+                    label: 'Employee Name',
+                    field: 'employee_name',
+                    },
+                    {
+                        label: 'Owner Name Registered to LTO',
+                        field: 'owner_name_lto',
+                    },
+                    {
+                        label: 'Relation to Owner',
+                        field: 'relation_to_owner',
+                    },
+                    {
+                        label: 'Make',
+                        field: 'make',
+                    },
+                    {
+                        label: 'Model',
+                        field: 'model',
+                    },
+                    {
+                        label: 'Plate Number',
+                        field: 'plate_number',
+                    },
+                    {
+                        label: 'Color',
+                        field: 'color',
+                    },
+                    {
+                        label: 'Vehicle Registration Expiry Date',
+                        field: 'reg_expiry_date',
+                    },
+                    {
+                        label: 'LTO Official Receipt',
+                        field: 'lto_or',
+                    },
+                    {
+                        label: 'LTO Certificate of Registration',
+                        field: 'lto_cr',
+                    },
+                    {
+                        label: 'Actions',
+                        field: 'actions',
+                    }
+                ],
+
+                columns_stud_vehicle:[
+                    {
+                    label: 'Student Name',
+                    field: 'student_name',
+                    },
+                    {
+                        label: 'Owner Name Registered to LTO',
+                        field: 'owner_name_lto',
+                    },
+                    {
+                        label: 'Relation to Owner',
+                        field: 'relation_to_owner',
+                    },
+                    {
+                        label: 'Make',
+                        field: 'make',
+                    },
+                    {
+                        label: 'Model',
+                        field: 'model',
+                    },
+                    {
+                        label: 'Plate Number',
+                        field: 'plate_number',
+                    },
+                    {
+                        label: 'Color',
+                        field: 'color',
+                    },
+                    {
+                        label: 'Vehicle Registration Expiry Date',
+                        field: 'reg_expiry_date',
+                    },
+                    {
+                        label: 'LTO Official Receipt',
+                        field: 'lto_or',
+                    },
+                    {
+                        label: 'LTO Certificate of Registration',
+                        field: 'lto_cr',
+                    },
+                    {
+                        label: 'Actions',
+                        field: 'actions',
+                    }
+                ],
+
+                columns_stud_parking:[
+                    {
+                    label: 'ID Number',
+                    field: 'id_number',
+                    },
+                    {
+                    label: 'Plate Number',
+                    field: 'plate_number',
+                    },
+                    {
+                    label: 'Contact Number',
+                    field: 'contact_number',
                     },
                     {
                     label: 'License Number',
@@ -628,6 +769,7 @@
                 axios.post(this.url, 
                 {
                     id_number: this.employee_parking.id_number,
+                    plate_number: this.employee_parking.plate_number,
                     contact_number: this.employee_parking.contact_number,
                     school_dept_office: this.employee_parking.school_dept_office,
                     license_number: this.employee_parking.license_number,
@@ -638,6 +780,31 @@
                     or_number: this.employee_parking.or_number,
                     sticker_number: this.employee_parking.sticker_number,
                     date_issued: this.employee_parking.date_issued
+                })
+
+                .then(response=>{
+
+                    this.resetData();
+                    this.employee_parkings.push(response.data.employee_parking);
+                    $("#employee-parking-modal").modal("hide");
+                })
+            },
+
+            create_student_parking(){
+
+                axios.post(this.url_student_parking, 
+                {
+                    id_number: this.student_parking.id_number,
+                    plate_number: this.student_parking.plate_number,
+                    or_number: this.student_parking.or_number,
+                    contact_number: this.student_parking.contact_number,
+                    license_number: this.student_parking.license_number,
+                    license_expiry_date: this.student_parking.license_expiry_date,
+                    schoolyear: this.student_parking.schoolyear,
+                    semester: this.student_parking.semester,
+                    parking_type: this.student_parking.parking_type,
+                    sticker_number: this.student_parking.sticker_number,
+                    date_issued: this.student_parking.date_issued
                 })
 
                 .then(response=>{
@@ -688,6 +855,14 @@
                 axios.get(this.url).then(response=>{
 
                     this.employee_parkings = response.data.employee_parkings;
+                });
+            },
+
+            load_student_parking(){
+                
+                axios.get(this.url_student_parking).then(response=>{
+
+                    this.student_parkings = response.data.student_parkings;
                 });
             },
 
@@ -745,6 +920,7 @@
         },
         mounted() {
             this.load_employee_parking();
+            this.load_student_parking();
             this.load_employee_names();
             this.load_student_names();
             this.load_pricing();

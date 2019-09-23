@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 class StudentParkingController extends Controller
@@ -14,6 +15,10 @@ class StudentParkingController extends Controller
     public function index()
     {
         //
+        $student_parkings = DB::select(DB::raw("select * from student_parking;"));
+        return response()->json([
+            'student_parkings'=>$student_parkings
+        ], 200);
     }
 
     /**
@@ -34,7 +39,53 @@ class StudentParkingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+    protected $fillable = [
+        'id_number',
+        'plate_number',
+        'or_number',
+        'contact_number',
+        'license_number',
+        'license_expiry_date',
+        'schoolyear',
+        'semester',
+        'parking_type',
+        'sticker_number',
+        'date_issued'
+    ];*/
+        $request->validate([
+            'id_number' => 'required',
+            'plate_number' => 'required',
+            'or_number' => 'required',
+            'contact_number' => 'required',
+            'license_number' => 'required',
+            'license_expiry_date' => 'required',
+            'schoolyear' => 'required',
+            'semester' => 'required',
+            'parking_type' => 'required',
+            'sticker_number' => 'required',
+            'date_issued' => 'required'
+        ]);
+
+        $student_parking = $request->user()->studentParking()->create([
+            'id_number' => $request->id_number,
+            'plate_number' => $request->plate_number,
+            'or_number' => $request->sticker_number,
+            'contact_number' => $request->contact_number,
+            'license_number' => $request->license_number,
+            'license_expiry_date' => $request->license_expiry_date,
+            'schoolyear' => $request->schoolyear,
+            'semester' => $request->semester,
+            'parking_type' => $request->parking_type,
+            'sticker_number' => $request->sticker_number,
+            'date_issued' => $request->date_issued 
+        ]);
+
+        return response()->json([
+
+            'student_parking' => $student_parking,
+            'message' => 'Student has been registered to Parking'
+        ]);
     }
 
     /**

@@ -7,14 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class StudentParking extends Model
 {
     //
+    protected $table = 'student_parking';
     protected $fillable = [
-        'student_id',
+        'id_number',
+        'plate_number',
+        'or_number',
         'contact_number',
-        'isUndergrad',
-        'isGrad',
         'license_number',
         'license_expiry_date',
         'schoolyear',
+        'semester',
+        'parking_type',
+        'sticker_number',
         'date_issued'
     ];
 }
