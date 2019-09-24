@@ -109,8 +109,8 @@
 
                 ldaps: [],
                 system_roles: [],
-                url: 'http://127.0.0.1:8000/ldap_barcode/',
-                url_system_roles: 'http://127.0.0.1:8000/ldap_roles/',
+                url: 'http://ccfcis.addu.edu.ph/ldap_barcode/',
+                url_system_roles: 'http://ccfcis.addu.edu.ph/ldap_roles/',
                 errors: [],
                 new_update_ldap: [],
                 ldap_columns: [
