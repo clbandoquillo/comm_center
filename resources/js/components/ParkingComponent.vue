@@ -530,14 +530,14 @@
                 pricings: [],
                 vehicles: [],
                 vehicle_make: [],
-                url: 'http://127.0.0.1:8000/employee_parking/',
-                url_student_parking: 'http://127.0.0.1:8000/student_parking/',
-                url_emp_list: 'http://127.0.0.1:8000/employee_names/',
-                url_pricing: 'http://127.0.0.1:8000/ccfc_pricing_1/',
-                url_vehicle: 'http://127.0.0.1:8000/ccfc_vehicles/',
-                url_vehicle_process: 'http://127.0.0.1:8000/ccfc_vehicles_process/',
-                url_vehicle_make: 'http://127.0.0.1:8000/ccfc_vehicle_make/',
-                url_student_name: 'http://127.0.0.1:8000/student_names',
+                url: 'https://ccfcis.addu.edu.ph/employee_parking/',
+                url_student_parking: 'https://ccfcis.addu.edu.ph/student_parking/',
+                url_emp_list: 'https://ccfcis.addu.edu.ph/employee_names/',
+                url_pricing: 'https://ccfcis.addu.edu.ph/ccfc_pricing_1/',
+                url_vehicle: 'https://ccfcis.addu.edu.ph/ccfc_vehicles/',
+                url_vehicle_process: 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/',
+                url_vehicle_make: 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/',
+                url_student_name: 'https://ccfcis.addu.edu.ph/student_names',
                 type: '',
                 columns: [
                     {
@@ -745,7 +745,7 @@
         methods: {
           getOptions(search, loading) {
             loading(true)
-            axios.get('http://127.0.0.1:8000/employee_names/')
+            axios.get('https://ccfcis.addu.edu.ph/employee_names/')
             },
 
             employeeParkingModal(){

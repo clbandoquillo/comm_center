@@ -143,11 +143,11 @@
 
             create_ldap(){
 
-                axios.post(this.url, 
+                axios.post('http://ccfcis.addu.edu.ph/ldap_barcode', 
                 {
                     ldap_username: this.ldap.ldap_username, 
                     id_number: this.ldap.id_number,
-                    system_role: this.ldap.system_role
+                    system_role: this.ldap.system_role,
                 })
 
                 .then(response=>{

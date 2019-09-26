@@ -179,8 +179,8 @@
 
                 pricings: [],
                 services: [],
-                url: 'http://127.0.0.1:8000/ccfc_pricing',
-                url_services: 'http://127.0.0.1:8000/ccfc_services'
+                url: 'https://ccfcis.addu.edu.ph/ccfc_pricing',
+                url_services: 'https://ccfcis.addu.edu.ph/ccfc_services'
             }
         },
 
