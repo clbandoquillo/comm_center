@@ -179,8 +179,8 @@
 
                 pricings: [],
                 services: [],
-                url: 'http://ccfcis.addu.edu.ph/ccfc_pricing',
-                url_services: 'http://ccfcis.addu.edu.ph/ccfc_services'
+                url: 'https://ccfcis.addu.edu.ph/ccfc_pricing',
+                url_services: 'https://ccfcis.addu.edu.ph/ccfc_services'
             }
         },
 

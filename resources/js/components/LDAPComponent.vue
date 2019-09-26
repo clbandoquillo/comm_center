@@ -109,8 +109,8 @@
 
                 ldaps: [],
                 system_roles: [],
-                url: 'https://ccfcis.addu.edu.ph/ldap_barcode/',
-                url_system_roles: 'https://ccfcis.addu.edu.ph/ldap_roles/',
+                url: 'http://ccfcis.addu.edu.ph/ldap_barcode/',
+                url_system_roles: 'http://ccfcis.addu.edu.ph/ldap_roles/',
                 errors: [],
                 new_update_ldap: [],
                 ldap_columns: [
@@ -143,11 +143,11 @@
 
             create_ldap(){
 
-                axios.post('https://ccfcis.addu.edu.ph/ldap_barcode', 
+                axios.post('http://ccfcis.addu.edu.ph/ldap_barcode', 
                 {
                     ldap_username: this.ldap.ldap_username, 
                     id_number: this.ldap.id_number,
-                    system_role: this.ldap.system_role
+                    system_role: this.ldap.system_role,
                 })
 
                 .then(response=>{
@@ -176,7 +176,7 @@
 
             delete_ldap(index){
 
-                let confirmBox = confirm("Do you really want to delete this?"+this.ldaps[index].id);
+                let confirmBox = confirm("Do you really want to delete this?");
                 if(confirmBox == true){
                     axios.delete(this.url + this.ldaps[index].id)
                         .then(response=>{

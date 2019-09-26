@@ -18,7 +18,8 @@ Auth::routes([
     'register' => false
 ]);
 
-Route::get('/dashboard', 'HomeController@dashboard');
+
+Route::get('/dashboard', 'HomeController@index');
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -57,6 +58,7 @@ Route::get('/ccfc_vehicle_make','VehicleMakeController@ccfc_vehicle_make');
 Route::get('/update_barcode','LDAPController@show_ldap');
 Route::get('/ldap_roles','LDAPController@system_role');
 Route::resource('/ldap_barcode','LDAPController');
+//Route::post('/ldap_barcode','LDAPController@store');
 Route::delete('/ldap_barcode/{id}','LDAPController@destroy');
 });
 

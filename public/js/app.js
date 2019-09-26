@@ -1838,8 +1838,8 @@ __webpack_require__.r(__webpack_exports__);
       },
       ldaps: [],
       system_roles: [],
-      url: 'https://ccfcis.addu.edu.ph/ldap_barcode/',
-      url_system_roles: 'https://ccfcis.addu.edu.ph/ldap_roles/',
+      url: 'http://ccfcis.addu.edu.ph/ldap_barcode/',
+      url_system_roles: 'http://ccfcis.addu.edu.ph/ldap_roles/',
       errors: [],
       new_update_ldap: [],
       ldap_columns: [{
@@ -1865,7 +1865,7 @@ __webpack_require__.r(__webpack_exports__);
     create_ldap: function create_ldap() {
       var _this = this;
 
-      axios.post('https://ccfcis.addu.edu.ph/ldap_barcode', {
+      axios.post('http://ccfcis.addu.edu.ph/ldap_barcode', {
         ldap_username: this.ldap.ldap_username,
         id_number: this.ldap.id_number,
         system_role: this.ldap.system_role
@@ -1890,7 +1890,7 @@ __webpack_require__.r(__webpack_exports__);
     delete_ldap: function delete_ldap(index) {
       var _this2 = this;
 
-      var confirmBox = confirm("Do you really want to delete this?" + this.ldaps[index].id);
+      var confirmBox = confirm("Do you really want to delete this?");
 
       if (confirmBox == true) {
         axios["delete"](this.url + this.ldaps[index].id).then(function (response) {
@@ -2463,7 +2463,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       student_names: [],
       pricings: [],
       vehicles: []
-    }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'http://ccfcis.addu.edu.ph/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'http://ccfcis.addu.edu.ph/student_parking/'), _defineProperty(_ref, "url_emp_list", 'http://ccfcis.addu.edu.ph/employee_names/'), _defineProperty(_ref, "url_pricing", 'http://ccfcis.addu.edu.ph/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'http://ccfcis.addu.edu.ph/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'http://ccfcis.addu.edu.ph/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'http://ccfcis.addu.edu.ph/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'http://ccfcis.addu.edu.ph/student_names'), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "columns", [{
+    }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'https://ccfcis.addu.edu.ph/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'https://ccfcis.addu.edu.ph/student_parking/'), _defineProperty(_ref, "url_emp_list", 'https://ccfcis.addu.edu.ph/employee_names/'), _defineProperty(_ref, "url_pricing", 'https://ccfcis.addu.edu.ph/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'https://ccfcis.addu.edu.ph/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'https://ccfcis.addu.edu.ph/student_names'), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "columns", [{
       label: 'ID Number',
       field: 'id_number'
     }, {
@@ -2614,7 +2614,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: {
     getOptions: function getOptions(search, loading) {
       loading(true);
-      axios.get('http://ccfcis.addu.edu.ph/employee_names/');
+      axios.get('https://ccfcis.addu.edu.ph/employee_names/');
     },
     employeeParkingModal: function employeeParkingModal() {
       $("#employee-parking-modal").modal("show");
@@ -2960,8 +2960,8 @@ __webpack_require__.r(__webpack_exports__);
       },
       pricings: [],
       services: [],
-      url: 'http://ccfcis.addu.edu.ph/ccfc_pricing',
-      url_services: 'http://ccfcis.addu.edu.ph/ccfc_services'
+      url: 'https://ccfcis.addu.edu.ph/ccfc_pricing',
+      url_services: 'https://ccfcis.addu.edu.ph/ccfc_services'
     };
   },
   methods: {
@@ -70133,8 +70133,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Git\comm_center\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Git\comm_center\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\sites\CCFC\comm_center\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\sites\CCFC\comm_center\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
