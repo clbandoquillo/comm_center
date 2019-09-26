@@ -18,13 +18,9 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            if(checkIfBeadle($request->user()->student_code)){
-                return redirect()->route('studentDashboard');
-            }
-
-            $route = routeAuthChecker($request->user()->sysetem_role_id);
-            return redirect()->route($route['route']);
+            return redirect('/home');
         }
+
 
         return $next($request);
     }

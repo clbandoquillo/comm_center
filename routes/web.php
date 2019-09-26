@@ -20,8 +20,6 @@ Auth::routes([
 
 Route::get('/dashboard', 'HomeController@dashboard');
 
-Route::get('/', 'HomeController@index')->name('home');
-
 Route::get('/','HomeController@index');
 
 Route::group(['middleware' => 'auth'], function () {
