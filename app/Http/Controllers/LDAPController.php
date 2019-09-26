@@ -141,11 +141,11 @@ class LDAPController extends Controller
     public function destroy($ldap)
     {
         //
-        $ccfc_user = \App\Ccfcldap::findOrFail($ldap)->first()->delete();
+        $ccfc_user = \App\Ccfcldap::findOrFail($ldap)->delete();
         
         return response()->json([
             'ldap' => $ccfc_user,
-            'message' => 'User LDAP has been deleted'
+            'message' => 'User LDAP has been deleted'.$ldap
         ]);
     }
 }
