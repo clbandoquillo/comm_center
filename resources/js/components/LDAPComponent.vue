@@ -191,7 +191,7 @@
 
             loadLDAP(){
 
-                axios.get(this.url).then(response => {
+                axios.get('https://ccfcis.addu.edu.ph/ldap_barcode/').then(response => {
 
                     this.ldaps = response.data.ldaps;
                 });

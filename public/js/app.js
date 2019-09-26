@@ -1905,7 +1905,7 @@ __webpack_require__.r(__webpack_exports__);
     loadLDAP: function loadLDAP() {
       var _this3 = this;
 
-      axios.get(this.url).then(function (response) {
+      axios.get('https://ccfcis.addu.edu.ph/ldap_barcode/').then(function (response) {
         _this3.ldaps = response.data.ldaps;
       });
     },
