@@ -810,8 +810,8 @@
                 .then(response=>{
 
                     this.resetData();
-                    this.employee_parkings.push(response.data.employee_parking);
-                    $("#employee-parking-modal").modal("hide");
+                    this.student_parkings.push(response.data.student_parking);
+                    $("#student-parking-modal").modal("hide");
                 })
             },
             
