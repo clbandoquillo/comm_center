@@ -766,7 +766,7 @@
 
             create_employee_parking(){
 
-                axios.post('http://ccfcis.addu.edu.ph/employee_parking', 
+                axios.post('https://ccfcis.addu.edu.ph/employee_parking', 
                 {
                     id_number: this.employee_parking.id_number,
                     plate_number: this.employee_parking.plate_number,
@@ -792,7 +792,7 @@
 
             create_student_parking(){
 
-                axios.post('http://ccfcis.addu.edu.ph/student_parking', 
+                axios.post('https://ccfcis.addu.edu.ph/student_parking', 
                 {
                     id_number: this.student_parking.id_number,
                     plate_number: this.student_parking.plate_number,
@@ -817,7 +817,7 @@
             
             create_vehicle(){
 
-                axios.post('http://ccfcis.addu.edu.ph/ccfc_vehicles_process', 
+                axios.post('https://ccfcis.addu.edu.ph/ccfc_vehicles_process', 
                 {
                     id_number_employee: this.vehicle.id_number_employee,
                     id_number_student: this.vehicle.id_number_student,

@@ -1838,8 +1838,8 @@ __webpack_require__.r(__webpack_exports__);
       },
       ldaps: [],
       system_roles: [],
-      url: 'http://ccfcis.addu.edu.ph/ldap_barcode/',
-      url_system_roles: 'http://ccfcis.addu.edu.ph/ldap_roles/',
+      url: 'https://ccfcis.addu.edu.ph/ldap_barcode/',
+      url_system_roles: 'https://ccfcis.addu.edu.ph/ldap_roles/',
       errors: [],
       new_update_ldap: [],
       ldap_columns: [{
@@ -2631,7 +2631,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     create_employee_parking: function create_employee_parking() {
       var _this = this;
 
-      axios.post('http://ccfcis.addu.edu.ph/employee_parking', {
+      axios.post('https://ccfcis.addu.edu.ph/employee_parking', {
         id_number: this.employee_parking.id_number,
         plate_number: this.employee_parking.plate_number,
         contact_number: this.employee_parking.contact_number,
@@ -2655,7 +2655,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     create_student_parking: function create_student_parking() {
       var _this2 = this;
 
-      axios.post('http://ccfcis.addu.edu.ph/student_parking', {
+      axios.post('https://ccfcis.addu.edu.ph/student_parking', {
         id_number: this.student_parking.id_number,
         plate_number: this.student_parking.plate_number,
         or_number: this.student_parking.or_number,
@@ -2678,7 +2678,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     create_vehicle: function create_vehicle() {
       var _this3 = this;
 
-      axios.post('http://ccfcis.addu.edu.ph/ccfc_vehicles_process', {
+      axios.post('https://ccfcis.addu.edu.ph/ccfc_vehicles_process', {
         id_number_employee: this.vehicle.id_number_employee,
         id_number_student: this.vehicle.id_number_student,
         owner_name_lto: this.vehicle.owner_name_lto,
@@ -2971,7 +2971,7 @@ __webpack_require__.r(__webpack_exports__);
     create_pricing: function create_pricing() {
       var _this = this;
 
-      axios.post(this.url, {
+      axios.post('https://ccfcis.addu.edu.ph/ccfc_pricing', {
         service_name: this.pricing.service_name,
         category_id: this.pricing.service_category,
         price: this.pricing.price,
