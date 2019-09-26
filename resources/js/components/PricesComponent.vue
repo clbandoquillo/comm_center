@@ -192,7 +192,7 @@
 
             create_pricing(){
 
-                axios.post(this.url, 
+                axios.post('https://ccfcis.addu.edu.ph/ccfc_pricing', 
                 {
                     service_name: this.pricing.service_name,
                     category_id: this.pricing.service_category,
