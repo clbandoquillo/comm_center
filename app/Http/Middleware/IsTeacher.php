@@ -18,7 +18,7 @@ class IsTeacher
     {
 
         if($request->user()->system_role_id !== 4){
-            return route('login');
+            return redirect()->back();
         }
         return $next($request);
     }

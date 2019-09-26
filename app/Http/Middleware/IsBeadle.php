@@ -16,9 +16,9 @@ class IsBeadle
      */
     public function handle($request, Closure $next)
     {
-        if($request->user()->system_role_id !== 2){
-            return route('login');
+        if($request->user()->system_role_id === 2 || checkIfBeadle($request->user()->student_code) === true){
+            return $next($request);
         }
-        return $next($request);
+        return redirect()->back();
     }
 }
