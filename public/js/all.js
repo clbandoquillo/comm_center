@@ -2469,7 +2469,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       student_names: [],
       pricings: [],
       vehicles: []
-    }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'https://ccfcis.addu.edu.ph/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'https://ccfcis.addu.edu.ph/student_parking/'), _defineProperty(_ref, "url_emp_list", 'https://ccfcis.addu.edu.ph/employee_names/'), _defineProperty(_ref, "url_pricing", 'https://ccfcis.addu.edu.ph/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'https://ccfcis.addu.edu.ph/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'https://ccfcis.addu.edu.ph/student_names'), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "vehicle_errors", []), _defineProperty(_ref, "columns", [{
+    }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'https://ccfcis.addu.edu.ph/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'https://ccfcis.addu.edu.ph/student_parking/'), _defineProperty(_ref, "url_emp_list", 'https://ccfcis.addu.edu.ph/employee_names/'), _defineProperty(_ref, "url_pricing", 'https://ccfcis.addu.edu.ph/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'https://ccfcis.addu.edu.ph/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'https://ccfcis.addu.edu.ph/student_names'), _defineProperty(_ref, "errors", []), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "columns", [{
       label: 'ID Number',
       field: 'id_number'
     }, {
@@ -2706,38 +2706,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         $("#vehicle-modal").modal("hide");
         toastr.success(response.data.message);
       })["catch"](function (error) {
-        _this3.vehicle_errors = [];
+        _this3.errors = [];
 
-        if (error.response.data.vehicle_errors.owner_name_lto) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.owner_name_lto[0]);
-        }
-
-        if (error.response.data.vehicle_errors.relation_to_owner) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.relation_to_owner[0]);
-        }
-
-        if (error.response.data.vehicle_errors.make) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.make[0]);
-        }
-
-        if (error.response.data.vehicle_errors.model) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.model[0]);
-        }
-
-        if (error.response.data.vehicle_errors.plate_number) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.plate_number[0]);
-        }
-
-        if (error.response.data.vehicle_errors.color) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.color[0]);
-        }
-
-        if (error.response.data.vehicle_errors.reg_expiry_date) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.reg_expiry_date[0]);
-        }
-
-        if (error.response.data.vehicle_errors.relation_to_owner) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.reg_expiry_date[0]);
+        if (error.response.data.errors.owner_name_lto) {
+          _this3.errors.push(error.response.data.errors.owner_name_lto[0]);
         }
       });
     },
@@ -56274,11 +56246,11 @@ var render = function() {
               _vm._m(4),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _vm.vehicle_errors.length > 0
+                _vm.errors.length > 0
                   ? _c("div", { staticClass: "alert alert-danger" }, [
                       _c(
                         "ul",
-                        _vm._l(_vm.vehicle_errors, function(vehicle_error) {
+                        _vm._l(_vm.errors, function(vehicle_error) {
                           return _c("li", [_vm._v(_vm._s(vehicle_error))])
                         }),
                         0

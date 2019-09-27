@@ -365,12 +365,12 @@
                     </div>
                     <div class="modal-body">
                         
-                        <div class="alert alert-danger" v-if="vehicle_errors.length > 0">
+                        <div class="alert alert-danger" v-if="errors.length > 0">
                             <ul>
-                                <li v-for="vehicle_error in vehicle_errors">{{ vehicle_error }}</li>
+                                <li v-for="vehicle_error in errors">{{ vehicle_error }}</li>
                             </ul>
                         </div>
-
+                        
                         <div class="form-group">
                             <div class="form-check form-check-inline">
                                 <input v-model="type" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="student">
@@ -544,8 +544,8 @@
                 url_vehicle_process: 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/',
                 url_vehicle_make: 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/',
                 url_student_name: 'https://ccfcis.addu.edu.ph/student_names',
+                errors: [],
                 type: '',
-                vehicle_errors: [],
 
                 columns: [
                     {
@@ -851,31 +851,10 @@
                 })
 
                 .catch(error=>{
-                    this.vehicle_errors = [];
-                    if(error.response.data.vehicle_errors.owner_name_lto){
-                        this.vehicle_errors.push(error.response.data.vehicle_errors.owner_name_lto[0]);
+                    this.errors = [];
+                    if(error.response.data.errors.owner_name_lto){
+                        this.errors.push(error.response.data.errors.owner_name_lto[0]);
                     }
-                   /* if(error.response.data.vehicle_errors.relation_to_owner){
-                        this.vehicle_errors.push(error.response.data.vehicle_errors.relation_to_owner[0]);
-                    }
-                    if(error.response.data.vehicle_errors.make){
-                        this.vehicle_errors.push(error.response.data.vehicle_errors.make[0]);
-                    }
-                    if(error.response.data.vehicle_errors.model){
-                        this.vehicle_errors.push(error.response.data.vehicle_errors.model[0]);
-                    }
-                    if(error.response.data.vehicle_errors.plate_number){
-                        this.vehicle_errors.push(error.response.data.vehicle_errors.plate_number[0]);
-                    }
-                    if(error.response.data.vehicle_errors.color){
-                        this.vehicle_errors.push(error.response.data.vehicle_errors.color[0]);
-                    }
-                    if(error.response.data.vehicle_errors.reg_expiry_date){
-                        this.vehicle_errors.push(error.response.data.vehicle_errors.reg_expiry_date[0]);
-                    }
-                    if(error.response.data.vehicle_errors.relation_to_owner){
-                        this.vehicle_errors.push(error.response.data.vehicle_errors.reg_expiry_date[0]);
-                    }*/
                 });
 
                 
