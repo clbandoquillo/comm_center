@@ -156,11 +156,6 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="alert alert-danger" v-if="errors.length > 0">
-                            <ul>
-                                <li v-for="error in errors">{{ error }}</li>
-                            </ul>
-                        </div>
                         
                         <div class="form-group">
                             <label for="name">Employee Name</label>
@@ -273,12 +268,6 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="alert alert-danger" v-if="errors.length > 0">
-                            <ul>
-                                <li v-for="error in errors">{{ error }}</li>
-                            </ul>
-                        </div>
-
                         <div class="form-group">
                             <label for="name">Student Name</label>
                             <v-select v-model="student_parking.id_number" label="label" :options="student_names" :reduce="student_names => student_names.studentcode"></v-select>
@@ -375,12 +364,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
-                        <div class="alert alert-danger" v-if="errors.length > 0">
-                            <ul>
-                                <li v-for="error in errors">{{ error }}</li>
-                            </ul>
-                        </div>
 
                         <div class="form-group">
                             <div class="form-check form-check-inline">
@@ -556,6 +539,8 @@
                 url_vehicle_make: 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/',
                 url_student_name: 'https://ccfcis.addu.edu.ph/student_names',
                 type: '',
+                vehicle_errors: [],
+
                 columns: [
                     {
                     label: 'ID Number',
@@ -806,17 +791,6 @@
                     $("#employee-parking-modal").modal("hide");
                     toastr.success(response.data.message);
                 })
-
-                .catch(error=>{
-                    
-                    this.errors = [];
-                    if(error.response.data.errors.id_number){
-                        this.errors.push(error.response.data.errors.id_number[0]);
-                    }
-                    if(error.response.data.errors.owner_name_lto){
-                        this.errors.push(error.response.data.errors.plate_number[0]);
-                    }
-                });
             },
 
             create_student_parking(){
@@ -843,17 +817,6 @@
                     $("#student-parking-modal").modal("hide");
                     toastr.success(response.data.message);
                 })
-
-                .catch(error=>{
-                    
-                    this.errors = [];
-                    if(error.response.data.errors.id_number_employee){
-                        this.errors.push(error.response.data.errors.id_number_employee[0]);
-                    }
-                    if(error.response.data.errors.owner_name_lto){
-                        this.errors.push(error.response.data.errors.owner_name_lto[0]);
-                    }
-                });
             },
             
             create_vehicle(){
@@ -882,13 +845,30 @@
                 })
 
                 .catch(error=>{
-                    
-                    this.errors = [];
-                    if(error.response.data.errors.id_number_employee){
-                        this.errors.push(error.response.data.errors.id_number_employee[0]);
+                    this.vehicle_errors = [];
+                    if(error.response.data.vehicle_errors.owner_name_lto){
+                        this.vehicle_errors.push(error.response.data.vehicle_errors.owner_name_lto[0]);
                     }
-                    if(error.response.data.errors.owner_name_lto){
-                        this.errors.push(error.response.data.errors.owner_name_lto[0]);
+                    if(error.response.data.vehicle_errors.relation_to_owner){
+                        this.vehicle_errors.push(error.response.data.vehicle_errors.relation_to_owner[0]);
+                    }
+                    if(error.response.data.vehicle_errors.make){
+                        this.vehicle_errors.push(error.response.data.vehicle_errors.make[0]);
+                    }
+                    if(error.response.data.vehicle_errors.model){
+                        this.vehicle_errors.push(error.response.data.vehicle_errors.model[0]);
+                    }
+                    if(error.response.data.vehicle_errors.plate_number){
+                        this.vehicle_errors.push(error.response.data.vehicle_errors.plate_number[0]);
+                    }
+                    if(error.response.data.vehicle_errors.color){
+                        this.vehicle_errors.push(error.response.data.vehicle_errors.color[0]);
+                    }
+                    if(error.response.data.vehicle_errors.reg_expiry_date){
+                        this.vehicle_errors.push(error.response.data.vehicle_errors.reg_expiry_date[0]);
+                    }
+                    if(error.response.data.vehicle_errors.relation_to_owner){
+                        this.vehicle_errors.push(error.response.data.vehicle_errors.reg_expiry_date[0]);
                     }
                 });
 
