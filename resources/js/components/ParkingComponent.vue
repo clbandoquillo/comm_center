@@ -156,6 +156,12 @@
                     </div>
                     <div class="modal-body">
 
+                        <div class="alert alert-danger" v-if="errors.length > 0">
+                            <ul>
+                                <li v-for="emp_parking_err in errors">{{ emp_parking_err }}</li>
+                            </ul>
+                        </div>
+
 
                         <div class="form-group">
                             <label for="name">Employee Name</label>
