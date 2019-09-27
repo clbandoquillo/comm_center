@@ -274,6 +274,13 @@
                     </div>
                     <div class="modal-body">
 
+                        <div class="alert alert-danger" v-if="errors.length > 0">
+                            <ul>
+                                <li v-for="stud_parking_err in errors">{{ stud_parking_err }}</li>
+                            </ul>
+                        </div>
+
+
                         <div class="form-group">
                             <label for="name">Student Name</label>
                             <v-select v-model="student_parking.id_number" label="label" :options="student_names" :reduce="student_names => student_names.studentcode"></v-select>
