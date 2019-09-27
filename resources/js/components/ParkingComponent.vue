@@ -1,7 +1,7 @@
 <template>
-    
+
     <div>
-        
+
         <nav>
 
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -11,11 +11,11 @@
                 <a class="nav-item nav-link" id="vehicles-master-tab" data-toggle="tab" href="#nav-vehicles-master" role="tab" aria-controls="nav-vehicles-master" aria-selected="false">Vehicles</a>
 
             </div>
-            
+
         </nav><br>
 
         <div class="tab-content" id='nav-tabContent'>
-            
+
             <div class="tab-pane fade show active" id="nav-employee-parking" role="tabpanel" aria-labelledby="employee-parking-tab">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -24,7 +24,7 @@
                                 <div class="card-header">Register Parking for Employees and University Vehicles</div>
                                 <div class="card-body">
                                     <button @click="employeeParkingModal" class="btn btn-primary btn-block">Register Parking for Employees and University Vehicles</button>
-                                    
+
                                     <vue-good-table
                                         :columns="columns"
                                         :rows="employee_parkings"
@@ -33,14 +33,14 @@
                                         trigger: 'enter',
                                         skipDiacritics: true,
                                         placeholder: 'Search this table'
-                                    }"> 
+                                    }">
                                         <template slot="table-row" slot-scope="props">
                                             <span v-if="props.column.field == 'actions'"><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button>
                                             </span>
                                             <span v-else>
                                             {{props.formattedRow[props.column.field]}}
                                             </span>
-                                        </template> 
+                                        </template>
                                     </vue-good-table>
 
                                 </div>
@@ -58,7 +58,7 @@
                                 <div class="card-header">Students Parking</div>
                                 <div class="card-body">
                                     <button @click="studentParkingModal" class="btn btn-primary btn-block">Register Student</button>
-                                    
+
                                     <vue-good-table
                                         :columns="columns_stud_parking"
                                         :rows="student_parkings"
@@ -67,14 +67,14 @@
                                         trigger: 'enter',
                                         skipDiacritics: true,
                                         placeholder: 'Search this table'
-                                    }"> 
+                                    }">
                                         <template slot="table-row" slot-scope="props">
                                             <span v-if="props.column.field == 'actions'"><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button>
                                             </span>
                                             <span v-else>
                                             {{props.formattedRow[props.column.field]}}
                                             </span>
-                                        </template> 
+                                        </template>
                                     </vue-good-table>
 
                                 </div>
@@ -82,8 +82,8 @@
                         </div>
                     </div>
                 </div>
-            </div>        
-            
+            </div>
+
             <div class="tab-pane fade" id="nav-vehicles-master" role="tabpanel" aria-labelledby="vehicles-master-tab">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -104,10 +104,10 @@
                                     </ul>
 
                                     <div class="tab-content" id="myTabContent">
-                                        
+
                                         <div class="tab-pane fade show active" id="employees" role="tabpanel" aria-labelledby="employees-tab">
-                                    
-                                            <vue-good-table 
+
+                                            <vue-good-table
                                                 :columns="columns_emp_vehicle"
                                                 :rows="vehicles"
                                                 :search-options="{
@@ -115,14 +115,14 @@
                                                 trigger: 'enter',
                                                 skipDiacritics: true,
                                                 placeholder: 'Search this table'
-                                            }"> 
+                                            }">
                                                 <template slot="table-row" slot-scope="props">
                                                     <span v-if="props.column.field == 'actions'"><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button>
                                                     </span>
                                                     <span v-else>
                                                     {{props.formattedRow[props.column.field]}}
                                                     </span>
-                                                </template> 
+                                                </template>
 
                                             </vue-good-table>
 
@@ -141,9 +141,9 @@
             </div>
 
         </div>
-        
 
-        
+
+
         <!-- Modal -->
         <div class="modal fade" id="employee-parking-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -156,11 +156,11 @@
                     </div>
                     <div class="modal-body">
 
-                        
+
                         <div class="form-group">
                             <label for="name">Employee Name</label>
                             <v-select v-model="employee_parking.id_number" label="emp_name" :options="employee_names" :reduce="employee_names => employee_names.id_no"></v-select>
-                            
+
                             <span> Selected: {{ employee_parking.id_number}}</span>
                         </div>
 
@@ -223,7 +223,7 @@
                                 <option v-for="(pricing, index) in pricings" v-bind:value="pricing.id">{{pricing.service_name}} - {{pricing.price}} - {{pricing.schoolyear}} - {{ pricing.semester}}</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="description">OR Number</label>
                             <input v-model="employee_parking.or_number" type="text" id="or_number" class="form-control">
@@ -271,7 +271,7 @@
                         <div class="form-group">
                             <label for="name">Student Name</label>
                             <v-select v-model="student_parking.id_number" label="label" :options="student_names" :reduce="student_names => student_names.studentcode"></v-select>
-                            
+
                             <span> Selected: {{ student_parking.id_number }}</span>
                         </div>
 
@@ -320,7 +320,7 @@
                                 <option v-for="(pricing, index) in pricings" v-bind:value="pricing.id">{{pricing.service_name}} - {{pricing.price}} - {{pricing.schoolyear}} - {{ pricing.semester}}</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="description">OR Number</label>
                             <input v-model="student_parking.or_number" type="text" id="or_number" class="form-control">
@@ -364,13 +364,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        
+
                         <div class="alert alert-danger" v-if="errors.length > 0">
                             <ul>
                                 <li v-for="vehicle_error in errors">{{ vehicle_error }}</li>
                             </ul>
                         </div>
-                        
+
                         <div class="form-group">
                             <div class="form-check form-check-inline">
                                 <input v-model="type" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="student">
@@ -383,18 +383,18 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="form-group" v-if="type == 'employee'">
                             <label for="name">Employee Name</label>
                             <v-select v-model="vehicle.id_number_employee" label="emp_name" :options="employee_names" :reduce="employee_names => employee_names.id_no"></v-select>
-                            
+
                             <span> Selected: {{ vehicle.id_number_employee}}</span>
                         </div>
 
                         <div class="form-group" v-if="type == 'student'">
                             <label for="name">Student Name</label>
                             <v-select v-model="vehicle.id_number_student" label="label" :options="student_names" :reduce="student_names => student_names.studentcode"></v-select>
-                            
+
                             <span> Selected: {{ vehicle.id_number_student }}</span>
                         </div>
 
@@ -464,14 +464,14 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
-    
+
 </template>
 
 <script>
-    
+
 
     export default{
 
@@ -774,7 +774,7 @@
 
             create_employee_parking(){
 
-                axios.post('https://ccfcis.addu.edu.ph/employee_parking', 
+                axios.post('https://ccfcis.addu.edu.ph/employee_parking',
                 {
                     id_number: this.employee_parking.id_number,
                     plate_number: this.employee_parking.plate_number,
@@ -797,11 +797,51 @@
                     $("#employee-parking-modal").modal("hide");
                     toastr.success(response.data.message);
                 })
+
+                .catch(error=>{
+                    this.errors = [];
+                    if(error.response.data.errors.id_number){
+                        this.errors.push(error.response.data.errors.id_number[0]);
+                    }
+                    if(error.response.data.errors.plate_number){
+                        this.errors.push(error.response.data.errors.plate_number[0]);
+                    }
+                    if(error.response.data.errors.contact_number){
+                        this.errors.push(error.response.data.errors.contact_number[0]);
+                    }
+                    if(error.response.data.errors.school_dept_office){
+                        this.errors.push(error.response.data.errors.school_dept_office[0]);
+                    }
+                    if(error.response.data.errors.license_number){
+                        this.errors.push(error.response.data.errors.license_number[0]);
+                    }
+                    if(error.response.data.errors.license_expiry_date){
+                        this.errors.push(error.response.data.errors.license_expiry_date[0]);
+                    }
+                    if(error.response.data.errors.schoolyear){
+                        this.errors.push(error.response.data.errors.schoolyear[0]);
+                    }
+                    if(error.response.data.errors.semester){
+                        this.errors.push(error.response.data.errors.semester[0]);
+                    }
+                    if(error.response.data.errors.parking_type){
+                        this.errors.push(error.response.data.errors.parking_type[0]);
+                    }
+                    if(error.response.data.errors.or_number){
+                        this.errors.push(error.response.data.errors.or_number[0]);
+                    }
+                    if(error.response.data.errors.sticker_number){
+                        this.errors.push(error.response.data.errors.sticker_number[0]);
+                    }
+                    if(error.response.data.errors.date_issued){
+                        this.errors.push(error.response.data.errors.date_issued[0]);
+                    }
+                });
             },
 
             create_student_parking(){
 
-                axios.post('https://ccfcis.addu.edu.ph/student_parking', 
+                axios.post('https://ccfcis.addu.edu.ph/student_parking',
                 {
                     id_number: this.student_parking.id_number,
                     plate_number: this.student_parking.plate_number,
@@ -824,10 +864,10 @@
                     toastr.success(response.data.message);
                 })
             },
-            
+
             create_vehicle(){
 
-                axios.post('https://ccfcis.addu.edu.ph/ccfc_vehicles_process', 
+                axios.post('https://ccfcis.addu.edu.ph/ccfc_vehicles_process',
                 {
                     id_number_employee: this.vehicle.id_number_employee,
                     id_number_student: this.vehicle.id_number_student,
@@ -878,7 +918,7 @@
                     }
                 });
 
-                
+
             },
 
             load_vehicle(){
@@ -890,7 +930,7 @@
             },
 
             load_employee_parking(){
-                
+
                 axios.get(this.url).then(response=>{
 
                     this.employee_parkings = response.data.employee_parkings;
@@ -898,7 +938,7 @@
             },
 
             load_student_parking(){
-                
+
                 axios.get(this.url_student_parking).then(response=>{
 
                     this.student_parkings = response.data.student_parkings;
@@ -906,7 +946,7 @@
             },
 
             load_employee_names(){
-                
+
                 axios.get(this.url_emp_list).then(response=>{
 
                     this.employee_names = response.data.employee_names;
@@ -915,7 +955,7 @@
             },
 
             load_student_names(){
-                
+
                 axios.get(this.url_student_name).then(response=>{
 
                     this.student_names = response.data.student_names;
@@ -924,7 +964,7 @@
             },
 
             load_pricing(){
-                
+
                 axios.get(this.url_pricing).then(response=>{
 
                     this.pricings = response.data.pricings;
@@ -933,7 +973,7 @@
             },
 
             load_vehicle_make(){
-                
+
                 axios.get(this.url_vehicle_make).then(response=>{
 
                     this.vehicle_make = response.data.vehicle_make;
@@ -966,7 +1006,7 @@
                 this.student_parking.parking_type = '';
                 this.student_parking.sticker_number = '';
                 this.student_parking.date_issued = '';
-                
+
                 this.vehicle.id_number_employee = '';
                 this.vehicle.id_number_student = '';
                 this.vehicle.owner_name_lto = '';
@@ -978,7 +1018,7 @@
                 this.vehicle.reg_expiry_date = '';
                 this.vehicle.lto_cr = '';
                 this.vehicle.lto_or = '';
-                
+
             }
         },
         mounted() {
