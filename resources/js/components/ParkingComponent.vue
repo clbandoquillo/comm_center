@@ -787,6 +787,7 @@
                     this.resetData();
                     this.employee_parkings.push(response.data.employee_parking);
                     $("#employee-parking-modal").modal("hide");
+                    toastr.success(response.data.message);
                 })
             },
 
@@ -812,6 +813,7 @@
                     this.resetData();
                     this.student_parkings.push(response.data.student_parking);
                     $("#student-parking-modal").modal("hide");
+                    toastr.success(response.data.message);
                 })
             },
             
@@ -837,7 +839,19 @@
                     this.resetData();
                     this.vehicles.push(response.data.vehicle);
                     $("#vehicle-modal").modal("hide");
+                    toastr.success(response.data.message);
                 })
+
+                .catch(error=>{
+                    
+                    this.errors = [];
+                    if(error.response.data.errors.id_number_employee){
+                        this.errors.push(error.response.data.errors.id_number_employee[0]);
+                    }
+                    if(error.response.data.errors.owner_name_lto){
+                        this.errors.push(error.response.data.errors.owner_name_lto[0]);
+                    }
+                });
 
                 
             },
@@ -915,6 +929,30 @@
                 this.employee_parking.or_number = '';
                 this.employee_parking.sticker_number = '';
                 this.employee_parking.date_issued = '';
+
+                this.student_parking.id_number = '';
+                this.student_parking.plate_number = '';
+                this.student_parking.or_number = '';
+                this.student_parking.contact_number = '';
+                this.student_parking.license_number = '';
+                this.student_parking.license_expiry_date = '';
+                this.student_parking.schoolyear = '';
+                this.student_parking.semester = '';
+                this.student_parking.parking_type = '';
+                this.student_parking.sticker_number = '';
+                this.student_parking.date_issued = '';
+                
+                this.vehicle.id_number_employee = '';
+                this.vehicle.id_number_student = '';
+                this.vehicle.owner_name_lto = '';
+                this.vehicle.relation_to_owner = '';
+                this.vehicle.make = '';
+                this.vehicle.model = '';
+                this.vehicle.plate_number = '';
+                this.vehicle.color = '';
+                this.vehicle.reg_expiry_date = '';
+                this.vehicle.lto_cr = '';
+                this.vehicle.lto_or = '';
                 
             }
         },

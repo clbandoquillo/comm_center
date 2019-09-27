@@ -2650,6 +2650,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.employee_parkings.push(response.data.employee_parking);
 
         $("#employee-parking-modal").modal("hide");
+        toastr.success(response.data.message);
       });
     },
     create_student_parking: function create_student_parking() {
@@ -2670,9 +2671,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }).then(function (response) {
         _this2.resetData();
 
-        _this2.employee_parkings.push(response.data.employee_parking);
+        _this2.student_parkings.push(response.data.student_parking);
 
-        $("#employee-parking-modal").modal("hide");
+        $("#student-parking-modal").modal("hide");
+        toastr.success(response.data.message);
       });
     },
     create_vehicle: function create_vehicle() {
@@ -2696,6 +2698,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this3.vehicles.push(response.data.vehicle);
 
         $("#vehicle-modal").modal("hide");
+        toastr.success(response.data.message);
+      })["catch"](function (error) {
+        _this3.errors = [];
+
+        if (error.response.data.errors.id_number_employee) {
+          _this3.errors.push(error.response.data.errors.id_number_employee[0]);
+        }
+
+        if (error.response.data.errors.owner_name_lto) {
+          _this3.errors.push(error.response.data.errors.owner_name_lto[0]);
+        }
       });
     },
     load_vehicle: function load_vehicle() {
@@ -2760,6 +2773,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.employee_parking.or_number = '';
       this.employee_parking.sticker_number = '';
       this.employee_parking.date_issued = '';
+      this.student_parking.id_number = '';
+      this.student_parking.plate_number = '';
+      this.student_parking.or_number = '';
+      this.student_parking.contact_number = '';
+      this.student_parking.license_number = '';
+      this.student_parking.license_expiry_date = '';
+      this.student_parking.schoolyear = '';
+      this.student_parking.semester = '';
+      this.student_parking.parking_type = '';
+      this.student_parking.sticker_number = '';
+      this.student_parking.date_issued = '';
+      this.vehicle.id_number_employee = '';
+      this.vehicle.id_number_student = '';
+      this.vehicle.owner_name_lto = '';
+      this.vehicle.relation_to_owner = '';
+      this.vehicle.make = '';
+      this.vehicle.model = '';
+      this.vehicle.plate_number = '';
+      this.vehicle.color = '';
+      this.vehicle.reg_expiry_date = '';
+      this.vehicle.lto_cr = '';
+      this.vehicle.lto_or = '';
     }
   },
   mounted: function mounted() {
@@ -70133,8 +70168,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\sites\CCFC\comm_center\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\sites\CCFC\comm_center\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Git\comm_center\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Git\comm_center\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
