@@ -2406,6 +2406,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -55191,6 +55196,18 @@ var render = function() {
               _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
+                _vm.errors.length > 0
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _c(
+                        "ul",
+                        _vm._l(_vm.errors, function(error) {
+                          return _c("li", [_vm._v(_vm._s(error))])
+                        }),
+                        0
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "form-group" },
@@ -70168,8 +70185,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\sites\CCFC\comm_center\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\sites\CCFC\comm_center\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Git\comm_center\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Git\comm_center\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
