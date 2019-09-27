@@ -2411,6 +2411,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -2656,6 +2668,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         $("#employee-parking-modal").modal("hide");
         toastr.success(response.data.message);
+      })["catch"](function (error) {
+        _this.errors = [];
+
+        if (error.response.data.errors.id_number_employee) {
+          _this.errors.push(error.response.data.errors.id_number_employee[0]);
+        }
+
+        if (error.response.data.errors.owner_name_lto) {
+          _this.errors.push(error.response.data.errors.owner_name_lto[0]);
+        }
       });
     },
     create_student_parking: function create_student_parking() {
@@ -2680,6 +2702,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         $("#student-parking-modal").modal("hide");
         toastr.success(response.data.message);
+      })["catch"](function (error) {
+        _this2.errors = [];
+
+        if (error.response.data.errors.id_number_employee) {
+          _this2.errors.push(error.response.data.errors.id_number_employee[0]);
+        }
+
+        if (error.response.data.errors.owner_name_lto) {
+          _this2.errors.push(error.response.data.errors.owner_name_lto[0]);
+        }
       });
     },
     create_vehicle: function create_vehicle() {
@@ -55751,6 +55783,18 @@ var render = function() {
               _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
+                _vm.errors.length > 0
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _c(
+                        "ul",
+                        _vm._l(_vm.errors, function(error) {
+                          return _c("li", [_vm._v(_vm._s(error))])
+                        }),
+                        0
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "form-group" },
@@ -56261,6 +56305,18 @@ var render = function() {
               _vm._m(4),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
+                _vm.errors.length > 0
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _c(
+                        "ul",
+                        _vm._l(_vm.errors, function(error) {
+                          return _c("li", [_vm._v(_vm._s(error))])
+                        }),
+                        0
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("div", { staticClass: "form-check form-check-inline" }, [
                     _c("input", {

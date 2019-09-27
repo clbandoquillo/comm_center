@@ -273,6 +273,12 @@
                     </div>
                     <div class="modal-body">
 
+                        <div class="alert alert-danger" v-if="errors.length > 0">
+                            <ul>
+                                <li v-for="error in errors">{{ error }}</li>
+                            </ul>
+                        </div>
+
                         <div class="form-group">
                             <label for="name">Student Name</label>
                             <v-select v-model="student_parking.id_number" label="label" :options="student_names" :reduce="student_names => student_names.studentcode"></v-select>
@@ -369,6 +375,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
+
+                        <div class="alert alert-danger" v-if="errors.length > 0">
+                            <ul>
+                                <li v-for="error in errors">{{ error }}</li>
+                            </ul>
+                        </div>
 
                         <div class="form-group">
                             <div class="form-check form-check-inline">
@@ -794,6 +806,17 @@
                     $("#employee-parking-modal").modal("hide");
                     toastr.success(response.data.message);
                 })
+
+                .catch(error=>{
+                    
+                    this.errors = [];
+                    if(error.response.data.errors.id_number_employee){
+                        this.errors.push(error.response.data.errors.id_number_employee[0]);
+                    }
+                    if(error.response.data.errors.owner_name_lto){
+                        this.errors.push(error.response.data.errors.owner_name_lto[0]);
+                    }
+                });
             },
 
             create_student_parking(){
@@ -820,6 +843,17 @@
                     $("#student-parking-modal").modal("hide");
                     toastr.success(response.data.message);
                 })
+
+                .catch(error=>{
+                    
+                    this.errors = [];
+                    if(error.response.data.errors.id_number_employee){
+                        this.errors.push(error.response.data.errors.id_number_employee[0]);
+                    }
+                    if(error.response.data.errors.owner_name_lto){
+                        this.errors.push(error.response.data.errors.owner_name_lto[0]);
+                    }
+                });
             },
             
             create_vehicle(){
