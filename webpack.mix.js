@@ -11,5 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+
+mix.js('resources/js/app.js', 'public/js/all.js')
+   .sass('resources/sass/app.scss', 'public/css')
+    .babel('public/js/all.js','public/js/app.js')
+    .babelConfig({
+        env: {
+            development: {
+                compact: false
+            }
+        },
+        plugins: [
+            '@babel/plugin-proposal-class-properties'
+        ]
+    });
