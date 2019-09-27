@@ -868,7 +868,42 @@
                     this.student_parkings.push(response.data.student_parking);
                     $("#student-parking-modal").modal("hide");
                     toastr.success(response.data.message);
-                })
+                }).catch(error=>{
+                    this.errors = [];
+                    if(error.response.data.errors.id_number){
+                        this.errors.push(error.response.data.errors.id_number[0]);
+                    }
+                    if(error.response.data.errors.plate_number){
+                        this.errors.push(error.response.data.errors.plate_number[0]);
+                    }
+                    if(error.response.data.errors.or_number){
+                        this.errors.push(error.response.data.errors.or_number[0]);
+                    }
+                    if(error.response.data.errors.contact_number){
+                        this.errors.push(error.response.data.errors.contact_number[0]);
+                    }
+                    if(error.response.data.errors.license_number){
+                        this.errors.push(error.response.data.errors.license_number[0]);
+                    }
+                    if(error.response.data.errors.license_expiry_date){
+                        this.errors.push(error.response.data.errors.license_expiry_date[0]);
+                    }
+                    if(error.response.data.errors.schoolyear){
+                        this.errors.push(error.response.data.errors.schoolyear[0]);
+                    }
+                    if(error.response.data.errors.semester){
+                        this.errors.push(error.response.data.errors.semester[0]);
+                    }
+                    if(error.response.data.errors.parking_type){
+                        this.errors.push(error.response.data.errors.parking_type[0]);
+                    }
+                    if(error.response.data.errors.sticker_number){
+                        this.errors.push(error.response.data.errors.sticker_number[0]);
+                    }
+                    if(error.response.data.errors.date_issued){
+                        this.errors.push(error.response.data.errors.date_issued[0]);
+                    }
+                });
             },
 
             create_vehicle(){
