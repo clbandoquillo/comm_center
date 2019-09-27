@@ -2707,6 +2707,12 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
     //
     //
     //
+    //
+    //
+    //
+    //
+    //
+    //
 
     /* harmony default export */
 
@@ -2956,6 +2962,56 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
 
             $("#employee-parking-modal").modal("hide");
             toastr.success(response.data.message);
+          })["catch"](function (error) {
+            _this.errors = [];
+
+            if (error.response.data.errors.id_number) {
+              _this.errors.push(error.response.data.errors.id_number[0]);
+            }
+
+            if (error.response.data.errors.plate_number) {
+              _this.errors.push(error.response.data.errors.plate_number[0]);
+            }
+
+            if (error.response.data.errors.contact_number) {
+              _this.errors.push(error.response.data.errors.contact_number[0]);
+            }
+
+            if (error.response.data.errors.school_dept_office) {
+              _this.errors.push(error.response.data.errors.school_dept_office[0]);
+            }
+
+            if (error.response.data.errors.license_number) {
+              _this.errors.push(error.response.data.errors.license_number[0]);
+            }
+
+            if (error.response.data.errors.license_expiry_date) {
+              _this.errors.push(error.response.data.errors.license_expiry_date[0]);
+            }
+
+            if (error.response.data.errors.schoolyear) {
+              _this.errors.push(error.response.data.errors.schoolyear[0]);
+            }
+
+            if (error.response.data.errors.semester) {
+              _this.errors.push(error.response.data.errors.semester[0]);
+            }
+
+            if (error.response.data.errors.parking_type) {
+              _this.errors.push(error.response.data.errors.parking_type[0]);
+            }
+
+            if (error.response.data.errors.or_number) {
+              _this.errors.push(error.response.data.errors.or_number[0]);
+            }
+
+            if (error.response.data.errors.sticker_number) {
+              _this.errors.push(error.response.data.errors.sticker_number[0]);
+            }
+
+            if (error.response.data.errors.date_issued) {
+              _this.errors.push(error.response.data.errors.date_issued[0]);
+            }
           });
         },
         create_student_parking: function create_student_parking() {
@@ -2980,6 +3036,52 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
 
             $("#student-parking-modal").modal("hide");
             toastr.success(response.data.message);
+          })["catch"](function (error) {
+            _this2.errors = [];
+
+            if (error.response.data.errors.id_number) {
+              _this2.errors.push(error.response.data.errors.id_number[0]);
+            }
+
+            if (error.response.data.errors.plate_number) {
+              _this2.errors.push(error.response.data.errors.plate_number[0]);
+            }
+
+            if (error.response.data.errors.or_number) {
+              _this2.errors.push(error.response.data.errors.or_number[0]);
+            }
+
+            if (error.response.data.errors.contact_number) {
+              _this2.errors.push(error.response.data.errors.contact_number[0]);
+            }
+
+            if (error.response.data.errors.license_number) {
+              _this2.errors.push(error.response.data.errors.license_number[0]);
+            }
+
+            if (error.response.data.errors.license_expiry_date) {
+              _this2.errors.push(error.response.data.errors.license_expiry_date[0]);
+            }
+
+            if (error.response.data.errors.schoolyear) {
+              _this2.errors.push(error.response.data.errors.schoolyear[0]);
+            }
+
+            if (error.response.data.errors.semester) {
+              _this2.errors.push(error.response.data.errors.semester[0]);
+            }
+
+            if (error.response.data.errors.parking_type) {
+              _this2.errors.push(error.response.data.errors.parking_type[0]);
+            }
+
+            if (error.response.data.errors.sticker_number) {
+              _this2.errors.push(error.response.data.errors.sticker_number[0]);
+            }
+
+            if (error.response.data.errors.date_issued) {
+              _this2.errors.push(error.response.data.errors.date_issued[0]);
+            }
           });
         },
         create_vehicle: function create_vehicle() {
@@ -55288,7 +55390,11 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         staticClass: "modal-content"
       }, [_vm._m(2), _vm._v(" "), _c("div", {
         staticClass: "modal-body"
-      }, [_c("div", {
+      }, [_vm.errors.length > 0 ? _c("div", {
+        staticClass: "alert alert-danger"
+      }, [_c("ul", _vm._l(_vm.errors, function (emp_parking_err) {
+        return _c("li", [_vm._v(_vm._s(emp_parking_err))]);
+      }), 0)]) : _vm._e(), _vm._v(" "), _c("div", {
         staticClass: "form-group"
       }, [_c("label", {
         attrs: {
