@@ -2671,12 +2671,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (error) {
         _this.errors = [];
 
-        if (error.response.data.errors.id_number_employee) {
-          _this.errors.push(error.response.data.errors.id_number_employee[0]);
+        if (error.response.data.errors.id_number) {
+          _this.errors.push(error.response.data.errors.id_number[0]);
         }
 
         if (error.response.data.errors.owner_name_lto) {
-          _this.errors.push(error.response.data.errors.owner_name_lto[0]);
+          _this.errors.push(error.response.data.errors.plate_number[0]);
         }
       });
     },

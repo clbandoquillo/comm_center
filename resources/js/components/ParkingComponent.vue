@@ -810,11 +810,11 @@
                 .catch(error=>{
                     
                     this.errors = [];
-                    if(error.response.data.errors.id_number_employee){
-                        this.errors.push(error.response.data.errors.id_number_employee[0]);
+                    if(error.response.data.errors.id_number){
+                        this.errors.push(error.response.data.errors.id_number[0]);
                     }
                     if(error.response.data.errors.owner_name_lto){
-                        this.errors.push(error.response.data.errors.owner_name_lto[0]);
+                        this.errors.push(error.response.data.errors.plate_number[0]);
                     }
                 });
             },
