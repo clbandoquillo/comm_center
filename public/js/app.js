@@ -2712,32 +2712,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this3.errors.push(error.response.data.errors.owner_name_lto[0]);
         }
 
-        if (error.response.data.vehicle_errors.relation_to_owner) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.relation_to_owner[0]);
+        if (error.response.data.errors.relation_to_owner) {
+          _this3.errors.push(error.response.data.errors.relation_to_owner[0]);
         }
 
-        if (error.response.data.vehicle_errors.make) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.make[0]);
+        if (error.response.data.errors.make) {
+          _this3.errors.push(error.response.data.errors.make[0]);
         }
 
-        if (error.response.data.vehicle_errors.model) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.model[0]);
+        if (error.response.data.errors.model) {
+          _this3.errors.push(error.response.data.errors.model[0]);
         }
 
-        if (error.response.data.vehicle_errors.plate_number) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.plate_number[0]);
+        if (error.response.data.errors.plate_number) {
+          _this3.errors.push(error.response.data.errors.plate_number[0]);
         }
 
-        if (error.response.data.vehicle_errors.color) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.color[0]);
+        if (error.response.data.errors.color) {
+          _this3.errors.push(error.response.data.errors.color[0]);
         }
 
-        if (error.response.data.vehicle_errors.reg_expiry_date) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.reg_expiry_date[0]);
+        if (error.response.data.errors.reg_expiry_date) {
+          _this3.errors.push(error.response.data.errors.reg_expiry_date[0]);
         }
 
-        if (error.response.data.vehicle_errors.relation_to_owner) {
-          _this3.vehicle_errors.push(error.response.data.vehicle_errors.reg_expiry_date[0]);
+        if (error.response.data.errors.relation_to_owner) {
+          _this3.errors.push(error.response.data.errors.reg_expiry_date[0]);
         }
       });
     },
