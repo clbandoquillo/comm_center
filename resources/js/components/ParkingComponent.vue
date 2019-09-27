@@ -364,7 +364,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
+                        
+                        <div class="alert alert-danger" v-if="errors.length > 0">
+                            <ul>
+                                <li v-for="error in errors">{{ error }}</li>
+                            </ul>
+                        </div>
+                        
                         <div class="form-group">
                             <div class="form-check form-check-inline">
                                 <input v-model="type" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="student">
