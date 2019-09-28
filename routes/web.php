@@ -62,5 +62,3 @@ Route::resource('/ldap_barcode','LDAPController');
 Route::delete('/ldap_barcode/{id}','LDAPController@destroy');
 });
 
-Auth::routes();
-
