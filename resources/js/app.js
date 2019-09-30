@@ -44,7 +44,12 @@ import Vuetify from "vuetify";*/
 
 Vue.component('v-select', vSelect)
 
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import BootstrapVue from 'bootstrap-vue'
+
+Vue.use(BootstrapVue)
 
 import VueGoodTablePlugin from 'vue-good-table';
 

@@ -5,27 +5,18 @@
         <div class="col-md-3">
             <button @click="createModal" class="btn btn-primary btn-block">Add New LDAP</button>
         </div><br>
+        
+        <b-table striped hover 
+            :fields="ldap_fields" 
+            :items="ldaps"
+            responsive="sm">
+        
+        <template v-slot:cell(actions)="row">
+            <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
+            <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
+        </template>
 
-        <vue-good-table
-            :columns="ldap_columns"
-            :rows="ldaps"
-            :search-options="{
-                enabled: true,
-                trigger: 'enter',
-                skipDiacritics: true,
-                searchFn: mySearchFn,
-                placeholder: 'Search LDAP',
-                externalQuery: searchQuery
-                }">
-                                        
-            <template slot="table-row" slot-scope="props">
-                <span v-if="props.column.field == 'actions'">
-                    <button @click="updateModal(props.index)" class="btn btn-info">Edit</button>
-                    <button @click="delete_ldap(props.index)" class="btn btn-danger">Delete</button>
-                </span>
-            </template> 
-            
-        </vue-good-table>
+        </b-table>
 
         <!-- Modal -->
         <div class="modal fade" id="create-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,10 +100,27 @@
 
                 ldaps: [],
                 system_roles: [],
-                url: 'https://ccfcis.addu.edu.ph/ldap_barcode/',
-                url_system_roles: 'https://ccfcis.addu.edu.ph/ldap_roles/',
+                url: 'http://127.0.0.1:8000/ldap_barcode/',
+                url_system_roles: 'http://127.0.0.1:8000/ldap_roles/',
                 errors: [],
                 new_update_ldap: [],
+                ldap_fields: [
+                    {
+                        key: 'ldap_username',
+                        label: 'LDAP Username',
+                        sortable: true
+                    },
+                    {
+                        key: 'id_number',
+                        label: 'ID Number',
+                        sortable: true
+                    },
+                    {
+                        key: 'actions',
+                        label: 'Actions',
+                        sortable: false
+                    }
+                ],
                 ldap_columns: [
                     {
                         label: 'LDAP Username',
@@ -126,6 +134,13 @@
                         label: 'Actions',
                         field: 'actions'
                     },
+                ],
+                
+                items: [
+                { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
+                { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
+                { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
+                { age: 38, first_name: 'Jami', last_name: 'Carney' }
                 ]
             }
         },
@@ -143,7 +158,7 @@
 
             create_ldap(){
 
-                axios.post('http://ccfcis.addu.edu.ph/ldap_barcode', 
+                axios.post('http://127.0.0.1:8000/ldap_barcode', 
                 {
                     ldap_username: this.ldap.ldap_username, 
                     id_number: this.ldap.id_number,
@@ -169,13 +184,13 @@
                 }).then(response=>{
 
                     $("#update-modal").modal("hide");
-                    toastr.success(response.data.message);
+                    //toastr.success(response.data.message);
+                    this.makeToast('success', this.new_update_ldap.ldap_username, this.new_update_ldap.id_number);
                 })
 
             },
 
             delete_ldap(index){
-
                 let confirmBox = confirm("Do you really want to delete this?");
                 if(confirmBox == true){
                     axios.delete(this.url + this.ldaps[index].id)
@@ -191,7 +206,7 @@
 
             loadLDAP(){
 
-                axios.get('https://ccfcis.addu.edu.ph/ldap_barcode/').then(response => {
+                axios.get('http://127.0.0.1:8000/ldap_barcode/').then(response => {
 
                     this.ldaps = response.data.ldaps;
                 });
@@ -208,6 +223,14 @@
             resetData(){
                 this.ldap.ldap_username = '';
                 this.ldap.id_number = '';
+            },
+            makeToast(variant = null, username, barcode) {
+                this.$bvToast.toast("The LDAP Username is \n /n"+username+" and the Employee Barcode is "+barcode+".", {
+                title: 'LDAP Successfully updated',
+                variant: variant,
+                autoHideDelay: 5000,
+                solid: true
+                })
             }
         },
 
