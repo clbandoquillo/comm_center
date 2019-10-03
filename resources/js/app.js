@@ -49,8 +49,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import BootstrapVue from 'bootstrap-vue'
 
-Vue.use(BootstrapVue)
+import { BTable } from 'bootstrap-vue'
+Vue.component('b-table', BTable)
 
+Vue.use(BootstrapVue)
+/*
 import VueGoodTablePlugin from 'vue-good-table';
 
 // import the styles 

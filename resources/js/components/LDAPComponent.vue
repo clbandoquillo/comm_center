@@ -6,17 +6,34 @@
             <button @click="createModal" class="btn btn-primary btn-block">Add New LDAP</button>
         </div><br>
         
-        <b-table striped hover 
+        <b-table id="my-table" striped hover 
             :fields="ldap_fields" 
-            :items="ldaps"
+            :items="filtered"
+            :per-page="perPage"
+            :current-page="currentPage"
+            :bordered=true
             responsive="sm">
-        
-        <template v-slot:cell(actions)="row">
-            <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
-            <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
-        </template>
-
+            
+            <template slot="top-row" slot-scope="{ fields }">
+                <td v-for="field in fields" :key="field.key">
+                <input v-if="field.label != 'Actions'" v-model="filters[field.key]" :placeholder="field.label">
+                </td>
+            </template>
+            
+            <template v-slot:cell(actions)="row">
+                <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
+                <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
+            </template>
+            
         </b-table>
+
+        <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        aria-controls="my-table"
+        ></b-pagination>
+        <p class="mt-3">Current Page: {{ currentPage }}</p>
 
         <!-- Modal -->
         <div class="modal fade" id="create-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -41,7 +58,7 @@
                     <div class="form-group">
                         <label for="description">System Role</label>
                         <select v-model="ldap.system_role" name="system_role" id="system_role" class="form-control" tabindex="-1">
-                            <option disabled value="" selected="" ></option>
+                            <option disabled value="" selected ></option>
                             <option v-for="(system_role, index) in system_roles" v-bind:value="system_role.id">{{system_role.role_name}}</option>
                         </select>
                     </div>
@@ -135,13 +152,31 @@
                         field: 'actions'
                     },
                 ],
-                
-                items: [
-                { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-                { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-                { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-                { age: 38, first_name: 'Jami', last_name: 'Carney' }
-                ]
+                filters: {
+                    ldap_username: '',
+                    id_number: ''
+                },
+                totalRows: 1,
+                currentPage: 1,
+                perPage: 5,
+                pageOptions: [5, 10, 15]
+            }
+        },
+
+        computed: {
+            filtered(){
+                const filtered = this.ldaps.filter(item =>{
+                    return Object.keys(this.filters).every(key =>
+                        String(item[key]).includes(this.filters[key]))
+                })
+                return filtered.length > 0 ? filtered : [{
+                    ldap_username: '',
+                    id_number: ''
+                }]
+            },
+
+            rows() {
+                return this.ldaps.length
             }
         },
 
@@ -157,7 +192,6 @@
             },
 
             create_ldap(){
-
                 axios.post('http://127.0.0.1:8000/ldap_barcode', 
                 {
                     ldap_username: this.ldap.ldap_username, 
@@ -167,10 +201,11 @@
 
                 .then(response=>{
 
-                    this.resetData();
                     this.ldaps.push(response.data.ldap);
                     $("#create-modal").modal("hide");
-                    toastr.success(response.data.message);
+                    this.makeToast('success', this.ldap.ldap_username, this.ldap.id_number, 'added');
+                    this.resetData();
+                    
                 })
             },
 
@@ -185,7 +220,7 @@
 
                     $("#update-modal").modal("hide");
                     //toastr.success(response.data.message);
-                    this.makeToast('success', this.new_update_ldap.ldap_username, this.new_update_ldap.id_number);
+                    this.makeToast('success', this.new_update_ldap.ldap_username, this.new_update_ldap.id_number, 'updated');
                 })
 
             },
@@ -224,9 +259,9 @@
                 this.ldap.ldap_username = '';
                 this.ldap.id_number = '';
             },
-            makeToast(variant = null, username, barcode) {
-                this.$bvToast.toast("The LDAP Username is \n /n"+username+" and the Employee Barcode is "+barcode+".", {
-                title: 'LDAP Successfully updated',
+            makeToast(variant = null, username, barcode, processType) {
+                this.$bvToast.toast("The LDAP Username: "+username+" Employee Barcode: "+barcode+".", {
+                title: "LDAP successfully "+processType+".",
                 variant: variant,
                 autoHideDelay: 5000,
                 solid: true
