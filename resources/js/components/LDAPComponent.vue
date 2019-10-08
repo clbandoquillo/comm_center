@@ -12,15 +12,16 @@
             :per-page="perPage"
             :current-page="currentPage"
             :bordered=true
-            responsive="sm">
-            
-            <template slot="top-row" slot-scope="{ fields }">
+            responsive="sm"
+            show-empty>
+
+            <template slot="top-row" slot-scope="{ fields }" v-if="ldaps.length > 0">
                 <td v-for="field in fields" :key="field.key">
                 <input v-if="field.label != 'Actions'" v-model="filters[field.key]" :placeholder="field.label">
                 </td>
             </template>
             
-            <template v-slot:cell(actions)="row">
+            <template v-slot:cell(actions)="row" v-if="ldaps.length > 0">
                 <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
                 <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
             </template>
@@ -83,14 +84,34 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <div class="form-group">
                         <label for="name">ADDUNET Username</label>
                         <input v-model="new_update_ldap.ldap_username" type="text" id="name" class="form-control">
                     </div>
+
                     <div class="form-group">
                         <label for="description">Barcode</label>
                         <input v-model="new_update_ldap.id_number" type="text" id="description" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                        <label for="description">System Role</label>
+                        <select v-model="new_update_ldap.system_role" name="system_role" id="system_role" class="form-control" tabindex="-1">
+                            <option disabled value="" selected ></option>
+                            <option v-for="(system_role, index) in system_roles" v-bind:value="system_role.id">{{system_role.role_name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Account Status</label>
+                        <select v-model="new_update_ldap.status" name="status" id="status" class="form-control" tabindex="-1">
+                            <option disabled value="" selected ></option>
+                            <option value="0">Inactive</option>
+                            <option value="1">Active</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -112,7 +133,8 @@
                 ldap:{
                     ldap_username: '',
                     id_number: '',
-                    system_role: ''
+                    system_role: '',
+                    status: '1',
                 },
 
                 ldaps: [],
@@ -197,6 +219,7 @@
                     ldap_username: this.ldap.ldap_username, 
                     id_number: this.ldap.id_number,
                     system_role: this.ldap.system_role,
+                    status: this.ldap.status
                 })
 
                 .then(response=>{
@@ -215,6 +238,8 @@
 
                     ldap_username: this.new_update_ldap.ldap_username,
                     id_number: this.new_update_ldap.id_number,
+                    system_role: this.new_update_ldap.system_role,
+                    status: this.new_update_ldap.status
 
                 }).then(response=>{
 
@@ -231,7 +256,8 @@
                     axios.delete(this.url + this.ldaps[index].id)
                         .then(response=>{
                             this.$delete(this.ldaps, index);
-                            toastr.success(response.data.message);
+                            //toastr.success(response.data.message);
+                            this.makeToast1('danger', response.data.message, 'deleted');
                         }).catch(error =>{
                             console.log("Could not delete for some reason")
                         });
@@ -259,8 +285,18 @@
                 this.ldap.ldap_username = '';
                 this.ldap.id_number = '';
             },
+
             makeToast(variant = null, username, barcode, processType) {
                 this.$bvToast.toast("The LDAP Username: "+username+" Employee Barcode: "+barcode+".", {
+                title: "LDAP successfully "+processType+".",
+                variant: variant,
+                autoHideDelay: 5000,
+                solid: true
+                })
+            },
+
+            makeToast1(variant = null, message, processType) {
+                this.$bvToast.toast(message, {
                 title: "LDAP successfully "+processType+".",
                 variant: variant,
                 autoHideDelay: 5000,

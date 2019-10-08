@@ -106,7 +106,28 @@
                                     <div class="tab-content" id="myTabContent">
 
                                         <div class="tab-pane fade show active" id="employees" role="tabpanel" aria-labelledby="employees-tab">
-
+        
+                                        <b-table 
+                                            responsive 
+                                            id="my-table" 
+                                            striped hover 
+                                            :items="vehicles"
+                                            :fields="columns_emp_vehicle"
+                                            show-empty>
+                                            <!--
+                                            <template slot="top-row" slot-scope="{ fields }" v-if="ldaps.length > 0">
+                                                <td v-for="field in fields" :key="field.key">
+                                                <input v-if="field.label != 'Actions'" v-model="filters[field.key]" :placeholder="field.label">
+                                                </td>
+                                            </template>-->
+                                            
+                                            <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                                <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
+                                                <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
+                                            </template>
+                                            
+                                        </b-table>
+                                            <!--
                                             <vue-good-table
                                                 :columns="columns_emp_vehicle"
                                                 :rows="vehicles"
@@ -124,7 +145,7 @@
                                                     </span>
                                                 </template>
 
-                                            </vue-good-table>
+                                            </vue-good-table>-->
 
                                         </div>
 
@@ -549,14 +570,14 @@
                 pricings: [],
                 vehicles: [],
                 vehicle_make: [],
-                url: 'https://ccfcis.addu.edu.ph/employee_parking/',
-                url_student_parking: 'https://ccfcis.addu.edu.ph/student_parking/',
-                url_emp_list: 'https://ccfcis.addu.edu.ph/employee_names/',
-                url_pricing: 'https://ccfcis.addu.edu.ph/ccfc_pricing_1/',
-                url_vehicle: 'https://ccfcis.addu.edu.ph/ccfc_vehicles/',
-                url_vehicle_process: 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/',
-                url_vehicle_make: 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/',
-                url_student_name: 'https://ccfcis.addu.edu.ph/student_names',
+                url: 'http://127.0.0.1:8000/employee_parking/',
+                url_student_parking: 'http://127.0.0.1:8000/student_parking/',
+                url_emp_list: 'http://127.0.0.1:8000/employee_names/',
+                url_pricing: 'http://127.0.0.1:8000/ccfc_pricing_1/',
+                url_vehicle: 'http://127.0.0.1:8000/ccfc_vehicles/',
+                url_vehicle_process: 'http://127.0.0.1:8000/ccfc_vehicles_process/',
+                url_vehicle_make: 'http://127.0.0.1:8000/ccfc_vehicle_make/',
+                url_student_name: 'http://127.0.0.1:8000/student_names',
                 errors: [],
                 type: '',
 
@@ -615,95 +636,117 @@
                 ],
                 columns_emp_vehicle:[
                     {
-                    label: 'Employsdfsdfsdfee Name',
-                    field: 'employee_name',
+                        label: 'Employee Name',
+                        key: 'employee_name',
+                        sortable: true
                     },
                     {
                         label: 'Owner Name Registered to LTO',
-                        field: 'owner_name_lto',
+                        key: 'owner_name_lto',
+                        sortable: true
                     },
                     {
                         label: 'Relation to Owner',
-                        field: 'relation_to_owner',
+                        key: 'relation_to_owner',
+                        sortable: true
                     },
                     {
                         label: 'Make',
-                        field: 'make',
+                        key: 'make',
+                        sortable: true
                     },
                     {
                         label: 'Model',
-                        field: 'model',
+                        key: 'model',
+                        sortable: true
                     },
                     {
                         label: 'Plate Number',
-                        field: 'plate_number',
+                        key: 'plate_number',
+                        sortable: true
                     },
                     {
                         label: 'Color',
-                        field: 'color',
+                        key: 'color',
+                        sortable: true
                     },
                     {
                         label: 'Vehicle Registration Expiry Date',
-                        field: 'reg_expiry_date',
+                        key: 'reg_expiry_date',
+                        sortable: true
                     },
                     {
                         label: 'LTO Official Receipt',
-                        field: 'lto_or',
+                        key: 'lto_or',
+                        sortable: true
                     },
                     {
                         label: 'LTO Certificate of Registration',
-                        field: 'lto_cr',
+                        key: 'lto_cr',
+                        sortable: true
                     },
                     {
                         label: 'Actions',
-                        field: 'actions',
+                        key: 'actions',
+                        sortable: false
                     }
                 ],
 
                 columns_stud_vehicle:[
                     {
-                    label: 'Student Name',
-                    field: 'student_name',
+                        label: 'Student Name',
+                        key: 'student_name',
+                        sortable: true
                     },
                     {
                         label: 'Owner Name Registered to LTO',
-                        field: 'owner_name_lto',
+                        key: 'owner_name_lto',
+                        sortable: true
                     },
                     {
                         label: 'Relation to Owner',
-                        field: 'relation_to_owner',
+                        key: 'relation_to_owner',
+                        sortable: true
                     },
                     {
                         label: 'Make',
-                        field: 'make',
+                        key: 'make',
+                        sortable: true
                     },
                     {
                         label: 'Model',
-                        field: 'model',
+                        key: 'model',
+                        sortable: true
                     },
                     {
                         label: 'Plate Number',
-                        field: 'plate_number',
+                        key: 'plate_number',
+                        sortable: true
                     },
                     {
                         label: 'Color',
-                        field: 'color',
+                        key: 'color',
+                        sortable: true
                     },
                     {
                         label: 'Vehicle Registration Expiry Date',
-                        field: 'reg_expiry_date',
+                        key: 'reg_expiry_date',
+                        sortable: true
                     },
                     {
                         label: 'LTO Official Receipt',
-                        field: 'lto_or',
+                        key: 'lto_or',
+                        sortable: true
                     },
                     {
                         label: 'LTO Certificate of Registration',
-                        field: 'lto_cr',
+                        key: 'lto_cr',
+                        sortable: true
                     },
                     {
                         label: 'Actions',
-                        field: 'actions',
+                        key: 'actions',
+                        sortable: false
                     }
                 ],
 
@@ -759,14 +802,17 @@
                     field: 'actions',
                     sortable: false,
                     },
-                ]
+                ],
+                filters: {
+
+                }
             }
         },
 
         methods: {
           getOptions(search, loading) {
             loading(true)
-            axios.get('https://ccfcis.addu.edu.ph/employee_names/')
+            axios.get('http://127.0.0.1:8000/employee_names/')
             },
 
             employeeParkingModal(){
@@ -787,7 +833,7 @@
 
             create_employee_parking(){
 
-                axios.post('https://ccfcis.addu.edu.ph/employee_parking',
+                axios.post('http://127.0.0.1:8000/employee_parking',
                 {
                     id_number: this.employee_parking.id_number,
                     plate_number: this.employee_parking.plate_number,
@@ -854,7 +900,7 @@
 
             create_student_parking(){
 
-                axios.post('https://ccfcis.addu.edu.ph/student_parking',
+                axios.post('http://127.0.0.1:8000/student_parking',
                 {
                     id_number: this.student_parking.id_number,
                     plate_number: this.student_parking.plate_number,
@@ -915,7 +961,7 @@
 
             create_vehicle(){
 
-                axios.post('https://ccfcis.addu.edu.ph/ccfc_vehicles_process',
+                axios.post('http://127.0.0.1:8000/ccfc_vehicles_process',
                 {
                     id_number_employee: this.vehicle.id_number_employee,
                     id_number_student: this.vehicle.id_number_student,

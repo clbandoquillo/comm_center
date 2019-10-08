@@ -64,13 +64,15 @@ class LDAPController extends Controller
 
             'ldap_username' => 'required',
             'id_number' => 'required',
-            'system_role' => 'required'
+            'system_role' => 'required',
+            'status' => 'required'
         ]);
 
         $ldap = $request->user()->ldap()->create([
             'ldap_username' => $request->ldap_username,
             'id_number' => $request->id_number,
-            'system_role' => $request->system_role
+            'system_role' => $request->system_role,
+            'status' => $request->status
 
         ]);
 
@@ -120,7 +122,9 @@ class LDAPController extends Controller
         $request->validate([
 
             'ldap_username' => 'required',
-            'id_number' => 'required'
+            'id_number' => 'required',
+            'system_role' => 'required',
+            'status' => 'required'
         ]);
 
         $ldap = $request->user()->ldap()->whereId($id)->update($request->all());
@@ -145,7 +149,7 @@ class LDAPController extends Controller
         
         return response()->json([
             'ldap' => $ccfc_user,
-            'message' => 'User LDAP has been deleted'.$ldap
+            'message' => 'User LDAP has been deleted'
         ]);
     }
 }

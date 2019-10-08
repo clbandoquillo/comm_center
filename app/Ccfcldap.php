@@ -11,6 +11,7 @@ class Ccfcldap extends Model
     protected $fillable = [
         'ldap_username',
         'id_number',
-        'system_role'
+        'system_role',
+        'status'
     ];
 }
