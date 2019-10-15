@@ -17,7 +17,7 @@
         <div class="tab-content" id='nav-tabContent'>
 
             <div class="tab-pane fade show active" id="nav-employee-parking" role="tabpanel" aria-labelledby="employee-parking-tab">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="card">
@@ -25,23 +25,27 @@
                                 <div class="card-body">
                                     <button @click="employeeParkingModal" class="btn btn-primary btn-block">Register Parking for Employees and University Vehicles</button>
 
-                                    <vue-good-table
-                                        :columns="columns"
-                                        :rows="employee_parkings"
-                                        :search-options="{
-                                        enabled: true,
-                                        trigger: 'enter',
-                                        skipDiacritics: true,
-                                        placeholder: 'Search this table'
-                                    }">
-                                        <template slot="table-row" slot-scope="props">
-                                            <span v-if="props.column.field == 'actions'"><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button>
-                                            </span>
-                                            <span v-else>
-                                            {{props.formattedRow[props.column.field]}}
-                                            </span>
+                                    <b-table 
+                                        responsive 
+                                        id="my-table" 
+                                        striped hover 
+                                        :items="filtered_emp_parking"
+                                        :fields="columns_emp_parking"
+                                        show-empty
+                                        >
+
+                                        <template slot="top-row" slot-scope="{ fields }" v-if="employee_parkings.length > 0">
+                                            <td v-for="field in fields" :key="field.key">
+                                            <input v-if="field.label == 'ID Number' || field.label == 'Middlename' || field.label == 'Lastname' || field.label == 'Firstname'" v-model="filters_ep[field.key]" :placeholder="field.label">
+                                            </td>
+                                        </template>    
+                                 
+                                        <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                            <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
+                                            <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
                                         </template>
-                                    </vue-good-table>
+                                            
+                                    </b-table>
 
                                 </div>
                             </div>
@@ -51,7 +55,7 @@
             </div>
 
             <div class="tab-pane fade" id="nav-student-parking" role="tabpanel" aria-labelledby="student-parking-tab">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="card">
@@ -85,7 +89,7 @@
             </div>
 
             <div class="tab-pane fade" id="nav-vehicles-master" role="tabpanel" aria-labelledby="vehicles-master-tab">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="card">
@@ -111,15 +115,15 @@
                                             responsive 
                                             id="my-table" 
                                             striped hover 
-                                            :items="vehicles"
+                                            :items="filtered"
                                             :fields="columns_emp_vehicle"
                                             show-empty>
-                                            <!--
-                                            <template slot="top-row" slot-scope="{ fields }" v-if="ldaps.length > 0">
+                                            
+                                            <template slot="top-row" slot-scope="{ fields }" v-if="vehicles.length > 0">
                                                 <td v-for="field in fields" :key="field.key">
-                                                <input v-if="field.label != 'Actions'" v-model="filters[field.key]" :placeholder="field.label">
+                                                <input v-if="field.label == 'Employee ID Number' || field.label == 'Plate Number' || field.label == 'Lastname' || field.label == 'Firstname'" v-model="filters[field.key]" :placeholder="field.label">
                                                 </td>
-                                            </template>-->
+                                            </template>
                                             
                                             <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
                                                 <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
@@ -170,7 +174,11 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Employees Parking Registration</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Employees Parking Registration for
+                            <font color="red" v-if="is_parking_period == 1">First Semester</font>
+                            <font color="red" v-if="is_parking_period == 2">Second Semester</font>
+                            <font color="red" v-if="is_parking_period == 3">Summer Semester</font>
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -236,7 +244,6 @@
                         <div class="form-group">
                             <label for="description">Semester</label>
                             <select v-model="employee_parking.semester" name="semester" id="semester" class="form-control" tabindex="-1">
-                                <option value="" selected="" ></option>
                                 <option value="1" selected="" >First Semester</option>
                                 <option value="2" selected="" >Second Semester</option>
                                 <option value="3" selected="" >Summer</option>
@@ -247,7 +254,7 @@
                             <label for="description">Parking Type</label>
                             <select v-model="employee_parking.parking_type" name="parking_type" id="parking_type" class="form-control" tabindex="-1">
                                 <option disabled value="" selected="" ></option>
-                                <option v-for="(pricing, index) in pricings" v-bind:value="pricing.id">{{pricing.service_name}} - {{pricing.price}} - {{pricing.schoolyear}} - {{ pricing.semester}}</option>
+                                <option v-for="(pricing, index) in pricings" v-bind:value="pricing.id">{{pricing.service_name}} - ₱{{pricing.price}} - SY: {{pricing.schoolyear}} - Semester {{ pricing.semester}}</option>
                             </select>
                         </div>
 
@@ -542,7 +549,7 @@
                     parking_type: '',
                     or_number: '',
                     sticker_number: '',
-                    date_issued: ''
+                    date_issued: new Date().toISOString().slice(0,10)
                 },
 
                 vehicle:{
@@ -580,64 +587,108 @@
                 url_student_name: 'http://127.0.0.1:8000/student_names',
                 errors: [],
                 type: '',
+                current_year: new Date().getFullYear(),
+                current_date: new Date().toISOString().slice(0,10),
+                first_period_start: new Date().getFullYear() + '-06-01',
+                first_period_end: new Date().getFullYear() + '-10-31',
+                second_period_start: new Date().getFullYear() + '-11-1',
+                second_period_end: new Date().getFullYear() + '-11-30',
+                summer_period_start: (new Date().getFullYear()) + '-3-1',
+                summer_period_end: (new Date().getFullYear()) + '-4-3',
+                semester: '',
 
-                columns: [
+                columns_emp_parking: [
                     {
                     label: 'ID Number',
-                    field: 'id_number',
+                    key: 'id_number',
+                    sortable: true
+                    },
+                    {
+                    label: 'Lastname',
+                    key: 'clast',
+                    sortable: true
+                    },
+                    {
+                    label: 'Firstname',
+                    key: 'cfirst',
+                    sortable: true
+                    },
+                    {
+                    label: 'Middlename',
+                    key: 'middle',
+                    sortable: true
                     },
                     {
                     label: 'Contact Number',
-                    field: 'contact_number',
+                    key: 'contact_number',
+                    sortable: true
                     },
                     {
                     label: 'School/Dept/Office',
-                    field: 'school_dept_office',
+                    key: 'school_dept_office',
+                    sortable: true
                     },
                     {
                     label: 'License Number',
-                    field: 'license_number',
+                    key: 'license_number',
+                    sortable: true
                     },
                     {
                     label: 'License Expiry Date',
-                    field: 'license_expiry_date',
+                    key: 'license_expiry_date',
                     type: 'date',
                     dateInputFormat: 'yyyy-MM-dd',
                     dateOutputFormat: 'MMM dd,yyyy',
+                    sortable: true
                     },
                     {
                     label: 'School Year',
-                    field: 'schoolyear',
+                    key: 'schoolyear',
+                    sortable: true
                     },
                     {
                     label: 'Semester',
-                    field: 'semester',
+                    key: 'semester',
+                    sortable: true
                     },
                     {
                     label: 'Parking Type',
-                    field: 'parking_type',
+                    key: 'service_name',
+                    sortable: true
                     },
                     {
                     label: 'Sticker Number',
-                    field: 'sticker_number',
+                    key: 'sticker_number',
+                    sortable: true
                     },
                     {
                     label: 'Date Issued',
-                    field: 'date_issued',
+                    key: 'date_issued',
                     type: 'date',
                     dateInputFormat: 'yyyy-MM-dd',
                     dateOutputFormat: 'MMM dd,yyyy',
+                    sortable: true
                     },
                     {
                     label: 'Actions',
-                    field: 'actions',
+                    key: 'actions',
                     sortable: false,
                     },
                 ],
                 columns_emp_vehicle:[
                     {
-                        label: 'Employee Name',
-                        key: 'employee_name',
+                        label: 'Employee ID Number',
+                        key: 'emp_id',
+                        sortable: true
+                    },
+                    {
+                        label: 'Lastname',
+                        key: 'clast',
+                        sortable: true
+                    },
+                    {
+                        label: 'Firstname',
+                        key: 'cfirst',
                         sortable: true
                     },
                     {
@@ -753,59 +804,113 @@
                 columns_stud_parking:[
                     {
                     label: 'ID Number',
-                    field: 'id_number',
+                    key: 'id_number',
                     },
                     {
                     label: 'Plate Number',
-                    field: 'plate_number',
+                    key: 'plate_number',
                     },
                     {
                     label: 'Contact Number',
-                    field: 'contact_number',
+                    key: 'contact_number',
                     },
                     {
                     label: 'License Number',
-                    field: 'license_number',
+                    key: 'license_number',
                     },
                     {
                     label: 'License Expiry Date',
-                    field: 'license_expiry_date',
+                    key: 'license_expiry_date',
                     type: 'date',
                     dateInputFormat: 'yyyy-MM-dd',
                     dateOutputFormat: 'MMM dd,yyyy',
                     },
                     {
                     label: 'School Year',
-                    field: 'schoolyear',
+                    key: 'schoolyear',
                     },
                     {
                     label: 'Semester',
-                    field: 'semester',
+                    key: 'semester',
                     },
                     {
                     label: 'Parking Type',
-                    field: 'parking_type',
+                    key: 'parking_type',
                     },
                     {
                     label: 'Sticker Number',
-                    field: 'sticker_number',
+                    key: 'sticker_number',
                     },
                     {
                     label: 'Date Issued',
-                    field: 'date_issued',
+                    key: 'date_issued',
                     type: 'date',
                     dateInputFormat: 'yyyy-MM-dd',
                     dateOutputFormat: 'MMM dd,yyyy',
                     },
                     {
                     label: 'Actions',
-                    field: 'actions',
+                    key: 'actions',
                     sortable: false,
                     },
                 ],
                 filters: {
 
+                },
+                filters_ep: {
+
                 }
+            }
+        },
+
+        computed: {
+            filtered(){
+                const filtered = this.vehicles.filter(item =>{
+                    return Object.keys(this.filters).every(key =>
+                        String(item[key]).includes(this.filters[key]))
+                })
+                return filtered.length > 0 ? filtered : [{
+                    emp_id: '',
+                    cfirst: '',
+                    clast: '',
+                    plate_number: ''
+                }]
+            },
+
+            filtered_emp_parking(){
+                const filtered_ep = this.employee_parkings.filter(item =>{
+                    return Object.keys(this.filters_ep).every(key =>
+                        String(item[key]).includes(this.filters_ep[key]))
+                })
+                return filtered_ep.length > 0 ? filtered_ep : [{
+                    id_number: '',
+                    cfirst: '',
+                    clast: '',
+                    middle: ''
+                }]
+            },
+
+            is_parking_period(){
+
+                if (this.current_date >= this.first_period_start && this.current_date <= this.first_period_end) {
+                    this.semester = 1;
+                    this.employee_parking.semester = 1;
+                    this.employee_parking.schoolyear = new Date().getFullYear();
+                } else if (this.current_date >= this.second_period_start && this.current_date <= this.second_period_end) {
+                    this.semester = 2;
+                    this.employee_parking.semester = 2;
+                    this.employee_parking.schoolyear = new Date().getFullYear();
+                } else if (this.current_date >= this.summer_period_start && this.current_date <= this.summer_period_end) {
+                    this.semester = 3;
+                    this.employee_parking.semester = 3;
+                    this.employee_parking.schoolyear = new Date().getFullYear() - 1;
+                }
+
+                return this.semester// + ' ' + this.current_date + ' ' + this.summer_period_start
+            },
+
+            rows() {
+                return this.vehicles.length, this.employee_parkings.length
             }
         },
 

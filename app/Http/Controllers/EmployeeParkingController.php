@@ -16,7 +16,7 @@ class EmployeeParkingController extends Controller
     public function index()
     {
        /* dd("it works!");*/
-        $employee_parkings = DB::select(DB::raw("select * from employee_parking;"));
+        $employee_parkings = DB::select(DB::raw("exec Employee_Parking_List"));
         return response()->json([
             'employee_parkings'=>$employee_parkings
         ], 200);
@@ -58,8 +58,8 @@ class EmployeeParkingController extends Controller
         $employee_parking = $request->user()->employeeParking()->create([
             'id_number' => $request->id_number,
             'plate_number' => $request->plate_number,
-            'school_dept_office' => $request->contact_number,
-            'contact_number' => $request->school_dept_office,
+            'school_dept_office' => $request->school_dept_office,
+            'contact_number' => $request->contact_number,
             'license_number' => $request->license_number,
             'license_expiry_date' => $request->license_expiry_date,
             'schoolyear' => $request->schoolyear,

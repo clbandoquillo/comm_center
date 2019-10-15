@@ -33,18 +33,7 @@ class StudentController extends Controller
             $semester = 3;
         }
 
-        $student_names = DB::select(DB::raw("SELECT rg.studentcode, CONCAT(sm.lastname, ', ', sm.firstname, ' ', sm.middlename) as student_name, CONCAT(rg.studentcode, ' ',sm.lastname, ', ', sm.firstname, ' ', sm.middlename, ' - ', rg.yearlevel, ' ', sm.latestcourse) as label, rg.yearlevel, sm.latestcourse, rg.DIVISIONCODE
-
-        FROM [ACADEMIC].[dbo].[registration] rg
-      
-        inner join [ACADEMIC].[dbo].[studentmaster] sm on sm.code = rg.studentcode
-      
-        where rg.semester = '$semester' 
-        and rg.schoolyear = '$current_year' 
-        and rg.ENROLMENTSTATUS != 4 
-        and sm.LATESTDIVISION not in
-            ('ADMN', 'FYDP', 'NSTP', 'OTHE', 'PE', 'PHILO',
-            'RSTC', 'THEO') order by lastname asc "));
+        $student_names = DB::select(DB::raw("Student_List '$semester', '$current_year'"));
         /*$employee_name = DB::select(DB::raw("select * from ACADEMIC.dbo.studentmaster"));*/
         return response()->json([
             'student_names'=>$student_names

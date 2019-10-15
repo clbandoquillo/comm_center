@@ -2841,6 +2841,13 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
     //
     //
     //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
 
     /* harmony default export */
 
@@ -2878,7 +2885,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             parking_type: '',
             or_number: '',
             sticker_number: '',
-            date_issued: ''
+            date_issued: new Date().toISOString().slice(0, 10)
           },
           vehicle: {
             id_number_employee: '',
@@ -2902,49 +2909,79 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           student_names: [],
           pricings: [],
           vehicles: []
-        }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'http://127.0.0.1:8000/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'http://127.0.0.1:8000/student_parking/'), _defineProperty(_ref, "url_emp_list", 'http://127.0.0.1:8000/employee_names/'), _defineProperty(_ref, "url_pricing", 'http://127.0.0.1:8000/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'http://127.0.0.1:8000/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'http://127.0.0.1:8000/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'http://127.0.0.1:8000/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'http://127.0.0.1:8000/student_names'), _defineProperty(_ref, "errors", []), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "columns", [{
+        }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'http://127.0.0.1:8000/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'http://127.0.0.1:8000/student_parking/'), _defineProperty(_ref, "url_emp_list", 'http://127.0.0.1:8000/employee_names/'), _defineProperty(_ref, "url_pricing", 'http://127.0.0.1:8000/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'http://127.0.0.1:8000/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'http://127.0.0.1:8000/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'http://127.0.0.1:8000/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'http://127.0.0.1:8000/student_names'), _defineProperty(_ref, "errors", []), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "current_year", new Date().getFullYear()), _defineProperty(_ref, "current_date", new Date().toISOString().slice(0, 10)), _defineProperty(_ref, "first_period_start", new Date().getFullYear() + '-06-01'), _defineProperty(_ref, "first_period_end", new Date().getFullYear() + '-10-31'), _defineProperty(_ref, "second_period_start", new Date().getFullYear() + '-11-1'), _defineProperty(_ref, "second_period_end", new Date().getFullYear() + '-11-30'), _defineProperty(_ref, "summer_period_start", new Date().getFullYear() + '-3-1'), _defineProperty(_ref, "summer_period_end", new Date().getFullYear() + '-4-3'), _defineProperty(_ref, "semester", ''), _defineProperty(_ref, "columns_emp_parking", [{
           label: 'ID Number',
-          field: 'id_number'
+          key: 'id_number',
+          sortable: true
+        }, {
+          label: 'Lastname',
+          key: 'clast',
+          sortable: true
+        }, {
+          label: 'Firstname',
+          key: 'cfirst',
+          sortable: true
+        }, {
+          label: 'Middlename',
+          key: 'middle',
+          sortable: true
         }, {
           label: 'Contact Number',
-          field: 'contact_number'
+          key: 'contact_number',
+          sortable: true
         }, {
           label: 'School/Dept/Office',
-          field: 'school_dept_office'
+          key: 'school_dept_office',
+          sortable: true
         }, {
           label: 'License Number',
-          field: 'license_number'
+          key: 'license_number',
+          sortable: true
         }, {
           label: 'License Expiry Date',
-          field: 'license_expiry_date',
+          key: 'license_expiry_date',
           type: 'date',
           dateInputFormat: 'yyyy-MM-dd',
-          dateOutputFormat: 'MMM dd,yyyy'
+          dateOutputFormat: 'MMM dd,yyyy',
+          sortable: true
         }, {
           label: 'School Year',
-          field: 'schoolyear'
+          key: 'schoolyear',
+          sortable: true
         }, {
           label: 'Semester',
-          field: 'semester'
+          key: 'semester',
+          sortable: true
         }, {
           label: 'Parking Type',
-          field: 'parking_type'
+          key: 'service_name',
+          sortable: true
         }, {
           label: 'Sticker Number',
-          field: 'sticker_number'
+          key: 'sticker_number',
+          sortable: true
         }, {
           label: 'Date Issued',
-          field: 'date_issued',
+          key: 'date_issued',
           type: 'date',
           dateInputFormat: 'yyyy-MM-dd',
-          dateOutputFormat: 'MMM dd,yyyy'
+          dateOutputFormat: 'MMM dd,yyyy',
+          sortable: true
         }, {
           label: 'Actions',
-          field: 'actions',
+          key: 'actions',
           sortable: false
         }]), _defineProperty(_ref, "columns_emp_vehicle", [{
-          label: 'Employee Name',
-          key: 'employee_name',
+          label: 'Employee ID Number',
+          key: 'emp_id',
+          sortable: true
+        }, {
+          label: 'Lastname',
+          key: 'clast',
+          sortable: true
+        }, {
+          label: 'Firstname',
+          key: 'cfirst',
           sortable: true
         }, {
           label: 'Owner Name Registered to LTO',
@@ -3032,45 +3069,97 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           sortable: false
         }]), _defineProperty(_ref, "columns_stud_parking", [{
           label: 'ID Number',
-          field: 'id_number'
+          key: 'id_number'
         }, {
           label: 'Plate Number',
-          field: 'plate_number'
+          key: 'plate_number'
         }, {
           label: 'Contact Number',
-          field: 'contact_number'
+          key: 'contact_number'
         }, {
           label: 'License Number',
-          field: 'license_number'
+          key: 'license_number'
         }, {
           label: 'License Expiry Date',
-          field: 'license_expiry_date',
+          key: 'license_expiry_date',
           type: 'date',
           dateInputFormat: 'yyyy-MM-dd',
           dateOutputFormat: 'MMM dd,yyyy'
         }, {
           label: 'School Year',
-          field: 'schoolyear'
+          key: 'schoolyear'
         }, {
           label: 'Semester',
-          field: 'semester'
+          key: 'semester'
         }, {
           label: 'Parking Type',
-          field: 'parking_type'
+          key: 'parking_type'
         }, {
           label: 'Sticker Number',
-          field: 'sticker_number'
+          key: 'sticker_number'
         }, {
           label: 'Date Issued',
-          field: 'date_issued',
+          key: 'date_issued',
           type: 'date',
           dateInputFormat: 'yyyy-MM-dd',
           dateOutputFormat: 'MMM dd,yyyy'
         }, {
           label: 'Actions',
-          field: 'actions',
+          key: 'actions',
           sortable: false
-        }]), _defineProperty(_ref, "filters", {}), _ref;
+        }]), _defineProperty(_ref, "filters", {}), _defineProperty(_ref, "filters_ep", {}), _ref;
+      },
+      computed: {
+        filtered: function filtered() {
+          var _this = this;
+
+          var filtered = this.vehicles.filter(function (item) {
+            return Object.keys(_this.filters).every(function (key) {
+              return String(item[key]).includes(_this.filters[key]);
+            });
+          });
+          return filtered.length > 0 ? filtered : [{
+            emp_id: '',
+            cfirst: '',
+            clast: '',
+            plate_number: ''
+          }];
+        },
+        filtered_emp_parking: function filtered_emp_parking() {
+          var _this2 = this;
+
+          var filtered_ep = this.employee_parkings.filter(function (item) {
+            return Object.keys(_this2.filters_ep).every(function (key) {
+              return String(item[key]).includes(_this2.filters_ep[key]);
+            });
+          });
+          return filtered_ep.length > 0 ? filtered_ep : [{
+            id_number: '',
+            cfirst: '',
+            clast: '',
+            middle: ''
+          }];
+        },
+        is_parking_period: function is_parking_period() {
+          if (this.current_date >= this.first_period_start && this.current_date <= this.first_period_end) {
+            this.semester = 1;
+            this.employee_parking.semester = 1;
+            this.employee_parking.schoolyear = new Date().getFullYear();
+          } else if (this.current_date >= this.second_period_start && this.current_date <= this.second_period_end) {
+            this.semester = 2;
+            this.employee_parking.semester = 2;
+            this.employee_parking.schoolyear = new Date().getFullYear();
+          } else if (this.current_date >= this.summer_period_start && this.current_date <= this.summer_period_end) {
+            this.semester = 3;
+            this.employee_parking.semester = 3;
+            this.employee_parking.schoolyear = new Date().getFullYear() - 1;
+          }
+
+          return this.semester; // + ' ' + this.current_date + ' ' + this.summer_period_start
+        },
+        rows: function rows() {
+          return this.vehicles.length, this.employee_parkings.length;
+        }
       },
       methods: {
         getOptions: function getOptions(search, loading) {
@@ -3090,7 +3179,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           $("#vehicle-modal").modal("show");
         },
         create_employee_parking: function create_employee_parking() {
-          var _this = this;
+          var _this3 = this;
 
           axios.post('http://127.0.0.1:8000/employee_parking', {
             id_number: this.employee_parking.id_number,
@@ -3106,66 +3195,66 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             sticker_number: this.employee_parking.sticker_number,
             date_issued: this.employee_parking.date_issued
           }).then(function (response) {
-            _this.resetData();
+            _this3.resetData();
 
-            _this.employee_parkings.push(response.data.employee_parking);
+            _this3.employee_parkings.push(response.data.employee_parking);
 
             $("#employee-parking-modal").modal("hide");
             toastr.success(response.data.message);
           })["catch"](function (error) {
-            _this.errors = [];
+            _this3.errors = [];
 
             if (error.response.data.errors.id_number) {
-              _this.errors.push(error.response.data.errors.id_number[0]);
+              _this3.errors.push(error.response.data.errors.id_number[0]);
             }
 
             if (error.response.data.errors.plate_number) {
-              _this.errors.push(error.response.data.errors.plate_number[0]);
+              _this3.errors.push(error.response.data.errors.plate_number[0]);
             }
 
             if (error.response.data.errors.contact_number) {
-              _this.errors.push(error.response.data.errors.contact_number[0]);
+              _this3.errors.push(error.response.data.errors.contact_number[0]);
             }
 
             if (error.response.data.errors.school_dept_office) {
-              _this.errors.push(error.response.data.errors.school_dept_office[0]);
+              _this3.errors.push(error.response.data.errors.school_dept_office[0]);
             }
 
             if (error.response.data.errors.license_number) {
-              _this.errors.push(error.response.data.errors.license_number[0]);
+              _this3.errors.push(error.response.data.errors.license_number[0]);
             }
 
             if (error.response.data.errors.license_expiry_date) {
-              _this.errors.push(error.response.data.errors.license_expiry_date[0]);
+              _this3.errors.push(error.response.data.errors.license_expiry_date[0]);
             }
 
             if (error.response.data.errors.schoolyear) {
-              _this.errors.push(error.response.data.errors.schoolyear[0]);
+              _this3.errors.push(error.response.data.errors.schoolyear[0]);
             }
 
             if (error.response.data.errors.semester) {
-              _this.errors.push(error.response.data.errors.semester[0]);
+              _this3.errors.push(error.response.data.errors.semester[0]);
             }
 
             if (error.response.data.errors.parking_type) {
-              _this.errors.push(error.response.data.errors.parking_type[0]);
+              _this3.errors.push(error.response.data.errors.parking_type[0]);
             }
 
             if (error.response.data.errors.or_number) {
-              _this.errors.push(error.response.data.errors.or_number[0]);
+              _this3.errors.push(error.response.data.errors.or_number[0]);
             }
 
             if (error.response.data.errors.sticker_number) {
-              _this.errors.push(error.response.data.errors.sticker_number[0]);
+              _this3.errors.push(error.response.data.errors.sticker_number[0]);
             }
 
             if (error.response.data.errors.date_issued) {
-              _this.errors.push(error.response.data.errors.date_issued[0]);
+              _this3.errors.push(error.response.data.errors.date_issued[0]);
             }
           });
         },
         create_student_parking: function create_student_parking() {
-          var _this2 = this;
+          var _this4 = this;
 
           axios.post('http://127.0.0.1:8000/student_parking', {
             id_number: this.student_parking.id_number,
@@ -3180,62 +3269,62 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             sticker_number: this.student_parking.sticker_number,
             date_issued: this.student_parking.date_issued
           }).then(function (response) {
-            _this2.resetData();
+            _this4.resetData();
 
-            _this2.student_parkings.push(response.data.student_parking);
+            _this4.student_parkings.push(response.data.student_parking);
 
             $("#student-parking-modal").modal("hide");
             toastr.success(response.data.message);
           })["catch"](function (error) {
-            _this2.errors = [];
+            _this4.errors = [];
 
             if (error.response.data.errors.id_number) {
-              _this2.errors.push(error.response.data.errors.id_number[0]);
+              _this4.errors.push(error.response.data.errors.id_number[0]);
             }
 
             if (error.response.data.errors.plate_number) {
-              _this2.errors.push(error.response.data.errors.plate_number[0]);
+              _this4.errors.push(error.response.data.errors.plate_number[0]);
             }
 
             if (error.response.data.errors.or_number) {
-              _this2.errors.push(error.response.data.errors.or_number[0]);
+              _this4.errors.push(error.response.data.errors.or_number[0]);
             }
 
             if (error.response.data.errors.contact_number) {
-              _this2.errors.push(error.response.data.errors.contact_number[0]);
+              _this4.errors.push(error.response.data.errors.contact_number[0]);
             }
 
             if (error.response.data.errors.license_number) {
-              _this2.errors.push(error.response.data.errors.license_number[0]);
+              _this4.errors.push(error.response.data.errors.license_number[0]);
             }
 
             if (error.response.data.errors.license_expiry_date) {
-              _this2.errors.push(error.response.data.errors.license_expiry_date[0]);
+              _this4.errors.push(error.response.data.errors.license_expiry_date[0]);
             }
 
             if (error.response.data.errors.schoolyear) {
-              _this2.errors.push(error.response.data.errors.schoolyear[0]);
+              _this4.errors.push(error.response.data.errors.schoolyear[0]);
             }
 
             if (error.response.data.errors.semester) {
-              _this2.errors.push(error.response.data.errors.semester[0]);
+              _this4.errors.push(error.response.data.errors.semester[0]);
             }
 
             if (error.response.data.errors.parking_type) {
-              _this2.errors.push(error.response.data.errors.parking_type[0]);
+              _this4.errors.push(error.response.data.errors.parking_type[0]);
             }
 
             if (error.response.data.errors.sticker_number) {
-              _this2.errors.push(error.response.data.errors.sticker_number[0]);
+              _this4.errors.push(error.response.data.errors.sticker_number[0]);
             }
 
             if (error.response.data.errors.date_issued) {
-              _this2.errors.push(error.response.data.errors.date_issued[0]);
+              _this4.errors.push(error.response.data.errors.date_issued[0]);
             }
           });
         },
         create_vehicle: function create_vehicle() {
-          var _this3 = this;
+          var _this5 = this;
 
           axios.post('http://127.0.0.1:8000/ccfc_vehicles_process', {
             id_number_employee: this.vehicle.id_number_employee,
@@ -3250,95 +3339,95 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             lto_cr: this.vehicle.lto_cr,
             lto_or: this.vehicle.lto_or
           }).then(function (response) {
-            _this3.resetData();
+            _this5.resetData();
 
-            _this3.vehicles.push(response.data.vehicle);
+            _this5.vehicles.push(response.data.vehicle);
 
             $("#vehicle-modal").modal("hide");
             toastr.success(response.data.message);
           })["catch"](function (error) {
-            _this3.errors = [];
+            _this5.errors = [];
 
             if (error.response.data.errors.owner_name_lto) {
-              _this3.errors.push(error.response.data.errors.owner_name_lto[0]);
+              _this5.errors.push(error.response.data.errors.owner_name_lto[0]);
             }
 
             if (error.response.data.errors.relation_to_owner) {
-              _this3.errors.push(error.response.data.errors.relation_to_owner[0]);
+              _this5.errors.push(error.response.data.errors.relation_to_owner[0]);
             }
 
             if (error.response.data.errors.make) {
-              _this3.errors.push(error.response.data.errors.make[0]);
+              _this5.errors.push(error.response.data.errors.make[0]);
             }
 
             if (error.response.data.errors.model) {
-              _this3.errors.push(error.response.data.errors.model[0]);
+              _this5.errors.push(error.response.data.errors.model[0]);
             }
 
             if (error.response.data.errors.plate_number) {
-              _this3.errors.push(error.response.data.errors.plate_number[0]);
+              _this5.errors.push(error.response.data.errors.plate_number[0]);
             }
 
             if (error.response.data.errors.color) {
-              _this3.errors.push(error.response.data.errors.color[0]);
+              _this5.errors.push(error.response.data.errors.color[0]);
             }
 
             if (error.response.data.errors.reg_expiry_date) {
-              _this3.errors.push(error.response.data.errors.reg_expiry_date[0]);
+              _this5.errors.push(error.response.data.errors.reg_expiry_date[0]);
             }
 
             if (error.response.data.errors.relation_to_owner) {
-              _this3.errors.push(error.response.data.errors.reg_expiry_date[0]);
+              _this5.errors.push(error.response.data.errors.reg_expiry_date[0]);
             }
           });
         },
         load_vehicle: function load_vehicle() {
-          var _this4 = this;
+          var _this6 = this;
 
           axios.get(this.url_vehicle).then(function (response) {
-            _this4.vehicles = response.data.vehicles;
+            _this6.vehicles = response.data.vehicles;
           });
         },
         load_employee_parking: function load_employee_parking() {
-          var _this5 = this;
+          var _this7 = this;
 
           axios.get(this.url).then(function (response) {
-            _this5.employee_parkings = response.data.employee_parkings;
+            _this7.employee_parkings = response.data.employee_parkings;
           });
         },
         load_student_parking: function load_student_parking() {
-          var _this6 = this;
+          var _this8 = this;
 
           axios.get(this.url_student_parking).then(function (response) {
-            _this6.student_parkings = response.data.student_parkings;
+            _this8.student_parkings = response.data.student_parkings;
           });
         },
         load_employee_names: function load_employee_names() {
-          var _this7 = this;
+          var _this9 = this;
 
           axios.get(this.url_emp_list).then(function (response) {
-            _this7.employee_names = response.data.employee_names;
+            _this9.employee_names = response.data.employee_names;
           });
         },
         load_student_names: function load_student_names() {
-          var _this8 = this;
+          var _this10 = this;
 
           axios.get(this.url_student_name).then(function (response) {
-            _this8.student_names = response.data.student_names;
+            _this10.student_names = response.data.student_names;
           });
         },
         load_pricing: function load_pricing() {
-          var _this9 = this;
+          var _this11 = this;
 
           axios.get(this.url_pricing).then(function (response) {
-            _this9.pricings = response.data.pricings;
+            _this11.pricings = response.data.pricings;
           });
         },
         load_vehicle_make: function load_vehicle_make() {
-          var _this10 = this;
+          var _this12 = this;
 
           axios.get(this.url_vehicle_make).then(function (response) {
-            _this10.vehicle_make = response.data.vehicle_make;
+            _this12.vehicle_make = response.data.vehicle_make;
           });
         },
         resetData: function resetData() {
@@ -3583,8 +3672,8 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           },
           pricings: [],
           services: [],
-          url: 'https://ccfcis.addu.edu.ph/ccfc_pricing',
-          url_services: 'https://ccfcis.addu.edu.ph/ccfc_services'
+          url: 'http://127.0.0.1:8000/ccfc_pricing',
+          url_services: 'http://127.0.0.1:8000/ccfc_services'
         };
       },
       methods: {
@@ -3594,7 +3683,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         create_pricing: function create_pricing() {
           var _this = this;
 
-          axios.post('https://ccfcis.addu.edu.ph/ccfc_pricing', {
+          axios.post('http://127.0.0.1:8000/ccfc_pricing', {
             service_name: this.pricing.service_name,
             category_id: this.pricing.service_category,
             price: this.pricing.price,
@@ -96397,7 +96486,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           "aria-labelledby": "employee-parking-tab"
         }
       }, [_c("div", {
-        staticClass: "container"
+        staticClass: "container-fluid"
       }, [_c("div", {
         staticClass: "row justify-content-center"
       }, [_c("div", {
@@ -96413,37 +96502,68 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         on: {
           click: _vm.employeeParkingModal
         }
-      }, [_vm._v("Register Parking for Employees and University Vehicles")]), _vm._v(" "), _c("vue-good-table", {
+      }, [_vm._v("Register Parking for Employees and University Vehicles")]), _vm._v(" "), _c("b-table", {
         attrs: {
-          columns: _vm.columns,
-          rows: _vm.employee_parkings,
-          "search-options": {
-            enabled: true,
-            trigger: "enter",
-            skipDiacritics: true,
-            placeholder: "Search this table"
-          }
+          responsive: "",
+          id: "my-table",
+          striped: "",
+          hover: "",
+          items: _vm.filtered_emp_parking,
+          fields: _vm.columns_emp_parking,
+          "show-empty": ""
         },
         scopedSlots: _vm._u([{
-          key: "table-row",
-          fn: function fn(props) {
-            return [props.column.field == "actions" ? _c("span", [_c("button", {
+          key: "top-row",
+          fn: function fn(ref) {
+            var fields = ref.fields;
+            return _vm.employee_parkings.length > 0 ? _vm._l(fields, function (field) {
+              return _c("td", {
+                key: field.key
+              }, [field.label == "ID Number" || field.label == "Middlename" || field.label == "Lastname" || field.label == "Firstname" ? _c("input", {
+                directives: [{
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filters_ep[field.key],
+                  expression: "filters_ep[field.key]"
+                }],
+                attrs: {
+                  placeholder: field.label
+                },
+                domProps: {
+                  value: _vm.filters_ep[field.key]
+                },
+                on: {
+                  input: function input($event) {
+                    if ($event.target.composing) {
+                      return;
+                    }
+
+                    _vm.$set(_vm.filters_ep, field.key, $event.target.value);
+                  }
+                }
+              }) : _vm._e()]);
+            }) : undefined;
+          }
+        }, _vm.vehicles.length > 0 ? {
+          key: "cell(actions)",
+          fn: function fn(row) {
+            return [_c("button", {
               staticClass: "btn btn-info",
               on: {
                 click: function click($event) {
-                  return _vm.updateModal(_vm.index);
+                  return _vm.updateModal(row.index);
                 }
               }
-            }, [_vm._v("Edit")]), _c("button", {
+            }, [_vm._v("Edit")]), _vm._v(" "), _c("button", {
               staticClass: "btn btn-danger",
               on: {
                 click: function click($event) {
-                  return _vm.deleteTask(_vm.index);
+                  return _vm.delete_ldap(row.index);
                 }
               }
-            }, [_vm._v("Delete")])]) : _c("span", [_vm._v("\n                                        " + _vm._s(props.formattedRow[props.column.field]) + "\n                                        ")])];
+            }, [_vm._v("Delete")])];
           }
-        }])
+        } : null], null, true)
       })], 1)])])])])]), _vm._v(" "), _c("div", {
         staticClass: "tab-pane fade",
         attrs: {
@@ -96452,7 +96572,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           "aria-labelledby": "student-parking-tab"
         }
       }, [_c("div", {
-        staticClass: "container"
+        staticClass: "container-fluid"
       }, [_c("div", {
         staticClass: "row justify-content-center"
       }, [_c("div", {
@@ -96507,7 +96627,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           "aria-labelledby": "vehicles-master-tab"
         }
       }, [_c("div", {
-        staticClass: "container"
+        staticClass: "container-fluid"
       }, [_c("div", {
         staticClass: "row justify-content-center"
       }, [_c("div", {
@@ -96541,11 +96661,43 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           id: "my-table",
           striped: "",
           hover: "",
-          items: _vm.vehicles,
+          items: _vm.filtered,
           fields: _vm.columns_emp_vehicle,
           "show-empty": ""
         },
-        scopedSlots: _vm._u([_vm.vehicles.length > 0 ? {
+        scopedSlots: _vm._u([{
+          key: "top-row",
+          fn: function fn(ref) {
+            var fields = ref.fields;
+            return _vm.vehicles.length > 0 ? _vm._l(fields, function (field) {
+              return _c("td", {
+                key: field.key
+              }, [field.label == "Employee ID Number" || field.label == "Plate Number" || field.label == "Lastname" || field.label == "Firstname" ? _c("input", {
+                directives: [{
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filters[field.key],
+                  expression: "filters[field.key]"
+                }],
+                attrs: {
+                  placeholder: field.label
+                },
+                domProps: {
+                  value: _vm.filters[field.key]
+                },
+                on: {
+                  input: function input($event) {
+                    if ($event.target.composing) {
+                      return;
+                    }
+
+                    _vm.$set(_vm.filters, field.key, $event.target.value);
+                  }
+                }
+              }) : _vm._e()]);
+            }) : undefined;
+          }
+        }, _vm.vehicles.length > 0 ? {
           key: "cell(actions)",
           fn: function fn(row) {
             return [_c("button", {
@@ -96588,7 +96740,26 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         }
       }, [_c("div", {
         staticClass: "modal-content"
-      }, [_vm._m(2), _vm._v(" "), _c("div", {
+      }, [_c("div", {
+        staticClass: "modal-header"
+      }, [_c("h5", {
+        staticClass: "modal-title",
+        attrs: {
+          id: "exampleModalLabel"
+        }
+      }, [_vm._v("Employees Parking Registration for\n                        "), _vm.is_parking_period == 1 ? _c("font", {
+        attrs: {
+          color: "red"
+        }
+      }, [_vm._v("First Semester")]) : _vm._e(), _vm._v(" "), _vm.is_parking_period == 2 ? _c("font", {
+        attrs: {
+          color: "red"
+        }
+      }, [_vm._v("Second Semester")]) : _vm._e(), _vm._v(" "), _vm.is_parking_period == 3 ? _c("font", {
+        attrs: {
+          color: "red"
+        }
+      }, [_vm._v("Summer Semester")]) : _vm._e()], 1), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("div", {
         staticClass: "modal-body"
       }, [_vm.errors.length > 0 ? _c("div", {
         staticClass: "alert alert-danger"
@@ -96836,11 +97007,6 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         }
       }, [_c("option", {
         attrs: {
-          value: "",
-          selected: ""
-        }
-      }), _vm._v(" "), _c("option", {
-        attrs: {
           value: "1",
           selected: ""
         }
@@ -96896,7 +97062,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           domProps: {
             value: pricing.id
           }
-        }, [_vm._v(_vm._s(pricing.service_name) + " - " + _vm._s(pricing.price) + " - " + _vm._s(pricing.schoolyear) + " - " + _vm._s(pricing.semester))]);
+        }, [_vm._v(_vm._s(pricing.service_name) + " - ₱" + _vm._s(pricing.price) + " - SY: " + _vm._s(pricing.schoolyear) + " - Semester " + _vm._s(pricing.semester))]);
       })], 2)]), _vm._v(" "), _c("div", {
         staticClass: "form-group"
       }, [_c("label", {
@@ -97949,14 +98115,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
-        staticClass: "modal-header"
-      }, [_c("h5", {
-        staticClass: "modal-title",
-        attrs: {
-          id: "exampleModalLabel"
-        }
-      }, [_vm._v("Employees Parking Registration")]), _vm._v(" "), _c("button", {
+      return _c("button", {
         staticClass: "close",
         attrs: {
           type: "button",
@@ -97967,7 +98126,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         attrs: {
           "aria-hidden": "true"
         }
-      }, [_vm._v("×")])])]);
+      }, [_vm._v("×")])]);
     }, function () {
       var _vm = this;
 
