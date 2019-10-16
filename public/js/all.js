@@ -2553,6 +2553,57 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -2609,8 +2660,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       employee_names: [],
       student_names: [],
       pricings: [],
-      vehicles: []
-    }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'http://127.0.0.1:8000/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'http://127.0.0.1:8000/student_parking/'), _defineProperty(_ref, "url_emp_list", 'http://127.0.0.1:8000/employee_names/'), _defineProperty(_ref, "url_pricing", 'http://127.0.0.1:8000/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'http://127.0.0.1:8000/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'http://127.0.0.1:8000/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'http://127.0.0.1:8000/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'http://127.0.0.1:8000/student_names'), _defineProperty(_ref, "errors", []), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "current_year", new Date().getFullYear()), _defineProperty(_ref, "current_date", new Date().toISOString().slice(0, 10)), _defineProperty(_ref, "first_period_start", new Date().getFullYear() + '-06-01'), _defineProperty(_ref, "first_period_end", new Date().getFullYear() + '-10-31'), _defineProperty(_ref, "second_period_start", new Date().getFullYear() + '-11-1'), _defineProperty(_ref, "second_period_end", new Date().getFullYear() + '-11-30'), _defineProperty(_ref, "summer_period_start", new Date().getFullYear() + '-3-1'), _defineProperty(_ref, "summer_period_end", new Date().getFullYear() + '-4-3'), _defineProperty(_ref, "semester", ''), _defineProperty(_ref, "columns_emp_parking", [{
+      vehicles: [],
+      emp_vehicles: [],
+      stud_vehicles: []
+    }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'http://127.0.0.1:8000/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'http://127.0.0.1:8000/student_parking/'), _defineProperty(_ref, "url_emp_list", 'http://127.0.0.1:8000/employee_names/'), _defineProperty(_ref, "url_pricing", 'http://127.0.0.1:8000/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'http://127.0.0.1:8000/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'http://127.0.0.1:8000/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'http://127.0.0.1:8000/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'http://127.0.0.1:8000/student_names'), _defineProperty(_ref, "errors", []), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "current_year", new Date().getFullYear()), _defineProperty(_ref, "current_date", new Date().toISOString().slice(0, 10)), _defineProperty(_ref, "first_period_start", new Date().getFullYear() + '-06-01'), _defineProperty(_ref, "first_period_end", new Date().getFullYear() + '-10-31'), _defineProperty(_ref, "second_period_start", new Date().getFullYear() + '-11-1'), _defineProperty(_ref, "second_period_end", new Date().getFullYear() + '-11-30'), _defineProperty(_ref, "summer_period_start", new Date().getFullYear() + '-3-1'), _defineProperty(_ref, "summer_period_end", new Date().getFullYear() + '-4-3'), _defineProperty(_ref, "semester", ''), _defineProperty(_ref, "image", 'img/loader1.gif'), _defineProperty(_ref, "loading", false), _defineProperty(_ref, "columns_emp_parking", [{
       label: 'ID Number',
       key: 'id_number',
       sortable: true
@@ -2725,8 +2778,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       key: 'actions',
       sortable: false
     }]), _defineProperty(_ref, "columns_stud_vehicle", [{
-      label: 'Student Name',
-      key: 'student_name',
+      label: 'Student ID Number',
+      key: 'stud_id',
+      sortable: true
+    }, {
+      label: 'Lastname',
+      key: 'lastname',
+      sortable: true
+    }, {
+      label: 'Firstname',
+      key: 'firstname',
+      sortable: true
+    }, {
+      label: 'Middlename',
+      key: 'middlename',
       sortable: true
     }, {
       label: 'Owner Name Registered to LTO',
@@ -2772,6 +2837,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       label: 'ID Number',
       key: 'id_number'
     }, {
+      label: 'Lastname',
+      key: 'lastname'
+    }, {
+      label: 'Firstname',
+      key: 'firstname'
+    }, {
+      label: 'Middlename',
+      key: 'middlename'
+    }, {
       label: 'Plate Number',
       key: 'plate_number'
     }, {
@@ -2794,7 +2868,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       key: 'semester'
     }, {
       label: 'Parking Type',
-      key: 'parking_type'
+      key: 'service_name'
     }, {
       label: 'Sticker Number',
       key: 'sticker_number'
@@ -2808,13 +2882,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       label: 'Actions',
       key: 'actions',
       sortable: false
-    }]), _defineProperty(_ref, "filters", {}), _defineProperty(_ref, "filters_ep", {}), _ref;
+    }]), _defineProperty(_ref, "filters", {}), _defineProperty(_ref, "filters_ep", {}), _defineProperty(_ref, "filters_stud", {}), _defineProperty(_ref, "totalRows", 1), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "perPage", 5), _defineProperty(_ref, "pageOptions", [5, 10, 15]), _ref;
   },
   computed: {
-    filtered: function filtered() {
+    filtered_emp_vehicle: function filtered_emp_vehicle() {
       var _this = this;
 
-      var filtered = this.vehicles.filter(function (item) {
+      var filtered = this.emp_vehicles.filter(function (item) {
         return Object.keys(_this.filters).every(function (key) {
           return String(item[key]).includes(_this.filters[key]);
         });
@@ -2826,12 +2900,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         plate_number: ''
       }];
     },
-    filtered_emp_parking: function filtered_emp_parking() {
+    filtered_stud_vehicle: function filtered_stud_vehicle() {
       var _this2 = this;
 
+      var filtered = this.stud_vehicles.filter(function (item) {
+        return Object.keys(_this2.filters).every(function (key) {
+          return String(item[key]).includes(_this2.filters[key]);
+        });
+      });
+      return filtered.length > 0 ? filtered : [{
+        stud_id: '',
+        firstname: '',
+        lastname: '',
+        plate_number: ''
+      }];
+    },
+    filtered_emp_parking: function filtered_emp_parking() {
+      var _this3 = this;
+
       var filtered_ep = this.employee_parkings.filter(function (item) {
-        return Object.keys(_this2.filters_ep).every(function (key) {
-          return String(item[key]).includes(_this2.filters_ep[key]);
+        return Object.keys(_this3.filters_ep).every(function (key) {
+          return String(item[key]).includes(_this3.filters_ep[key]);
         });
       });
       return filtered_ep.length > 0 ? filtered_ep : [{
@@ -2841,19 +2930,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         middle: ''
       }];
     },
+    filtered_stud_parking: function filtered_stud_parking() {
+      var _this4 = this;
+
+      var filtered_stud = this.student_parkings.filter(function (item) {
+        return Object.keys(_this4.filters_stud).every(function (key) {
+          return String(item[key]).includes(_this4.filters_stud[key]);
+        });
+      });
+      return filtered_stud.length > 0 ? filtered_stud : [{
+        id_number: '',
+        firstname: '',
+        lastname: '',
+        middlename: ''
+      }];
+    },
     is_parking_period: function is_parking_period() {
       if (this.current_date >= this.first_period_start && this.current_date <= this.first_period_end) {
         this.semester = 1;
         this.employee_parking.semester = 1;
         this.employee_parking.schoolyear = new Date().getFullYear();
+        this.student_parking.semester = 1;
+        this.student_parking.schoolyear = new Date().getFullYear();
       } else if (this.current_date >= this.second_period_start && this.current_date <= this.second_period_end) {
         this.semester = 2;
         this.employee_parking.semester = 2;
         this.employee_parking.schoolyear = new Date().getFullYear();
+        this.student_parking.semester = 2;
+        this.student_parking.schoolyear = new Date().getFullYear();
       } else if (this.current_date >= this.summer_period_start && this.current_date <= this.summer_period_end) {
         this.semester = 3;
         this.employee_parking.semester = 3;
         this.employee_parking.schoolyear = new Date().getFullYear() - 1;
+        this.student_parking.semester = 3;
+        this.student_parking.schoolyear = new Date().getFullYear() - 1;
       }
 
       return this.semester; // + ' ' + this.current_date + ' ' + this.summer_period_start
@@ -2880,7 +2990,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       $("#vehicle-modal").modal("show");
     },
     create_employee_parking: function create_employee_parking() {
-      var _this3 = this;
+      var _this5 = this;
 
       axios.post('http://127.0.0.1:8000/employee_parking', {
         id_number: this.employee_parking.id_number,
@@ -2896,66 +3006,69 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         sticker_number: this.employee_parking.sticker_number,
         date_issued: this.employee_parking.date_issued
       }).then(function (response) {
-        _this3.resetData();
+        _this5.resetData();
 
-        _this3.employee_parkings.push(response.data.employee_parking);
+        _this5.employee_parkings.push(response.data.employee_parking);
 
-        $("#employee-parking-modal").modal("hide");
-        toastr.success(response.data.message);
+        $("#employee-parking-modal").modal("hide"); //toastr.success(response.data.message);
+
+        _this5.load_employee_parking();
+
+        _this5.makeToastEP('success', response.data.message, 'added');
       })["catch"](function (error) {
-        _this3.errors = [];
+        _this5.errors = [];
 
         if (error.response.data.errors.id_number) {
-          _this3.errors.push(error.response.data.errors.id_number[0]);
+          _this5.errors.push(error.response.data.errors.id_number[0]);
         }
 
         if (error.response.data.errors.plate_number) {
-          _this3.errors.push(error.response.data.errors.plate_number[0]);
+          _this5.errors.push(error.response.data.errors.plate_number[0]);
         }
 
         if (error.response.data.errors.contact_number) {
-          _this3.errors.push(error.response.data.errors.contact_number[0]);
+          _this5.errors.push(error.response.data.errors.contact_number[0]);
         }
 
         if (error.response.data.errors.school_dept_office) {
-          _this3.errors.push(error.response.data.errors.school_dept_office[0]);
+          _this5.errors.push(error.response.data.errors.school_dept_office[0]);
         }
 
         if (error.response.data.errors.license_number) {
-          _this3.errors.push(error.response.data.errors.license_number[0]);
+          _this5.errors.push(error.response.data.errors.license_number[0]);
         }
 
         if (error.response.data.errors.license_expiry_date) {
-          _this3.errors.push(error.response.data.errors.license_expiry_date[0]);
+          _this5.errors.push(error.response.data.errors.license_expiry_date[0]);
         }
 
         if (error.response.data.errors.schoolyear) {
-          _this3.errors.push(error.response.data.errors.schoolyear[0]);
+          _this5.errors.push(error.response.data.errors.schoolyear[0]);
         }
 
         if (error.response.data.errors.semester) {
-          _this3.errors.push(error.response.data.errors.semester[0]);
+          _this5.errors.push(error.response.data.errors.semester[0]);
         }
 
         if (error.response.data.errors.parking_type) {
-          _this3.errors.push(error.response.data.errors.parking_type[0]);
+          _this5.errors.push(error.response.data.errors.parking_type[0]);
         }
 
         if (error.response.data.errors.or_number) {
-          _this3.errors.push(error.response.data.errors.or_number[0]);
+          _this5.errors.push(error.response.data.errors.or_number[0]);
         }
 
         if (error.response.data.errors.sticker_number) {
-          _this3.errors.push(error.response.data.errors.sticker_number[0]);
+          _this5.errors.push(error.response.data.errors.sticker_number[0]);
         }
 
         if (error.response.data.errors.date_issued) {
-          _this3.errors.push(error.response.data.errors.date_issued[0]);
+          _this5.errors.push(error.response.data.errors.date_issued[0]);
         }
       });
     },
     create_student_parking: function create_student_parking() {
-      var _this4 = this;
+      var _this6 = this;
 
       axios.post('http://127.0.0.1:8000/student_parking', {
         id_number: this.student_parking.id_number,
@@ -2970,62 +3083,65 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         sticker_number: this.student_parking.sticker_number,
         date_issued: this.student_parking.date_issued
       }).then(function (response) {
-        _this4.resetData();
+        _this6.resetData();
 
-        _this4.student_parkings.push(response.data.student_parking);
+        _this6.student_parkings.push(response.data.student_parking);
 
         $("#student-parking-modal").modal("hide");
+
+        _this6.load_student_parking();
+
         toastr.success(response.data.message);
       })["catch"](function (error) {
-        _this4.errors = [];
+        _this6.errors = [];
 
         if (error.response.data.errors.id_number) {
-          _this4.errors.push(error.response.data.errors.id_number[0]);
+          _this6.errors.push(error.response.data.errors.id_number[0]);
         }
 
         if (error.response.data.errors.plate_number) {
-          _this4.errors.push(error.response.data.errors.plate_number[0]);
+          _this6.errors.push(error.response.data.errors.plate_number[0]);
         }
 
         if (error.response.data.errors.or_number) {
-          _this4.errors.push(error.response.data.errors.or_number[0]);
+          _this6.errors.push(error.response.data.errors.or_number[0]);
         }
 
         if (error.response.data.errors.contact_number) {
-          _this4.errors.push(error.response.data.errors.contact_number[0]);
+          _this6.errors.push(error.response.data.errors.contact_number[0]);
         }
 
         if (error.response.data.errors.license_number) {
-          _this4.errors.push(error.response.data.errors.license_number[0]);
+          _this6.errors.push(error.response.data.errors.license_number[0]);
         }
 
         if (error.response.data.errors.license_expiry_date) {
-          _this4.errors.push(error.response.data.errors.license_expiry_date[0]);
+          _this6.errors.push(error.response.data.errors.license_expiry_date[0]);
         }
 
         if (error.response.data.errors.schoolyear) {
-          _this4.errors.push(error.response.data.errors.schoolyear[0]);
+          _this6.errors.push(error.response.data.errors.schoolyear[0]);
         }
 
         if (error.response.data.errors.semester) {
-          _this4.errors.push(error.response.data.errors.semester[0]);
+          _this6.errors.push(error.response.data.errors.semester[0]);
         }
 
         if (error.response.data.errors.parking_type) {
-          _this4.errors.push(error.response.data.errors.parking_type[0]);
+          _this6.errors.push(error.response.data.errors.parking_type[0]);
         }
 
         if (error.response.data.errors.sticker_number) {
-          _this4.errors.push(error.response.data.errors.sticker_number[0]);
+          _this6.errors.push(error.response.data.errors.sticker_number[0]);
         }
 
         if (error.response.data.errors.date_issued) {
-          _this4.errors.push(error.response.data.errors.date_issued[0]);
+          _this6.errors.push(error.response.data.errors.date_issued[0]);
         }
       });
     },
     create_vehicle: function create_vehicle() {
-      var _this5 = this;
+      var _this7 = this;
 
       axios.post('http://127.0.0.1:8000/ccfc_vehicles_process', {
         id_number_employee: this.vehicle.id_number_employee,
@@ -3040,95 +3156,101 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         lto_cr: this.vehicle.lto_cr,
         lto_or: this.vehicle.lto_or
       }).then(function (response) {
-        _this5.resetData();
+        _this7.resetData();
 
-        _this5.vehicles.push(response.data.vehicle);
+        _this7.vehicles.push(response.data.vehicle);
 
         $("#vehicle-modal").modal("hide");
+
+        _this7.load_vehicle();
+
         toastr.success(response.data.message);
       })["catch"](function (error) {
-        _this5.errors = [];
+        _this7.errors = [];
 
         if (error.response.data.errors.owner_name_lto) {
-          _this5.errors.push(error.response.data.errors.owner_name_lto[0]);
+          _this7.errors.push(error.response.data.errors.owner_name_lto[0]);
         }
 
         if (error.response.data.errors.relation_to_owner) {
-          _this5.errors.push(error.response.data.errors.relation_to_owner[0]);
+          _this7.errors.push(error.response.data.errors.relation_to_owner[0]);
         }
 
         if (error.response.data.errors.make) {
-          _this5.errors.push(error.response.data.errors.make[0]);
+          _this7.errors.push(error.response.data.errors.make[0]);
         }
 
         if (error.response.data.errors.model) {
-          _this5.errors.push(error.response.data.errors.model[0]);
+          _this7.errors.push(error.response.data.errors.model[0]);
         }
 
         if (error.response.data.errors.plate_number) {
-          _this5.errors.push(error.response.data.errors.plate_number[0]);
+          _this7.errors.push(error.response.data.errors.plate_number[0]);
         }
 
         if (error.response.data.errors.color) {
-          _this5.errors.push(error.response.data.errors.color[0]);
+          _this7.errors.push(error.response.data.errors.color[0]);
         }
 
         if (error.response.data.errors.reg_expiry_date) {
-          _this5.errors.push(error.response.data.errors.reg_expiry_date[0]);
+          _this7.errors.push(error.response.data.errors.reg_expiry_date[0]);
         }
 
         if (error.response.data.errors.relation_to_owner) {
-          _this5.errors.push(error.response.data.errors.reg_expiry_date[0]);
+          _this7.errors.push(error.response.data.errors.reg_expiry_date[0]);
         }
       });
     },
     load_vehicle: function load_vehicle() {
-      var _this6 = this;
+      var _this8 = this;
 
       axios.get(this.url_vehicle).then(function (response) {
-        _this6.vehicles = response.data.vehicles;
+        _this8.vehicles = response.data.vehicles;
+        _this8.emp_vehicles = response.data.emp_vehicles;
+        _this8.stud_vehicles = response.data.stud_vehicles;
       });
     },
     load_employee_parking: function load_employee_parking() {
-      var _this7 = this;
+      var _this9 = this;
 
       axios.get(this.url).then(function (response) {
-        _this7.employee_parkings = response.data.employee_parkings;
+        _this9.employee_parkings = response.data.employee_parkings;
+        _this9.loading = true;
       });
     },
     load_student_parking: function load_student_parking() {
-      var _this8 = this;
+      var _this10 = this;
 
       axios.get(this.url_student_parking).then(function (response) {
-        _this8.student_parkings = response.data.student_parkings;
+        _this10.student_parkings = response.data.student_parkings;
       });
     },
     load_employee_names: function load_employee_names() {
-      var _this9 = this;
+      var _this11 = this;
 
       axios.get(this.url_emp_list).then(function (response) {
-        _this9.employee_names = response.data.employee_names;
+        _this11.employee_names = response.data.employee_names;
       });
     },
     load_student_names: function load_student_names() {
-      var _this10 = this;
+      var _this12 = this;
 
       axios.get(this.url_student_name).then(function (response) {
-        _this10.student_names = response.data.student_names;
+        _this12.student_names = response.data.student_names;
       });
     },
     load_pricing: function load_pricing() {
-      var _this11 = this;
+      var _this13 = this;
 
       axios.get(this.url_pricing).then(function (response) {
-        _this11.pricings = response.data.pricings;
+        _this13.pricings = response.data.pricings;
       });
     },
     load_vehicle_make: function load_vehicle_make() {
-      var _this12 = this;
+      var _this14 = this;
 
       axios.get(this.url_vehicle_make).then(function (response) {
-        _this12.vehicle_make = response.data.vehicle_make;
+        _this14.vehicle_make = response.data.vehicle_make;
       });
     },
     resetData: function resetData() {
@@ -3166,6 +3288,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.vehicle.reg_expiry_date = '';
       this.vehicle.lto_cr = '';
       this.vehicle.lto_or = '';
+    },
+    makeToastEP: function makeToastEP() {
+      var variant = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var message = arguments.length > 1 ? arguments[1] : undefined;
+      var processType = arguments.length > 2 ? arguments[2] : undefined;
+      this.$bvToast.toast(message, {
+        title: "Employee Parking successfully " + processType + ".",
+        variant: variant,
+        autoHideDelay: 5000,
+        solid: true
+      });
     }
   },
   mounted: function mounted() {
@@ -84137,6 +84270,198 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary btn-block",
+                        on: { click: _vm.employeeParkingModal }
+                      },
+                      [
+                        _vm._v(
+                          "Register Parking for Employees and University Vehicles"
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    !_vm.loading
+                      ? _c("div", [
+                          _c("img", {
+                            staticClass: "rounder mx-auto d-block",
+                            attrs: { src: _vm.image, alt: "loader" }
+                          })
+                        ])
+                      : _c(
+                          "div",
+                          [
+                            _c("b-table", {
+                              attrs: {
+                                responsive: "",
+                                id: "my-table",
+                                striped: "",
+                                hover: "",
+                                items: _vm.filtered_emp_parking,
+                                fields: _vm.columns_emp_parking,
+                                "per-page": _vm.perPage,
+                                "current-page": _vm.currentPage,
+                                bordered: true,
+                                "show-empty": ""
+                              },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "top-row",
+                                    fn: function(ref) {
+                                      var fields = ref.fields
+                                      return _vm.employee_parkings.length > 0
+                                        ? _vm._l(fields, function(field) {
+                                            return _c(
+                                              "td",
+                                              { key: field.key },
+                                              [
+                                                field.label == "ID Number" ||
+                                                field.label == "Middlename" ||
+                                                field.label == "Lastname" ||
+                                                field.label == "Firstname"
+                                                  ? _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
+                                                            _vm.filters_ep[
+                                                              field.key
+                                                            ],
+                                                          expression:
+                                                            "filters_ep[field.key]"
+                                                        }
+                                                      ],
+                                                      attrs: {
+                                                        placeholder: field.label
+                                                      },
+                                                      domProps: {
+                                                        value:
+                                                          _vm.filters_ep[
+                                                            field.key
+                                                          ]
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          if (
+                                                            $event.target
+                                                              .composing
+                                                          ) {
+                                                            return
+                                                          }
+                                                          _vm.$set(
+                                                            _vm.filters_ep,
+                                                            field.key,
+                                                            $event.target.value
+                                                          )
+                                                        }
+                                                      }
+                                                    })
+                                                  : _vm._e()
+                                              ]
+                                            )
+                                          })
+                                        : undefined
+                                    }
+                                  },
+                                  _vm.vehicles.length > 0
+                                    ? {
+                                        key: "cell(actions)",
+                                        fn: function(row) {
+                                          return [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-info",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.updateModal(
+                                                      row.index
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("Edit")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-danger",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.delete_ldap(
+                                                      row.index
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("Delete")]
+                                            )
+                                          ]
+                                        }
+                                      }
+                                    : null
+                                ],
+                                null,
+                                true
+                              )
+                            }),
+                            _vm._v(" "),
+                            _c("b-pagination", {
+                              attrs: {
+                                "total-rows": _vm.rows,
+                                "per-page": _vm.perPage,
+                                "aria-controls": "my-table"
+                              },
+                              model: {
+                                value: _vm.currentPage,
+                                callback: function($$v) {
+                                  _vm.currentPage = $$v
+                                },
+                                expression: "currentPage"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "mt-3" }, [
+                              _vm._v("Current Page: " + _vm._s(_vm.currentPage))
+                            ])
+                          ],
+                          1
+                        )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "tab-pane fade",
+          attrs: {
+            id: "nav-student-parking",
+            role: "tabpanel",
+            "aria-labelledby": "student-parking-tab"
+          }
+        },
+        [
+          _c("div", { staticClass: "container-fluid" }, [
+            _c("div", { staticClass: "row justify-content-center" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-header" }, [
+                    _vm._v("Students Parking")
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "div",
                     { staticClass: "card-body" },
@@ -84145,23 +84470,21 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-primary btn-block",
-                          on: { click: _vm.employeeParkingModal }
+                          on: { click: _vm.studentParkingModal }
                         },
-                        [
-                          _vm._v(
-                            "Register Parking for Employees and University Vehicles"
-                          )
-                        ]
+                        [_vm._v("Register Student")]
                       ),
                       _vm._v(" "),
                       _c("b-table", {
+                        ref: "table",
                         attrs: {
                           responsive: "",
-                          id: "my-table",
+                          id: "students-table",
                           striped: "",
                           hover: "",
-                          items: _vm.filtered_emp_parking,
-                          fields: _vm.columns_emp_parking,
+                          items: _vm.filtered_stud_parking,
+                          fields: _vm.columns_stud_parking,
+                          bordered: true,
                           "show-empty": ""
                         },
                         scopedSlots: _vm._u(
@@ -84170,7 +84493,7 @@ var render = function() {
                               key: "top-row",
                               fn: function(ref) {
                                 var fields = ref.fields
-                                return _vm.employee_parkings.length > 0
+                                return _vm.student_parkings.length > 0
                                   ? _vm._l(fields, function(field) {
                                       return _c("td", { key: field.key }, [
                                         field.label == "ID Number" ||
@@ -84183,16 +84506,17 @@ var render = function() {
                                                   name: "model",
                                                   rawName: "v-model",
                                                   value:
-                                                    _vm.filters_ep[field.key],
+                                                    _vm.filters_stud[field.key],
                                                   expression:
-                                                    "filters_ep[field.key]"
+                                                    "filters_stud[field.key]"
                                                 }
                                               ],
                                               attrs: {
                                                 placeholder: field.label
                                               },
                                               domProps: {
-                                                value: _vm.filters_ep[field.key]
+                                                value:
+                                                  _vm.filters_stud[field.key]
                                               },
                                               on: {
                                                 input: function($event) {
@@ -84200,7 +84524,7 @@ var render = function() {
                                                     return
                                                   }
                                                   _vm.$set(
-                                                    _vm.filters_ep,
+                                                    _vm.filters_stud,
                                                     field.key,
                                                     $event.target.value
                                                   )
@@ -84267,107 +84591,6 @@ var render = function() {
         {
           staticClass: "tab-pane fade",
           attrs: {
-            id: "nav-student-parking",
-            role: "tabpanel",
-            "aria-labelledby": "student-parking-tab"
-          }
-        },
-        [
-          _c("div", { staticClass: "container-fluid" }, [
-            _c("div", { staticClass: "row justify-content-center" }, [
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c("div", { staticClass: "card-header" }, [
-                    _vm._v("Students Parking")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "card-body" },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary btn-block",
-                          on: { click: _vm.studentParkingModal }
-                        },
-                        [_vm._v("Register Student")]
-                      ),
-                      _vm._v(" "),
-                      _c("vue-good-table", {
-                        attrs: {
-                          columns: _vm.columns_stud_parking,
-                          rows: _vm.student_parkings,
-                          "search-options": {
-                            enabled: true,
-                            trigger: "enter",
-                            skipDiacritics: true,
-                            placeholder: "Search this table"
-                          }
-                        },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "table-row",
-                            fn: function(props) {
-                              return [
-                                props.column.field == "actions"
-                                  ? _c("span", [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-info",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.updateModal(_vm.index)
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("Edit")]
-                                      ),
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.deleteTask(_vm.index)
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("Delete")]
-                                      )
-                                    ])
-                                  : _c("span", [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(
-                                            props.formattedRow[
-                                              props.column.field
-                                            ]
-                                          ) +
-                                          "\n                                        "
-                                      )
-                                    ])
-                              ]
-                            }
-                          }
-                        ])
-                      })
-                    ],
-                    1
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "tab-pane fade",
-          attrs: {
             id: "nav-vehicles-master",
             role: "tabpanel",
             "aria-labelledby": "vehicles-master-tab"
@@ -84415,12 +84638,13 @@ var render = function() {
                           },
                           [
                             _c("b-table", {
+                              ref: "table",
                               attrs: {
                                 responsive: "",
-                                id: "my-table",
+                                id: "vehicles-table",
                                 striped: "",
                                 hover: "",
-                                items: _vm.filtered,
+                                items: _vm.filtered_emp_vehicle,
                                 fields: _vm.columns_emp_vehicle,
                                 "show-empty": ""
                               },
@@ -84430,7 +84654,7 @@ var render = function() {
                                     key: "top-row",
                                     fn: function(ref) {
                                       var fields = ref.fields
-                                      return _vm.vehicles.length > 0
+                                      return _vm.emp_vehicles.length > 0
                                         ? _vm._l(fields, function(field) {
                                             return _c(
                                               "td",
@@ -84533,14 +84757,136 @@ var render = function() {
                           1
                         ),
                         _vm._v(" "),
-                        _c("div", {
-                          staticClass: "tab-pane fade",
-                          attrs: {
-                            id: "students",
-                            role: "tabpanel",
-                            "aria-labelledby": "students-tab"
-                          }
-                        })
+                        _c(
+                          "div",
+                          {
+                            staticClass: "tab-pane fade",
+                            attrs: {
+                              id: "students",
+                              role: "tabpanel",
+                              "aria-labelledby": "students-tab"
+                            }
+                          },
+                          [
+                            _c("b-table", {
+                              ref: "table",
+                              attrs: {
+                                responsive: "",
+                                id: "vehicles-table",
+                                striped: "",
+                                hover: "",
+                                items: _vm.filtered_stud_vehicle,
+                                fields: _vm.columns_stud_vehicle,
+                                "show-empty": ""
+                              },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "top-row",
+                                    fn: function(ref) {
+                                      var fields = ref.fields
+                                      return _vm.emp_vehicles.length > 0
+                                        ? _vm._l(fields, function(field) {
+                                            return _c(
+                                              "td",
+                                              { key: field.key },
+                                              [
+                                                field.label ==
+                                                  "Student ID Number" ||
+                                                field.label == "Plate Number" ||
+                                                field.label == "Lastname" ||
+                                                field.label == "Firstname"
+                                                  ? _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
+                                                            _vm.filters[
+                                                              field.key
+                                                            ],
+                                                          expression:
+                                                            "filters[field.key]"
+                                                        }
+                                                      ],
+                                                      attrs: {
+                                                        placeholder: field.label
+                                                      },
+                                                      domProps: {
+                                                        value:
+                                                          _vm.filters[field.key]
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          if (
+                                                            $event.target
+                                                              .composing
+                                                          ) {
+                                                            return
+                                                          }
+                                                          _vm.$set(
+                                                            _vm.filters,
+                                                            field.key,
+                                                            $event.target.value
+                                                          )
+                                                        }
+                                                      }
+                                                    })
+                                                  : _vm._e()
+                                              ]
+                                            )
+                                          })
+                                        : undefined
+                                    }
+                                  },
+                                  _vm.vehicles.length > 0
+                                    ? {
+                                        key: "cell(actions)",
+                                        fn: function(row) {
+                                          return [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-info",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.updateModal(
+                                                      row.index
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("Edit")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-danger",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.delete_ldap(
+                                                      row.index
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("Delete")]
+                                            )
+                                          ]
+                                        }
+                                      }
+                                    : null
+                                ],
+                                null,
+                                true
+                              )
+                            })
+                          ],
+                          1
+                        )
                       ]
                     )
                   ])
@@ -85156,7 +85502,40 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" }
+                  },
+                  [
+                    _vm._v(
+                      "Students Parking Registration for\n                        "
+                    ),
+                    _vm.is_parking_period == 1
+                      ? _c("font", { attrs: { color: "red" } }, [
+                          _vm._v("First Semester")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.is_parking_period == 2
+                      ? _c("font", { attrs: { color: "red" } }, [
+                          _vm._v("Second Semester")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.is_parking_period == 3
+                      ? _c("font", { attrs: { color: "red" } }, [
+                          _vm._v("Summer Semester")
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(3)
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _vm.errors.length > 0
@@ -86358,26 +86737,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Student Parking Registration")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   },
   function() {
     var _vm = this

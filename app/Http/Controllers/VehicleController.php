@@ -20,8 +20,12 @@ class VehicleController extends Controller
     {
         /* dd("it works!");*/
          $vehicles = DB::select(DB::raw("Vehicle_List"));
+         $stud_vehicles = DB::select(DB::raw("Student_Vehicle_List"));
+         $emp_vehicles = DB::select(DB::raw("Employee_Vehicle_List"));
          return response()->json([
-             'vehicles'=>$vehicles
+             'vehicles'=>$vehicles,
+             'stud_vehicles'=>$stud_vehicles,
+             'emp_vehicles'=>$emp_vehicles
          ], 200);
         //
     }

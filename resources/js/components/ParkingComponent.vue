@@ -24,28 +24,47 @@
                                 <div class="card-header">Register Parking for Employees and University Vehicles</div>
                                 <div class="card-body">
                                     <button @click="employeeParkingModal" class="btn btn-primary btn-block">Register Parking for Employees and University Vehicles</button>
+                                    
+                                    <div v-if="!loading">
+                                        <img class="rounder mx-auto d-block" :src="image" alt="loader">
+                                    </div>
 
-                                    <b-table 
-                                        responsive 
-                                        id="my-table" 
-                                        striped hover 
-                                        :items="filtered_emp_parking"
-                                        :fields="columns_emp_parking"
-                                        show-empty
-                                        >
+                                    <div v-else>
 
-                                        <template slot="top-row" slot-scope="{ fields }" v-if="employee_parkings.length > 0">
-                                            <td v-for="field in fields" :key="field.key">
-                                            <input v-if="field.label == 'ID Number' || field.label == 'Middlename' || field.label == 'Lastname' || field.label == 'Firstname'" v-model="filters_ep[field.key]" :placeholder="field.label">
-                                            </td>
-                                        </template>    
-                                 
-                                        <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
-                                            <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
-                                            <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
-                                        </template>
-                                            
-                                    </b-table>
+                                        <b-table 
+                                            responsive 
+                                            id="my-table" 
+                                            striped hover 
+                                            :items="filtered_emp_parking"
+                                            :fields="columns_emp_parking"
+                                            :per-page="perPage"
+                                            :current-page="currentPage"
+                                            :bordered=true
+                                            show-empty
+                                            >
+
+                                            <template slot="top-row" slot-scope="{ fields }" v-if="employee_parkings.length > 0">
+                                                <td v-for="field in fields" :key="field.key">
+                                                <input v-if="field.label == 'ID Number' || field.label == 'Middlename' || field.label == 'Lastname' || field.label == 'Firstname'" v-model="filters_ep[field.key]" :placeholder="field.label">
+                                                </td>
+                                            </template>    
+                                    
+                                            <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                                <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
+                                                <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
+                                            </template>
+                                                
+                                        </b-table>
+
+                                        <b-pagination
+                                        v-model="currentPage"
+                                        :total-rows="rows"
+                                        :per-page="perPage"
+                                        aria-controls="my-table"
+                                        ></b-pagination>
+                                        <p class="mt-3">Current Page: {{ currentPage }}</p>
+
+                                    </div>
 
                                 </div>
                             </div>
@@ -63,24 +82,29 @@
                                 <div class="card-body">
                                     <button @click="studentParkingModal" class="btn btn-primary btn-block">Register Student</button>
 
-                                    <vue-good-table
-                                        :columns="columns_stud_parking"
-                                        :rows="student_parkings"
-                                        :search-options="{
-                                        enabled: true,
-                                        trigger: 'enter',
-                                        skipDiacritics: true,
-                                        placeholder: 'Search this table'
-                                    }">
-                                        <template slot="table-row" slot-scope="props">
-                                            <span v-if="props.column.field == 'actions'"><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button>
-                                            </span>
-                                            <span v-else>
-                                            {{props.formattedRow[props.column.field]}}
-                                            </span>
-                                        </template>
-                                    </vue-good-table>
+                                        <b-table 
+                                            responsive 
+                                            ref="table"
+                                            id="students-table" 
+                                            striped hover 
+                                            :items="filtered_stud_parking"
+                                            :fields="columns_stud_parking"
+                                            :bordered=true
+                                            show-empty
+                                            >  
 
+                                            <template slot="top-row" slot-scope="{ fields }" v-if="student_parkings.length > 0">
+                                                <td v-for="field in fields" :key="field.key">
+                                                <input v-if="field.label == 'ID Number' || field.label == 'Middlename' || field.label == 'Lastname' || field.label == 'Firstname'" v-model="filters_stud[field.key]" :placeholder="field.label">
+                                                </td>
+                                            </template> 
+                                    
+                                            <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                                <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
+                                                <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
+                                            </template>
+                                                
+                                        </b-table>
                                 </div>
                             </div>
                         </div>
@@ -110,27 +134,28 @@
                                     <div class="tab-content" id="myTabContent">
 
                                         <div class="tab-pane fade show active" id="employees" role="tabpanel" aria-labelledby="employees-tab">
-        
-                                        <b-table 
-                                            responsive 
-                                            id="my-table" 
-                                            striped hover 
-                                            :items="filtered"
-                                            :fields="columns_emp_vehicle"
-                                            show-empty>
-                                            
-                                            <template slot="top-row" slot-scope="{ fields }" v-if="vehicles.length > 0">
-                                                <td v-for="field in fields" :key="field.key">
-                                                <input v-if="field.label == 'Employee ID Number' || field.label == 'Plate Number' || field.label == 'Lastname' || field.label == 'Firstname'" v-model="filters[field.key]" :placeholder="field.label">
-                                                </td>
-                                            </template>
-                                            
-                                            <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
-                                                <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
-                                                <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
-                                            </template>
-                                            
-                                        </b-table>
+
+                                            <b-table 
+                                                responsive 
+                                                ref="table"
+                                                id="vehicles-table" 
+                                                striped hover 
+                                                :items="filtered_emp_vehicle"
+                                                :fields="columns_emp_vehicle"
+                                                show-empty>
+
+                                                <template slot="top-row" slot-scope="{ fields }" v-if="emp_vehicles.length > 0">
+                                                    <td v-for="field in fields" :key="field.key">
+                                                        <input v-if="field.label == 'Employee ID Number' || field.label == 'Plate Number' || field.label == 'Lastname' || field.label == 'Firstname'" v-model="filters[field.key]" :placeholder="field.label">
+                                                    </td>
+                                                </template>
+                                                
+                                                <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                                    <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
+                                                    <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
+                                                </template>
+                                                
+                                            </b-table>
                                             <!--
                                             <vue-good-table
                                                 :columns="columns_emp_vehicle"
@@ -154,6 +179,28 @@
                                         </div>
 
                                         <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
+
+                                            <b-table 
+                                                responsive 
+                                                ref="table"
+                                                id="vehicles-table" 
+                                                striped hover 
+                                                :items="filtered_stud_vehicle"
+                                                :fields="columns_stud_vehicle"
+                                                show-empty>
+
+                                                <template slot="top-row" slot-scope="{ fields }" v-if="emp_vehicles.length > 0">
+                                                    <td v-for="field in fields" :key="field.key">
+                                                        <input v-if="field.label == 'Student ID Number' || field.label == 'Plate Number' || field.label == 'Lastname' || field.label == 'Firstname'" v-model="filters[field.key]" :placeholder="field.label">
+                                                    </td>
+                                                </template>
+                                                
+                                                <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                                    <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
+                                                    <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
+                                                </template>
+                                                
+                                            </b-table>
 
                                         </div>
 
@@ -295,7 +342,11 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Student Parking Registration</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Students Parking Registration for
+                            <font color="red" v-if="is_parking_period == 1">First Semester</font>
+                            <font color="red" v-if="is_parking_period == 2">Second Semester</font>
+                            <font color="red" v-if="is_parking_period == 3">Summer Semester</font>
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -576,6 +627,8 @@
                 student_names: [],
                 pricings: [],
                 vehicles: [],
+                emp_vehicles: [],
+                stud_vehicles: [],
                 vehicle_make: [],
                 url: 'http://127.0.0.1:8000/employee_parking/',
                 url_student_parking: 'http://127.0.0.1:8000/student_parking/',
@@ -596,6 +649,8 @@
                 summer_period_start: (new Date().getFullYear()) + '-3-1',
                 summer_period_end: (new Date().getFullYear()) + '-4-3',
                 semester: '',
+                image: 'img/loader1.gif',
+                loading: false,
 
                 columns_emp_parking: [
                     {
@@ -745,8 +800,23 @@
 
                 columns_stud_vehicle:[
                     {
-                        label: 'Student Name',
-                        key: 'student_name',
+                        label: 'Student ID Number',
+                        key: 'stud_id',
+                        sortable: true
+                    },
+                    {
+                        label: 'Lastname',
+                        key: 'lastname',
+                        sortable: true
+                    },
+                    {
+                        label: 'Firstname',
+                        key: 'firstname',
+                        sortable: true
+                    },
+                    {
+                        label: 'Middlename',
+                        key: 'middlename',
                         sortable: true
                     },
                     {
@@ -807,6 +877,18 @@
                     key: 'id_number',
                     },
                     {
+                    label: 'Lastname',
+                    key: 'lastname',
+                    },
+                    {
+                    label: 'Firstname',
+                    key: 'firstname',
+                    },
+                    {
+                    label: 'Middlename',
+                    key: 'middlename',
+                    },
+                    {
                     label: 'Plate Number',
                     key: 'plate_number',
                     },
@@ -835,7 +917,7 @@
                     },
                     {
                     label: 'Parking Type',
-                    key: 'parking_type',
+                    key: 'service_name',
                     },
                     {
                     label: 'Sticker Number',
@@ -859,13 +941,20 @@
                 },
                 filters_ep: {
 
-                }
+                },
+                filters_stud: {
+
+                },
+                totalRows: 1,
+                currentPage: 1,
+                perPage: 5,
+                pageOptions: [5, 10, 15]
             }
         },
 
         computed: {
-            filtered(){
-                const filtered = this.vehicles.filter(item =>{
+            filtered_emp_vehicle(){
+                const filtered = this.emp_vehicles.filter(item =>{
                     return Object.keys(this.filters).every(key =>
                         String(item[key]).includes(this.filters[key]))
                 })
@@ -873,6 +962,19 @@
                     emp_id: '',
                     cfirst: '',
                     clast: '',
+                    plate_number: ''
+                }]
+            },
+
+            filtered_stud_vehicle(){
+                const filtered = this.stud_vehicles.filter(item =>{
+                    return Object.keys(this.filters).every(key =>
+                        String(item[key]).includes(this.filters[key]))
+                })
+                return filtered.length > 0 ? filtered : [{
+                    stud_id: '',
+                    firstname: '',
+                    lastname: '',
                     plate_number: ''
                 }]
             },
@@ -890,20 +992,39 @@
                 }]
             },
 
+            filtered_stud_parking(){
+                const filtered_stud = this.student_parkings.filter(item =>{
+                    return Object.keys(this.filters_stud).every(key =>
+                        String(item[key]).includes(this.filters_stud[key]))
+                })
+                return filtered_stud.length > 0 ? filtered_stud : [{
+                    id_number: '',
+                    firstname: '',
+                    lastname: '',
+                    middlename: ''
+                }]
+            },
+
             is_parking_period(){
 
                 if (this.current_date >= this.first_period_start && this.current_date <= this.first_period_end) {
                     this.semester = 1;
                     this.employee_parking.semester = 1;
                     this.employee_parking.schoolyear = new Date().getFullYear();
+                    this.student_parking.semester = 1;
+                    this.student_parking.schoolyear = new Date().getFullYear();
                 } else if (this.current_date >= this.second_period_start && this.current_date <= this.second_period_end) {
                     this.semester = 2;
                     this.employee_parking.semester = 2;
                     this.employee_parking.schoolyear = new Date().getFullYear();
+                    this.student_parking.semester = 2;
+                    this.student_parking.schoolyear = new Date().getFullYear();
                 } else if (this.current_date >= this.summer_period_start && this.current_date <= this.summer_period_end) {
                     this.semester = 3;
                     this.employee_parking.semester = 3;
                     this.employee_parking.schoolyear = new Date().getFullYear() - 1;
+                    this.student_parking.semester = 3;
+                    this.student_parking.schoolyear = new Date().getFullYear() - 1;
                 }
 
                 return this.semester// + ' ' + this.current_date + ' ' + this.summer_period_start
@@ -959,7 +1080,9 @@
                     this.resetData();
                     this.employee_parkings.push(response.data.employee_parking);
                     $("#employee-parking-modal").modal("hide");
-                    toastr.success(response.data.message);
+                    //toastr.success(response.data.message);
+                    this.load_employee_parking();
+                    this.makeToastEP('success', response.data.message, 'added');
                 })
 
                 .catch(error=>{
@@ -1025,6 +1148,7 @@
                     this.resetData();
                     this.student_parkings.push(response.data.student_parking);
                     $("#student-parking-modal").modal("hide");
+                    this.load_student_parking();
                     toastr.success(response.data.message);
                 }).catch(error=>{
                     this.errors = [];
@@ -1086,6 +1210,7 @@
                     this.resetData();
                     this.vehicles.push(response.data.vehicle);
                     $("#vehicle-modal").modal("hide");
+                    this.load_vehicle();
                     toastr.success(response.data.message);
                 })
 
@@ -1125,6 +1250,8 @@
                 axios.get(this.url_vehicle).then(response=>{
 
                     this.vehicles = response.data.vehicles;
+                    this.emp_vehicles = response.data.emp_vehicles;
+                    this.stud_vehicles = response.data.stud_vehicles;
                 });
             },
 
@@ -1133,6 +1260,7 @@
                 axios.get(this.url).then(response=>{
 
                     this.employee_parkings = response.data.employee_parkings;
+                    this.loading = true;
                 });
             },
 
@@ -1218,6 +1346,15 @@
                 this.vehicle.lto_cr = '';
                 this.vehicle.lto_or = '';
 
+            },
+
+            makeToastEP(variant = null, message, processType) {
+                this.$bvToast.toast(message, {
+                title: "Employee Parking successfully "+processType+".",
+                variant: variant,
+                autoHideDelay: 5000,
+                solid: true
+                })
             }
         },
         mounted() {

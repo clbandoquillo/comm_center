@@ -15,7 +15,7 @@ class StudentParkingController extends Controller
     public function index()
     {
         //
-        $student_parkings = DB::select(DB::raw("select * from student_parking;"));
+        $student_parkings = DB::select(DB::raw("Student_Parking_List;"));
         return response()->json([
             'student_parkings'=>$student_parkings
         ], 200);

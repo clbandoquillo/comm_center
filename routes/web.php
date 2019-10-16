@@ -49,6 +49,8 @@ Route::get('/student_names','StudentController@index');
 
 //Vehicles
 Route::get('/ccfc_vehicles','VehicleController@ccfc_vehicles');
+Route::get('/ccfc_emp_vehicles','VehicleController@ccfc_emp_vehicles');
+Route::get('/ccfc_stud_vehicles','VehicleController@ccfc_stud_vehicles');
 Route::resource('/ccfc_vehicles_process', 'VehicleController');
 
 //Vehicle Make
