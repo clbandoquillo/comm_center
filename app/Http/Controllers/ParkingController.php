@@ -23,6 +23,10 @@ class ParkingController extends Controller
      */
     public function index()
     {
-        return view('parking.index');
+        $system_role = \Auth::user()->system_role;
+
+        if($system_role == 4 || $system_role == 3){
+            return view('parking.index');
+        }
     }
 }

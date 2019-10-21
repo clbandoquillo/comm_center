@@ -20,6 +20,7 @@ class EmployeeParking extends Model
         'parking_type',
         'or_number',
         'sticker_number',
-        'date_issued'
+        'date_issued',
+        'isPayroll'
     ];
 }

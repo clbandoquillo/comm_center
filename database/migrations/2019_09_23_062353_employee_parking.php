@@ -27,6 +27,7 @@ class EmployeeParking extends Migration
             $table->string('parking_type');
             $table->string('sticker_number')->nullable();
             $table->date('date_issued')->nullable();
+            $table->tinyInteger('isPayroll');
             $table->tinyInteger('user_id');
             $table->timestamps();
         });

@@ -58,7 +58,7 @@
 
                                         <b-pagination
                                         v-model="currentPage"
-                                        :total-rows="rows"
+                                        :total-rows="emp_rows"
                                         :per-page="perPage"
                                         aria-controls="my-table"
                                         ></b-pagination>
@@ -89,6 +89,8 @@
                                             striped hover 
                                             :items="filtered_stud_parking"
                                             :fields="columns_stud_parking"
+                                            :per-page="perPage"
+                                            :current-page="currentPage"
                                             :bordered=true
                                             show-empty
                                             >  
@@ -105,6 +107,14 @@
                                             </template>
                                                 
                                         </b-table>
+
+                                        <b-pagination
+                                        v-model="currentPage"
+                                        :total-rows="stud_rows"
+                                        :per-page="perPage"
+                                        aria-controls="my-table"
+                                        ></b-pagination>
+                                        <p class="mt-3">Current Page: {{ currentPage }}</p>\
                                 </div>
                             </div>
                         </div>
@@ -142,6 +152,8 @@
                                                 striped hover 
                                                 :items="filtered_emp_vehicle"
                                                 :fields="columns_emp_vehicle"
+                                                :per-page="perPage_emp_vehicles"
+                                                :current-page="currentPage_emp_vehicles"
                                                 show-empty>
 
                                                 <template slot="top-row" slot-scope="{ fields }" v-if="emp_vehicles.length > 0">
@@ -156,6 +168,14 @@
                                                 </template>
                                                 
                                             </b-table>
+
+                                            <b-pagination
+                                            v-model="currentPage_emp_vehicles"
+                                            :total-rows="emp_vehicles_rows"
+                                            :per-page="perPage_emp_vehicles"
+                                            aria-controls="my-table"
+                                            ></b-pagination>
+                                            <p class="mt-3">Current Page: {{ currentPage_emp_vehicles }}</p>
                                             <!--
                                             <vue-good-table
                                                 :columns="columns_emp_vehicle"
@@ -187,6 +207,8 @@
                                                 striped hover 
                                                 :items="filtered_stud_vehicle"
                                                 :fields="columns_stud_vehicle"
+                                                :per-page="perPage"
+                                                :current-page="currentPage"
                                                 show-empty>
 
                                                 <template slot="top-row" slot-scope="{ fields }" v-if="emp_vehicles.length > 0">
@@ -201,6 +223,14 @@
                                                 </template>
                                                 
                                             </b-table>
+
+                                            <b-pagination
+                                            v-model="currentPage"
+                                            :total-rows="stud_vehicles_rows"
+                                            :per-page="perPage"
+                                            aria-controls="my-table"
+                                            ></b-pagination>
+                                            <p class="mt-3">Current Page: {{ currentPage }}</p>
 
                                         </div>
 
@@ -321,6 +351,20 @@
                             <br>
                         </div>
 
+                        
+
+                        <div class="form-group">
+                            <b-form-checkbox
+                                id="checkbox-1"
+                                v-model="employee_parking.isPayroll"
+                                name="checkbox-1"
+                                value="1"
+                                unchecked-value="0"
+                            >
+                                Check if payment is due on every Payroll
+                            </b-form-checkbox>
+                        </div>
+
                     <!--  <div class="form-group">
                             <label for="name">Name</label>
                             <input v-model="task.name" type="text" id="name" class="form-control">
@@ -332,7 +376,7 @@
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button @click="create_employee_parking" type="button" class="btn btn-primary">Register Parking</button>
+                        <button @click="create_employee_parking" type="button" class="btn btn-primary" :disabled="submitted">Register Employee Parking</button>
                     </div>
                 </div>
             </div>
@@ -439,7 +483,7 @@
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button @click="create_student_parking" type="button" class="btn btn-primary">Register Parking</button>
+                        <button @click="create_student_parking" type="button" class="btn btn-primary" :disabled="submitted">Register Student Parking</button>
                     </div>
                 </div>
             </div>
@@ -551,7 +595,7 @@
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button @click="create_vehicle" type="button" class="btn btn-primary">Register Parking</button>
+                        <button @click="create_vehicle" type="button" class="btn btn-primary" :disabled="submitted">Register Vehicle</button>
                     </div>
                 </div>
             </div>
@@ -583,7 +627,8 @@
                     parking_type: '',
                     or_number: '',
                     sticker_number: '',
-                    date_issued: new Date().toISOString().slice(0,10)
+                    date_issued: new Date().toISOString().slice(0,10),
+                    isPayroll: ''
                 },
 
                 student_parking:{
@@ -947,8 +992,13 @@
                 },
                 totalRows: 1,
                 currentPage: 1,
-                perPage: 5,
-                pageOptions: [5, 10, 15]
+                perPage: 2,
+                pageOptions: [5, 10, 15],
+                totalRows_emp_vehicles: 1,
+                currentPage_emp_vehicles: 1,
+                perPage_emp_vehicles: 2,
+                pageOptions_emp_vehicles: [5, 10, 15],
+                submitted: false
             }
         },
 
@@ -1030,8 +1080,20 @@
                 return this.semester// + ' ' + this.current_date + ' ' + this.summer_period_start
             },
 
-            rows() {
-                return this.vehicles.length, this.employee_parkings.length
+            emp_rows() {
+                return this.employee_parkings.length
+            },
+
+            stud_rows() {
+                return this.student_parkings.length
+            },
+
+            emp_vehicles_rows() {
+                return this.emp_vehicles.length
+            },
+
+            stud_vehicles_rows() {
+                return this.stud_vehicles.length
             }
         },
 
@@ -1059,6 +1121,8 @@
 
             create_employee_parking(){
 
+                this.submitted = true;
+
                 axios.post('http://127.0.0.1:8000/employee_parking',
                 {
                     id_number: this.employee_parking.id_number,
@@ -1072,12 +1136,14 @@
                     parking_type: this.employee_parking.parking_type,
                     or_number: this.employee_parking.or_number,
                     sticker_number: this.employee_parking.sticker_number,
-                    date_issued: this.employee_parking.date_issued
+                    date_issued: this.employee_parking.date_issued,
+                    isPayroll: this.employee_parking.isPayroll
                 })
 
                 .then(response=>{
 
                     this.resetData();
+                    this.submitted = false;
                     this.employee_parkings.push(response.data.employee_parking);
                     $("#employee-parking-modal").modal("hide");
                     //toastr.success(response.data.message);
@@ -1086,6 +1152,7 @@
                 })
 
                 .catch(error=>{
+                    
                     this.errors = [];
                     if(error.response.data.errors.id_number){
                         this.errors.push(error.response.data.errors.id_number[0]);
@@ -1123,10 +1190,14 @@
                     if(error.response.data.errors.date_issued){
                         this.errors.push(error.response.data.errors.date_issued[0]);
                     }
+                    
+                    this.submitted = false;
                 });
             },
 
             create_student_parking(){
+
+                this.submitted = true;
 
                 axios.post('http://127.0.0.1:8000/student_parking',
                 {
@@ -1146,11 +1217,13 @@
                 .then(response=>{
 
                     this.resetData();
+                    this.submitted = false;
                     this.student_parkings.push(response.data.student_parking);
                     $("#student-parking-modal").modal("hide");
                     this.load_student_parking();
                     toastr.success(response.data.message);
                 }).catch(error=>{
+                    
                     this.errors = [];
                     if(error.response.data.errors.id_number){
                         this.errors.push(error.response.data.errors.id_number[0]);
@@ -1185,11 +1258,14 @@
                     if(error.response.data.errors.date_issued){
                         this.errors.push(error.response.data.errors.date_issued[0]);
                     }
+                    
+                    this.submitted = false;
                 });
             },
 
             create_vehicle(){
 
+                this.submitted = true;
                 axios.post('http://127.0.0.1:8000/ccfc_vehicles_process',
                 {
                     id_number_employee: this.vehicle.id_number_employee,
@@ -1208,6 +1284,7 @@
                 .then(response=>{
 
                     this.resetData();
+                    this.submitted = false;
                     this.vehicles.push(response.data.vehicle);
                     $("#vehicle-modal").modal("hide");
                     this.load_vehicle();
@@ -1240,6 +1317,8 @@
                     if(error.response.data.errors.relation_to_owner){
                         this.errors.push(error.response.data.errors.reg_expiry_date[0]);
                     }
+                    
+                    this.submitted = false;
                 });
 
 

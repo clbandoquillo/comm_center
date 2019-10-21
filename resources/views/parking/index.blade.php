@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                
                     <parking-component></parking-component>
                     
                   <!--  <example-component></example-component>-->

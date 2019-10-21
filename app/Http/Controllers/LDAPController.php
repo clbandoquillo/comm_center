@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ccfcldap;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LDAPController extends Controller
 {
@@ -37,7 +38,11 @@ class LDAPController extends Controller
     public function show_ldap()
     {
         //
-        return view('update_barcode');
+        $system_role = \Auth::user()->system_role;
+
+        if($system_role == 4){
+            return view('update_barcode');
+        }
     }
 
 
@@ -79,6 +84,8 @@ class LDAPController extends Controller
         $json = json_decode($ldap, true);
         $lu = $json['ldap_username'];
         $idn = $json['id_number'];
+
+        $update = \DB::table('users') ->where('common_name', $request->ldap_username) ->limit(1) ->update( [ 'common_name' => $request->ldap_username, 'system_role' => $request->system_role ]); 
 
         return response()->json([
 
@@ -128,6 +135,8 @@ class LDAPController extends Controller
         ]);
 
         $ldap = $request->user()->ldap()->whereId($id)->update($request->all());
+
+        $update = \DB::table('users') ->where('common_name', $request->ldap_username) ->limit(1) ->update( [ 'common_name' => $request->ldap_username, 'system_role' => $request->system_role ]); 
 
         return response()->json([
 

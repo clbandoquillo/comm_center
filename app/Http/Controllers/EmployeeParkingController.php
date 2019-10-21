@@ -41,7 +41,7 @@ class EmployeeParkingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $request->validate([
             'id_number' => 'required',
             'plate_number' => 'required',
@@ -67,11 +67,10 @@ class EmployeeParkingController extends Controller
             'parking_type' => $request->parking_type,
             'or_number' => $request->sticker_number,
             'sticker_number' => $request->sticker_number,
-            'date_issued' => $request->date_issued 
+            'date_issued' => $request->date_issued,
+            'isPayroll' => $request->sticker_number
 
         ]);
-
-        //dd($employee_parking);
 
         return response()->json([
 

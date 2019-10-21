@@ -2899,6 +2899,50 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
     //
     //
     //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
 
     /* harmony default export */
 
@@ -2920,7 +2964,8 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             parking_type: '',
             or_number: '',
             sticker_number: '',
-            date_issued: new Date().toISOString().slice(0, 10)
+            date_issued: new Date().toISOString().slice(0, 10),
+            isPayroll: ''
           },
           student_parking: {
             id_number: '',
@@ -3181,7 +3226,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           label: 'Actions',
           key: 'actions',
           sortable: false
-        }]), _defineProperty(_ref, "filters", {}), _defineProperty(_ref, "filters_ep", {}), _defineProperty(_ref, "filters_stud", {}), _defineProperty(_ref, "totalRows", 1), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "perPage", 5), _defineProperty(_ref, "pageOptions", [5, 10, 15]), _ref;
+        }]), _defineProperty(_ref, "filters", {}), _defineProperty(_ref, "filters_ep", {}), _defineProperty(_ref, "filters_stud", {}), _defineProperty(_ref, "totalRows", 1), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "perPage", 2), _defineProperty(_ref, "pageOptions", [5, 10, 15]), _defineProperty(_ref, "totalRows_emp_vehicles", 1), _defineProperty(_ref, "currentPage_emp_vehicles", 1), _defineProperty(_ref, "perPage_emp_vehicles", 2), _defineProperty(_ref, "pageOptions_emp_vehicles", [5, 10, 15]), _defineProperty(_ref, "submitted", false), _ref;
       },
       computed: {
         filtered_emp_vehicle: function filtered_emp_vehicle() {
@@ -3267,8 +3312,17 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
 
           return this.semester; // + ' ' + this.current_date + ' ' + this.summer_period_start
         },
-        rows: function rows() {
-          return this.vehicles.length, this.employee_parkings.length;
+        emp_rows: function emp_rows() {
+          return this.employee_parkings.length;
+        },
+        stud_rows: function stud_rows() {
+          return this.student_parkings.length;
+        },
+        emp_vehicles_rows: function emp_vehicles_rows() {
+          return this.emp_vehicles.length;
+        },
+        stud_vehicles_rows: function stud_vehicles_rows() {
+          return this.stud_vehicles.length;
         }
       },
       methods: {
@@ -3291,6 +3345,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         create_employee_parking: function create_employee_parking() {
           var _this5 = this;
 
+          this.submitted = true;
           axios.post('http://127.0.0.1:8000/employee_parking', {
             id_number: this.employee_parking.id_number,
             plate_number: this.employee_parking.plate_number,
@@ -3303,9 +3358,12 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             parking_type: this.employee_parking.parking_type,
             or_number: this.employee_parking.or_number,
             sticker_number: this.employee_parking.sticker_number,
-            date_issued: this.employee_parking.date_issued
+            date_issued: this.employee_parking.date_issued,
+            isPayroll: this.employee_parking.isPayroll
           }).then(function (response) {
             _this5.resetData();
+
+            _this5.submitted = false;
 
             _this5.employee_parkings.push(response.data.employee_parking);
 
@@ -3364,11 +3422,14 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             if (error.response.data.errors.date_issued) {
               _this5.errors.push(error.response.data.errors.date_issued[0]);
             }
+
+            _this5.submitted = false;
           });
         },
         create_student_parking: function create_student_parking() {
           var _this6 = this;
 
+          this.submitted = true;
           axios.post('http://127.0.0.1:8000/student_parking', {
             id_number: this.student_parking.id_number,
             plate_number: this.student_parking.plate_number,
@@ -3383,6 +3444,8 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             date_issued: this.student_parking.date_issued
           }).then(function (response) {
             _this6.resetData();
+
+            _this6.submitted = false;
 
             _this6.student_parkings.push(response.data.student_parking);
 
@@ -3437,11 +3500,14 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             if (error.response.data.errors.date_issued) {
               _this6.errors.push(error.response.data.errors.date_issued[0]);
             }
+
+            _this6.submitted = false;
           });
         },
         create_vehicle: function create_vehicle() {
           var _this7 = this;
 
+          this.submitted = true;
           axios.post('http://127.0.0.1:8000/ccfc_vehicles_process', {
             id_number_employee: this.vehicle.id_number_employee,
             id_number_student: this.vehicle.id_number_student,
@@ -3456,6 +3522,8 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             lto_or: this.vehicle.lto_or
           }).then(function (response) {
             _this7.resetData();
+
+            _this7.submitted = false;
 
             _this7.vehicles.push(response.data.vehicle);
 
@@ -3498,6 +3566,8 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             if (error.response.data.errors.relation_to_owner) {
               _this7.errors.push(error.response.data.errors.reg_expiry_date[0]);
             }
+
+            _this7.submitted = false;
           });
         },
         load_vehicle: function load_vehicle() {
@@ -3787,6 +3857,77 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
     //
     //
     //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
 
     /* harmony default export */
 
@@ -3805,8 +3946,9 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           },
           pricings: [],
           services: [],
-          url: 'http://127.0.0.1:8000/ccfc_pricing',
-          url_services: 'http://127.0.0.1:8000/ccfc_services'
+          new_update_pricings: [],
+          url: 'http://127.0.0.1:8000/ccfc_pricing/',
+          url_services: 'http://127.0.0.1:8000/ccfc_services/'
         };
       },
       methods: {
@@ -3818,7 +3960,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
 
           axios.post('http://127.0.0.1:8000/ccfc_pricing', {
             service_name: this.pricing.service_name,
-            category_id: this.pricing.service_category,
+            category_id: this.pricing.category_id,
             price: this.pricing.price,
             schoolyear: this.pricing.schoolyear,
             semester: this.pricing.semester,
@@ -3828,21 +3970,42 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
 
             _this.pricings.push(response.data.pricing);
 
+            _this.load_pricing();
+
             $("#pricing-modal").modal("hide");
           });
         },
-        load_pricing: function load_pricing() {
+        updateModal: function updateModal(index) {
+          $("#update-pricing-modal").modal("show");
+          this.new_update_pricings = this.pricings[index];
+        },
+        update_pricing: function update_pricing() {
           var _this2 = this;
 
+          axios.patch(this.url + this.new_update_pricings.id, {
+            service_name: this.new_update_pricings.service_name,
+            category_id: this.new_update_pricings.category_id,
+            price: this.new_update_pricings.price,
+            schoolyear: this.new_update_pricings.schoolyear,
+            semester: this.new_update_pricings.semester,
+            status: this.new_update_pricings.status
+          }).then(function (response) {
+            $("#update-modal").modal("hide");
+            toastr.success(response.data.message = _this2.new_update_pricings.status); // this.makeToast('success', this.new_update_ldap.ldap_username, this.new_update_ldap.id_number, 'updated');
+          });
+        },
+        load_pricing: function load_pricing() {
+          var _this3 = this;
+
           axios.get(this.url).then(function (response) {
-            _this2.pricings = response.data.pricings;
+            _this3.pricings = response.data.pricings;
           });
         },
         load_services: function load_services() {
-          var _this3 = this;
+          var _this4 = this;
 
           axios.get(this.url_services).then(function (response) {
-            _this3.services = response.data.services;
+            _this4.services = response.data.services;
           });
         },
         resetData: function resetData() {
@@ -96708,7 +96871,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         } : null], null, true)
       }), _vm._v(" "), _c("b-pagination", {
         attrs: {
-          "total-rows": _vm.rows,
+          "total-rows": _vm.emp_rows,
           "per-page": _vm.perPage,
           "aria-controls": "my-table"
         },
@@ -96754,6 +96917,8 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           hover: "",
           items: _vm.filtered_stud_parking,
           fields: _vm.columns_stud_parking,
+          "per-page": _vm.perPage,
+          "current-page": _vm.currentPage,
           bordered: true,
           "show-empty": ""
         },
@@ -96809,7 +96974,22 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             }, [_vm._v("Delete")])];
           }
         } : null], null, true)
-      })], 1)])])])])]), _vm._v(" "), _c("div", {
+      }), _vm._v(" "), _c("b-pagination", {
+        attrs: {
+          "total-rows": _vm.stud_rows,
+          "per-page": _vm.perPage,
+          "aria-controls": "my-table"
+        },
+        model: {
+          value: _vm.currentPage,
+          callback: function callback($$v) {
+            _vm.currentPage = $$v;
+          },
+          expression: "currentPage"
+        }
+      }), _vm._v(" "), _c("p", {
+        staticClass: "mt-3"
+      }, [_vm._v("Current Page: " + _vm._s(_vm.currentPage))]), _vm._v("\\\n                            ")], 1)])])])])]), _vm._v(" "), _c("div", {
         staticClass: "tab-pane fade",
         attrs: {
           id: "nav-vehicles-master",
@@ -96854,6 +97034,8 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           hover: "",
           items: _vm.filtered_emp_vehicle,
           fields: _vm.columns_emp_vehicle,
+          "per-page": _vm.perPage_emp_vehicles,
+          "current-page": _vm.currentPage_emp_vehicles,
           "show-empty": ""
         },
         scopedSlots: _vm._u([{
@@ -96908,7 +97090,22 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             }, [_vm._v("Delete")])];
           }
         } : null], null, true)
-      })], 1), _vm._v(" "), _c("div", {
+      }), _vm._v(" "), _c("b-pagination", {
+        attrs: {
+          "total-rows": _vm.emp_vehicles_rows,
+          "per-page": _vm.perPage_emp_vehicles,
+          "aria-controls": "my-table"
+        },
+        model: {
+          value: _vm.currentPage_emp_vehicles,
+          callback: function callback($$v) {
+            _vm.currentPage_emp_vehicles = $$v;
+          },
+          expression: "currentPage_emp_vehicles"
+        }
+      }), _vm._v(" "), _c("p", {
+        staticClass: "mt-3"
+      }, [_vm._v("Current Page: " + _vm._s(_vm.currentPage_emp_vehicles))])], 1), _vm._v(" "), _c("div", {
         staticClass: "tab-pane fade",
         attrs: {
           id: "students",
@@ -96924,6 +97121,8 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           hover: "",
           items: _vm.filtered_stud_vehicle,
           fields: _vm.columns_stud_vehicle,
+          "per-page": _vm.perPage,
+          "current-page": _vm.currentPage,
           "show-empty": ""
         },
         scopedSlots: _vm._u([{
@@ -96978,7 +97177,22 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             }, [_vm._v("Delete")])];
           }
         } : null], null, true)
-      })], 1)])])])])])])])]), _vm._v(" "), _c("div", {
+      }), _vm._v(" "), _c("b-pagination", {
+        attrs: {
+          "total-rows": _vm.stud_vehicles_rows,
+          "per-page": _vm.perPage,
+          "aria-controls": "my-table"
+        },
+        model: {
+          value: _vm.currentPage,
+          callback: function callback($$v) {
+            _vm.currentPage = $$v;
+          },
+          expression: "currentPage"
+        }
+      }), _vm._v(" "), _c("p", {
+        staticClass: "mt-3"
+      }, [_vm._v("Current Page: " + _vm._s(_vm.currentPage))])], 1)])])])])])])])]), _vm._v(" "), _c("div", {
         staticClass: "modal fade",
         attrs: {
           id: "employee-parking-modal",
@@ -97407,7 +97621,23 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             _vm.$set(_vm.employee_parking, "date_issued", $event.target.value);
           }
         }
-      }), _vm._v(" "), _c("br")])]), _vm._v(" "), _c("div", {
+      }), _vm._v(" "), _c("br")]), _vm._v(" "), _c("div", {
+        staticClass: "form-group"
+      }, [_c("b-form-checkbox", {
+        attrs: {
+          id: "checkbox-1",
+          name: "checkbox-1",
+          value: "1",
+          "unchecked-value": "0"
+        },
+        model: {
+          value: _vm.employee_parking.isPayroll,
+          callback: function callback($$v) {
+            _vm.$set(_vm.employee_parking, "isPayroll", $$v);
+          },
+          expression: "employee_parking.isPayroll"
+        }
+      }, [_vm._v("\n                            Check if payment is due on every Payroll\n                        ")])], 1)]), _vm._v(" "), _c("div", {
         staticClass: "modal-footer"
       }, [_c("button", {
         staticClass: "btn btn-danger",
@@ -97418,12 +97648,13 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
       }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
         staticClass: "btn btn-primary",
         attrs: {
-          type: "button"
+          type: "button",
+          disabled: _vm.submitted
         },
         on: {
           click: _vm.create_employee_parking
         }
-      }, [_vm._v("Register Parking")])])])])]), _vm._v(" "), _c("div", {
+      }, [_vm._v("Register Employee Parking")])])])])]), _vm._v(" "), _c("div", {
         staticClass: "modal fade",
         attrs: {
           id: "student-parking-modal",
@@ -97841,12 +98072,13 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
       }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
         staticClass: "btn btn-primary",
         attrs: {
-          type: "button"
+          type: "button",
+          disabled: _vm.submitted
         },
         on: {
           click: _vm.create_student_parking
         }
-      }, [_vm._v("Register Parking")])])])])]), _vm._v(" "), _c("div", {
+      }, [_vm._v("Register Student Parking")])])])])]), _vm._v(" "), _c("div", {
         staticClass: "modal fade",
         attrs: {
           id: "vehicle-modal",
@@ -98291,12 +98523,13 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
       }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
         staticClass: "btn btn-primary",
         attrs: {
-          type: "button"
+          type: "button",
+          disabled: _vm.submitted
         },
         on: {
           click: _vm.create_vehicle
         }
-      }, [_vm._v("Register Parking")])])])])])]);
+      }, [_vm._v("Register Vehicle")])])])])])]);
     };
 
     var staticRenderFns = [function () {
@@ -98559,26 +98792,10 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         staticClass: "card-header"
       }, [_vm._v("CCFC List of Services")]), _vm._v(" "), _c("div", {
         staticClass: "card-body"
-      }, [_c("button", {
-        staticClass: "btn btn-primary btn-block"
-      }, [_vm._v("Add New CCFC Service")]), _vm._v(" "), _c("table", {
+      }, [_c("table", {
         staticClass: "table"
       }, [_vm._m(2), _vm._v(" "), _c("tbody", _vm._l(_vm.services, function (service, index) {
-        return _c("tr", [_c("td", [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(service.category_Name))]), _vm._v(" "), service.status == 1 ? _c("td", [_vm._v("Active")]) : _vm._e(), _vm._v(" "), service.status == 0 ? _c("td", [_vm._v("Inactive")]) : _vm._e(), _vm._v(" "), _c("td", [_c("button", {
-          staticClass: "btn btn-info",
-          on: {
-            click: function click($event) {
-              return _vm.updateModal(index);
-            }
-          }
-        }, [_vm._v("Edit")]), _c("button", {
-          staticClass: "btn btn-danger",
-          on: {
-            click: function click($event) {
-              return _vm.deleteTask(index);
-            }
-          }
-        }, [_vm._v("Delete")])])]);
+        return _c("tr", [_c("td", [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(service.category_Name))]), _vm._v(" "), service.status == 1 ? _c("td", [_vm._v("Active")]) : _vm._e(), _vm._v(" "), service.status == 0 ? _c("td", [_vm._v("Inactive")]) : _vm._e()]);
       }), 0)])])])])])])])]), _vm._v(" "), _c("div", {
         staticClass: "modal fade",
         attrs: {
@@ -98637,14 +98854,14 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         directives: [{
           name: "model",
           rawName: "v-model",
-          value: _vm.pricing.service_category,
-          expression: "pricing.service_category"
+          value: _vm.pricing.category_id,
+          expression: "pricing.category_id"
         }],
         staticClass: "form-control",
         attrs: {
           "data-placeholder": "Choose an Employee...",
-          name: "service_category",
-          id: "service_category",
+          name: "category_id",
+          id: "category_id",
           tabindex: "-1"
         },
         on: {
@@ -98656,7 +98873,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
               return val;
             });
 
-            _vm.$set(_vm.pricing, "service_category", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+            _vm.$set(_vm.pricing, "category_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
           }
         }
       }, [_c("option", {
@@ -98671,7 +98888,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
             value: service.id
           }
         }, [_vm._v(_vm._s(service.category_Name))]);
-      })], 2), _vm._v(" "), _c("span", [_vm._v(" Selected: " + _vm._s(_vm.pricing.service_category))])]), _vm._v(" "), _c("div", {
+      })], 2), _vm._v(" "), _c("span", [_vm._v(" Selected: " + _vm._s(_vm.pricing.category_id))])]), _vm._v(" "), _c("div", {
         staticClass: "form-group"
       }, [_c("label", {
         attrs: {
@@ -98798,7 +99015,272 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         on: {
           click: _vm.create_pricing
         }
-      }, [_vm._v("Register Parking")])])])])])]);
+      }, [_vm._v("Register Parking")])])])])]), _vm._v(" "), _c("div", {
+        staticClass: "modal fade",
+        attrs: {
+          id: "update-pricing-modal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      }, [_c("div", {
+        staticClass: "modal-dialog",
+        attrs: {
+          role: "document"
+        }
+      }, [_c("div", {
+        staticClass: "modal-content"
+      }, [_vm._m(4), _vm._v(" "), _c("div", {
+        staticClass: "modal-body"
+      }, [_c("div", {
+        staticClass: "form-group"
+      }, [_c("label", {
+        attrs: {
+          "for": "service_name"
+        }
+      }, [_vm._v("Service Name")]), _vm._v(" "), _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.new_update_pricings.service_name,
+          expression: "new_update_pricings.service_name"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          id: "service_name"
+        },
+        domProps: {
+          value: _vm.new_update_pricings.service_name
+        },
+        on: {
+          input: function input($event) {
+            if ($event.target.composing) {
+              return;
+            }
+
+            _vm.$set(_vm.new_update_pricings, "service_name", $event.target.value);
+          }
+        }
+      })]), _vm._v(" "), _c("div", {
+        staticClass: "form-group"
+      }, [_c("label", {
+        attrs: {
+          "for": "name"
+        }
+      }, [_vm._v("Service Category")]), _vm._v(" "), _c("select", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.new_update_pricings.category_id,
+          expression: "new_update_pricings.category_id"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          "data-placeholder": "Choose an Employee...",
+          name: "category_id",
+          id: "category_id",
+          tabindex: "-1"
+        },
+        on: {
+          change: function change($event) {
+            var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+              return o.selected;
+            }).map(function (o) {
+              var val = "_value" in o ? o._value : o.value;
+              return val;
+            });
+
+            _vm.$set(_vm.new_update_pricings, "category_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+          }
+        }
+      }, [_c("option", {
+        attrs: {
+          disabled: "",
+          value: "",
+          selected: ""
+        }
+      }), _vm._v(" "), _vm._l(_vm.services, function (service, index) {
+        return _c("option", {
+          domProps: {
+            value: service.id
+          }
+        }, [_vm._v(_vm._s(service.category_Name))]);
+      })], 2), _vm._v(" "), _c("span", [_vm._v(" Selected: " + _vm._s(_vm.new_update_pricings.category_id))])]), _vm._v(" "), _c("div", {
+        staticClass: "form-group"
+      }, [_c("label", {
+        attrs: {
+          "for": "price"
+        }
+      }, [_vm._v("Price")]), _vm._v(" "), _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.new_update_pricings.price,
+          expression: "new_update_pricings.price"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          id: "price"
+        },
+        domProps: {
+          value: _vm.new_update_pricings.price
+        },
+        on: {
+          input: function input($event) {
+            if ($event.target.composing) {
+              return;
+            }
+
+            _vm.$set(_vm.new_update_pricings, "price", $event.target.value);
+          }
+        }
+      })]), _vm._v(" "), _c("div", {
+        staticClass: "form-group"
+      }, [_c("label", {
+        attrs: {
+          "for": "schoolyear"
+        }
+      }, [_vm._v("School Year")]), _vm._v(" "), _c("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.new_update_pricings.schoolyear,
+          expression: "new_update_pricings.schoolyear"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          id: "schoolyear"
+        },
+        domProps: {
+          value: _vm.new_update_pricings.schoolyear
+        },
+        on: {
+          input: function input($event) {
+            if ($event.target.composing) {
+              return;
+            }
+
+            _vm.$set(_vm.new_update_pricings, "schoolyear", $event.target.value);
+          }
+        }
+      })]), _vm._v(" "), _c("div", {
+        staticClass: "form-group"
+      }, [_c("label", {
+        attrs: {
+          "for": "description"
+        }
+      }, [_vm._v("Semester")]), _vm._v(" "), _c("select", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.new_update_pricings.semester,
+          expression: "new_update_pricings.semester"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          name: "semester",
+          id: "semester",
+          tabindex: "-1"
+        },
+        on: {
+          change: function change($event) {
+            var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+              return o.selected;
+            }).map(function (o) {
+              var val = "_value" in o ? o._value : o.value;
+              return val;
+            });
+
+            _vm.$set(_vm.new_update_pricings, "semester", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+          }
+        }
+      }, [_c("option", {
+        attrs: {
+          value: "",
+          selected: ""
+        }
+      }), _vm._v(" "), _c("option", {
+        attrs: {
+          value: "1",
+          selected: ""
+        }
+      }, [_vm._v("First Semester")]), _vm._v(" "), _c("option", {
+        attrs: {
+          value: "2",
+          selected: ""
+        }
+      }, [_vm._v("Second Semester")]), _vm._v(" "), _c("option", {
+        attrs: {
+          value: "3",
+          selected: ""
+        }
+      }, [_vm._v("Summer")])])]), _vm._v(" "), _c("div", {
+        staticClass: "form-group"
+      }, [_c("label", {
+        attrs: {
+          "for": "description"
+        }
+      }, [_vm._v("Status")]), _vm._v(" "), _c("select", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.new_update_pricings.status,
+          expression: "new_update_pricings.status"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          name: "semester",
+          id: "semester",
+          tabindex: "-1"
+        },
+        on: {
+          change: function change($event) {
+            var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+              return o.selected;
+            }).map(function (o) {
+              var val = "_value" in o ? o._value : o.value;
+              return val;
+            });
+
+            _vm.$set(_vm.new_update_pricings, "status", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+          }
+        }
+      }, [_c("option", {
+        attrs: {
+          value: "",
+          selected: ""
+        }
+      }), _vm._v(" "), _c("option", {
+        attrs: {
+          value: "1",
+          selected: ""
+        }
+      }, [_vm._v("Active")]), _vm._v(" "), _c("option", {
+        attrs: {
+          value: "0",
+          selected: ""
+        }
+      }, [_vm._v("Inactive")])])])]), _vm._v(" "), _c("div", {
+        staticClass: "modal-footer"
+      }, [_c("button", {
+        staticClass: "btn btn-danger",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal"
+        }
+      }, [_vm._v("Close")]), _vm._v(" "), _c("button", {
+        staticClass: "btn btn-primary",
+        attrs: {
+          type: "button"
+        },
+        on: {
+          click: _vm.update_pricing
+        }
+      }, [_vm._v("Save Changes")])])])])])]);
     };
 
     var staticRenderFns = [function () {
@@ -98882,15 +99364,7 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
         attrs: {
           scope: "col"
         }
-      }, [_vm._v("Status")]), _vm._v(" "), _c("th", {
-        attrs: {
-          scope: "col"
-        }
-      }), _vm._v(" "), _c("th", {
-        attrs: {
-          scope: "col"
-        }
-      })])]);
+      }, [_vm._v("Status")])])]);
     }, function () {
       var _vm = this;
 
@@ -98906,6 +99380,32 @@ function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.itera
           id: "exampleModalLabel"
         }
       }, [_vm._v("Add CCFC Pricing")]), _vm._v(" "), _c("button", {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      }, [_c("span", {
+        attrs: {
+          "aria-hidden": "true"
+        }
+      }, [_vm._v("×")])])]);
+    }, function () {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c("div", {
+        staticClass: "modal-header"
+      }, [_c("h5", {
+        staticClass: "modal-title",
+        attrs: {
+          id: "exampleModalLabel"
+        }
+      }, [_vm._v("Edit CCFC Pricing")]), _vm._v(" "), _c("button", {
         staticClass: "close",
         attrs: {
           type: "button",

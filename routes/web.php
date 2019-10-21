@@ -30,7 +30,6 @@ Route::group(['middleware' => 'auth'], function () {
 //Parking
 Route::get('/parking','ParkingController@index');
 Route::resource('/employee_parking', 'EmployeeParkingController');
-
 Route::resource('/student_parking', 'StudentParkingController');
 
 //Pricing

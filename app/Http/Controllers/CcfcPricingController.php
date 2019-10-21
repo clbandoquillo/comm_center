@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Pricing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,12 +17,13 @@ class CcfcPricingController extends Controller
     public function index()
     {
         /* dd("it works!");*/
-        $pricings = DB::select(DB::raw("SELECT p.service_name as service_name, 
+        $pricings = DB::select(DB::raw("SELECT p.id as id, p.service_name as service_name, 
         p.price as price, 
         p.schoolyear as schoolyear, 
         p.semester as semester, 
+		cat.id as category_id,
         cat.category_Name as category_Name, 
-        cat.status as status
+        p.status as status
  
         FROM [ccfc].[dbo].[pricings] p inner join ccfc_category cat on p.category_id = cat.id;"));
         return response()->json([
@@ -71,7 +73,8 @@ class CcfcPricingController extends Controller
             'category_id' => 'required',
             'price' => 'required',
             'schoolyear' => 'required',
-            'semester' => 'required'
+            'semester' => 'required',
+            'status' => 'required'
         ]);
 
         $pricing = $request->user()->pricing()->create([
@@ -125,6 +128,23 @@ class CcfcPricingController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+
+            'service_name' => 'required',
+            'category_id' => 'required',
+            'price' => 'required',
+            'schoolyear' => 'required',
+            'semester' => 'required',
+            'status' => 'required'
+        ]);
+
+        $pricing = $request->user()->pricing()->whereId($id)->update($request->all());
+
+        return response()->json([
+            
+            'pricing' => $pricing,
+            'message' => 'CCFC Pricings has been updated'
+        ]);
     }
 
     /**
