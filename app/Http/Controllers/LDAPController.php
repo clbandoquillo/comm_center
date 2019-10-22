@@ -43,6 +43,9 @@ class LDAPController extends Controller
         if($system_role == 4){
             return view('update_barcode');
         }
+        else{
+            abort(403, 'Forbidden Access. Please contact the MIS Office.');
+        }
     }
 
 

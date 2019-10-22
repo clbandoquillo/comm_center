@@ -28,5 +28,8 @@ class ParkingController extends Controller
         if($system_role == 4 || $system_role == 3){
             return view('parking.index');
         }
+        else{
+            abort(403, 'Forbidden Access. Please contact the MIS Office.');
+        }
     }
 }

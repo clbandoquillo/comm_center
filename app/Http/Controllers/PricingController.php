@@ -25,6 +25,9 @@ class PricingController extends Controller
         if($system_role == 4 || $system_role == 3){
             return view('pricing.index');
         }
+        else{
+            abort(403, 'Forbidden Access. Please contact the MIS Office.');
+        }
     }
 
     /**

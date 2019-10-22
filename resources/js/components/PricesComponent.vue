@@ -41,7 +41,7 @@
                                                     <td>{{ pricing.schoolyear }}</td>
                                                     <td v-if="pricing.status == 1">Active</td>
                                                     <td v-if="pricing.status == 0">Inactive</td>
-                                                    <td><button @click="updateModal(index)" class="btn btn-info">Edit</button><button @click="deleteTask(index)" class="btn btn-danger">Delete</button></td>
+                                                    <td><button @click="updateModal(index)" class="btn btn-info">Edit</button><!--<button @click="deleteTask(index)" class="btn btn-danger">Delete</button>--></td>
                                                 </tr>
                                         </tbody>
                                     </table>
