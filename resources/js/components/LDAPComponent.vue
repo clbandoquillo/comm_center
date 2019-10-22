@@ -139,8 +139,8 @@
 
                 ldaps: [],
                 system_roles: [],
-                url: 'http://127.0.0.1:8000/ldap_barcode/',
-                url_system_roles: 'http://127.0.0.1:8000/ldap_roles/',
+                url: 'https://ccfcis.addu.edu.ph/ldap_barcode/',
+                url_system_roles: 'https://ccfcis.addu.edu.ph/ldap_roles/',
                 errors: [],
                 new_update_ldap: [],
                 ldap_fields: [
@@ -214,7 +214,7 @@
             },
 
             create_ldap(){
-                axios.post('http://127.0.0.1:8000/ldap_barcode', 
+                axios.post('https://ccfcis.addu.edu.ph/ldap_barcode', 
                 {
                     ldap_username: this.ldap.ldap_username, 
                     id_number: this.ldap.id_number,
@@ -267,7 +267,7 @@
 
             loadLDAP(){
 
-                axios.get('http://127.0.0.1:8000/ldap_barcode/').then(response => {
+                axios.get('https://ccfcis.addu.edu.ph/ldap_barcode/').then(response => {
 
                     this.ldaps = response.data.ldaps;
                 });

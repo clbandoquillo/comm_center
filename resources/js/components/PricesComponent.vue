@@ -251,8 +251,8 @@
                 pricings: [],
                 services: [],
                 new_update_pricings: [],
-                url: 'http://127.0.0.1:8000/ccfc_pricing/',
-                url_services: 'http://127.0.0.1:8000/ccfc_services/'
+                url: 'https://ccfcis.addu.edu.ph/ccfc_pricing/',
+                url_services: 'https://ccfcis.addu.edu.ph/ccfc_services/'
             }
         },
 
@@ -264,7 +264,7 @@
 
             create_pricing(){
 
-                axios.post('http://127.0.0.1:8000/ccfc_pricing', 
+                axios.post('https://ccfcis.addu.edu.ph/ccfc_pricing', 
                 {
                     service_name: this.pricing.service_name,
                     category_id: this.pricing.category_id,
