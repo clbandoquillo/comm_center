@@ -23,6 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $system_role = \Auth::user()->system_role;
+
+        if($system_role == 4 || $system_role == 3){
+            return view('home');
+        }
+        else{
+            abort(403, 'Forbidden Access. Please contact the MIS Office.');
+        }
     }
 }

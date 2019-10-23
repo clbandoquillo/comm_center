@@ -45,7 +45,7 @@
 
                                             <template slot="top-row" slot-scope="{ fields }" v-if="employee_parkings.length > 0">
                                                 <td v-for="field in fields" :key="field.key">
-                                                <input v-if="field.label == 'ID Number' || field.label == 'Middlename' || field.label == 'Lastname' || field.label == 'Firstname'" v-model="filters_ep[field.key]" :placeholder="field.label">
+                                                <input v-if="field.label == 'ID Number' || field.label == 'Middlename' || field.label == 'Lastname' || field.label == 'Firstname' || field.label == 'School Year' || field.label == 'Semester'" v-model="filters_ep[field.key]" :placeholder="field.label">
                                                 </td>
                                             </template>    
                                     
@@ -89,7 +89,7 @@
                                             striped hover 
                                             :items="filtered_stud_parking"
                                             :fields="columns_stud_parking"
-                                            :per-page="perPage"
+                                            :per-page="sp_perPage"
                                             :current-page="currentPage"
                                             :bordered=true
                                             show-empty
@@ -207,8 +207,8 @@
                                                 striped hover 
                                                 :items="filtered_stud_vehicle"
                                                 :fields="columns_stud_vehicle"
-                                                :per-page="perPage"
-                                                :current-page="currentPage"
+                                                :per-page="perPage_stud_vehicles"
+                                                :current-page="currentPage_stud_vehicles"
                                                 show-empty>
 
                                                 <template slot="top-row" slot-scope="{ fields }" v-if="emp_vehicles.length > 0">
@@ -252,9 +252,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Employees Parking Registration for
-                            <font color="red" v-if="is_parking_period == 1">First Semester</font>
-                            <font color="red" v-if="is_parking_period == 2">Second Semester</font>
-                            <font color="red" v-if="is_parking_period == 3">Summer Semester</font>
+                            <font color="red" v-if="is_parking_period() == 1">First Semester</font>
+                            <font color="red" v-if="is_parking_period() == 2">Second Semester</font>
+                            <font color="red" v-if="is_parking_period() == 3">Summer Semester</font>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -387,9 +387,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Students Parking Registration for
-                            <font color="red" v-if="is_parking_period == 1">First Semester</font>
-                            <font color="red" v-if="is_parking_period == 2">Second Semester</font>
-                            <font color="red" v-if="is_parking_period == 3">Summer Semester</font>
+                            <font color="red" v-if="is_parking_period() == 1">First Semester</font>
+                            <font color="red" v-if="is_parking_period() == 2">Second Semester</font>
+                            <font color="red" v-if="is_parking_period() == 3">Summer Semester</font>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -675,14 +675,14 @@
                 emp_vehicles: [],
                 stud_vehicles: [],
                 vehicle_make: [],
-                url: 'https://ccfcis.addu.edu.ph/employee_parking/',
-                url_student_parking: 'https://ccfcis.addu.edu.ph/student_parking/',
-                url_emp_list: 'https://ccfcis.addu.edu.ph/employee_names/',
-                url_pricing: 'https://ccfcis.addu.edu.ph/ccfc_pricing_1/',
-                url_vehicle: 'https://ccfcis.addu.edu.ph/ccfc_vehicles/',
-                url_vehicle_process: 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/',
-                url_vehicle_make: 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/',
-                url_student_name: 'https://ccfcis.addu.edu.ph/student_names',
+                url: 'http://127.0.0.1:8000/employee_parking/',
+                url_student_parking: 'http://127.0.0.1:8000/student_parking/',
+                url_emp_list: 'http://127.0.0.1:8000/employee_names/',
+                url_pricing: 'http://127.0.0.1:8000/ccfc_pricing_1/',
+                url_vehicle: 'http://127.0.0.1:8000/ccfc_vehicles/',
+                url_vehicle_process: 'http://127.0.0.1:8000/ccfc_vehicles_process/',
+                url_vehicle_make: 'http://127.0.0.1:8000/ccfc_vehicle_make/',
+                url_student_name: 'http://127.0.0.1:8000/student_names',
                 errors: [],
                 type: '',
                 current_year: new Date().getFullYear(),
@@ -992,12 +992,17 @@
                 },
                 totalRows: 1,
                 currentPage: 1,
-                perPage: 2,
+                perPage: 5,
+                sp_perPage: 5,
                 pageOptions: [5, 10, 15],
                 totalRows_emp_vehicles: 1,
                 currentPage_emp_vehicles: 1,
-                perPage_emp_vehicles: 2,
+                perPage_emp_vehicles: 5,
                 pageOptions_emp_vehicles: [5, 10, 15],
+                totalRows_stud_vehicles: 1,
+                currentPage_stud_vehicles: 1,
+                perPage_stud_vehicles: 5,
+                pageOptions_stud_vehicles: [5, 10, 15],
                 submitted: false
             }
         },
@@ -1038,7 +1043,9 @@
                     id_number: '',
                     cfirst: '',
                     clast: '',
-                    middle: ''
+                    middle: '',
+                    semester: '',
+                    schoolyear: ''
                 }]
             },
 
@@ -1051,8 +1058,51 @@
                     id_number: '',
                     firstname: '',
                     lastname: '',
-                    middlename: ''
+                    middlename: '',
+                    semester: '',
+                    schoolyear: ''
                 }]
+            },
+
+            emp_rows() {
+                return this.employee_parkings.length
+            },
+
+            stud_rows() {
+                return this.student_parkings.length
+            },
+
+            emp_vehicles_rows() {
+                return this.emp_vehicles.length
+            },
+
+            stud_vehicles_rows() {
+                return this.stud_vehicles.length
+            }
+        },
+
+        methods: {
+          getOptions(search, loading) {
+            loading(true)
+            axios.get('http://127.0.0.1:8000/employee_names/')
+            },
+
+            employeeParkingModal(){
+                this.is_parking_period();
+                $("#employee-parking-modal").modal("show");
+            },
+
+            updateModal(index){
+                $("#employee-parking-modal").modal("show");
+            },
+
+            studentParkingModal(){
+                this.is_parking_period();
+                $("#student-parking-modal").modal("show");
+            },
+
+            vehicleModal(){
+                $("#vehicle-modal").modal("show");
             },
 
             is_parking_period(){
@@ -1080,50 +1130,10 @@
                 return this.semester// + ' ' + this.current_date + ' ' + this.summer_period_start
             },
 
-            emp_rows() {
-                return this.employee_parkings.length
-            },
-
-            stud_rows() {
-                return this.student_parkings.length
-            },
-
-            emp_vehicles_rows() {
-                return this.emp_vehicles.length
-            },
-
-            stud_vehicles_rows() {
-                return this.stud_vehicles.length
-            }
-        },
-
-        methods: {
-          getOptions(search, loading) {
-            loading(true)
-            axios.get('https://ccfcis.addu.edu.ph/employee_names/')
-            },
-
-            employeeParkingModal(){
-                $("#employee-parking-modal").modal("show");
-            },
-
-            updateModal(index){
-                $("#employee-parking-modal").modal("show");
-            },
-
-            studentParkingModal(){
-                $("#student-parking-modal").modal("show");
-            },
-
-            vehicleModal(){
-                $("#vehicle-modal").modal("show");
-            },
-
             create_employee_parking(){
 
                 this.submitted = true;
-
-                axios.post('https://ccfcis.addu.edu.ph/employee_parking',
+                axios.post('http://127.0.0.1:8000/employee_parking',
                 {
                     id_number: this.employee_parking.id_number,
                     plate_number: this.employee_parking.plate_number,
@@ -1148,7 +1158,8 @@
                     $("#employee-parking-modal").modal("hide");
                     //toastr.success(response.data.message);
                     this.load_employee_parking();
-                    this.makeToastEP('success', response.data.message, 'added');
+                    this.makeToastEP('success', response.data.message, 'added', 'Employee Parking successfully ');
+                    this.errors = [];
                 })
 
                 .catch(error=>{
@@ -1199,7 +1210,7 @@
 
                 this.submitted = true;
 
-                axios.post('https://ccfcis.addu.edu.ph/student_parking',
+                axios.post('http://127.0.0.1:8000/student_parking',
                 {
                     id_number: this.student_parking.id_number,
                     plate_number: this.student_parking.plate_number,
@@ -1221,7 +1232,7 @@
                     this.student_parkings.push(response.data.student_parking);
                     $("#student-parking-modal").modal("hide");
                     this.load_student_parking();
-                    toastr.success(response.data.message);
+                    this.makeToastEP('success', response.data.message, 'added', 'Student Parking successfully ');
                 }).catch(error=>{
                     
                     this.errors = [];
@@ -1266,7 +1277,7 @@
             create_vehicle(){
 
                 this.submitted = true;
-                axios.post('https://ccfcis.addu.edu.ph/ccfc_vehicles_process',
+                axios.post('http://127.0.0.1:8000/ccfc_vehicles_process',
                 {
                     id_number_employee: this.vehicle.id_number_employee,
                     id_number_student: this.vehicle.id_number_student,
@@ -1288,7 +1299,7 @@
                     this.vehicles.push(response.data.vehicle);
                     $("#vehicle-modal").modal("hide");
                     this.load_vehicle();
-                    toastr.success(response.data.message);
+                    this.makeToastEP('success', response.data.message, 'added', 'Vehicle successfully ');
                 })
 
                 .catch(error=>{
@@ -1427,9 +1438,9 @@
 
             },
 
-            makeToastEP(variant = null, message, processType) {
+            makeToastEP(variant = null, message, processType, title) {
                 this.$bvToast.toast(message, {
-                title: "Employee Parking successfully "+processType+".",
+                title: title+processType+".",
                 variant: variant,
                 autoHideDelay: 5000,
                 solid: true
