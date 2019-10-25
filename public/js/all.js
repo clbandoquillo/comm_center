@@ -2648,6 +2648,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -2927,7 +2928,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       label: 'Actions',
       key: 'actions',
       sortable: false
-    }]), _defineProperty(_ref, "filters", {}), _defineProperty(_ref, "filters_ep", {}), _defineProperty(_ref, "filters_stud", {}), _defineProperty(_ref, "totalRows", 1), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "perPage", 2), _defineProperty(_ref, "pageOptions", [5, 10, 15]), _defineProperty(_ref, "totalRows_emp_vehicles", 1), _defineProperty(_ref, "currentPage_emp_vehicles", 1), _defineProperty(_ref, "perPage_emp_vehicles", 2), _defineProperty(_ref, "pageOptions_emp_vehicles", [5, 10, 15]), _defineProperty(_ref, "submitted", false), _ref;
+    }]), _defineProperty(_ref, "filters", {}), _defineProperty(_ref, "filters_ep", {}), _defineProperty(_ref, "filters_stud", {}), _defineProperty(_ref, "totalRows", 1), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "perPage", 5), _defineProperty(_ref, "sp_perPage", 5), _defineProperty(_ref, "pageOptions", [5, 10, 15]), _defineProperty(_ref, "totalRows_emp_vehicles", 1), _defineProperty(_ref, "currentPage_emp_vehicles", 1), _defineProperty(_ref, "perPage_emp_vehicles", 5), _defineProperty(_ref, "pageOptions_emp_vehicles", [5, 10, 15]), _defineProperty(_ref, "totalRows_stud_vehicles", 1), _defineProperty(_ref, "currentPage_stud_vehicles", 1), _defineProperty(_ref, "perPage_stud_vehicles", 5), _defineProperty(_ref, "pageOptions_stud_vehicles", [5, 10, 15]), _defineProperty(_ref, "submitted", false), _ref;
   },
   computed: {
     filtered_emp_vehicle: function filtered_emp_vehicle() {
@@ -2972,7 +2973,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         id_number: '',
         cfirst: '',
         clast: '',
-        middle: ''
+        middle: '',
+        semester: '',
+        schoolyear: ''
       }];
     },
     filtered_stud_parking: function filtered_stud_parking() {
@@ -2987,7 +2990,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         id_number: '',
         firstname: '',
         lastname: '',
-        middlename: ''
+        middlename: '',
+        semester: '',
+        schoolyear: ''
       }];
     },
     is_parking_period: function is_parking_period() {
@@ -3072,7 +3077,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this5.load_employee_parking();
 
-        _this5.makeToastEP('success', response.data.message, 'added');
+        _this5.makeToastEP('success', response.data.message, 'added', 'Employee Parking successfully ');
+
+        _this5.errors = [];
       })["catch"](function (error) {
         _this5.errors = [];
 
@@ -3154,7 +3161,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this6.load_student_parking();
 
-        toastr.success(response.data.message);
+        _this6.makeToastEP('success', response.data.message, 'added', 'Student Parking successfully ');
       })["catch"](function (error) {
         _this6.errors = [];
 
@@ -3232,7 +3239,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this7.load_vehicle();
 
-        toastr.success(response.data.message);
+        _this7.makeToastEP('success', response.data.message, 'added', 'Vehicle successfully ');
       })["catch"](function (error) {
         _this7.errors = [];
 
@@ -3330,8 +3337,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.employee_parking.school_dept_office = '';
       this.employee_parking.license_number = '';
       this.employee_parking.license_expiry_date = '';
-      this.employee_parking.schoolyear = '';
-      this.employee_parking.semester = '';
       this.employee_parking.parking_type = '';
       this.employee_parking.or_number = '';
       this.employee_parking.sticker_number = '';
@@ -3342,8 +3347,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.student_parking.contact_number = '';
       this.student_parking.license_number = '';
       this.student_parking.license_expiry_date = '';
-      this.student_parking.schoolyear = '';
-      this.student_parking.semester = '';
       this.student_parking.parking_type = '';
       this.student_parking.sticker_number = '';
       this.student_parking.date_issued = '';
@@ -3359,12 +3362,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.vehicle.lto_cr = '';
       this.vehicle.lto_or = '';
     },
+    clear_errors: function clear_errors() {
+      this.errors = [];
+    },
     makeToastEP: function makeToastEP() {
       var variant = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
       var message = arguments.length > 1 ? arguments[1] : undefined;
       var processType = arguments.length > 2 ? arguments[2] : undefined;
+      var title = arguments.length > 3 ? arguments[3] : undefined;
       this.$bvToast.toast(message, {
-        title: "Employee Parking successfully " + processType + ".",
+        title: title + processType + ".",
         variant: variant,
         autoHideDelay: 5000,
         solid: true
@@ -3641,8 +3648,8 @@ __webpack_require__.r(__webpack_exports__);
       pricings: [],
       services: [],
       new_update_pricings: [],
-      url: 'https://ccfcis.addu.edu.ph/ccfc_pricing/',
-      url_services: 'https://ccfcis.addu.edu.ph/ccfc_services/'
+      url: 'http://127.0.0.1:8000/ccfc_pricing/',
+      url_services: 'http://127.0.0.1:8000/ccfc_services/'
     };
   },
   methods: {
@@ -3652,7 +3659,7 @@ __webpack_require__.r(__webpack_exports__);
     create_pricing: function create_pricing() {
       var _this = this;
 
-      axios.post('https://ccfcis.addu.edu.ph/ccfc_pricing', {
+      axios.post('http://127.0.0.1:8000/ccfc_pricing', {
         service_name: this.pricing.service_name,
         category_id: this.pricing.category_id,
         price: this.pricing.price,
@@ -84482,7 +84489,9 @@ var render = function() {
                                                 field.label == "ID Number" ||
                                                 field.label == "Middlename" ||
                                                 field.label == "Lastname" ||
-                                                field.label == "Firstname"
+                                                field.label == "Firstname" ||
+                                                field.label == "School Year" ||
+                                                field.label == "Semester"
                                                   ? _c("input", {
                                                       directives: [
                                                         {
@@ -84529,45 +84538,7 @@ var render = function() {
                                           })
                                         : undefined
                                     }
-                                  },
-                                  _vm.vehicles.length > 0
-                                    ? {
-                                        key: "cell(actions)",
-                                        fn: function(row) {
-                                          return [
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass: "btn btn-info",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.updateModal(
-                                                      row.index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v("Edit")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass: "btn btn-danger",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.delete_ldap(
-                                                      row.index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v("Delete")]
-                                            )
-                                          ]
-                                        }
-                                      }
-                                    : null
+                                  }
                                 ],
                                 null,
                                 true
@@ -84644,7 +84615,7 @@ var render = function() {
                           hover: "",
                           items: _vm.filtered_stud_parking,
                           fields: _vm.columns_stud_parking,
-                          "per-page": _vm.perPage,
+                          "per-page": _vm.sp_perPage,
                           "current-page": _vm.currentPage,
                           bordered: true,
                           "show-empty": ""
@@ -84698,41 +84669,7 @@ var render = function() {
                                     })
                                   : undefined
                               }
-                            },
-                            _vm.vehicles.length > 0
-                              ? {
-                                  key: "cell(actions)",
-                                  fn: function(row) {
-                                    return [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-info",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.updateModal(row.index)
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("Edit")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.delete_ldap(row.index)
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("Delete")]
-                                      )
-                                    ]
-                                  }
-                                }
-                              : null
+                            }
                           ],
                           null,
                           true
@@ -84893,45 +84830,7 @@ var render = function() {
                                           })
                                         : undefined
                                     }
-                                  },
-                                  _vm.vehicles.length > 0
-                                    ? {
-                                        key: "cell(actions)",
-                                        fn: function(row) {
-                                          return [
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass: "btn btn-info",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.updateModal(
-                                                      row.index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v("Edit")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass: "btn btn-danger",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.delete_ldap(
-                                                      row.index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v("Delete")]
-                                            )
-                                          ]
-                                        }
-                                      }
-                                    : null
+                                  }
                                 ],
                                 null,
                                 true
@@ -84983,8 +84882,8 @@ var render = function() {
                                 hover: "",
                                 items: _vm.filtered_stud_vehicle,
                                 fields: _vm.columns_stud_vehicle,
-                                "per-page": _vm.perPage,
-                                "current-page": _vm.currentPage,
+                                "per-page": _vm.perPage_stud_vehicles,
+                                "current-page": _vm.currentPage_stud_vehicles,
                                 "show-empty": ""
                               },
                               scopedSlots: _vm._u(
@@ -85048,45 +84947,7 @@ var render = function() {
                                           })
                                         : undefined
                                     }
-                                  },
-                                  _vm.vehicles.length > 0
-                                    ? {
-                                        key: "cell(actions)",
-                                        fn: function(row) {
-                                          return [
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass: "btn btn-info",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.updateModal(
-                                                      row.index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v("Edit")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass: "btn btn-danger",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.delete_ldap(
-                                                      row.index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v("Delete")]
-                                            )
-                                          ]
-                                        }
-                                      }
-                                    : null
+                                  }
                                 ],
                                 null,
                                 true
@@ -85134,7 +84995,9 @@ var render = function() {
           tabindex: "-1",
           role: "dialog",
           "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true"
+          "aria-hidden": "true",
+          "data-backdrop": "static",
+          "data-keyboard": "false"
         }
       },
       [
@@ -85175,7 +85038,23 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _vm._m(2)
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    },
+                    on: { click: _vm.clear_errors }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
@@ -85660,21 +85539,28 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.employee_parking.date_issued,
-                        expression: "employee_parking.date_issued"
+                        value: (_vm.employee_parking.date_issued = new Date()
+                          .toISOString()
+                          .slice(0, 10)),
+                        expression:
+                          "employee_parking.date_issued = new Date().toISOString().slice(0,10)"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "date", id: "date_issued" },
-                    domProps: { value: _vm.employee_parking.date_issued },
+                    domProps: {
+                      value: (_vm.employee_parking.date_issued = new Date()
+                        .toISOString()
+                        .slice(0, 10))
+                    },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.employee_parking,
-                          "date_issued",
+                          (_vm.employee_parking.date_issued = new Date().toISOString()),
+                          "slice(0,10)",
                           $event.target.value
                         )
                       }
@@ -85721,7 +85607,8 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-danger",
-                    attrs: { type: "button", "data-dismiss": "modal" }
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: { click: _vm.clear_errors }
                   },
                   [_vm._v("Close")]
                 ),
@@ -85792,7 +85679,23 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _vm._m(3)
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    },
+                    on: { click: _vm.clear_errors }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
@@ -86248,21 +86151,28 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.student_parking.date_issued,
-                        expression: "student_parking.date_issued"
+                        value: (_vm.student_parking.date_issued = new Date()
+                          .toISOString()
+                          .slice(0, 10)),
+                        expression:
+                          "student_parking.date_issued = new Date().toISOString().slice(0,10)"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "date", id: "date_issued" },
-                    domProps: { value: _vm.student_parking.date_issued },
+                    domProps: {
+                      value: (_vm.student_parking.date_issued = new Date()
+                        .toISOString()
+                        .slice(0, 10))
+                    },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.student_parking,
-                          "date_issued",
+                          (_vm.student_parking.date_issued = new Date().toISOString()),
+                          "slice(0,10)",
                           $event.target.value
                         )
                       }
@@ -86276,7 +86186,8 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-danger",
-                    attrs: { type: "button", "data-dismiss": "modal" }
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: { click: _vm.clear_errors }
                   },
                   [_vm._v("Close")]
                 ),
@@ -86315,7 +86226,34 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(4),
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" }
+                  },
+                  [_vm._v("Vehicle Registration")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close"
+                    },
+                    on: { click: _vm.clear_errors }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _vm.errors.length > 0
@@ -86601,9 +86539,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Model")
-                  ]),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -86629,9 +86565,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Plate Number")
-                  ]),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -86720,7 +86654,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(5),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group form-check-inline" }, [
                   _c("input", {
@@ -86842,7 +86776,8 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-danger",
-                    attrs: { type: "button", "data-dismiss": "modal" }
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: { click: _vm.clear_errors }
                   },
                   [_vm._v("Close")]
                 ),
@@ -86978,59 +86913,29 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
+    return _c("label", { attrs: { for: "description" } }, [
+      _vm._v("Year Model - "),
+      _c("b", [_c("i", [_vm._v("Example: 2019 Ford Ranger Raptor")])])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Vehicle Registration")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
+    return _c("label", { attrs: { for: "description" } }, [
+      _vm._v("Plate Number "),
+      _c("br"),
+      _c("b", [_vm._v("Follow this format:")]),
+      _c("i", [
+        _c("br"),
+        _vm._v(
+          "For vehicles, use ABC-1234 (2014 series plates) and ABC-123 (1981 Series plates)\n                        "
+        ),
+        _c("br"),
+        _vm._v(
+          "For motorcycles, use MC-12345 (2014 series plates) and MC-1234 (1981 Series plates)"
+        )
+      ])
     ])
   },
   function() {
