@@ -44,7 +44,7 @@ class LDAPController extends Controller
             return view('update_barcode');
         }
         else{
-            abort(403, 'Forbidden Access. Please contact the MIS Office.');
+            return view('redirect.redirect');
         }
     }
 

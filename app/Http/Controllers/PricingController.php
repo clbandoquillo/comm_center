@@ -26,7 +26,7 @@ class PricingController extends Controller
             return view('pricing.index');
         }
         else{
-            abort(403, 'Forbidden Access. Please contact the MIS Office.');
+            return view('redirect.redirect');
         }
     }
 

@@ -20,6 +20,7 @@ Auth::routes([
 
 
 Route::get('/dashboard', 'HomeController@index');
+Route::get('/forbidden', 'HomeController@forbidden');
 
 Route::get('/', 'HomeController@index')->name('home');
 
