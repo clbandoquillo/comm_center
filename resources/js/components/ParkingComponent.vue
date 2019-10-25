@@ -49,10 +49,10 @@
                                                 </td>
                                             </template>    
                                     
-                                            <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                            <!--<template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
                                                 <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
                                                 <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
-                                            </template>
+                                            </template>-->
                                                 
                                         </b-table>
 
@@ -101,10 +101,10 @@
                                                 </td>
                                             </template> 
                                     
-                                            <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                            <!--<template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
                                                 <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
                                                 <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
-                                            </template>
+                                            </template>-->
                                                 
                                         </b-table>
 
@@ -162,10 +162,10 @@
                                                     </td>
                                                 </template>
                                                 
-                                                <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                                <!--<template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
                                                     <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
                                                     <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
-                                                </template>
+                                                </template>-->
                                                 
                                             </b-table>
 
@@ -217,10 +217,10 @@
                                                     </td>
                                                 </template>
                                                 
-                                                <template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
+                                                <!--<template v-slot:cell(actions)="row" v-if="vehicles.length > 0">
                                                     <button @click="updateModal(row.index)" class="btn btn-info">Edit</button>
                                                     <button @click="delete_ldap(row.index)" class="btn btn-danger">Delete</button>
-                                                </template>
+                                                </template>-->
                                                 
                                             </b-table>
 
@@ -247,16 +247,16 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="employee-parking-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="employee-parking-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Employees Parking Registration for
-                            <font color="red" v-if="is_parking_period() == 1">First Semester</font>
-                            <font color="red" v-if="is_parking_period() == 2">Second Semester</font>
-                            <font color="red" v-if="is_parking_period() == 3">Summer Semester</font>
+                            <font color="red" v-if="is_parking_period == 1">First Semester</font>
+                            <font color="red" v-if="is_parking_period == 2">Second Semester</font>
+                            <font color="red" v-if="is_parking_period == 3">Summer Semester</font>
                         </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button @click="clear_errors" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -347,7 +347,7 @@
 
                         <div class="form-group">
                             <label for="description">Date Issued</label>
-                            <input v-model="employee_parking.date_issued" type="date" id="date_issued" class="form-control">
+                            <input v-model="employee_parking.date_issued = new Date().toISOString().slice(0,10)" type="date" id="date_issued" class="form-control">
                             <br>
                         </div>
 
@@ -375,7 +375,7 @@
                         </div>-->
                 </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button @click="clear_errors" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         <button @click="create_employee_parking" type="button" class="btn btn-primary" :disabled="submitted">Register Employee Parking</button>
                     </div>
                 </div>
@@ -387,11 +387,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Students Parking Registration for
-                            <font color="red" v-if="is_parking_period() == 1">First Semester</font>
-                            <font color="red" v-if="is_parking_period() == 2">Second Semester</font>
-                            <font color="red" v-if="is_parking_period() == 3">Summer Semester</font>
+                            <font color="red" v-if="is_parking_period == 1">First Semester</font>
+                            <font color="red" v-if="is_parking_period == 2">Second Semester</font>
+                            <font color="red" v-if="is_parking_period == 3">Summer Semester</font>
                         </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button @click="clear_errors" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -469,7 +469,7 @@
 
                         <div class="form-group">
                             <label for="description">Date Issued</label>
-                            <input v-model="student_parking.date_issued" type="date" id="date_issued" class="form-control">
+                            <input v-model="student_parking.date_issued = new Date().toISOString().slice(0,10)" type="date" id="date_issued" class="form-control">
                         </div>
 
                     <!--  <div class="form-group">
@@ -482,7 +482,7 @@
                         </div>-->
                 </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button @click="clear_errors" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         <button @click="create_student_parking" type="button" class="btn btn-primary" :disabled="submitted">Register Student Parking</button>
                     </div>
                 </div>
@@ -495,7 +495,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Vehicle Registration</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button @click="clear_errors" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -556,12 +556,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Model</label>
+                            <label for="description">Year Model - <b><i>Example: 2019 Ford Ranger Raptor</i></b></label>
                             <input v-model="vehicle.model" type="text" id="license_number" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Plate Number</label>
+                            <label for="description">Plate Number <br><b>Follow this format:</b><i> <br>For vehicles, use ABC-1234 (2014 series plates) and ABC-123 (1981 Series plates)
+                            <br>For motorcycles, use MC-12345 (2014 series plates) and MC-1234 (1981 Series plates)</i></label>
                             <input v-model="vehicle.plate_number" type="text" id="licence_expiry_date" class="form-control">
                         </div>
 
@@ -594,7 +595,7 @@
                         </div>
                 </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button @click="clear_errors" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         <button @click="create_vehicle" type="button" class="btn btn-primary" :disabled="submitted">Register Vehicle</button>
                     </div>
                 </div>
@@ -687,6 +688,7 @@
                 type: '',
                 current_year: new Date().getFullYear(),
                 current_date: new Date().toISOString().slice(0,10),
+                //current_date: '2019-11-1',
                 first_period_start: new Date().getFullYear() + '-06-01',
                 first_period_end: new Date().getFullYear() + '-10-31',
                 second_period_start: new Date().getFullYear() + '-11-1',
@@ -1064,6 +1066,31 @@
                 }]
             },
 
+            is_parking_period(){
+
+                if (this.current_date >= this.first_period_start && this.current_date <= this.first_period_end) {
+                    this.semester = 1;
+                    this.employee_parking.semester = 1;
+                    this.employee_parking.schoolyear = new Date().getFullYear();
+                    this.student_parking.semester = 1;
+                    this.student_parking.schoolyear = new Date().getFullYear();
+                } else if (this.current_date >= this.second_period_start && this.current_date <= this.second_period_end) {
+                    this.semester = 2;
+                    this.employee_parking.semester = 2;
+                    this.employee_parking.schoolyear = new Date().getFullYear();
+                    this.student_parking.semester = 2;
+                    this.student_parking.schoolyear = new Date().getFullYear();
+                } else if (this.current_date >= this.summer_period_start && this.current_date <= this.summer_period_end) {
+                    this.semester = 3;
+                    this.employee_parking.semester = 3;
+                    this.employee_parking.schoolyear = new Date().getFullYear() - 1;
+                    this.student_parking.semester = 3;
+                    this.student_parking.schoolyear = new Date().getFullYear() - 1;
+                }
+
+                return this.semester// + ' ' + this.current_date + ' ' + this.summer_period_start
+            },
+
             emp_rows() {
                 return this.employee_parkings.length
             },
@@ -1088,7 +1115,6 @@
             },
 
             employeeParkingModal(){
-                this.is_parking_period();
                 $("#employee-parking-modal").modal("show");
             },
 
@@ -1097,37 +1123,11 @@
             },
 
             studentParkingModal(){
-                this.is_parking_period();
                 $("#student-parking-modal").modal("show");
             },
 
             vehicleModal(){
                 $("#vehicle-modal").modal("show");
-            },
-
-            is_parking_period(){
-
-                if (this.current_date >= this.first_period_start && this.current_date <= this.first_period_end) {
-                    this.semester = 1;
-                    this.employee_parking.semester = 1;
-                    this.employee_parking.schoolyear = new Date().getFullYear();
-                    this.student_parking.semester = 1;
-                    this.student_parking.schoolyear = new Date().getFullYear();
-                } else if (this.current_date >= this.second_period_start && this.current_date <= this.second_period_end) {
-                    this.semester = 2;
-                    this.employee_parking.semester = 2;
-                    this.employee_parking.schoolyear = new Date().getFullYear();
-                    this.student_parking.semester = 2;
-                    this.student_parking.schoolyear = new Date().getFullYear();
-                } else if (this.current_date >= this.summer_period_start && this.current_date <= this.summer_period_end) {
-                    this.semester = 3;
-                    this.employee_parking.semester = 3;
-                    this.employee_parking.schoolyear = new Date().getFullYear() - 1;
-                    this.student_parking.semester = 3;
-                    this.student_parking.schoolyear = new Date().getFullYear() - 1;
-                }
-
-                return this.semester// + ' ' + this.current_date + ' ' + this.summer_period_start
             },
 
             create_employee_parking(){
@@ -1405,8 +1405,6 @@
                 this.employee_parking.school_dept_office = '';
                 this.employee_parking.license_number = '';
                 this.employee_parking.license_expiry_date = '';
-                this.employee_parking.schoolyear = '';
-                this.employee_parking.semester = '';
                 this.employee_parking.parking_type = '';
                 this.employee_parking.or_number = '';
                 this.employee_parking.sticker_number = '';
@@ -1418,8 +1416,6 @@
                 this.student_parking.contact_number = '';
                 this.student_parking.license_number = '';
                 this.student_parking.license_expiry_date = '';
-                this.student_parking.schoolyear = '';
-                this.student_parking.semester = '';
                 this.student_parking.parking_type = '';
                 this.student_parking.sticker_number = '';
                 this.student_parking.date_issued = '';
@@ -1436,6 +1432,11 @@
                 this.vehicle.lto_cr = '';
                 this.vehicle.lto_or = '';
 
+            },
+
+            clear_errors(){
+                
+                this.errors = [];
             },
 
             makeToastEP(variant = null, message, processType, title) {
