@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img alt="image" src="{{ asset('img/logo.png') }}" style="width:5%;"/>
+                    <!--<img alt="image" src="{{ asset('img/logo.png') }}" style="width:5%;"/>-->
                     Community Center of the First Companions
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

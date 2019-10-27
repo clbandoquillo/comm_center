@@ -138,7 +138,9 @@ class CcfcPricingController extends Controller
             'status' => 'required'
         ]);
 
-        $pricing = $request->user()->pricing()->whereId($id)->update($request->all());
+        //$pricing = $request->user()->pricing()->whereId($id)->update($request->all());
+        
+        $pricing = \DB::table('pricings') ->where('id', $id) ->limit(1)->update($request->all()); 
 
         return response()->json([
             

@@ -147,7 +147,7 @@
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button @click="create_pricing" type="button" class="btn btn-primary">Register Parking</button>
+                        <button @click="create_pricing" type="button" class="btn btn-primary">Save Pricing</button>
                     </div>
                 </div>
             </div>
@@ -251,8 +251,8 @@
                 pricings: [],
                 services: [],
                 new_update_pricings: [],
-                url: 'http://127.0.0.1:8000/ccfc_pricing/',
-                url_services: 'http://127.0.0.1:8000/ccfc_services/'
+                url: 'https://ccfcis.addu.edu.ph/ccfc_pricing/',
+                url_services: 'https://ccfcis.addu.edu.ph/ccfc_services/'
             }
         },
 
@@ -264,7 +264,7 @@
 
             create_pricing(){
 
-                axios.post('http://127.0.0.1:8000/ccfc_pricing', 
+                axios.post('https://ccfcis.addu.edu.ph/ccfc_pricing', 
                 {
                     service_name: this.pricing.service_name,
                     category_id: this.pricing.category_id,
@@ -280,6 +280,7 @@
                     this.pricings.push(response.data.pricing);
                     this.load_pricing();
                     $("#pricing-modal").modal("hide");
+                    this.makeToast('success', response.data.message);
                 })
             },
 
@@ -290,7 +291,7 @@
 
             update_pricing(){
 
-                axios.patch(this.url + this.new_update_pricings.id,{
+                axios.patch('https://ccfcis.addu.edu.ph/ccfc_pricing/' + this.new_update_pricings.id,{
 
                     service_name: this.new_update_pricings.service_name,
                     category_id: this.new_update_pricings.category_id,
@@ -301,8 +302,18 @@
                 }).then(response=>{
 
                     $("#update-modal").modal("hide");
-                    toastr.success(response.data.message = this.new_update_pricings.status);
-                   // this.makeToast('success', this.new_update_ldap.ldap_username, this.new_update_ldap.id_number, 'updated');
+                    //toastr.success(response.data.message);
+                    this.makeToast('success', response.data.message);
+                    $("#update-pricing-modal").modal("hide");
+                })
+            },
+
+            makeToast(variant = null, message) {
+                this.$bvToast.toast(message, {
+                title: "Pricings",
+                variant: variant,
+                autoHideDelay: 5000,
+                solid: true
                 })
             },
 

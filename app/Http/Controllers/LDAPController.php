@@ -137,7 +137,9 @@ class LDAPController extends Controller
             'status' => 'required'
         ]);
 
-        $ldap = $request->user()->ldap()->whereId($id)->update($request->all());
+        //$ldap = $request->user()->ldap()->whereId($id)->update($request->all());
+        
+        $ldap = \DB::table('ccfc_ldap') ->where('id', $id) ->limit(1)->update($request->all()); 
 
         $update = \DB::table('users') ->where('common_name', $request->ldap_username) ->limit(1) ->update( [ 'common_name' => $request->ldap_username, 'system_role' => $request->system_role ]); 
 
