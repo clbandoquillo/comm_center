@@ -28,13 +28,13 @@
             
         </b-table>
 
-        <b-pagination
+        <!--<b-pagination
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"
         aria-controls="my-table"
         ></b-pagination>
-        <p class="mt-3">Current Page: {{ currentPage }}</p>
+        <p class="mt-3">Current Page: {{ currentPage }}</p>-->
 
         <!-- Modal -->
         <div class="modal fade" id="create-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -180,7 +180,7 @@
                 },
                 totalRows: 1,
                 currentPage: 1,
-                perPage: 5,
+                perPage: 100,
                 pageOptions: [5, 10, 15]
             }
         },

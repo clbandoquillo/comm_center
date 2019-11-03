@@ -271,7 +271,7 @@
 
                         <div class="form-group">
                             <label for="name">Employee Name</label>
-                            <v-select v-model="employee_parking.id_number" label="emp_name" :options="employee_names" :reduce="employee_names => employee_names.id_no"></v-select>
+                            <v-select v-model="employee_parking.id_number" label="emp_name" :options="employee_names.length" :reduce="employee_names => employee_names.id_no"></v-select>
 
                             <span> Selected: {{ employee_parking.id_number}}</span>
                         </div>

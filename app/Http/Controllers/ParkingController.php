@@ -25,7 +25,7 @@ class ParkingController extends Controller
     {
         $system_role = \Auth::user()->system_role;
 
-        if($system_role == 4 || $system_role == 3){
+        if($system_role == 3 || $system_role == 4 || $system_role == 5){
             return view('parking.index');
         }
         else{
