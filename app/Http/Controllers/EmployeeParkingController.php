@@ -65,10 +65,10 @@ class EmployeeParkingController extends Controller
             'schoolyear' => $request->schoolyear,
             'semester' => $request->semester,
             'parking_type' => $request->parking_type,
-            'or_number' => $request->sticker_number,
+            'or_number' => $request->or_number,
             'sticker_number' => $request->sticker_number,
             'date_issued' => $request->date_issued,
-            'isPayroll' => $request->sticker_number
+            'isPayroll' => $request->isPayroll
 
         ]);
 

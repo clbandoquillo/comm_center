@@ -70,7 +70,7 @@ class StudentParkingController extends Controller
         $student_parking = $request->user()->studentParking()->create([
             'id_number' => $request->id_number,
             'plate_number' => $request->plate_number,
-            'or_number' => $request->sticker_number,
+            'or_number' => $request->or_number,
             'contact_number' => $request->contact_number,
             'license_number' => $request->license_number,
             'license_expiry_date' => $request->license_expiry_date,

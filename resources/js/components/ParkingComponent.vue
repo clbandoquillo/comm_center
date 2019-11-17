@@ -271,7 +271,7 @@
 
                         <div class="form-group">
                             <label for="name">Employee Name</label>
-                            <v-select v-model="employee_parking.id_number" label="emp_name" :options="employee_names.length" :reduce="employee_names => employee_names.id_no"></v-select>
+                            <v-select v-model="employee_parking.id_number" label="emp_name" :options="employee_names" :reduce="employee_names => employee_names.id_no"></v-select>
 
                             <span> Selected: {{ employee_parking.id_number}}</span>
                         </div>
@@ -336,7 +336,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="description">OR Number</label>
+                            <label for="description">OR Number (Type <b>none</b> if OR Number is not required for this Parking registration)</label>
                             <input v-model="employee_parking.or_number" type="text" id="or_number" class="form-control">
                         </div>
 
@@ -629,7 +629,7 @@
                     or_number: '',
                     sticker_number: '',
                     date_issued: new Date().toISOString().slice(0,10),
-                    isPayroll: ''
+                    isPayroll: 0
                 },
 
                 student_parking:{
@@ -691,7 +691,7 @@
                 //current_date: '2019-11-1',
                 first_period_start: new Date().getFullYear() + '-06-01',
                 first_period_end: new Date().getFullYear() + '-10-31',
-                second_period_start: new Date().getFullYear() + '-11-1',
+                second_period_start: new Date().getFullYear() + '-11-4',
                 second_period_end: new Date().getFullYear() + '-11-30',
                 summer_period_start: (new Date().getFullYear()) + '-3-1',
                 summer_period_end: (new Date().getFullYear()) + '-4-3',
@@ -1087,6 +1087,11 @@
                     this.student_parking.semester = 3;
                     this.student_parking.schoolyear = new Date().getFullYear() - 1;
                 }
+                    this.semester = 2;
+                    this.employee_parking.semester = 2;
+                    this.employee_parking.schoolyear = new Date().getFullYear();
+                    this.student_parking.semester = 2;
+                    this.student_parking.schoolyear = new Date().getFullYear();
 
                 return this.semester// + ' ' + this.current_date + ' ' + this.summer_period_start
             },
