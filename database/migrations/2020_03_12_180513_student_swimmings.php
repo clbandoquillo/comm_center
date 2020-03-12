@@ -14,11 +14,14 @@ class StudentSwimmings extends Migration
     public function up()
     {
         //
-        Schema::create('student_swimmings', function (Blueprint $table) {
+        Schema::create('student_swimming', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('student_id_number');
             $table->string('or_number');
             $table->string('swimming_type');
+            $table->integer('totalHrs');
+            $table->integer('schoolyear');
+            $table->tinyInteger('semester');
             $table->dateTime('date_time_usage', 0);
             $table->double('amount', 8, 2);
             $table->tinyInteger('user_id');

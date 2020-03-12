@@ -11,9 +11,22 @@ class SwimmingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
+        $system_role = \Auth::user()->system_role;
+
+        if($system_role == 3 || $system_role == 4 || $system_role == 5){
+            return view('swimming.index');
+        }
+        else{
+            return view('redirect.redirect');
+        }
     }
 
     /**

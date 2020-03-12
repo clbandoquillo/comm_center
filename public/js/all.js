@@ -3761,369 +3761,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4374,55 +4011,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    var _ref;
-
-    return _ref = {
-      employee_parking: {
-        id_number: '',
-        plate_number: '',
-        contact_number: '',
-        school_dept_office: '',
-        license_number: '',
-        license_expiry_date: '',
-        schoolyear: '',
-        semester: '',
-        parking_type: '',
+    return {
+      employee_swimming: {
+        employee_id_number: '',
         or_number: '',
-        sticker_number: '',
-        date_issued: new Date().toISOString().slice(0, 10),
-        isPayroll: 0
-      },
-      student_parking: {
-        id_number: '',
-        plate_number: '',
-        contact_number: '',
-        latest_course: '',
-        department: '',
-        year_level: '',
-        license_number: '',
-        license_expiry_date: '',
-        schoolyear: '',
+        swimming_type: '',
+        date_time_usage: new Date().toISOString().slice(0, 10),
+        school_year: '',
         semester: '',
-        parking_type: '',
+        amount: ''
+      },
+      student_swimming: {
+        student_id_number: '',
         or_number: '',
-        sticker_number: '',
-        date_issued: new Date().toISOString().slice(0, 10)
-      },
-      vehicle: {
-        id_number_employee: '',
-        id_number_student: '',
-        owner_name_lto: '',
-        relation_to_owner: '',
-        make: '',
-        model: '',
-        plate_number: '',
-        color: '',
-        reg_expiry_date: '',
-        lto_cr: '',
-        lto_or: ''
-      },
-      vehicle_make: {
-        make: ''
+        swimming_type: '',
+        date_time_usage: new Date().toISOString().slice(0, 10),
+        amount: ''
       },
       employee_parkings: [],
       student_parkings: [],
@@ -4431,227 +4035,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       pricings: [],
       vehicles: [],
       emp_vehicles: [],
-      stud_vehicles: []
-    }, _defineProperty(_ref, "vehicle_make", []), _defineProperty(_ref, "url", 'https://ccfcis.addu.edu.ph/employee_parking/'), _defineProperty(_ref, "url_student_parking", 'https://ccfcis.addu.edu.ph/student_parking/'), _defineProperty(_ref, "url_emp_list", 'https://ccfcis.addu.edu.ph/employee_names/'), _defineProperty(_ref, "url_pricing", 'https://ccfcis.addu.edu.ph/ccfc_pricing_1/'), _defineProperty(_ref, "url_vehicle", 'https://ccfcis.addu.edu.ph/ccfc_vehicles/'), _defineProperty(_ref, "url_vehicle_process", 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/'), _defineProperty(_ref, "url_vehicle_make", 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/'), _defineProperty(_ref, "url_student_name", 'https://ccfcis.addu.edu.ph/student_names'), _defineProperty(_ref, "errors", []), _defineProperty(_ref, "type", ''), _defineProperty(_ref, "current_year", new Date().getFullYear()), _defineProperty(_ref, "current_date", new Date().toISOString().slice(0, 10)), _defineProperty(_ref, "first_period_start", new Date().getFullYear() + '-06-01'), _defineProperty(_ref, "first_period_end", new Date().getFullYear() + '-10-31'), _defineProperty(_ref, "second_period_start", new Date().getFullYear() + '-11-4'), _defineProperty(_ref, "second_period_end", new Date().getFullYear() + '-11-30'), _defineProperty(_ref, "summer_period_start", new Date().getFullYear() + '-3-1'), _defineProperty(_ref, "summer_period_end", new Date().getFullYear() + '-4-3'), _defineProperty(_ref, "semester", ''), _defineProperty(_ref, "image", 'img/loader1.gif'), _defineProperty(_ref, "loading", false), _defineProperty(_ref, "columns_emp_parking", [{
-      label: 'ID Number',
-      key: 'id_number',
-      sortable: true
-    }, {
-      label: 'Lastname',
-      key: 'clast',
-      sortable: true
-    }, {
-      label: 'Firstname',
-      key: 'cfirst',
-      sortable: true
-    }, {
-      label: 'Middlename',
-      key: 'middle',
-      sortable: true
-    }, {
-      label: 'Contact Number',
-      key: 'contact_number',
-      sortable: true
-    }, {
-      label: 'School/Dept/Office',
-      key: 'school_dept_office',
-      sortable: true
-    }, {
-      label: 'License Number',
-      key: 'license_number',
-      sortable: true
-    }, {
-      label: 'License Expiry Date',
-      key: 'license_expiry_date',
-      type: 'date',
-      dateInputFormat: 'yyyy-MM-dd',
-      dateOutputFormat: 'MMM dd,yyyy',
-      sortable: true
-    }, {
-      label: 'School Year',
-      key: 'schoolyear',
-      sortable: true
-    }, {
-      label: 'Semester',
-      key: 'semester',
-      sortable: true
-    }, {
-      label: 'Parking Type',
-      key: 'service_name',
-      sortable: true
-    }, {
-      label: 'Sticker Number',
-      key: 'sticker_number',
-      sortable: true
-    }, {
-      label: 'Date Issued',
-      key: 'date_issued',
-      type: 'date',
-      dateInputFormat: 'yyyy-MM-dd',
-      dateOutputFormat: 'MMM dd,yyyy',
-      sortable: true
-    }, {
-      label: 'Actions',
-      key: 'actions',
-      sortable: false
-    }]), _defineProperty(_ref, "columns_emp_vehicle", [{
-      label: 'Employee ID Number',
-      key: 'emp_id',
-      sortable: true
-    }, {
-      label: 'Lastname',
-      key: 'clast',
-      sortable: true
-    }, {
-      label: 'Firstname',
-      key: 'cfirst',
-      sortable: true
-    }, {
-      label: 'Owner Name Registered to LTO',
-      key: 'owner_name_lto',
-      sortable: true
-    }, {
-      label: 'Relation to Owner',
-      key: 'relation_to_owner',
-      sortable: true
-    }, {
-      label: 'Make',
-      key: 'make',
-      sortable: true
-    }, {
-      label: 'Model',
-      key: 'model',
-      sortable: true
-    }, {
-      label: 'Plate Number',
-      key: 'plate_number',
-      sortable: true
-    }, {
-      label: 'Color',
-      key: 'color',
-      sortable: true
-    }, {
-      label: 'Vehicle Registration Expiry Date',
-      key: 'reg_expiry_date',
-      sortable: true
-    }, {
-      label: 'LTO Official Receipt',
-      key: 'lto_or',
-      sortable: true
-    }, {
-      label: 'LTO Certificate of Registration',
-      key: 'lto_cr',
-      sortable: true
-    }, {
-      label: 'Actions',
-      key: 'actions',
-      sortable: false
-    }]), _defineProperty(_ref, "columns_stud_vehicle", [{
-      label: 'Student ID Number',
-      key: 'stud_id',
-      sortable: true
-    }, {
-      label: 'Lastname',
-      key: 'lastname',
-      sortable: true
-    }, {
-      label: 'Firstname',
-      key: 'firstname',
-      sortable: true
-    }, {
-      label: 'Middlename',
-      key: 'middlename',
-      sortable: true
-    }, {
-      label: 'Owner Name Registered to LTO',
-      key: 'owner_name_lto',
-      sortable: true
-    }, {
-      label: 'Relation to Owner',
-      key: 'relation_to_owner',
-      sortable: true
-    }, {
-      label: 'Make',
-      key: 'make',
-      sortable: true
-    }, {
-      label: 'Model',
-      key: 'model',
-      sortable: true
-    }, {
-      label: 'Plate Number',
-      key: 'plate_number',
-      sortable: true
-    }, {
-      label: 'Color',
-      key: 'color',
-      sortable: true
-    }, {
-      label: 'Vehicle Registration Expiry Date',
-      key: 'reg_expiry_date',
-      sortable: true
-    }, {
-      label: 'LTO Official Receipt',
-      key: 'lto_or',
-      sortable: true
-    }, {
-      label: 'LTO Certificate of Registration',
-      key: 'lto_cr',
-      sortable: true
-    }, {
-      label: 'Actions',
-      key: 'actions',
-      sortable: false
-    }]), _defineProperty(_ref, "columns_stud_parking", [{
-      label: 'ID Number',
-      key: 'id_number'
-    }, {
-      label: 'Lastname',
-      key: 'lastname'
-    }, {
-      label: 'Firstname',
-      key: 'firstname'
-    }, {
-      label: 'Middlename',
-      key: 'middlename'
-    }, {
-      label: 'Plate Number',
-      key: 'plate_number'
-    }, {
-      label: 'Contact Number',
-      key: 'contact_number'
-    }, {
-      label: 'License Number',
-      key: 'license_number'
-    }, {
-      label: 'License Expiry Date',
-      key: 'license_expiry_date',
-      type: 'date',
-      dateInputFormat: 'yyyy-MM-dd',
-      dateOutputFormat: 'MMM dd,yyyy'
-    }, {
-      label: 'School Year',
-      key: 'schoolyear'
-    }, {
-      label: 'Semester',
-      key: 'semester'
-    }, {
-      label: 'Parking Type',
-      key: 'service_name'
-    }, {
-      label: 'Sticker Number',
-      key: 'sticker_number'
-    }, {
-      label: 'Date Issued',
-      key: 'date_issued',
-      type: 'date',
-      dateInputFormat: 'yyyy-MM-dd',
-      dateOutputFormat: 'MMM dd,yyyy'
-    }, {
-      label: 'Actions',
-      key: 'actions',
-      sortable: false
-    }]), _defineProperty(_ref, "filters", {}), _defineProperty(_ref, "filters_ep", {}), _defineProperty(_ref, "filters_stud", {}), _defineProperty(_ref, "totalRows", 1), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "perPage", 5), _defineProperty(_ref, "sp_perPage", 5), _defineProperty(_ref, "pageOptions", [5, 10, 15]), _defineProperty(_ref, "totalRows_emp_vehicles", 1), _defineProperty(_ref, "currentPage_emp_vehicles", 1), _defineProperty(_ref, "perPage_emp_vehicles", 5), _defineProperty(_ref, "pageOptions_emp_vehicles", [5, 10, 15]), _defineProperty(_ref, "totalRows_stud_vehicles", 1), _defineProperty(_ref, "currentPage_stud_vehicles", 1), _defineProperty(_ref, "perPage_stud_vehicles", 5), _defineProperty(_ref, "pageOptions_stud_vehicles", [5, 10, 15]), _defineProperty(_ref, "submitted", false), _ref;
+      stud_vehicles: [],
+      vehicle_make: [],
+      url_employee_swimming: 'https://ccfcis.addu.edu.ph/employee_swimming/',
+      url_student_swimming: 'https://ccfcis.addu.edu.ph/student_swimming/',
+      url_emp_list: 'https://ccfcis.addu.edu.ph/employee_names/',
+      url_pricing: 'https://ccfcis.addu.edu.ph/ccfc_pricing_1/',
+      url_vehicle: 'https://ccfcis.addu.edu.ph/ccfc_vehicles/',
+      url_vehicle_process: 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/',
+      url_vehicle_make: 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/',
+      url_student_name: 'https://ccfcis.addu.edu.ph/student_names',
+      errors: [],
+      type: '',
+      current_year: new Date().getFullYear(),
+      current_date: new Date().toISOString().slice(0, 10),
+      //current_date: '2019-11-1',
+      first_period_start: new Date().getFullYear() + '-06-01',
+      first_period_end: new Date().getFullYear() + '-10-31',
+      second_period_start: new Date().getFullYear() + '-11-4',
+      second_period_end: new Date().getFullYear() + '-11-30',
+      summer_period_start: new Date().getFullYear() + '-3-1',
+      summer_period_end: new Date().getFullYear() + '-4-3',
+      semester: '',
+      image: 'img/loader1.gif',
+      loading: false
+    };
   },
   computed: {
     filtered_emp_vehicle: function filtered_emp_vehicle() {
@@ -4776,7 +4184,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     vehicleModal: function vehicleModal() {
       $("#vehicle-modal").modal("show");
     },
-    create_employee_parking: function create_employee_parking() {
+    create_employee_swimming: function create_employee_swimming() {
       var _this5 = this;
 
       this.submitted = true;
@@ -4803,7 +4211,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         $("#employee-parking-modal").modal("hide"); //toastr.success(response.data.message);
 
-        _this5.load_employee_parking();
+        _this5.load_employee_swimming();
 
         _this5.makeToastEP('success', response.data.message, 'added', 'Employee Parking successfully ');
 
@@ -4862,7 +4270,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this5.submitted = false;
       });
     },
-    create_student_parking: function create_student_parking() {
+    create_student_swimming: function create_student_swimming() {
       var _this6 = this;
 
       this.submitted = true;
@@ -4887,7 +4295,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         $("#student-parking-modal").modal("hide");
 
-        _this6.load_student_parking();
+        _this6.load_student_swimming();
 
         _this6.makeToastEP('success', response.data.message, 'added', 'Student Parking successfully ');
       })["catch"](function (error) {
@@ -4940,122 +4348,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this6.submitted = false;
       });
     },
-    create_vehicle: function create_vehicle() {
+    load_employee_swimming: function load_employee_swimming() {
       var _this7 = this;
 
-      this.submitted = true;
-      axios.post('https://ccfcis.addu.edu.ph/ccfc_vehicles_process', {
-        id_number_employee: this.vehicle.id_number_employee,
-        id_number_student: this.vehicle.id_number_student,
-        owner_name_lto: this.vehicle.owner_name_lto,
-        relation_to_owner: this.vehicle.relation_to_owner,
-        make: this.vehicle.make,
-        model: this.vehicle.model,
-        plate_number: this.vehicle.plate_number,
-        color: this.vehicle.color,
-        reg_expiry_date: this.vehicle.reg_expiry_date,
-        lto_cr: this.vehicle.lto_cr,
-        lto_or: this.vehicle.lto_or
-      }).then(function (response) {
-        _this7.resetData();
-
-        _this7.submitted = false;
-
-        _this7.vehicles.push(response.data.vehicle);
-
-        $("#vehicle-modal").modal("hide");
-
-        _this7.load_vehicle();
-
-        _this7.makeToastEP('success', response.data.message, 'added', 'Vehicle successfully ');
-      })["catch"](function (error) {
-        _this7.errors = [];
-
-        if (error.response.data.errors.owner_name_lto) {
-          _this7.errors.push(error.response.data.errors.owner_name_lto[0]);
-        }
-
-        if (error.response.data.errors.relation_to_owner) {
-          _this7.errors.push(error.response.data.errors.relation_to_owner[0]);
-        }
-
-        if (error.response.data.errors.make) {
-          _this7.errors.push(error.response.data.errors.make[0]);
-        }
-
-        if (error.response.data.errors.model) {
-          _this7.errors.push(error.response.data.errors.model[0]);
-        }
-
-        if (error.response.data.errors.plate_number) {
-          _this7.errors.push(error.response.data.errors.plate_number[0]);
-        }
-
-        if (error.response.data.errors.color) {
-          _this7.errors.push(error.response.data.errors.color[0]);
-        }
-
-        if (error.response.data.errors.reg_expiry_date) {
-          _this7.errors.push(error.response.data.errors.reg_expiry_date[0]);
-        }
-
-        if (error.response.data.errors.relation_to_owner) {
-          _this7.errors.push(error.response.data.errors.reg_expiry_date[0]);
-        }
-
-        _this7.submitted = false;
+      axios.get(this.url.employee).then(function (response) {
+        _this7.employee_parkings = response.data.employee_parkings;
+        _this7.loading = true;
       });
     },
-    load_vehicle: function load_vehicle() {
+    load_student_swimming: function load_student_swimming() {
       var _this8 = this;
 
-      axios.get(this.url_vehicle).then(function (response) {
-        _this8.vehicles = response.data.vehicles;
-        _this8.emp_vehicles = response.data.emp_vehicles;
-        _this8.stud_vehicles = response.data.stud_vehicles;
-      });
-    },
-    load_employee_parking: function load_employee_parking() {
-      var _this9 = this;
-
-      axios.get(this.url).then(function (response) {
-        _this9.employee_parkings = response.data.employee_parkings;
-        _this9.loading = true;
-      });
-    },
-    load_student_parking: function load_student_parking() {
-      var _this10 = this;
-
       axios.get(this.url_student_parking).then(function (response) {
-        _this10.student_parkings = response.data.student_parkings;
+        _this8.student_parkings = response.data.student_parkings;
       });
     },
     load_employee_names: function load_employee_names() {
-      var _this11 = this;
+      var _this9 = this;
 
       axios.get(this.url_emp_list).then(function (response) {
-        _this11.employee_names = response.data.employee_names;
+        _this9.employee_names = response.data.employee_names;
       });
     },
     load_student_names: function load_student_names() {
-      var _this12 = this;
+      var _this10 = this;
 
       axios.get(this.url_student_name).then(function (response) {
-        _this12.student_names = response.data.student_names;
+        _this10.student_names = response.data.student_names;
       });
     },
     load_pricing: function load_pricing() {
-      var _this13 = this;
+      var _this11 = this;
 
       axios.get(this.url_pricing).then(function (response) {
-        _this13.pricings = response.data.pricings;
-      });
-    },
-    load_vehicle_make: function load_vehicle_make() {
-      var _this14 = this;
-
-      axios.get(this.url_vehicle_make).then(function (response) {
-        _this14.vehicle_make = response.data.vehicle_make;
+        _this11.pricings = response.data.pricings;
       });
     },
     resetData: function resetData() {
@@ -5107,13 +4433,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   mounted: function mounted() {
-    this.load_employee_parking();
-    this.load_student_parking();
+    this.load_employee_swimming();
+    this.load_student_swimming();
     this.load_employee_names();
     this.load_student_names();
     this.load_pricing();
-    this.load_vehicle();
-    this.load_vehicle_make();
   }
 });
 
@@ -89239,7 +88563,7 @@ var render = function() {
                 _c("div", { staticClass: "card" }, [
                   _c("div", { staticClass: "card-header" }, [
                     _vm._v(
-                      "Register Parking for Employees and University Vehicles"
+                      "Register Swimming for Employees and University Vehicles"
                     )
                   ]),
                   _vm._v(" "),
@@ -89252,7 +88576,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "Register Parking for Employees and University Vehicles"
+                          "Register Swimming for Employees and University Vehicles"
                         )
                       ]
                     ),
@@ -89264,114 +88588,7 @@ var render = function() {
                             attrs: { src: _vm.image, alt: "loader" }
                           })
                         ])
-                      : _c(
-                          "div",
-                          [
-                            _c("b-table", {
-                              attrs: {
-                                responsive: "",
-                                id: "my-table",
-                                striped: "",
-                                hover: "",
-                                items: _vm.filtered_emp_parking,
-                                fields: _vm.columns_emp_parking,
-                                "per-page": _vm.perPage,
-                                "current-page": _vm.currentPage,
-                                bordered: true,
-                                "show-empty": ""
-                              },
-                              scopedSlots: _vm._u(
-                                [
-                                  {
-                                    key: "top-row",
-                                    fn: function(ref) {
-                                      var fields = ref.fields
-                                      return _vm.employee_parkings.length > 0
-                                        ? _vm._l(fields, function(field) {
-                                            return _c(
-                                              "td",
-                                              { key: field.key },
-                                              [
-                                                field.label == "ID Number" ||
-                                                field.label == "Middlename" ||
-                                                field.label == "Lastname" ||
-                                                field.label == "Firstname" ||
-                                                field.label == "School Year" ||
-                                                field.label == "Semester"
-                                                  ? _c("input", {
-                                                      directives: [
-                                                        {
-                                                          name: "model",
-                                                          rawName: "v-model",
-                                                          value:
-                                                            _vm.filters_ep[
-                                                              field.key
-                                                            ],
-                                                          expression:
-                                                            "filters_ep[field.key]"
-                                                        }
-                                                      ],
-                                                      attrs: {
-                                                        placeholder: field.label
-                                                      },
-                                                      domProps: {
-                                                        value:
-                                                          _vm.filters_ep[
-                                                            field.key
-                                                          ]
-                                                      },
-                                                      on: {
-                                                        input: function(
-                                                          $event
-                                                        ) {
-                                                          if (
-                                                            $event.target
-                                                              .composing
-                                                          ) {
-                                                            return
-                                                          }
-                                                          _vm.$set(
-                                                            _vm.filters_ep,
-                                                            field.key,
-                                                            $event.target.value
-                                                          )
-                                                        }
-                                                      }
-                                                    })
-                                                  : _vm._e()
-                                              ]
-                                            )
-                                          })
-                                        : undefined
-                                    }
-                                  }
-                                ],
-                                null,
-                                true
-                              )
-                            }),
-                            _vm._v(" "),
-                            _c("b-pagination", {
-                              attrs: {
-                                "total-rows": _vm.emp_rows,
-                                "per-page": _vm.perPage,
-                                "aria-controls": "my-table"
-                              },
-                              model: {
-                                value: _vm.currentPage,
-                                callback: function($$v) {
-                                  _vm.currentPage = $$v
-                                },
-                                expression: "currentPage"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "mt-3" }, [
-                              _vm._v("Current Page: " + _vm._s(_vm.currentPage))
-                            ])
-                          ],
-                          1
-                        )
+                      : _c("div")
                   ])
                 ])
               ])
@@ -89396,138 +88613,7 @@ var render = function() {
               _c("div", { staticClass: "col-md-12" }, [
                 _c("div", { staticClass: "card" }, [
                   _c("div", { staticClass: "card-header" }, [
-                    _vm._v("Students Parking")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "card-body" },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary btn-block",
-                          on: { click: _vm.studentParkingModal }
-                        },
-                        [_vm._v("Register Student")]
-                      ),
-                      _vm._v(" "),
-                      _c("b-table", {
-                        ref: "table",
-                        attrs: {
-                          responsive: "",
-                          id: "students-table",
-                          striped: "",
-                          hover: "",
-                          items: _vm.filtered_stud_parking,
-                          fields: _vm.columns_stud_parking,
-                          "per-page": _vm.sp_perPage,
-                          "current-page": _vm.currentPage,
-                          bordered: true,
-                          "show-empty": ""
-                        },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "top-row",
-                              fn: function(ref) {
-                                var fields = ref.fields
-                                return _vm.student_parkings.length > 0
-                                  ? _vm._l(fields, function(field) {
-                                      return _c("td", { key: field.key }, [
-                                        field.label == "ID Number" ||
-                                        field.label == "Middlename" ||
-                                        field.label == "Lastname" ||
-                                        field.label == "Firstname"
-                                          ? _c("input", {
-                                              directives: [
-                                                {
-                                                  name: "model",
-                                                  rawName: "v-model",
-                                                  value:
-                                                    _vm.filters_stud[field.key],
-                                                  expression:
-                                                    "filters_stud[field.key]"
-                                                }
-                                              ],
-                                              attrs: {
-                                                placeholder: field.label
-                                              },
-                                              domProps: {
-                                                value:
-                                                  _vm.filters_stud[field.key]
-                                              },
-                                              on: {
-                                                input: function($event) {
-                                                  if ($event.target.composing) {
-                                                    return
-                                                  }
-                                                  _vm.$set(
-                                                    _vm.filters_stud,
-                                                    field.key,
-                                                    $event.target.value
-                                                  )
-                                                }
-                                              }
-                                            })
-                                          : _vm._e()
-                                      ])
-                                    })
-                                  : undefined
-                              }
-                            }
-                          ],
-                          null,
-                          true
-                        )
-                      }),
-                      _vm._v(" "),
-                      _c("b-pagination", {
-                        attrs: {
-                          "total-rows": _vm.stud_rows,
-                          "per-page": _vm.perPage,
-                          "aria-controls": "my-table"
-                        },
-                        model: {
-                          value: _vm.currentPage,
-                          callback: function($$v) {
-                            _vm.currentPage = $$v
-                          },
-                          expression: "currentPage"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "mt-3" }, [
-                        _vm._v("Current Page: " + _vm._s(_vm.currentPage))
-                      ]),
-                      _vm._v("\\\n                            ")
-                    ],
-                    1
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "tab-pane fade",
-          attrs: {
-            id: "nav-vehicles-master",
-            role: "tabpanel",
-            "aria-labelledby": "vehicles-master-tab"
-          }
-        },
-        [
-          _c("div", { staticClass: "container-fluid" }, [
-            _c("div", { staticClass: "row justify-content-center" }, [
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c("div", { staticClass: "card-header" }, [
-                    _vm._v("Vehicles")
+                    _vm._v("Students Swimming")
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-body" }, [
@@ -89535,253 +88621,9 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary btn-block",
-                        on: { click: _vm.vehicleModal }
+                        on: { click: _vm.studentParkingModal }
                       },
-                      [_vm._v("Add Vehicle")]
-                    ),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-content",
-                        attrs: { id: "myTabContent" }
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "tab-pane fade show active",
-                            attrs: {
-                              id: "employees",
-                              role: "tabpanel",
-                              "aria-labelledby": "employees-tab"
-                            }
-                          },
-                          [
-                            _c("b-table", {
-                              ref: "table",
-                              attrs: {
-                                responsive: "",
-                                id: "vehicles-table",
-                                striped: "",
-                                hover: "",
-                                items: _vm.filtered_emp_vehicle,
-                                fields: _vm.columns_emp_vehicle,
-                                "per-page": _vm.perPage_emp_vehicles,
-                                "current-page": _vm.currentPage_emp_vehicles,
-                                "show-empty": ""
-                              },
-                              scopedSlots: _vm._u(
-                                [
-                                  {
-                                    key: "top-row",
-                                    fn: function(ref) {
-                                      var fields = ref.fields
-                                      return _vm.emp_vehicles.length > 0
-                                        ? _vm._l(fields, function(field) {
-                                            return _c(
-                                              "td",
-                                              { key: field.key },
-                                              [
-                                                field.label ==
-                                                  "Employee ID Number" ||
-                                                field.label == "Plate Number" ||
-                                                field.label == "Lastname" ||
-                                                field.label == "Firstname"
-                                                  ? _c("input", {
-                                                      directives: [
-                                                        {
-                                                          name: "model",
-                                                          rawName: "v-model",
-                                                          value:
-                                                            _vm.filters[
-                                                              field.key
-                                                            ],
-                                                          expression:
-                                                            "filters[field.key]"
-                                                        }
-                                                      ],
-                                                      attrs: {
-                                                        placeholder: field.label
-                                                      },
-                                                      domProps: {
-                                                        value:
-                                                          _vm.filters[field.key]
-                                                      },
-                                                      on: {
-                                                        input: function(
-                                                          $event
-                                                        ) {
-                                                          if (
-                                                            $event.target
-                                                              .composing
-                                                          ) {
-                                                            return
-                                                          }
-                                                          _vm.$set(
-                                                            _vm.filters,
-                                                            field.key,
-                                                            $event.target.value
-                                                          )
-                                                        }
-                                                      }
-                                                    })
-                                                  : _vm._e()
-                                              ]
-                                            )
-                                          })
-                                        : undefined
-                                    }
-                                  }
-                                ],
-                                null,
-                                true
-                              )
-                            }),
-                            _vm._v(" "),
-                            _c("b-pagination", {
-                              attrs: {
-                                "total-rows": _vm.emp_vehicles_rows,
-                                "per-page": _vm.perPage_emp_vehicles,
-                                "aria-controls": "my-table"
-                              },
-                              model: {
-                                value: _vm.currentPage_emp_vehicles,
-                                callback: function($$v) {
-                                  _vm.currentPage_emp_vehicles = $$v
-                                },
-                                expression: "currentPage_emp_vehicles"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "mt-3" }, [
-                              _vm._v(
-                                "Current Page: " +
-                                  _vm._s(_vm.currentPage_emp_vehicles)
-                              )
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "tab-pane fade",
-                            attrs: {
-                              id: "students",
-                              role: "tabpanel",
-                              "aria-labelledby": "students-tab"
-                            }
-                          },
-                          [
-                            _c("b-table", {
-                              ref: "table",
-                              attrs: {
-                                responsive: "",
-                                id: "vehicles-table",
-                                striped: "",
-                                hover: "",
-                                items: _vm.filtered_stud_vehicle,
-                                fields: _vm.columns_stud_vehicle,
-                                "per-page": _vm.perPage_stud_vehicles,
-                                "current-page": _vm.currentPage_stud_vehicles,
-                                "show-empty": ""
-                              },
-                              scopedSlots: _vm._u(
-                                [
-                                  {
-                                    key: "top-row",
-                                    fn: function(ref) {
-                                      var fields = ref.fields
-                                      return _vm.emp_vehicles.length > 0
-                                        ? _vm._l(fields, function(field) {
-                                            return _c(
-                                              "td",
-                                              { key: field.key },
-                                              [
-                                                field.label ==
-                                                  "Student ID Number" ||
-                                                field.label == "Plate Number" ||
-                                                field.label == "Lastname" ||
-                                                field.label == "Firstname"
-                                                  ? _c("input", {
-                                                      directives: [
-                                                        {
-                                                          name: "model",
-                                                          rawName: "v-model",
-                                                          value:
-                                                            _vm.filters[
-                                                              field.key
-                                                            ],
-                                                          expression:
-                                                            "filters[field.key]"
-                                                        }
-                                                      ],
-                                                      attrs: {
-                                                        placeholder: field.label
-                                                      },
-                                                      domProps: {
-                                                        value:
-                                                          _vm.filters[field.key]
-                                                      },
-                                                      on: {
-                                                        input: function(
-                                                          $event
-                                                        ) {
-                                                          if (
-                                                            $event.target
-                                                              .composing
-                                                          ) {
-                                                            return
-                                                          }
-                                                          _vm.$set(
-                                                            _vm.filters,
-                                                            field.key,
-                                                            $event.target.value
-                                                          )
-                                                        }
-                                                      }
-                                                    })
-                                                  : _vm._e()
-                                              ]
-                                            )
-                                          })
-                                        : undefined
-                                    }
-                                  }
-                                ],
-                                null,
-                                true
-                              )
-                            }),
-                            _vm._v(" "),
-                            _c("b-pagination", {
-                              attrs: {
-                                "total-rows": _vm.stud_vehicles_rows,
-                                "per-page": _vm.perPage,
-                                "aria-controls": "my-table"
-                              },
-                              model: {
-                                value: _vm.currentPage,
-                                callback: function($$v) {
-                                  _vm.currentPage = $$v
-                                },
-                                expression: "currentPage"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "mt-3" }, [
-                              _vm._v("Current Page: " + _vm._s(_vm.currentPage))
-                            ])
-                          ],
-                          1
-                        )
-                      ]
+                      [_vm._v("Register Student")]
                     )
                   ])
                 ])
@@ -89814,37 +88656,6 @@ var render = function() {
             _c("div", { staticClass: "modal-content" }, [
               _c("div", { staticClass: "modal-header" }, [
                 _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalLabel" }
-                  },
-                  [
-                    _vm._v(
-                      "Employees Parking Registration for\n                        "
-                    ),
-                    _vm.is_parking_period == 1
-                      ? _c("font", { attrs: { color: "red" } }, [
-                          _vm._v("First Semester")
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.is_parking_period == 2
-                      ? _c("font", { attrs: { color: "red" } }, [
-                          _vm._v("Second Semester")
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.is_parking_period == 3
-                      ? _c("font", { attrs: { color: "red" } }, [
-                          _vm._v("Summer Semester")
-                        ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
                   "button",
                   {
                     staticClass: "close",
@@ -89864,18 +88675,6 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _vm.errors.length > 0
-                  ? _c("div", { staticClass: "alert alert-danger" }, [
-                      _c(
-                        "ul",
-                        _vm._l(_vm.errors, function(emp_parking_err) {
-                          return _c("li", [_vm._v(_vm._s(emp_parking_err))])
-                        }),
-                        0
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "form-group" },
@@ -89911,78 +88710,8 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "name" } }, [_vm._v("Vehicle")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.employee_parking.plate_number,
-                          expression: "employee_parking.plate_number"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        "data-placeholder": "Choose an Employee...",
-                        name: "employee_names",
-                        id: "employee_names",
-                        tabindex: "-1"
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.employee_parking,
-                            "plate_number",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    _vm._l(_vm.vehicles, function(vehicle, index) {
-                      return vehicle.emp_id == _vm.employee_parking.id_number
-                        ? _c(
-                            "option",
-                            { domProps: { value: vehicle.plate_number } },
-                            [
-                              _c("b", [
-                                _vm._v(
-                                  _vm._s(vehicle.plate_number) +
-                                    ": " +
-                                    _vm._s(vehicle.make) +
-                                    " " +
-                                    _vm._s(vehicle.model)
-                                )
-                              ])
-                            ]
-                          )
-                        : _vm._e()
-                    }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _c("span", [
-                    _vm._v(
-                      " Selected: " + _vm._s(_vm.employee_parking.plate_number)
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("School / Dept / Office")
+                    _vm._v("OR Number")
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -89990,23 +88719,21 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.employee_parking.school_dept_office,
-                        expression: "employee_parking.school_dept_office"
+                        value: _vm.employee_swimming.or_number,
+                        expression: "employee_swimming.or_number"
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "text", id: "school_dept_office" },
-                    domProps: {
-                      value: _vm.employee_parking.school_dept_office
-                    },
+                    attrs: { type: "text", id: "or_number" },
+                    domProps: { value: _vm.employee_swimming.or_number },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.employee_parking,
-                          "school_dept_office",
+                          _vm.employee_swimming,
+                          "or_number",
                           $event.target.value
                         )
                       }
@@ -90016,137 +88743,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Contact Number")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.employee_parking.contact_number,
-                        expression: "employee_parking.contact_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "contact_number" },
-                    domProps: { value: _vm.employee_parking.contact_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.employee_parking,
-                          "contact_number",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("License Number")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.employee_parking.license_number,
-                        expression: "employee_parking.license_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "license_number" },
-                    domProps: { value: _vm.employee_parking.license_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.employee_parking,
-                          "license_number",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("License Expiry Date")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.employee_parking.license_expiry_date,
-                        expression: "employee_parking.license_expiry_date"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "licence_expiry_date" },
-                    domProps: {
-                      value: _vm.employee_parking.license_expiry_date
-                    },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.employee_parking,
-                          "license_expiry_date",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("School Year")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.employee_parking.schoolyear,
-                        expression: "employee_parking.schoolyear"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "schoolyear" },
-                    domProps: { value: _vm.employee_parking.schoolyear },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.employee_parking,
-                          "schoolyear",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Semester")
+                    _vm._v("Swimming Type")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -90156,66 +88753,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.employee_parking.semester,
-                          expression: "employee_parking.semester"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "semester",
-                        id: "semester",
-                        tabindex: "-1"
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.employee_parking,
-                            "semester",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "1", selected: "" } }, [
-                        _vm._v("First Semester")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2", selected: "" } }, [
-                        _vm._v("Second Semester")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "3", selected: "" } }, [
-                        _vm._v("Summer")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Parking Type")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.employee_parking.parking_type,
-                          expression: "employee_parking.parking_type"
+                          value: _vm.employee_swimming.swimming_type,
+                          expression: "employee_swimming.swimming_type"
                         }
                       ],
                       staticClass: "form-control",
@@ -90235,8 +88774,8 @@ var render = function() {
                               return val
                             })
                           _vm.$set(
-                            _vm.employee_parking,
-                            "parking_type",
+                            _vm.employee_swimming,
+                            "swimming_type",
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -90272,28 +88811,30 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _vm._m(2),
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("School Year")
+                  ]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.employee_parking.or_number,
-                        expression: "employee_parking.or_number"
+                        value: _vm.employee_swimming.schoolyear,
+                        expression: "employee_swimming.schoolyear"
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "text", id: "or_number" },
-                    domProps: { value: _vm.employee_parking.or_number },
+                    attrs: { type: "text", id: "schoolyear" },
+                    domProps: { value: _vm.employee_swimming.schoolyear },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.employee_parking,
-                          "or_number",
+                          _vm.employee_swimming,
+                          "schoolyear",
                           $event.target.value
                         )
                       }
@@ -90303,39 +88844,65 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Sticker Number")
+                    _vm._v("Semester")
                   ]),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.employee_parking.sticker_number,
-                        expression: "employee_parking.sticker_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "sticker_number" },
-                    domProps: { value: _vm.employee_parking.sticker_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.employee_swimming.semester,
+                          expression: "employee_swimming.semester"
                         }
-                        _vm.$set(
-                          _vm.employee_parking,
-                          "sticker_number",
-                          $event.target.value
-                        )
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "semester",
+                        id: "semester",
+                        tabindex: "-1"
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.employee_swimming,
+                            "semester",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
                       }
-                    }
-                  })
+                    },
+                    [
+                      _c("option", { attrs: { value: "1", selected: "" } }, [
+                        _vm._v("First Semester")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2", selected: "" } }, [
+                        _vm._v("Second Semester")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3", selected: "" } }, [
+                        _vm._v("Summer")
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Date Issued")
+                    _vm._v("Date / Time Usage")
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -90343,17 +88910,17 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: (_vm.employee_parking.date_issued = new Date()
+                        value: (_vm.employee_swimming.date_issued = new Date()
                           .toISOString()
                           .slice(0, 10)),
                         expression:
-                          "employee_parking.date_issued = new Date().toISOString().slice(0,10)"
+                          "employee_swimming.date_issued = new Date().toISOString().slice(0,10)"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "date", id: "date_issued" },
                     domProps: {
-                      value: (_vm.employee_parking.date_issued = new Date()
+                      value: (_vm.employee_swimming.date_issued = new Date()
                         .toISOString()
                         .slice(0, 10))
                     },
@@ -90363,7 +88930,7 @@ var render = function() {
                           return
                         }
                         _vm.$set(
-                          (_vm.employee_parking.date_issued = new Date().toISOString()),
+                          (_vm.employee_swimming.date_issued = new Date().toISOString()),
                           "slice(0,10)",
                           $event.target.value
                         )
@@ -90372,38 +88939,7 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("br")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c(
-                      "b-form-checkbox",
-                      {
-                        attrs: {
-                          id: "checkbox-1",
-                          name: "checkbox-1",
-                          value: "1",
-                          "unchecked-value": "0"
-                        },
-                        model: {
-                          value: _vm.employee_parking.isPayroll,
-                          callback: function($$v) {
-                            _vm.$set(_vm.employee_parking, "isPayroll", $$v)
-                          },
-                          expression: "employee_parking.isPayroll"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Check if payment is due on every Payroll\n                        "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-footer" }, [
@@ -90422,9 +88958,9 @@ var render = function() {
                   {
                     staticClass: "btn btn-primary",
                     attrs: { type: "button", disabled: _vm.submitted },
-                    on: { click: _vm.create_employee_parking }
+                    on: { click: _vm.create_employee_swimming }
                   },
-                  [_vm._v("Register Employee Parking")]
+                  [_vm._v("Register Employee Swimming")]
                 )
               ])
             ])
@@ -90453,37 +88989,6 @@ var render = function() {
             _c("div", { staticClass: "modal-content" }, [
               _c("div", { staticClass: "modal-header" }, [
                 _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalLabel" }
-                  },
-                  [
-                    _vm._v(
-                      "Students Parking Registration for\n                        "
-                    ),
-                    _vm.is_parking_period == 1
-                      ? _c("font", { attrs: { color: "red" } }, [
-                          _vm._v("First Semester")
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.is_parking_period == 2
-                      ? _c("font", { attrs: { color: "red" } }, [
-                          _vm._v("Second Semester")
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.is_parking_period == 3
-                      ? _c("font", { attrs: { color: "red" } }, [
-                          _vm._v("Summer Semester")
-                        ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
                   "button",
                   {
                     staticClass: "close",
@@ -90502,488 +89007,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm.errors.length > 0
-                  ? _c("div", { staticClass: "alert alert-danger" }, [
-                      _c(
-                        "ul",
-                        _vm._l(_vm.errors, function(stud_parking_err) {
-                          return _c("li", [_vm._v(_vm._s(stud_parking_err))])
-                        }),
-                        0
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", { attrs: { for: "name" } }, [
-                      _vm._v("Student Name")
-                    ]),
-                    _vm._v(" "),
-                    _c("v-select", {
-                      attrs: {
-                        label: "label",
-                        options: _vm.student_names,
-                        reduce: function(student_names) {
-                          return student_names.studentcode
-                        }
-                      },
-                      model: {
-                        value: _vm.student_parking.id_number,
-                        callback: function($$v) {
-                          _vm.$set(_vm.student_parking, "id_number", $$v)
-                        },
-                        expression: "student_parking.id_number"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", [
-                      _vm._v(
-                        " Selected: " + _vm._s(_vm.student_parking.id_number)
-                      )
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "name" } }, [_vm._v("Vehicle")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.student_parking.plate_number,
-                          expression: "student_parking.plate_number"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        "data-placeholder": "Choose an Employee...",
-                        name: "employee_names",
-                        id: "employee_names",
-                        tabindex: "-1"
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.student_parking,
-                            "plate_number",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    _vm._l(_vm.vehicles, function(vehicle, index) {
-                      return vehicle.stud_id == _vm.student_parking.id_number
-                        ? _c(
-                            "option",
-                            {
-                              attrs: { selected: "" },
-                              domProps: { value: vehicle.plate_number }
-                            },
-                            [
-                              _c("b", [
-                                _vm._v(
-                                  _vm._s(vehicle.plate_number) +
-                                    ": " +
-                                    _vm._s(vehicle.make) +
-                                    " " +
-                                    _vm._s(vehicle.model)
-                                )
-                              ])
-                            ]
-                          )
-                        : _vm._e()
-                    }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _c("span", [
-                    _vm._v(
-                      " Selected: " + _vm._s(_vm.student_parking.plate_number)
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Contact Number")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.student_parking.contact_number,
-                        expression: "student_parking.contact_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "contact_number" },
-                    domProps: { value: _vm.student_parking.contact_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.student_parking,
-                          "contact_number",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("License Number")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.student_parking.license_number,
-                        expression: "student_parking.license_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "license_number" },
-                    domProps: { value: _vm.student_parking.license_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.student_parking,
-                          "license_number",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("License Expiry Date")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.student_parking.license_expiry_date,
-                        expression: "student_parking.license_expiry_date"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "licence_expiry_date" },
-                    domProps: {
-                      value: _vm.student_parking.license_expiry_date
-                    },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.student_parking,
-                          "license_expiry_date",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("School Year")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.student_parking.schoolyear,
-                        expression: "student_parking.schoolyear"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "schoolyear" },
-                    domProps: { value: _vm.student_parking.schoolyear },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.student_parking,
-                          "schoolyear",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Semester")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.student_parking.semester,
-                          expression: "student_parking.semester"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "semester",
-                        id: "semester",
-                        tabindex: "-1"
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.student_parking,
-                            "semester",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "", selected: "" } }),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "1", selected: "" } }, [
-                        _vm._v("First Semester")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2", selected: "" } }, [
-                        _vm._v("Second Semester")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "3", selected: "" } }, [
-                        _vm._v("Summer")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Parking Type")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.student_parking.parking_type,
-                          expression: "student_parking.parking_type"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "parking_type",
-                        id: "parking_type",
-                        tabindex: "-1"
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.student_parking,
-                            "parking_type",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", {
-                        attrs: { disabled: "", value: "", selected: "" }
-                      }),
-                      _vm._v(" "),
-                      _vm._l(_vm.pricings, function(pricing, index) {
-                        return _c(
-                          "option",
-                          { domProps: { value: pricing.id } },
-                          [
-                            _vm._v(
-                              _vm._s(pricing.service_name) +
-                                " - " +
-                                _vm._s(pricing.price) +
-                                " - " +
-                                _vm._s(pricing.schoolyear) +
-                                " - " +
-                                _vm._s(pricing.semester)
-                            )
-                          ]
-                        )
-                      })
-                    ],
-                    2
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("OR Number")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.student_parking.or_number,
-                        expression: "student_parking.or_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "or_number" },
-                    domProps: { value: _vm.student_parking.or_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.student_parking,
-                          "or_number",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Sticker Number")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.student_parking.sticker_number,
-                        expression: "student_parking.sticker_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "sticker_number" },
-                    domProps: { value: _vm.student_parking.sticker_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.student_parking,
-                          "sticker_number",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Date Issued")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: (_vm.student_parking.date_issued = new Date()
-                          .toISOString()
-                          .slice(0, 10)),
-                        expression:
-                          "student_parking.date_issued = new Date().toISOString().slice(0,10)"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "date_issued" },
-                    domProps: {
-                      value: (_vm.student_parking.date_issued = new Date()
-                        .toISOString()
-                        .slice(0, 10))
-                    },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          (_vm.student_parking.date_issued = new Date().toISOString()),
-                          "slice(0,10)",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ])
-              ]),
+              _c("div", { staticClass: "modal-body" }),
               _vm._v(" "),
               _c("div", { staticClass: "modal-footer" }, [
                 _c(
@@ -91001,599 +89025,9 @@ var render = function() {
                   {
                     staticClass: "btn btn-primary",
                     attrs: { type: "button", disabled: _vm.submitted },
-                    on: { click: _vm.create_student_parking }
+                    on: { click: _vm.create_student_swimming }
                   },
-                  [_vm._v("Register Student Parking")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "vehicle-modal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalLabel" }
-                  },
-                  [_vm._v("Vehicle Registration")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    },
-                    on: { click: _vm.clear_errors }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm.errors.length > 0
-                  ? _c("div", { staticClass: "alert alert-danger" }, [
-                      _c(
-                        "ul",
-                        _vm._l(_vm.errors, function(vehicle_error) {
-                          return _c("li", [_vm._v(_vm._s(vehicle_error))])
-                        }),
-                        0
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.type,
-                          expression: "type"
-                        }
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio1",
-                        value: "student"
-                      },
-                      domProps: { checked: _vm._q(_vm.type, "student") },
-                      on: {
-                        change: function($event) {
-                          _vm.type = "student"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio1" }
-                      },
-                      [_vm._v("Student")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-check form-check-inline" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.type,
-                          expression: "type"
-                        }
-                      ],
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "radio",
-                        name: "inlineRadioOptions",
-                        id: "inlineRadio2",
-                        value: "employee"
-                      },
-                      domProps: { checked: _vm._q(_vm.type, "employee") },
-                      on: {
-                        change: function($event) {
-                          _vm.type = "employee"
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "inlineRadio2" }
-                      },
-                      [_vm._v("Employee")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm.type == "employee"
-                  ? _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", { attrs: { for: "name" } }, [
-                          _vm._v("Employee Name")
-                        ]),
-                        _vm._v(" "),
-                        _c("v-select", {
-                          attrs: {
-                            label: "emp_name",
-                            options: _vm.employee_names,
-                            reduce: function(employee_names) {
-                              return employee_names.id_no
-                            }
-                          },
-                          model: {
-                            value: _vm.vehicle.id_number_employee,
-                            callback: function($$v) {
-                              _vm.$set(_vm.vehicle, "id_number_employee", $$v)
-                            },
-                            expression: "vehicle.id_number_employee"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("span", [
-                          _vm._v(
-                            " Selected: " +
-                              _vm._s(_vm.vehicle.id_number_employee)
-                          )
-                        ])
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type == "student"
-                  ? _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", { attrs: { for: "name" } }, [
-                          _vm._v("Student Name")
-                        ]),
-                        _vm._v(" "),
-                        _c("v-select", {
-                          attrs: {
-                            label: "label",
-                            options: _vm.student_names,
-                            reduce: function(student_names) {
-                              return student_names.studentcode
-                            }
-                          },
-                          model: {
-                            value: _vm.vehicle.id_number_student,
-                            callback: function($$v) {
-                              _vm.$set(_vm.vehicle, "id_number_student", $$v)
-                            },
-                            expression: "vehicle.id_number_student"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("span", [
-                          _vm._v(
-                            " Selected: " +
-                              _vm._s(_vm.vehicle.id_number_student)
-                          )
-                        ])
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Owner's Name registered to LTO")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.vehicle.owner_name_lto,
-                        expression: "vehicle.owner_name_lto"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "school_dept_office" },
-                    domProps: { value: _vm.vehicle.owner_name_lto },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.vehicle,
-                          "owner_name_lto",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Relation to the Owner")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.vehicle.relation_to_owner,
-                        expression: "vehicle.relation_to_owner"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "contact_number" },
-                    domProps: { value: _vm.vehicle.relation_to_owner },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.vehicle,
-                          "relation_to_owner",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Make")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.vehicle.make,
-                          expression: "vehicle.make"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        "data-placeholder": "Choose an Employee...",
-                        name: "employee_names",
-                        id: "employee_names",
-                        tabindex: "-1"
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.vehicle,
-                            "make",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", {
-                        attrs: { disabled: "", value: "", selected: "" }
-                      }),
-                      _vm._v(" "),
-                      _vm._l(_vm.vehicle_make, function(vehicle_makes, index) {
-                        return _c(
-                          "option",
-                          { domProps: { value: vehicle_makes.make } },
-                          [_vm._v(_vm._s(vehicle_makes.make))]
-                        )
-                      })
-                    ],
-                    2
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.vehicle.model,
-                        expression: "vehicle.model"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "license_number" },
-                    domProps: { value: _vm.vehicle.model },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.vehicle, "model", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _vm._m(4),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.vehicle.plate_number,
-                        expression: "vehicle.plate_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "licence_expiry_date" },
-                    domProps: { value: _vm.vehicle.plate_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.vehicle,
-                          "plate_number",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Color")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.vehicle.color,
-                        expression: "vehicle.color"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "schoolyear" },
-                    domProps: { value: _vm.vehicle.color },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.vehicle, "color", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Registration Expiry Date")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.vehicle.reg_expiry_date,
-                        expression: "vehicle.reg_expiry_date"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "license_expiry_date" },
-                    domProps: { value: _vm.vehicle.reg_expiry_date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.vehicle,
-                          "reg_expiry_date",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm._m(5),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group form-check-inline" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.vehicle.lto_cr,
-                        expression: "vehicle.lto_cr"
-                      }
-                    ],
-                    staticClass: "form-check-input",
-                    attrs: { type: "checkbox", value: "", id: "lto_cr" },
-                    domProps: {
-                      checked: Array.isArray(_vm.vehicle.lto_cr)
-                        ? _vm._i(_vm.vehicle.lto_cr, "") > -1
-                        : _vm.vehicle.lto_cr
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.vehicle.lto_cr,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(_vm.vehicle, "lto_cr", $$a.concat([$$v]))
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.vehicle,
-                                "lto_cr",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
-                        } else {
-                          _vm.$set(_vm.vehicle, "lto_cr", $$c)
-                        }
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "lto_cr" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            LTO Certificate of Registration\n                        "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group form-check-inline" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.vehicle.lto_or,
-                        expression: "vehicle.lto_or"
-                      }
-                    ],
-                    staticClass: "form-check-input",
-                    attrs: { type: "checkbox", value: "", id: "lto_or" },
-                    domProps: {
-                      checked: Array.isArray(_vm.vehicle.lto_or)
-                        ? _vm._i(_vm.vehicle.lto_or, "") > -1
-                        : _vm.vehicle.lto_or
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.vehicle.lto_or,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = "",
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(_vm.vehicle, "lto_or", $$a.concat([$$v]))
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.vehicle,
-                                "lto_or",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
-                        } else {
-                          _vm.$set(_vm.vehicle, "lto_or", $$c)
-                        }
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "lto_or" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            LTO Official Receipt\n                        "
-                      )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button", "data-dismiss": "modal" },
-                    on: { click: _vm.clear_errors }
-                  },
-                  [_vm._v("Close")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button", disabled: _vm.submitted },
-                    on: { click: _vm.create_vehicle }
-                  },
-                  [_vm._v("Register Vehicle")]
+                  [_vm._v("Register Student Swimming")]
                 )
               ])
             ])
@@ -91629,7 +89063,7 @@ var staticRenderFns = [
                 "aria-selected": "true"
               }
             },
-            [_vm._v("Employees Parking")]
+            [_vm._v("Employees Swimming")]
           ),
           _vm._v(" "),
           _c(
@@ -91645,119 +89079,10 @@ var staticRenderFns = [
                 "aria-selected": "false"
               }
             },
-            [_vm._v("Students Parking")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "nav-item nav-link",
-              attrs: {
-                id: "vehicles-master-tab",
-                "data-toggle": "tab",
-                href: "#nav-vehicles-master",
-                role: "tab",
-                "aria-controls": "nav-vehicles-master",
-                "aria-selected": "false"
-              }
-            },
-            [_vm._v("Vehicles")]
+            [_vm._v("Students Swimming")]
           )
         ]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "ul",
-      { staticClass: "nav nav-tabs", attrs: { id: "myTab", role: "tablist" } },
-      [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link active",
-              attrs: {
-                id: "employees-tab",
-                "data-toggle": "tab",
-                href: "#employees",
-                role: "tab",
-                "aria-controls": "employees",
-                "aria-selected": "true"
-              }
-            },
-            [_vm._v("Employees")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                id: "students-tab",
-                "data-toggle": "tab",
-                href: "#students",
-                role: "tab",
-                "aria-controls": "students",
-                "aria-selected": "false"
-              }
-            },
-            [_vm._v("Students")]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "description" } }, [
-      _vm._v("OR Number (Type "),
-      _c("b", [_vm._v("none")]),
-      _vm._v(" if OR Number is not required for this Parking registration)")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "description" } }, [
-      _vm._v("Year Model - "),
-      _c("b", [_c("i", [_vm._v("Example: 2019 Ford Ranger Raptor")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "description" } }, [
-      _vm._v("Plate Number "),
-      _c("br"),
-      _c("b", [_vm._v("Follow this format:")]),
-      _c("i", [
-        _c("br"),
-        _vm._v(
-          "For vehicles, use ABC-1234 (2014 series plates) and ABC-123 (1981 Series plates)\n                        "
-        ),
-        _c("br"),
-        _vm._v(
-          "For motorcycles, use MC-12345 (2014 series plates) and MC-1234 (1981 Series plates)"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_c("b", [_vm._v("Supporting Documents")])])
     ])
   }
 ]
