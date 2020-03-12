@@ -52,6 +52,14 @@ class User extends Authenticatable
         return $this->hasMany(StudentParking::class);
     }
 
+    public function employeeSwimming(){
+        return $this->hasMany(EmployeeSwimming::class);
+    }
+
+    public function studentSwimming(){
+        return $this->hasMany(StudentSwimming::class);
+    }
+
     public function ldap(){
         return $this->hasMany(Ccfcldap::class);
     }

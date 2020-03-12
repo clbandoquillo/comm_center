@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('parking-component', require('./components/ParkingComponent.vue').default);
 Vue.component('ldap-component', require('./components/LDAPComponent.vue').default);
 Vue.component('prices-component', require('./components/PricesComponent.vue').default);
+Vue.component('swimming-component', require('./components/SwimmingComponent.vue').default);
 /*
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
