@@ -112,7 +112,7 @@
                       </thead>
                       <tbody>
                         <tr v-for="(student_swimming, index) in student_swimmings">
-                          <td>{{ student_swimming.lastname }}, {{ student_swimming.firstname }} {{ student_swimming.middlename }} test </td>
+                          <td>{{ student_swimming.lastname }}, {{ student_swimming.firstname }} {{ student_swimming.middlename }} </td>
                           <td>{{ student_swimming.or_number }}</td>
                           <td>{{ student_swimming.swimming_type }}</td>
                           <td>{{ student_swimming.totalHrs }}</td>

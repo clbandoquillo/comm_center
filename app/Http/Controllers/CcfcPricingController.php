@@ -42,7 +42,7 @@ class CcfcPricingController extends Controller
         cat.category_Name as category_Name, 
         cat.status as status
  
-        FROM [ccfc].[dbo].[pricings] p inner join ccfc_category cat on p.category_id = cat.id where category_Name = 'parking' and p.status = 1"));
+        FROM [ccfc].[dbo].[pricings] p inner join ccfc_category cat on p.category_id = cat.id where p.status = 1"));
         return response()->json([
             'pricings'=>$pricings
         ], 200);
