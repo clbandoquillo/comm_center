@@ -33,7 +33,7 @@ class StudentController extends Controller
             $semester = 3;
         }
 
-        $student_names = DB::select(DB::raw("Student_List '$semester', '$current_year'"));
+        $student_names = DB::select(DB::raw("Student_List '$semester', '2019'"));
         /*$employee_name = DB::select(DB::raw("select * from ACADEMIC.dbo.studentmaster"));*/
         return response()->json([
             'student_names'=>$student_names

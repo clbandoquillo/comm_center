@@ -16,9 +16,9 @@ class StudentSwimmingController extends Controller
     public function index()
     {
         //
-        $student_swimmings = DB::select(DB::raw("select * from ccfc.dbo.student_swimmings"));
+        $student_swimming = DB::select(DB::raw("EXEC Student_Swimming_List"));
         return response()->json([
-            'student_swimmings'=>$student_swimmings
+            'student_swimming'=>$student_swimming
         ], 200);
     }
 
@@ -45,8 +45,28 @@ class StudentSwimmingController extends Controller
             'student_id_number' => 'required',
             'or_number' => 'required',
             'swimming_type' => 'required',
+            'totalHrs' => 'required',
+            'schoolyear' => 'required',
+            'semester' => 'required',
             'date_time_usage' => 'required',
             'amount' => 'required'
+        ]);
+
+        $student_swimming = $request->user()->studentSwimming()->create([
+            'student_id_number' => $request->student_id_number,
+            'or_number' => $request->or_number,
+            'swimming_type' => $request->swimming_type,
+            'totalHrs' => $request->totalHrs,
+            'schoolyear' => $request->schoolyear,
+            'semester' => $request->semester,
+            'date_time_usage' => $request->date_time_usage,
+            'amount' => $request->amount
+        ]);
+
+        return response()->json([
+
+            'student_swimming' => $student_swimming,
+            'message' => 'Student has been registered to Swimming'
         ]);
     }
 

@@ -4009,27 +4009,206 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       employee_swimming: {
-        employee_id_number: '',
-        or_number: '',
-        swimming_type: '',
+        employee_id_number: "",
+        or_number: "",
+        swimming_type: "",
+        totalHrs: "",
+        schoolyear: "",
+        semester: "",
         date_time_usage: new Date().toISOString().slice(0, 10),
-        school_year: '',
-        semester: '',
-        amount: ''
+        amount: ""
       },
       student_swimming: {
-        student_id_number: '',
-        or_number: '',
-        swimming_type: '',
+        student_id_number: "",
+        or_number: "",
+        swimming_type: "",
+        totalHrs: "",
+        schoolyear: "",
+        semester: "",
         date_time_usage: new Date().toISOString().slice(0, 10),
-        amount: ''
+        amount: ""
       },
-      employee_parkings: [],
-      student_parkings: [],
+      employee_swimmings: [],
+      student_swimmings: [],
       employee_names: [],
       student_names: [],
       pricings: [],
@@ -4037,28 +4216,31 @@ __webpack_require__.r(__webpack_exports__);
       emp_vehicles: [],
       stud_vehicles: [],
       vehicle_make: [],
-      url_employee_swimming: 'https://ccfcis.addu.edu.ph/employee_swimming/',
-      url_student_swimming: 'https://ccfcis.addu.edu.ph/student_swimming/',
-      url_emp_list: 'https://ccfcis.addu.edu.ph/employee_names/',
-      url_pricing: 'https://ccfcis.addu.edu.ph/ccfc_pricing_1/',
-      url_vehicle: 'https://ccfcis.addu.edu.ph/ccfc_vehicles/',
-      url_vehicle_process: 'https://ccfcis.addu.edu.ph/ccfc_vehicles_process/',
-      url_vehicle_make: 'https://ccfcis.addu.edu.ph/ccfc_vehicle_make/',
-      url_student_name: 'https://ccfcis.addu.edu.ph/student_names',
+      url_employee_swimming: "https://ccfcis.addu.edu.ph/employee_swimming/",
+      url_student_swimming: "https://ccfcis.addu.edu.ph/student_swimming/",
+      url_emp_list: "https://ccfcis.addu.edu.ph/employee_names/",
+      url_pricing: "https://ccfcis.addu.edu.ph/ccfc_pricing_1/",
+      url_vehicle: "https://ccfcis.addu.edu.ph/ccfc_vehicles/",
+      url_vehicle_process: "https://ccfcis.addu.edu.ph/ccfc_vehicles_process/",
+      url_vehicle_make: "https://ccfcis.addu.edu.ph/ccfc_vehicle_make/",
+      url_student_name: "https://ccfcis.addu.edu.ph/student_names",
       errors: [],
-      type: '',
+      type: "",
+      current_month: new Date().getMonth(),
       current_year: new Date().getFullYear(),
       current_date: new Date().toISOString().slice(0, 10),
+      // current_time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
       //current_date: '2019-11-1',
-      first_period_start: new Date().getFullYear() + '-06-01',
-      first_period_end: new Date().getFullYear() + '-10-31',
-      second_period_start: new Date().getFullYear() + '-11-4',
-      second_period_end: new Date().getFullYear() + '-11-30',
-      summer_period_start: new Date().getFullYear() + '-3-1',
-      summer_period_end: new Date().getFullYear() + '-4-3',
-      semester: '',
-      image: 'img/loader1.gif',
-      loading: false
+      first_period_start: new Date().getFullYear() + "-06-01",
+      first_period_end: new Date().getFullYear() + "-10-31",
+      second_period_start: new Date().getFullYear() + "-11-1",
+      second_period_end: new Date().getFullYear() + "-3-31",
+      summer_period_start: new Date().getFullYear() + "4-1",
+      summer_period_end: new Date().getFullYear() + "-5-31",
+      semester: "",
+      image: "img/loader1.gif",
+      loading: false,
+      submitted: false
     };
   },
   computed: {
@@ -4071,10 +4253,10 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
       return filtered.length > 0 ? filtered : [{
-        emp_id: '',
-        cfirst: '',
-        clast: '',
-        plate_number: ''
+        emp_id: "",
+        cfirst: "",
+        clast: "",
+        plate_number: ""
       }];
     },
     filtered_stud_vehicle: function filtered_stud_vehicle() {
@@ -4086,79 +4268,89 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
       return filtered.length > 0 ? filtered : [{
-        stud_id: '',
-        firstname: '',
-        lastname: '',
-        plate_number: ''
+        stud_id: "",
+        firstname: "",
+        lastname: "",
+        plate_number: ""
       }];
     },
     filtered_emp_parking: function filtered_emp_parking() {
       var _this3 = this;
 
-      var filtered_ep = this.employee_parkings.filter(function (item) {
+      var filtered_ep = this.employee_swimmings.filter(function (item) {
         return Object.keys(_this3.filters_ep).every(function (key) {
           return String(item[key]).includes(_this3.filters_ep[key]);
         });
       });
       return filtered_ep.length > 0 ? filtered_ep : [{
-        id_number: '',
-        cfirst: '',
-        clast: '',
-        middle: '',
-        semester: '',
-        schoolyear: ''
+        id_number: "",
+        cfirst: "",
+        clast: "",
+        middle: "",
+        semester: "",
+        schoolyear: ""
       }];
     },
     filtered_stud_parking: function filtered_stud_parking() {
       var _this4 = this;
 
-      var filtered_stud = this.student_parkings.filter(function (item) {
+      var filtered_stud = this.student_swimmings.filter(function (item) {
         return Object.keys(_this4.filters_stud).every(function (key) {
           return String(item[key]).includes(_this4.filters_stud[key]);
         });
       });
       return filtered_stud.length > 0 ? filtered_stud : [{
-        id_number: '',
-        firstname: '',
-        lastname: '',
-        middlename: '',
-        semester: '',
-        schoolyear: ''
+        id_number: "",
+        firstname: "",
+        lastname: "",
+        middlename: "",
+        semester: "",
+        schoolyear: ""
       }];
     },
-    is_parking_period: function is_parking_period() {
+    is_swimming_period: function is_swimming_period() {
       if (this.current_date >= this.first_period_start && this.current_date <= this.first_period_end) {
         this.semester = 1;
-        this.employee_parking.semester = 1;
-        this.employee_parking.schoolyear = new Date().getFullYear();
-        this.student_parking.semester = 1;
-        this.student_parking.schoolyear = new Date().getFullYear();
+        this.employee_swimming.semester = 1;
+        this.employee_swimming.schoolyear = new Date().getFullYear();
+        this.student_swimming.semester = 1;
+        this.student_swimming.schoolyear = new Date().getFullYear();
       } else if (this.current_date >= this.second_period_start && this.current_date <= this.second_period_end) {
-        this.semester = 2;
-        this.employee_parking.semester = 2;
-        this.employee_parking.schoolyear = new Date().getFullYear();
-        this.student_parking.semester = 2;
-        this.student_parking.schoolyear = new Date().getFullYear();
+        if (this.current_month <= 5) {
+          this.semester = 2;
+          this.employee_swimming.semester = 2;
+          this.employee_swimming.schoolyear = new Date().getFullYear() - 1;
+          this.student_swimming.semester = 2;
+          this.student_swimming.schoolyear = new Date().getFullYear() - 1;
+          console.log(this.current_month);
+        } else if (this.current_month > 5) {
+          this.semester = 2;
+          this.employee_swimming.semester = 2;
+          this.employee_swimming.schoolyear = new Date().getFullYear();
+          this.student_swimming.semester = 2;
+          this.student_swimming.schoolyear = new Date().getFullYear();
+          console.log(this.current_month);
+        }
       } else if (this.current_date >= this.summer_period_start && this.current_date <= this.summer_period_end) {
         this.semester = 3;
-        this.employee_parking.semester = 3;
-        this.employee_parking.schoolyear = new Date().getFullYear() - 1;
-        this.student_parking.semester = 3;
-        this.student_parking.schoolyear = new Date().getFullYear() - 1;
+        this.employee_swimming.semester = 3;
+        this.employee_swimming.schoolyear = new Date().getFullYear() - 1;
+        this.student_swimming.semester = 3;
+        this.student_swimming.schoolyear = new Date().getFullYear() - 1;
       }
 
       this.semester = 2;
-      this.employee_parking.semester = 2;
-      this.employee_parking.schoolyear = new Date().getFullYear();
-      this.student_parking.semester = 2;
-      this.student_parking.schoolyear = new Date().getFullYear();
+      this.employee_swimming.semester = 2;
+      this.employee_swimming.schoolyear = new Date().getFullYear() - 1;
+      this.student_swimming.semester = 2;
+      this.student_swimming.schoolyear = new Date().getFullYear() - 1;
       return this.semester; // + ' ' + this.current_date + ' ' + this.summer_period_start
     },
     emp_rows: function emp_rows() {
-      return this.employee_parkings.length;
+      return this.employee_swimmings.length;
     },
     stud_rows: function stud_rows() {
-      return this.student_parkings.length;
+      return this.student_swimmings.length;
     },
     emp_vehicles_rows: function emp_vehicles_rows() {
       return this.emp_vehicles.length;
@@ -4170,16 +4362,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getOptions: function getOptions(search, loading) {
       loading(true);
-      axios.get('https://ccfcis.addu.edu.ph/employee_names/');
+      axios.get("https://ccfcis.addu.edu.ph/employee_names/");
     },
     employeeParkingModal: function employeeParkingModal() {
-      $("#employee-parking-modal").modal("show");
+      $("#employee-swimming-modal").modal("show");
     },
     updateModal: function updateModal(index) {
-      $("#employee-parking-modal").modal("show");
+      $("#employee-swimming-modal").modal("show");
     },
     studentParkingModal: function studentParkingModal() {
-      $("#student-parking-modal").modal("show");
+      $("#student-swimming-modal").modal("show");
     },
     vehicleModal: function vehicleModal() {
       $("#vehicle-modal").modal("show");
@@ -4188,85 +4380,30 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       this.submitted = true;
-      axios.post('https://ccfcis.addu.edu.ph/employee_parking', {
-        id_number: this.employee_parking.id_number,
-        plate_number: this.employee_parking.plate_number,
-        contact_number: this.employee_parking.contact_number,
-        school_dept_office: this.employee_parking.school_dept_office,
-        license_number: this.employee_parking.license_number,
-        license_expiry_date: this.employee_parking.license_expiry_date,
-        schoolyear: this.employee_parking.schoolyear,
-        semester: this.employee_parking.semester,
-        parking_type: this.employee_parking.parking_type,
-        or_number: this.employee_parking.or_number,
-        sticker_number: this.employee_parking.sticker_number,
-        date_issued: this.employee_parking.date_issued,
-        isPayroll: this.employee_parking.isPayroll
+      axios.post("https://ccfcis.addu.edu.ph/employee_swimming", {
+        employee_id_number: this.employee_swimming.employee_id_number,
+        or_number: this.employee_swimming.or_number,
+        swimming_type: this.employee_swimming.swimming_type,
+        totalHrs: this.employee_swimming.totalHrs,
+        schoolyear: this.employee_swimming.schoolyear,
+        semester: this.employee_swimming.semester,
+        date_time_usage: this.employee_swimming.date_time_usage,
+        amount: this.employee_swimming.amount
       }).then(function (response) {
         _this5.resetData();
 
         _this5.submitted = false;
 
-        _this5.employee_parkings.push(response.data.employee_parking);
+        _this5.employee_swimmings.push(response.data.employee_swimming);
 
-        $("#employee-parking-modal").modal("hide"); //toastr.success(response.data.message);
+        $("#employee-swimming-modal").modal("hide"); //toastr.success(response.data.message);
 
         _this5.load_employee_swimming();
 
-        _this5.makeToastEP('success', response.data.message, 'added', 'Employee Parking successfully ');
+        _this5.makeToastEP("success", response.data.message, "added", "Employee Swimming successfully ");
 
         _this5.errors = [];
       })["catch"](function (error) {
-        _this5.errors = [];
-
-        if (error.response.data.errors.id_number) {
-          _this5.errors.push(error.response.data.errors.id_number[0]);
-        }
-
-        if (error.response.data.errors.plate_number) {
-          _this5.errors.push(error.response.data.errors.plate_number[0]);
-        }
-
-        if (error.response.data.errors.contact_number) {
-          _this5.errors.push(error.response.data.errors.contact_number[0]);
-        }
-
-        if (error.response.data.errors.school_dept_office) {
-          _this5.errors.push(error.response.data.errors.school_dept_office[0]);
-        }
-
-        if (error.response.data.errors.license_number) {
-          _this5.errors.push(error.response.data.errors.license_number[0]);
-        }
-
-        if (error.response.data.errors.license_expiry_date) {
-          _this5.errors.push(error.response.data.errors.license_expiry_date[0]);
-        }
-
-        if (error.response.data.errors.schoolyear) {
-          _this5.errors.push(error.response.data.errors.schoolyear[0]);
-        }
-
-        if (error.response.data.errors.semester) {
-          _this5.errors.push(error.response.data.errors.semester[0]);
-        }
-
-        if (error.response.data.errors.parking_type) {
-          _this5.errors.push(error.response.data.errors.parking_type[0]);
-        }
-
-        if (error.response.data.errors.or_number) {
-          _this5.errors.push(error.response.data.errors.or_number[0]);
-        }
-
-        if (error.response.data.errors.sticker_number) {
-          _this5.errors.push(error.response.data.errors.sticker_number[0]);
-        }
-
-        if (error.response.data.errors.date_issued) {
-          _this5.errors.push(error.response.data.errors.date_issued[0]);
-        }
-
         _this5.submitted = false;
       });
     },
@@ -4274,93 +4411,44 @@ __webpack_require__.r(__webpack_exports__);
       var _this6 = this;
 
       this.submitted = true;
-      axios.post('https://ccfcis.addu.edu.ph/student_parking', {
-        id_number: this.student_parking.id_number,
-        plate_number: this.student_parking.plate_number,
-        or_number: this.student_parking.or_number,
-        contact_number: this.student_parking.contact_number,
-        license_number: this.student_parking.license_number,
-        license_expiry_date: this.student_parking.license_expiry_date,
-        schoolyear: this.student_parking.schoolyear,
-        semester: this.student_parking.semester,
-        parking_type: this.student_parking.parking_type,
-        sticker_number: this.student_parking.sticker_number,
-        date_issued: this.student_parking.date_issued
+      axios.post("https://ccfcis.addu.edu.ph/student_swimming", {
+        student_id_number: this.student_swimming.student_id_number,
+        or_number: this.student_swimming.or_number,
+        swimming_type: this.student_swimming.swimming_type,
+        totalHrs: this.student_swimming.totalHrs,
+        schoolyear: this.student_swimming.schoolyear,
+        semester: this.student_swimming.semester,
+        date_time_usage: this.student_swimming.date_time_usage,
+        amount: this.student_swimming.amount
       }).then(function (response) {
         _this6.resetData();
 
         _this6.submitted = false;
 
-        _this6.student_parkings.push(response.data.student_parking);
+        _this6.student_swimmings.push(response.data.student_swimming);
 
-        $("#student-parking-modal").modal("hide");
+        $("#student-swimming-modal").modal("hide");
 
         _this6.load_student_swimming();
 
-        _this6.makeToastEP('success', response.data.message, 'added', 'Student Parking successfully ');
+        _this6.makeToastEP("success", response.data.message, "added", "Student Swimming successfully ");
       })["catch"](function (error) {
-        _this6.errors = [];
-
-        if (error.response.data.errors.id_number) {
-          _this6.errors.push(error.response.data.errors.id_number[0]);
-        }
-
-        if (error.response.data.errors.plate_number) {
-          _this6.errors.push(error.response.data.errors.plate_number[0]);
-        }
-
-        if (error.response.data.errors.or_number) {
-          _this6.errors.push(error.response.data.errors.or_number[0]);
-        }
-
-        if (error.response.data.errors.contact_number) {
-          _this6.errors.push(error.response.data.errors.contact_number[0]);
-        }
-
-        if (error.response.data.errors.license_number) {
-          _this6.errors.push(error.response.data.errors.license_number[0]);
-        }
-
-        if (error.response.data.errors.license_expiry_date) {
-          _this6.errors.push(error.response.data.errors.license_expiry_date[0]);
-        }
-
-        if (error.response.data.errors.schoolyear) {
-          _this6.errors.push(error.response.data.errors.schoolyear[0]);
-        }
-
-        if (error.response.data.errors.semester) {
-          _this6.errors.push(error.response.data.errors.semester[0]);
-        }
-
-        if (error.response.data.errors.parking_type) {
-          _this6.errors.push(error.response.data.errors.parking_type[0]);
-        }
-
-        if (error.response.data.errors.sticker_number) {
-          _this6.errors.push(error.response.data.errors.sticker_number[0]);
-        }
-
-        if (error.response.data.errors.date_issued) {
-          _this6.errors.push(error.response.data.errors.date_issued[0]);
-        }
-
         _this6.submitted = false;
       });
     },
     load_employee_swimming: function load_employee_swimming() {
       var _this7 = this;
 
-      axios.get(this.url.employee).then(function (response) {
-        _this7.employee_parkings = response.data.employee_parkings;
+      axios.get(this.url_employee_swimming).then(function (response) {
+        _this7.employee_swimmings = response.data.employee_swimmings;
         _this7.loading = true;
       });
     },
     load_student_swimming: function load_student_swimming() {
       var _this8 = this;
 
-      axios.get(this.url_student_parking).then(function (response) {
-        _this8.student_parkings = response.data.student_parkings;
+      axios.get(this.url_student_swimming).then(function (response) {
+        _this8.student_swimmings = response.data.student_swimming;
       });
     },
     load_employee_names: function load_employee_names() {
@@ -4385,36 +4473,22 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     resetData: function resetData() {
-      this.employee_parking.employee_names = '';
-      this.employee_parking.id_number = '';
-      this.employee_parking.contact_number = '';
-      this.employee_parking.school_dept_office = '';
-      this.employee_parking.license_number = '';
-      this.employee_parking.license_expiry_date = '';
-      this.employee_parking.parking_type = '';
-      this.employee_parking.or_number = '';
-      this.employee_parking.sticker_number = '';
-      this.employee_parking.date_issued = '';
-      this.student_parking.id_number = '';
-      this.student_parking.plate_number = '';
-      this.student_parking.or_number = '';
-      this.student_parking.contact_number = '';
-      this.student_parking.license_number = '';
-      this.student_parking.license_expiry_date = '';
-      this.student_parking.parking_type = '';
-      this.student_parking.sticker_number = '';
-      this.student_parking.date_issued = '';
-      this.vehicle.id_number_employee = '';
-      this.vehicle.id_number_student = '';
-      this.vehicle.owner_name_lto = '';
-      this.vehicle.relation_to_owner = '';
-      this.vehicle.make = '';
-      this.vehicle.model = '';
-      this.vehicle.plate_number = '';
-      this.vehicle.color = '';
-      this.vehicle.reg_expiry_date = '';
-      this.vehicle.lto_cr = '';
-      this.vehicle.lto_or = '';
+      this.employee_swimming.employee_id_number = "";
+      this.employee_swimming.or_number = "";
+      this.employee_swimming.swimming_type = "";
+      this.employee_swimming.totalHrs = "";
+      this.employee_swimming.schoolyear = "";
+      this.employee_swimming.semester = "";
+      this.employee_swimming.date_time_usage = "";
+      this.employee_swimming.amount = "";
+      this.student_swimming.student_id_number = "";
+      this.student_swimming.or_number = "";
+      this.student_swimming.swimming_type = "";
+      this.student_swimming.totalHrs = "";
+      this.student_swimming.schoolyear = "";
+      this.student_swimming.semester = "";
+      this.student_swimming.date_time_usage = "";
+      this.student_swimming.amount = "";
     },
     clear_errors: function clear_errors() {
       this.errors = [];
@@ -88543,6 +88617,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm._m(0),
+    _vm._v(" "),
     _c("br"),
     _vm._v(" "),
     _c("div", { staticClass: "tab-content", attrs: { id: "nav-tabContent" } }, [
@@ -88588,7 +88663,65 @@ var render = function() {
                             attrs: { src: _vm.image, alt: "loader" }
                           })
                         ])
-                      : _c("div")
+                      : _c("div", [
+                          _c("table", { staticClass: "table" }, [
+                            _vm._m(1),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              _vm._l(_vm.employee_swimmings, function(
+                                employee_swimming,
+                                index
+                              ) {
+                                return _c("tr", [
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(employee_swimming.clast) +
+                                        ", " +
+                                        _vm._s(employee_swimming.cfirst) +
+                                        " " +
+                                        _vm._s(employee_swimming.middle) +
+                                        "  "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(employee_swimming.or_number))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(employee_swimming.swimming_type)
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(employee_swimming.totalHrs))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(employee_swimming.schoolyear))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(employee_swimming.semester))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(employee_swimming.date_time_usage)
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(employee_swimming.amount))
+                                  ])
+                                ])
+                              }),
+                              0
+                            )
+                          ])
+                        ])
                   ])
                 ])
               ])
@@ -88624,7 +88757,59 @@ var render = function() {
                         on: { click: _vm.studentParkingModal }
                       },
                       [_vm._v("Register Student")]
-                    )
+                    ),
+                    _vm._v(" "),
+                    _c("table", { staticClass: "table" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.student_swimmings, function(
+                          student_swimming,
+                          index
+                        ) {
+                          return _c("tr", [
+                            _c("td", [
+                              _vm._v(
+                                _vm._s(student_swimming.lastname) +
+                                  ", " +
+                                  _vm._s(student_swimming.firstname) +
+                                  " " +
+                                  _vm._s(student_swimming.middlename) +
+                                  " test "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(student_swimming.or_number))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(student_swimming.swimming_type))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(student_swimming.totalHrs))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(student_swimming.schoolyear))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(student_swimming.semester))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(student_swimming.date_time_usage))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(student_swimming.amount))])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
                   ])
                 ])
               ])
@@ -88639,7 +88824,7 @@ var render = function() {
       {
         staticClass: "modal fade",
         attrs: {
-          id: "employee-parking-modal",
+          id: "employee-swimming-modal",
           tabindex: "-1",
           role: "dialog",
           "aria-labelledby": "exampleModalLabel",
@@ -88655,6 +88840,37 @@ var render = function() {
           [
             _c("div", { staticClass: "modal-content" }, [
               _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" }
+                  },
+                  [
+                    _vm._v(
+                      "Employees Swimming Registration for\n                          "
+                    ),
+                    _vm.is_swimming_period == 1
+                      ? _c("font", { attrs: { color: "red" } }, [
+                          _vm._v("First Semester")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.is_swimming_period == 2
+                      ? _c("font", { attrs: { color: "red" } }, [
+                          _vm._v("Second Semester")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.is_swimming_period == 3
+                      ? _c("font", { attrs: { color: "red" } }, [
+                          _vm._v("Summer Semester")
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
                 _c(
                   "button",
                   {
@@ -88692,17 +88908,22 @@ var render = function() {
                         }
                       },
                       model: {
-                        value: _vm.employee_parking.id_number,
+                        value: _vm.employee_swimming.employee_id_number,
                         callback: function($$v) {
-                          _vm.$set(_vm.employee_parking, "id_number", $$v)
+                          _vm.$set(
+                            _vm.employee_swimming,
+                            "employee_id_number",
+                            $$v
+                          )
                         },
-                        expression: "employee_parking.id_number"
+                        expression: "employee_swimming.employee_id_number"
                       }
                     }),
                     _vm._v(" "),
                     _c("span", [
                       _vm._v(
-                        " Selected: " + _vm._s(_vm.employee_parking.id_number)
+                        "Selected: " +
+                          _vm._s(_vm.employee_swimming.employee_id_number)
                       )
                     ])
                   ],
@@ -88812,6 +89033,72 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Total hours")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.employee_swimming.totalHrs,
+                        expression: "employee_swimming.totalHrs"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number", id: "totalHrs" },
+                    domProps: { value: _vm.employee_swimming.totalHrs },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.employee_swimming,
+                          "totalHrs",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Date")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.employee_swimming.date_time_usage,
+                        expression: "employee_swimming.date_time_usage"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date", id: "date_issued" },
+                    domProps: { value: _vm.employee_swimming.date_time_usage },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.employee_swimming,
+                          "date_time_usage",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
                     _vm._v("School Year")
                   ]),
                   _vm._v(" "),
@@ -88902,7 +89189,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "description" } }, [
-                    _vm._v("Date / Time Usage")
+                    _vm._v("Amount")
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -88910,35 +89197,26 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: (_vm.employee_swimming.date_issued = new Date()
-                          .toISOString()
-                          .slice(0, 10)),
-                        expression:
-                          "employee_swimming.date_issued = new Date().toISOString().slice(0,10)"
+                        value: _vm.employee_swimming.amount,
+                        expression: "employee_swimming.amount"
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "date", id: "date_issued" },
-                    domProps: {
-                      value: (_vm.employee_swimming.date_issued = new Date()
-                        .toISOString()
-                        .slice(0, 10))
-                    },
+                    attrs: { type: "text", id: "amount" },
+                    domProps: { value: _vm.employee_swimming.amount },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          (_vm.employee_swimming.date_issued = new Date().toISOString()),
-                          "slice(0,10)",
+                          _vm.employee_swimming,
+                          "amount",
                           $event.target.value
                         )
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("br")
+                  })
                 ])
               ]),
               _vm._v(" "),
@@ -88974,7 +89252,7 @@ var render = function() {
       {
         staticClass: "modal fade",
         attrs: {
-          id: "student-parking-modal",
+          id: "student-swimming-modal",
           tabindex: "-1",
           role: "dialog",
           "aria-labelledby": "exampleModalLabel",
@@ -89007,7 +89285,334 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { attrs: { for: "name" } }, [
+                      _vm._v("Student Name")
+                    ]),
+                    _vm._v(" "),
+                    _c("v-select", {
+                      attrs: {
+                        label: "label",
+                        options: _vm.student_names,
+                        reduce: function(student_names) {
+                          return student_names.studentcode
+                        }
+                      },
+                      model: {
+                        value: _vm.student_swimming.student_id_number,
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.student_swimming,
+                            "student_id_number",
+                            $$v
+                          )
+                        },
+                        expression: "student_swimming.student_id_number"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(
+                        " Selected: " + _vm._s(_vm.student_swimming.id_number)
+                      )
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("OR Number")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.student_swimming.or_number,
+                        expression: "student_swimming.or_number"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "or_number" },
+                    domProps: { value: _vm.student_swimming.or_number },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.student_swimming,
+                          "or_number",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Swimming Type")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.student_swimming.swimming_type,
+                          expression: "student_swimming.swimming_type"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "parking_type",
+                        id: "parking_type",
+                        tabindex: "-1"
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.student_swimming,
+                            "swimming_type",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", {
+                        attrs: { disabled: "", value: "", selected: "" }
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.pricings, function(pricing, index) {
+                        return _c(
+                          "option",
+                          { domProps: { value: pricing.id } },
+                          [
+                            _vm._v(
+                              _vm._s(pricing.service_name) +
+                                " - ₱" +
+                                _vm._s(pricing.price) +
+                                " - SY: " +
+                                _vm._s(pricing.schoolyear) +
+                                " - Semester " +
+                                _vm._s(pricing.semester)
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Total hours")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.student_swimming.totalHrs,
+                        expression: "student_swimming.totalHrs"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number", id: "totalHrs" },
+                    domProps: { value: _vm.student_swimming.totalHrs },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.student_swimming,
+                          "totalHrs",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Date")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.student_swimming.date_time_usage,
+                        expression: "student_swimming.date_time_usage"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date", id: "date_issued" },
+                    domProps: { value: _vm.student_swimming.date_time_usage },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.student_swimming,
+                          "date_time_usage",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("School Year")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.student_swimming.schoolyear,
+                        expression: "student_swimming.schoolyear"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "schoolyear" },
+                    domProps: { value: _vm.student_swimming.schoolyear },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.student_swimming,
+                          "schoolyear",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Semester")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.student_swimming.semester,
+                          expression: "student_swimming.semester"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "semester",
+                        id: "semester",
+                        tabindex: "-1"
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.student_swimming,
+                            "semester",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "1", selected: "" } }, [
+                        _vm._v("First Semester")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2", selected: "" } }, [
+                        _vm._v("Second Semester")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3", selected: "" } }, [
+                        _vm._v("Summer")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Amount")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.student_swimming.amount,
+                        expression: "student_swimming.amount"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "amount" },
+                    domProps: { value: _vm.student_swimming.amount },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.student_swimming,
+                          "amount",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-footer" }, [
                 _c(
@@ -89083,6 +89688,54 @@ var staticRenderFns = [
           )
         ]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Employee Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("OR Number")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Swimming Type")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total Hours")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("School Year")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Semester")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date / Time Usage")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Amount")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Student Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("OR Number")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Swimming Type")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total Hours")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("School Year")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Semester")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date / Time Usage")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Amount")])
+      ])
     ])
   }
 ]

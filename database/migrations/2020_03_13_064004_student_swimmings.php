@@ -18,7 +18,7 @@ class StudentSwimmings extends Migration
             $table->bigIncrements('id');
             $table->string('student_id_number');
             $table->string('or_number');
-            $table->string('swimming_type');
+            $table->integer('swimming_type');
             $table->integer('totalHrs');
             $table->integer('schoolyear');
             $table->tinyInteger('semester');

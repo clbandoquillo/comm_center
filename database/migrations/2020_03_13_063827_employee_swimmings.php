@@ -13,11 +13,12 @@ class EmployeeSwimmings extends Migration
      */
     public function up()
     {
+        //
         Schema::create('employee_swimming', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('employee_id_number');
             $table->string('or_number');
-            $table->string('swimming_type');
+            $table->integer('swimming_type');
             $table->integer('totalHrs');
             $table->integer('schoolyear');
             $table->tinyInteger('semester');
